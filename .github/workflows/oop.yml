@@ -1,0 +1,65 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  pull_request:
+    branches: [ "main" ]  
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{ github.event.pull_request.title }}
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+    
+      - name: Execute Gradle build
+        run: ./gradlew build
+
+      - name: Generate Jacoco report
+        run: ./gradlew jacocoTestReport
+
+      - name: Check coverage and publish
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.2
+        with:
+          paths: ./${{ github.event.pull_request.title }}/build/reports/jacoco/test/jacocoTestReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 80
+          min-coverage-changed-files: 80
+
+      - name: Generate javadoc
+        run: ./gradlew javadoc
+
+      - name: Publish javadoc
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
+          folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
+          target-folder: ${{ github.event.pull_request.title }}
+
+  checkstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: '.github/google_checks.xml'
+          reporter: 'github-pr-check'
