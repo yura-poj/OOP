@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
     @Test
-    void SampleTest() {
-        assertEquals(3, Main.sum(2, 1));
+    void HeapSortTest() {
+        int[] array = {5, 8, 3, 9, 1, 6};
+        Main.heapsort(array);
+        assertArrayEquals(new int[]{1, 3, 5, 6, 8, 9}, array);
     }
 }
