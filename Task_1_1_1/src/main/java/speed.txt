@@ -1,0 +1,5 @@
+length of array | speed in nanoseconds  |
+        2       |         3084          |
+        4       |         3458          |
+        8       |         5000          |
+        16      |         9292          |

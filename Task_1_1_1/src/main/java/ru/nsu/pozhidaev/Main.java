@@ -2,6 +2,7 @@ package ru.nsu.pozhidaev;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -29,20 +30,37 @@ public class Main {
     }
 
     public static int[] heapsort(int[] arr) {
+        // Practically this cycle usually create in other function by name heapify
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
-            siftup(arr, arr.length, i);
+            siftup(arr, arr.length, i); // We are create heap in the right order
         }
 
         for (int i = arr.length - 1; i >= 0; i--) {
-            swap(arr, 0, i);
-            siftup(arr, i, 0);
+            swap(arr, 0, i); // swap the largest element with ith element
+            siftup(arr, i, 0); // sift this element to avoid smaller number was upper than bigger
         }
-        return arr;
+        return arr; // return sorted array
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 8, 3, 9, 1, 6};
-        heapsort(array);
-        System.out.println(Arrays.toString(array));
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter length of array:");
+        int n = scanner.nextInt();
+        System.out.println("Enter your numbers like(1 2 3 4 5):");
+        int[] numbers = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        long start = System.nanoTime();
+        heapsort(numbers);
+        long finish = System.nanoTime();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
+
+
+        System.out.println("Sorted array(by " + timeElapsed + ") :");
+        System.out.println(Arrays.toString(numbers));
     }
 }
