@@ -14,7 +14,8 @@ class MainTest {
         System.out.println(timeElapsed);
 
         start = System.nanoTime();
-        assertArrayEquals(new int[]{123, 234, 456, 789}, Main.heapsort(new int[]{234, 789, 456, 123}));
+        assertArrayEquals(new int[]{123, 234, 456, 789},
+                Main.heapsort(new int[]{234, 789, 456, 123}));
         finish = System.nanoTime();
         timeElapsed = finish - start;
         System.out.println(timeElapsed);
@@ -27,7 +28,8 @@ class MainTest {
         System.out.println(timeElapsed);
 
         start = System.nanoTime();
-        assertArrayEquals(new int[]{112, 123, 223, 234, 234, 334, 345, 445, 456, 567, 678, 789, 876, 890, 901, 987},
+        assertArrayEquals(new int[]{112, 123, 223, 234, 234, 334, 345, 445,
+                        456, 567, 678, 789, 876, 890, 901, 987},
                 Main.heapsort(new int[]{987, 345, 234, 567, 876, 123, 456, 678, 234,
                         789, 890, 901, 112, 223, 334, 445}));
         finish = System.nanoTime();
@@ -49,11 +51,13 @@ class MainTest {
 
     @Test
     void testForReversedArray() {
-        assertArrayEquals(new int[]{123, 234, 456, 789}, Main.heapsort(new int[]{789, 456, 234, 123}));
+        assertArrayEquals(new int[]{123, 234, 456, 789},
+                Main.heapsort(new int[]{789, 456, 234, 123}));
     }
 
     @Test
     void testForArrayWithNegativeNumbers() {
-        assertArrayEquals(new int[]{-789,-456,-234, -123}, Main.heapsort(new int[]{-789, -234, -456, -123}));
+        assertArrayEquals(new int[]{-789, -456, -234, -123},
+                Main.heapsort(new int[]{-789, -234, -456, -123}));
     }
 }

@@ -3,8 +3,9 @@ package ru.nsu.pozhidaev;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/*
+The main class
+ */
 public class Main {
 
     /*
@@ -36,6 +37,7 @@ public class Main {
             siftup(arr, n, largest);
         }
     }
+
     /*
     heapsort is a type of sorting algorithm which use binary tree where on the top is the largest element
     on each step we delete this largest element and add it to the new sorted array
