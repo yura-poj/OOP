@@ -56,27 +56,8 @@ public class Main {
     }
 
     /*
-    user should enter length of array, array and will get sorted array by heapsort
+    do nothing
      */
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter length of array:");
-        int n = scanner.nextInt();
-        System.out.println("Enter your numbers like(1 2 3 4 5):");
-        int[] numbers = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            numbers[i] = scanner.nextInt();
-        }
-        long start = System.nanoTime();
-        heapsort(numbers);
-        long finish = System.nanoTime();
-        long timeElapsed = finish - start;
-        System.out.println(timeElapsed);
-
-
-        System.out.println("Sorted array(by " + timeElapsed + ") :");
-        System.out.println(Arrays.toString(numbers));
     }
 }
