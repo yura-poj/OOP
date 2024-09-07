@@ -60,4 +60,10 @@ class MainTest {
         assertArrayEquals(new int[]{-789, -456, -234, -123},
                 Main.heapsort(new int[]{-789, -234, -456, -123}));
     }
+
+    @Test
+    void testForArrayWithLargeNumbers() {
+        assertArrayEquals(new int[]{2147483640, 2147483643, 2147483645, 2147483647},
+                Main.heapsort(new int[]{2147483647, 2147483643, 2147483645, 2147483640}));
+    }
 }
