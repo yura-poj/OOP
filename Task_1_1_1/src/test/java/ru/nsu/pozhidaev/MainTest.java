@@ -52,4 +52,8 @@ class MainTest {
         assertArrayEquals(new int[]{123, 234, 456, 789}, Main.heapsort(new int[]{789, 456, 234, 123}));
     }
 
+    @Test
+    void testForArrayWithNegativeNumbers() {
+        assertArrayEquals(new int[]{-789,-456,-234, -123}, Main.heapsort(new int[]{-789, -234, -456, -123}));
+    }
 }
