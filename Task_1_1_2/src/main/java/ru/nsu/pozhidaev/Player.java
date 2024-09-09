@@ -10,22 +10,34 @@ public class Player {
     List<Card> cards = new ArrayList<Card>();
     boolean stop = false;
 
+    /**
+     * @param deck
+     */
     public Player(Deck deck) {
         this.deck = deck;
     }
 
+    /**
+     *
+     */
     public void getCard() {
         current_card = deck.give_card();
         points += current_card.points;
         cards.add(current_card);
     }
 
+    /**
+     *
+     */
     public void newGame() {
         points = 0;
         stop = false;
         cards.clear();
     }
 
+    /**
+     *
+     */
     public void showCards() {
         System.out.print("Your cards: [");
         for (int i = 0; i < cards.size(); i++) {

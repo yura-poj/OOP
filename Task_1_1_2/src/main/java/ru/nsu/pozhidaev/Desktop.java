@@ -10,12 +10,20 @@ public class Desktop {
     boolean newRound = true;
     boolean stop = false;
 
+    /**
+     * @param user
+     * @param dealer
+     * @param deck
+     */
     public Desktop(User user, Dealer dealer, Deck deck) {
         this.user = user;
         this.dealer = dealer;
         this.deck = deck;
     }
 
+    /**
+     *
+     */
     public void startGame() {
         while (!stop) {
             if (newRound) {
@@ -32,6 +40,9 @@ public class Desktop {
         }
     }
 
+    /**
+     *
+     */
     public void step() {
         dealer.action();
         if (!user.stop) {
@@ -47,6 +58,9 @@ public class Desktop {
         check();
     }
 
+    /**
+     *
+     */
     public void userAction() {
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter '1' to get card, '0' to stop and '-1' to exit");
@@ -67,6 +81,9 @@ public class Desktop {
 
     }
 
+    /**
+     *
+     */
     public void check() {
         if (user.points > 21 && dealer.points > 21) {
             System.out.println("Draw");
@@ -92,6 +109,9 @@ public class Desktop {
         }
     }
 
+    /**
+     *
+     */
     public void finish() {
         System.out.println("Score You: " + user.score + " | Dealer: " + dealer.score);
         newRound = true;
@@ -101,11 +121,17 @@ public class Desktop {
         deck.newGame();
     }
 
+    /**
+     *
+     */
     private void userStopped() {
         user.stop = true;
         dealer.showHiddenCards();
     }
 
+    /**
+     *
+     */
     private void statistics() {
         int numberOpenedCards = 0;
         if (user.stop) {
@@ -113,7 +139,6 @@ public class Desktop {
         }
         user.showCards();
         dealer.showCards(numberOpenedCards);
-
     }
 
 }
