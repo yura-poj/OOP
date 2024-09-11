@@ -1,8 +1,12 @@
 package ru.nsu.pozhidaev;
 
+/**
+ * subclass of player, opponent for user.
+ */
 public class Dealer extends Player {
 
     /**
+     * getter.
      *
      * @return number of opened cards.
      */
@@ -13,7 +17,10 @@ public class Dealer extends Player {
     private int numberOpenedCards = 0;
 
     static final int maxPointsNumber = 17;
+
     /**
+     * for generating
+     *
      * @param deck class of deck of cards.
      */
     public Dealer(Deck deck) {
@@ -21,7 +28,7 @@ public class Dealer extends Player {
     }
 
     /**
-     * add card if points <= maxPointsNumber,
+     * add card if points less or equal than maxPointsNumber,
      * in other situation touch flag stop.
      */
     public void action() {

@@ -1,15 +1,20 @@
 package ru.nsu.pozhidaev;
 
+/**
+ * class describing card and giving info about it.
+ */
 public class Card {
- 
-    private String name;
-    private int points;
-    private String suit;
+
+    private final String name;
+    private final int points;
+    private final String suit;
 
     /**
-     * @param name name of the card.
+     * for generating
+     *
+     * @param name   name of the card.
      * @param points points that will be added with card.
-     * @param suit suit of the card.
+     * @param suit   suit of the card.
      */
     public Card(String name, int points, String suit) {
         this.name = name;
@@ -18,6 +23,7 @@ public class Card {
     }
 
     /**
+     * getter.
      *
      * @return points of the card.
      */
@@ -26,6 +32,7 @@ public class Card {
     }
 
     /**
+     * collect info about card in one string.
      *
      * @return ready string like: Queen of Diamonds (10).
      */

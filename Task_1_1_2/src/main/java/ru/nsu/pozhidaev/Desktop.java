@@ -2,6 +2,12 @@ package ru.nsu.pozhidaev;
 
 import java.util.*;
 
+/**
+ * virtual table that rule the game.
+ * describe the rules of the game, ask user what he's going to do
+ * and tell dealer what to do.
+ * collect and print statistic and check who is the winner.
+ */
 public class Desktop {
     private final User user;
     private final Dealer dealer;
@@ -35,7 +41,7 @@ public class Desktop {
                     user.getCard();
                     dealer.getCard();
                 }
-                statistics();
+                showStatistics();
                 newRound = false;
             }
             step();
@@ -46,7 +52,7 @@ public class Desktop {
      * firstly dealer make his action
      * and if user did not stop already call his action.
      * print card that get dealer.
-     * call statistics and check of step result.
+     * call showStatistics and check of step result.
      */
     private void step() {
         dealer.action();
@@ -59,7 +65,7 @@ public class Desktop {
         if (!dealer.stop) {
             System.out.println("Dealer got hidden card");
         }
-        statistics();
+        showStatistics();
         checkStepResult();
     }
 
@@ -171,7 +177,7 @@ public class Desktop {
     /**
      * print cards of user and dealer.
      */
-    private void statistics() {
+    private void showStatistics() {
         user.showCards();
         dealer.showCards();
         System.out.println("<---->");

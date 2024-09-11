@@ -1,16 +1,21 @@
 package ru.nsu.pozhidaev;
 
+/**
+ * deck of the cards have 52 unique cards from 13 names and 4 suits.
+ * can generate card for players.
+ */
 public class Deck {
 
-    private String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
-        "Jack", "Queen", "King", "Ace"};
-    private int[] points = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+    private final String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "Jack", "Queen", "King", "Ace"};
+    private final int[] points = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
     private boolean[][] usedCards = new boolean[13][4];
-    private String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
+    private final String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
 
     /**
      * generate randomly card and check was it already used or not.
      * we generate card till it wasn't used.
+     *
      * @return Card that was generated.
      */
     public Card give_card() {
@@ -40,6 +45,7 @@ public class Deck {
     }
 
     /**
+     * generate keys for new card.
      *
      * @param number max possible number.
      * @return randomly generated number.

@@ -1,10 +1,18 @@
 package ru.nsu.pozhidaev;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * class that imitate action and state of real player.
+ * such action as: get card from deck, stop getting new card,
+ * remove old cards and start new game.
+ * such states as: score of wins, sum of points of the cards.
+ */
 public class Player {
 
     /**
+     * getter.
      *
      * @return score of wins.
      */
@@ -13,6 +21,7 @@ public class Player {
     }
 
     /**
+     * getter.
      *
      * @return sum of points of all cards.
      */
@@ -21,6 +30,7 @@ public class Player {
     }
 
     /**
+     * getter.
      *
      * @return card that player get recently.
      */
@@ -29,6 +39,7 @@ public class Player {
     }
 
     /**
+     * getter.
      *
      * @return is user stopped or not.
      */
@@ -37,6 +48,7 @@ public class Player {
     }
 
     /**
+     * setter.
      *
      * @param score of wins.
      */
@@ -45,6 +57,7 @@ public class Player {
     }
 
     /**
+     * setter
      *
      * @param stop getting more cards.
      */
@@ -52,7 +65,7 @@ public class Player {
         this.stop = stop;
     }
 
-    protected Deck deck;
+    protected final Deck deck;
     protected int score = 0;
     protected int points = 0;
     protected Card currentCard;
@@ -60,6 +73,8 @@ public class Player {
     protected boolean stop = false;
 
     /**
+     * init.
+     *
      * @param deck class deck.
      */
     public Player(Deck deck) {
