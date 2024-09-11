@@ -50,6 +50,8 @@ public class Deck {
      * @param number max possible number.
      * @return randomly generated number.
      */
+
+
     private int generateKey(int number) {
         return (int) (Math.random() * number);
     }
