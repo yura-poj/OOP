@@ -2,15 +2,16 @@ package ru.nsu.pozhidaev;
 
 public class Deck {
 
-    String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+    private String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
         "Jack", "Queen", "King", "Ace"};
-    int[] points = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
-    boolean[][] usedCards = new boolean[13][4];
-    String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
+    private int[] points = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+    private boolean[][] usedCards = new boolean[13][4];
+    private String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
 
     /**
-     *
-     * @return
+     * generate randomly card and check was it already used or not.
+     * we generate card till it wasn't used.
+     * @return Card that was generated.
      */
     public Card give_card() {
         int id = generateKey(12);
@@ -24,20 +25,11 @@ public class Deck {
         usedCards[id][suit] = true;
 
         int score = points[id];
-        return new Card(id, score, suit);
+        return new Card(names[id], score, suits[suit]);
     }
 
     /**
-     *
-     * @param card
-     * @return
-     */
-    public String getCardInfo(Card card) {
-        return names[card.id] + " of " + suits[card.suit] + "(" + points[card.id] + ")";
-    }
-
-    /**
-     *
+     * clear array of used cards.
      */
     public void newGame() {
         for (int i = 0; i < 13; i++) {
@@ -49,8 +41,8 @@ public class Deck {
 
     /**
      *
-     * @param number
-     * @return
+     * @param number max possible number.
+     * @return randomly generated number.
      */
     private int generateKey(int number) {
         return (int) (Math.random() * number);

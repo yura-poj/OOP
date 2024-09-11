@@ -3,17 +3,29 @@ package ru.nsu.pozhidaev;
 public class Dealer extends Player {
 
     /**
-     * @param deck
+     *
+     * @return number of opened cards.
+     */
+    public int getNumberOpenedCards() {
+        return numberOpenedCards;
+    }
+
+    private int numberOpenedCards = 0;
+
+    static final int maxPointsNumber = 17;
+    /**
+     * @param deck class of deck of cards.
      */
     public Dealer(Deck deck) {
         super(deck);
     }
 
     /**
-     *
+     * add card if points <= maxPointsNumber,
+     * in other situation touch flag stop.
      */
     public void action() {
-        if (points <= 17) {
+        if (points <= maxPointsNumber) {
             getCard();
         } else {
             stop = true;
@@ -21,13 +33,15 @@ public class Dealer extends Player {
     }
 
     /**
-     * @param numberOpenedCards
+     * show visible cards by card.toString
+     * and print that possible have hidden cards.
+     * we compare number of opened cards - 1 and i, because first card is opened permanently.
      */
-    public void showCards(int numberOpenedCards) {
+    public void showCards() {
         System.out.print("Dealer's cards: [");
         for (int i = 0; i < cards.size(); i++) {
-            if (numberOpenedCards >= i) {
-                System.out.print(deck.getCardInfo(cards.get(i)));
+            if (numberOpenedCards - 1 >= i) {
+                System.out.print(cards.get(i).toString());
             } else {
                 System.out.print("<hidden card>");
             }
@@ -40,13 +54,27 @@ public class Dealer extends Player {
     }
 
     /**
-     *
+     * open card by card till his cards will be gone.
+     * for that call show cards, before that add 1 to numberOpenedCards.
+     * in the end make numberOpenedCards the maximum value as possible
+     * to avoid hidden cards anymore.
      */
     public void showHiddenCards() {
         stop = true;
         for (int i = 1; i < cards.size(); i++) {
-            System.out.println("Dealer open card: " + deck.getCardInfo(cards.get(i)));
-            showCards(i);
+            numberOpenedCards++;
+            System.out.println("Dealer open card: " + cards.get(i).toString());
+            showCards();
         }
+        numberOpenedCards = Integer.MAX_VALUE;
+    }
+
+    /**
+     * change number of opened card to zero.
+     */
+    @Override
+    public void newGame() {
+        super.newGame();
+        numberOpenedCards = 0;
     }
 }

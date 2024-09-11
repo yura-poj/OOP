@@ -3,8 +3,8 @@ package ru.nsu.pozhidaev;
 
 public class Blackjack {
     /**
-     *
-     * @param args
+     * function initialize all classes for the game and start it.
+     * @param args args of command line.
      */
     public static void main(String[] args) {
 

@@ -3,17 +3,17 @@ package ru.nsu.pozhidaev;
 import java.util.*;
 
 public class Desktop {
-    User user;
-    Dealer dealer;
-    Deck deck;
-    int round = 1;
-    boolean newRound = true;
-    boolean stop = false;
+    private final User user;
+    private final Dealer dealer;
+    private final Deck deck;
+    private int round = 1;
+    private boolean newRound = true;
+    private boolean stop = false;
 
     /**
-     * @param user
-     * @param dealer
-     * @param deck
+     * @param user   class user.
+     * @param dealer class dealer.
+     * @param deck   class deck.
      */
     public Desktop(User user, Dealer dealer, Deck deck) {
         this.user = user;
@@ -22,7 +22,9 @@ public class Desktop {
     }
 
     /**
-     *
+     * while user do not stop the game function do:
+     * print round, set up cards for new game, print them
+     * and call step.
      */
     public void startGame() {
         while (!stop) {
@@ -41,79 +43,116 @@ public class Desktop {
     }
 
     /**
-     *
+     * firstly dealer make his action
+     * and if user did not stop already call his action.
+     * print card that get dealer.
+     * call statistics and check of step result.
      */
-    public void step() {
+    private void step() {
         dealer.action();
         if (!user.stop) {
             userAction();
             if (!dealer.stop) {
-                System.out.println("Dealer open card: " + deck.getCardInfo(dealer.current_card));
+                System.out.println("Dealer open card: " + dealer.getCurrentCard().toString());
             }
         }
         if (!dealer.stop) {
             System.out.println("Dealer got hidden card");
         }
         statistics();
-        check();
+        checkStepResult();
     }
 
     /**
-     *
+     * ask user to enter command he would like to do,
+     * stop adding cards, get the card or stop the game.
+     * if user enter invalid command, ask hin again.
      */
-    public void userAction() {
+    private void userAction() {
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter '1' to get card, '0' to stop and '-1' to exit");
-        while (true) {
-            int chose = scanner.nextInt();
-            if (chose == 0) {
-                userStopped();
-                break;
-            } else if (chose == 1) {
-                user.getCard();
-                System.out.println("You open card: " + deck.getCardInfo(user.current_card));
-                break;
-            } else if (chose == -1) {
-                stop = true;
-                break;
+        boolean continues = true;
+        while (continues) {
+            try {
+                int userInput = scanner.nextInt();
+                switch (userInput) {
+                    case 0:
+                        userStopped();
+                        continues = false;
+                        break;
+                    case 1:
+                        user.getCard();
+                        System.out.println("You open card: " + user.getCurrentCard().toString());
+                        continues = false;
+                        break;
+                    case -1:
+                        stop = true;
+                        continues = false;
+                        break;
+                    default:
+                        System.out.println("Invalid input. Please enter '1', '0', or '-1'.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
             }
         }
-
     }
 
     /**
-     *
+     * check if players get more than 21 points and if they both stop adding cards.
+     * print result.
+     * call finish.
      */
-    public void check() {
-        if (user.points > 21 && dealer.points > 21) {
-            System.out.println("Draw");
-        } else if (user.points > 21) {
-            System.out.println("You lose");
-            dealer.score++;
-        } else if (dealer.points > 21) {
-            System.out.println("You win");
-            user.score++;
-        } else if (dealer.stop && user.stop) {
-            if (user.points == dealer.points) {
-                System.out.println("Draw");
-            } else if (user.points > dealer.points) {
-                System.out.println("You lose");
-                dealer.score++;
+    private void checkStepResult() {
+        int gameResult = 0;
+        if (user.getPoints() > 21 && dealer.getPoints() > 21) {
+            gameResult = 0;
+        } else if (user.getPoints() > 21) {
+            gameResult = -1;
+            dealer.setScore(dealer.getScore() + 1);
+        } else if (dealer.getPoints() > 21) {
+            gameResult = 1;
+            user.setScore(user.getScore() + 1);
+        } else if (dealer.isStop() && user.isStop()) {
+            if (user.getPoints() == dealer.getPoints()) {
+                gameResult = 0;
+            } else if (user.getPoints() > dealer.getPoints()) {
+                gameResult = -1;
+                dealer.setScore(dealer.getScore() + 1);
             } else {
-                System.out.println("You win");
-                user.score++;
+                gameResult = 1;
+                user.setScore(user.getScore() + 1);
             }
         }
-        if (dealer.stop && user.stop || dealer.points > 21 || user.points > 21) {
-            finish();
+        if (dealer.isStop() && user.isStop() || dealer.getPoints() > 21 || user.getPoints() > 21) {
+            finish(gameResult);
         }
     }
 
     /**
-     *
+     * if dealer didn't show his card yet, we call showHiddenCards.
+     * print result of the round.
+     * increase round, set flag of new round.
+     * prepare classes for the new game by class.newGame.
      */
-    public void finish() {
-        System.out.println("Score You: " + user.score + " | Dealer: " + dealer.score);
+    private void finish(int gameResult) {
+        if (!dealer.isStop() && dealer.getNumberOpenedCards() != Integer.MAX_VALUE) {
+            dealer.showHiddenCards();
+        }
+        switch (gameResult) {
+            case (0):
+                System.out.println("Draw");
+                break;
+            case (1):
+                System.out.println("You win");
+                break;
+            case (-1):
+                System.out.println("You lose");
+                break;
+        }
+        System.out.println("Score You: " + user.getScore() + " | Dealer: " + dealer.getScore());
         newRound = true;
         round++;
         dealer.newGame();
@@ -122,23 +161,20 @@ public class Desktop {
     }
 
     /**
-     *
+     * set flag stop of user = true and call showHiddenCards for dealer.
      */
     private void userStopped() {
-        user.stop = true;
+        user.setStop(true);
         dealer.showHiddenCards();
     }
 
     /**
-     *
+     * print cards of user and dealer.
      */
     private void statistics() {
-        int numberOpenedCards = 0;
-        if (user.stop) {
-            numberOpenedCards = dealer.cards.size();
-        }
         user.showCards();
-        dealer.showCards(numberOpenedCards);
+        dealer.showCards();
+        System.out.println("<---->");
     }
 
 }

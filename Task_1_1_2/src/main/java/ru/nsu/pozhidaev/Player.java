@@ -3,31 +3,81 @@ package ru.nsu.pozhidaev;
 import java.util.*;
 
 public class Player {
-    Deck deck;
-    int score = 0;
-    int points = 0;
-    Card current_card;
-    List<Card> cards = new ArrayList<Card>();
-    boolean stop = false;
 
     /**
-     * @param deck
+     *
+     * @return score of wins.
+     */
+    public int getScore() {
+        return score;
+    }
+
+    /**
+     *
+     * @return sum of points of all cards.
+     */
+    public int getPoints() {
+        return points;
+    }
+
+    /**
+     *
+     * @return card that player get recently.
+     */
+    public Card getCurrentCard() {
+        return currentCard;
+    }
+
+    /**
+     *
+     * @return is user stopped or not.
+     */
+    public boolean isStop() {
+        return stop;
+    }
+
+    /**
+     *
+     * @param score of wins.
+     */
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
+     *
+     * @param stop getting more cards.
+     */
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    protected Deck deck;
+    protected int score = 0;
+    protected int points = 0;
+    protected Card currentCard;
+    protected List<Card> cards = new ArrayList<Card>();
+    protected boolean stop = false;
+
+    /**
+     * @param deck class deck.
      */
     public Player(Deck deck) {
         this.deck = deck;
     }
 
     /**
-     *
+     * get card from the deck and add her points to total points.
+     * set card as current and add to player's cards
      */
     public void getCard() {
-        current_card = deck.give_card();
-        points += current_card.points;
-        cards.add(current_card);
+        currentCard = deck.give_card();
+        points += currentCard.getPoints();
+        cards.add(currentCard);
     }
 
     /**
-     *
+     * set points as zero, stop as false and clear cards for the new game.
      */
     public void newGame() {
         points = 0;
@@ -36,12 +86,12 @@ public class Player {
     }
 
     /**
-     *
+     * show all cards by toString that player have in list cards.
      */
     public void showCards() {
         System.out.print("Your cards: [");
         for (int i = 0; i < cards.size(); i++) {
-            System.out.print(deck.getCardInfo(cards.get(i)));
+            System.out.print(cards.get(i).toString());
 
             if (i != cards.size() - 1) {
                 System.out.print(", ");
