@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,13 +88,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -136,12 +136,64 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Player</span>
 extends java.lang.Object</pre>
+<div class="block">class that imitate action and state of real player.
+ such action as: get card from deck, stop getting new card,
+ remove old cards and start new game.
+ such states as: score of wins, sum of points of the cards.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cards">cards</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#currentCard">currentCard</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deck">deck</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#points">points</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#score">score</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop">stop</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -157,7 +209,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Deck)">Player</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a>&nbsp;deck)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">init.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -180,17 +234,65 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCard()">getCard</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get card from the deck and add her points to total points.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newGame()">newGame</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentCard()">getCurrentCard</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPoints()">getPoints</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScore()">getScore</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isStop()">isStop</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newGame()">newGame</a></span>()</code></th>
+<td class="colLast">
+<div class="block">set points as zero, stop as false and clear cards for the new game.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setScore(int)">setScore</a></span>&#8203;(int&nbsp;score)</code></th>
+<td class="colLast">
+<div class="block">setter.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setStop(boolean)">setStop</a></span>&#8203;(boolean&nbsp;stop)</code></th>
+<td class="colLast">
+<div class="block">setter</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showCards()">showCards</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">show all cards by toString that player have in list cards.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -209,6 +311,70 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="deck">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>deck</h4>
+<pre>protected final&nbsp;<a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a> deck</pre>
+</li>
+</ul>
+<a id="score">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>score</h4>
+<pre>protected&nbsp;int score</pre>
+</li>
+</ul>
+<a id="points">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>points</h4>
+<pre>protected&nbsp;int points</pre>
+</li>
+</ul>
+<a id="currentCard">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>currentCard</h4>
+<pre>protected&nbsp;<a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a> currentCard</pre>
+</li>
+</ul>
+<a id="cards">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cards</h4>
+<pre>protected&nbsp;java.util.List&lt;<a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a>&gt; cards</pre>
+</li>
+</ul>
+<a id="stop">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>stop</h4>
+<pre>protected&nbsp;boolean stop</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -223,9 +389,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Player</h4>
 <pre>public&nbsp;Player&#8203;(<a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a>&nbsp;deck)</pre>
+<div class="block">init.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>deck</code> - </dd>
+<dd><code>deck</code> - class deck.</dd>
 </dl>
 </li>
 </ul>
@@ -239,6 +406,90 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getScore()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getScore</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getScore()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>score of wins.</dd>
+</dl>
+</li>
+</ul>
+<a id="getPoints()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPoints</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getPoints()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>sum of points of all cards.</dd>
+</dl>
+</li>
+</ul>
+<a id="getCurrentCard()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCurrentCard</h4>
+<pre class="methodSignature">public&nbsp;<a href="Card.html" title="class in ru.nsu.pozhidaev">Card</a>&nbsp;getCurrentCard()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>card that player get recently.</dd>
+</dl>
+</li>
+</ul>
+<a id="isStop()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isStop</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isStop()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>is user stopped or not.</dd>
+</dl>
+</li>
+</ul>
+<a id="setScore(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScore</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setScore&#8203;(int&nbsp;score)</pre>
+<div class="block">setter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>score</code> - of wins.</dd>
+</dl>
+</li>
+</ul>
+<a id="setStop(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setStop</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setStop&#8203;(boolean&nbsp;stop)</pre>
+<div class="block">setter</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>stop</code> - getting more cards.</dd>
+</dl>
+</li>
+</ul>
 <a id="getCard()">
 <!--   -->
 </a>
@@ -246,6 +497,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCard</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;getCard()</pre>
+<div class="block">get card from the deck and add her points to total points.
+ set card as current and add to player's cards</div>
 </li>
 </ul>
 <a id="newGame()">
@@ -255,6 +508,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>newGame</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;newGame()</pre>
+<div class="block">set points as zero, stop as false and clear cards for the new game.</div>
 </li>
 </ul>
 <a id="showCards()">
@@ -264,6 +518,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>showCards</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;showCards()</pre>
+<div class="block">show all cards by toString that player have in list cards.</div>
 </li>
 </ul>
 </li>
@@ -317,13 +572,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,7 +88,7 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -137,12 +137,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Dealer</span>
 extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
+<div class="block">subclass of player, opponent for user.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a id="fields.inherited.from.class.ru.nsu.pozhidaev.Player">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;ru.nsu.pozhidaev.<a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></h3>
+<code><a href="Player.html#cards">cards</a>, <a href="Player.html#currentCard">currentCard</a>, <a href="Player.html#deck">deck</a>, <a href="Player.html#points">points</a>, <a href="Player.html#score">score</a>, <a href="Player.html#stop">stop</a></code></li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -158,7 +176,9 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Deck)">Dealer</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a>&nbsp;deck)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">for generating</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,17 +201,39 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#action()">action</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">add card if points less or equal than maxPointsNumber,
+ in other situation touch flag stop.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showCards(int)">showCards</a></span>&#8203;(int&nbsp;numberOpenedCards)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOpenedCards()">getNumberOpenedCards</a></span>()</code></th>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newGame()">newGame</a></span>()</code></th>
+<td class="colLast">
+<div class="block">change number of opened card to zero.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showCards()">showCards</a></span>()</code></th>
+<td class="colLast">
+<div class="block">show visible cards by card.toString
+ and print that possible have hidden cards.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#showHiddenCards()">showHiddenCards</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">open card by card till his cards will be gone.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -199,7 +241,7 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;ru.nsu.pozhidaev.<a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></h3>
-<code><a href="Player.html#getCard()">getCard</a>, <a href="Player.html#newGame()">newGame</a>, <a href="Player.html#showCards()">showCards</a></code></li>
+<code><a href="Player.html#getCard()">getCard</a>, <a href="Player.html#getCurrentCard()">getCurrentCard</a>, <a href="Player.html#getPoints()">getPoints</a>, <a href="Player.html#getScore()">getScore</a>, <a href="Player.html#isStop()">isStop</a>, <a href="Player.html#setScore(int)">setScore</a>, <a href="Player.html#setStop(boolean)">setStop</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -231,9 +273,10 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <li class="blockList">
 <h4>Dealer</h4>
 <pre>public&nbsp;Dealer&#8203;(<a href="Deck.html" title="class in ru.nsu.pozhidaev">Deck</a>&nbsp;deck)</pre>
+<div class="block">for generating</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>deck</code> - </dd>
+<dd><code>deck</code> - class of deck of cards.</dd>
 </dl>
 </li>
 </ul>
@@ -247,6 +290,20 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getNumberOpenedCards()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getNumberOpenedCards</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getNumberOpenedCards()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of opened cards.</dd>
+</dl>
+</li>
+</ul>
 <a id="action()">
 <!--   -->
 </a>
@@ -254,28 +311,51 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <li class="blockList">
 <h4>action</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;action()</pre>
+<div class="block">add card if points less or equal than maxPointsNumber,
+ in other situation touch flag stop.</div>
 </li>
 </ul>
-<a id="showCards(int)">
+<a id="showCards()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>showCards</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;showCards&#8203;(int&nbsp;numberOpenedCards)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;showCards()</pre>
+<div class="block">show visible cards by card.toString
+ and print that possible have hidden cards.
+ we compare number of opened cards - 1 and i, because first card is opened permanently.</div>
 <dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>numberOpenedCards</code> - </dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="Player.html#showCards()">showCards</a></code>&nbsp;in class&nbsp;<code><a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></code></dd>
 </dl>
 </li>
 </ul>
 <a id="showHiddenCards()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>showHiddenCards</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;showHiddenCards()</pre>
+<div class="block">open card by card till his cards will be gone.
+ for that call show cards, before that add 1 to numberOpenedCards.
+ in the end make numberOpenedCards the maximum value as possible
+ to avoid hidden cards anymore.</div>
+</li>
+</ul>
+<a id="newGame()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>newGame</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;newGame()</pre>
+<div class="block">change number of opened card to zero.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="Player.html#newGame()">newGame</a></code>&nbsp;in class&nbsp;<code><a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -329,7 +409,7 @@ extends <a href="Player.html" title="class in ru.nsu.pozhidaev">Player</a></pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
