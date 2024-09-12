@@ -1,5 +1,6 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 
 class DesktopTest {
@@ -57,6 +59,31 @@ class DesktopTest {
         System.setIn(in);
         desktop.startGame();
         assertTrue(dealer.getScore() > dealerScore);
+    }
+
+    @Test
+    void draw() {
+        int dealerScore = dealer.getScore();
+        int dealerPoints = 0;
+        while (dealerPoints <= 21) {
+            dealer.getCard();
+            dealerPoints = dealer.getPoints();
+        }
+        int userScore = user.getScore();
+        int userPoints = 0;
+        while (userPoints <= 21) {
+            user.getCard();
+            userPoints = user.getPoints();
+        }
+
+        String simulatedInput = "-1";
+        ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
+        System.setIn(in);
+
+        desktop.startGame();
+        assertEquals(userScore,user.getScore());
+        assertEquals(dealerScore,dealer.getScore());
+
     }
 
     @AfterEach
