@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 
 import static java.time.Duration.ofMillis;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+
 class DeckTest {
 
     Deck deck;

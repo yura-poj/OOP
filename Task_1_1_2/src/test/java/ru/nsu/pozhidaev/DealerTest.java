@@ -4,20 +4,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static java.time.Duration.ofMillis;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class DealerTest extends Player {
+
+
+class DealerTest {
     private Dealer dealer;
     private Deck deck;
-
-    /**
-     * init.
-     *
-     * @param deck class deck.
-     */
-    public DealerTest(Deck deck) {
-        super(deck);
-    }
 
     @BeforeEach
     void setUp() {
@@ -33,16 +30,19 @@ class DealerTest extends Player {
 
     @Test
     void action() {
-        int points = 0;
-        int newPoints = 0;
+        int points = dealer.getPoints();
+        dealer.action();
+        int newPoints = dealer.getPoints();
+        assertTrue(newPoints >= points);
+
         while (points <= 17) {
             dealer.action();
             newPoints = dealer.getPoints();
-            assertFalse(newPoints < points);
+            assertTrue(newPoints >= points);
             points = newPoints;
         }
-        newPoints = dealer.getPoints();
-        assertEquals(newPoints, points);
+        dealer.action();
+        assertEquals(points, dealer.getPoints());
     }
 
     @Test
@@ -58,9 +58,9 @@ class DealerTest extends Player {
     @Test
     void testNewGame() {
         dealer.newGame();
-        assertNotNull(dealer.getCurrentCard());
+        assertNull(dealer.getCurrentCard());
         assertEquals(0, dealer.getPoints());
         assertEquals(0, dealer.getNumberOpenedCards());
-        assertTrue(dealer.isStop());
+        assertFalse(dealer.isStop());
     }
 }

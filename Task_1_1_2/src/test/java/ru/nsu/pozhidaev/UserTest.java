@@ -6,21 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-class UserTest extends Player {
+class UserTest {
 
     User user;
     Deck deck;
-
-    /**
-     * init.
-     *
-     * @param deck class deck.
-     */
-    public UserTest(Deck deck) {
-        super(deck);
-    }
 
     @BeforeEach
     void setUp() {
@@ -48,7 +44,7 @@ class UserTest extends Player {
 
     @Test
     void testIsStop() {
-        assertTrue(user.isStop());
+        assertFalse(user.isStop());
     }
 
     @Test
@@ -60,7 +56,7 @@ class UserTest extends Player {
     @Test
     void testSetStop() {
         user.setStop(true);
-        assertFalse(user.isStop());
+        assertTrue(user.isStop());
     }
 
     @Test
@@ -69,16 +65,16 @@ class UserTest extends Player {
         Card beforeCard = user.getCurrentCard();
         user.getCard();
 
-        assertFalse(pointsBefore <= user.getPoints());
+        assertTrue(pointsBefore <= user.getPoints());
         assertNotEquals(beforeCard, user.getCurrentCard());
     }
 
     @Test
     void testNewGame() {
         user.newGame();
-        assertNotNull(user.getCurrentCard());
+        assertNull(user.getCurrentCard());
         assertEquals(0, user.getPoints());
-        assertTrue(user.isStop());
+        assertFalse(user.isStop());
     }
 
     @Test

@@ -9,7 +9,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BlackjackTest {
     private ByteArrayOutputStream outContent;
@@ -46,7 +47,7 @@ class BlackjackTest {
 
     @Test
     void wrongNumberInput() {
-        String simulatedInput = "aaa";
+        String simulatedInput = "111";
         ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
 
