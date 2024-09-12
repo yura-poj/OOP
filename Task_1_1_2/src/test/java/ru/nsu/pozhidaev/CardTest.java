@@ -14,7 +14,7 @@ class CardTest {
 
     @BeforeEach
     void setUp() {
-        card = new Card("Queen", 10, "Diamonds");
+        card = new Card("Queen", "Diamonds");
     }
 
     @Test

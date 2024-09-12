@@ -30,7 +30,6 @@ class DeckTest {
 
         for (int i = 0; i < numberNeededCards; i++) {
             card = deck.give_card();
-            card.toString();
             Assertions.assertFalse(generatedCards.contains(card.toString()));
             generatedCards.add(card.toString());
         }

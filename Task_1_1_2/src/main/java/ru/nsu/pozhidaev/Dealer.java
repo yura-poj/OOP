@@ -5,8 +5,8 @@ package ru.nsu.pozhidaev;
  */
 public class Dealer extends Player {
 
-    private static final int maxPointsNumber = 17;
-    private int numberOpenedCards = 0;
+    private static final int MAX_POINTS_NUMBER = 17; // for dealer to stop getting cards.
+    private int numberOpenedCards = 1;
 
     /**
      * getter.
@@ -28,11 +28,11 @@ public class Dealer extends Player {
     }
 
     /**
-     * add card if points less or equal than maxPointsNumber,
+     * add card if points less or equal than MAX_POINTS_NUMBER,
      * in other situation touch flag stop.
      */
     public void action() {
-        if (points <= maxPointsNumber) {
+        if (points <= MAX_POINTS_NUMBER) {
             getCard();
         } else {
             stop = true;
@@ -82,6 +82,6 @@ public class Dealer extends Player {
     @Override
     public void newGame() {
         super.newGame();
-        numberOpenedCards = 0;
+        numberOpenedCards = 1;
     }
 }

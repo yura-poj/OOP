@@ -6,12 +6,10 @@ package ru.nsu.pozhidaev;
  */
 public class Deck {
 
-    public static final int NAMES_PER_DECK = 13;
-    public static final int SUITS_PER_DECK = 4;
-    private final String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+    private static final String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
         "Jack", "Queen", "King", "Ace"};
-    private final String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
-    private boolean[][] usedCards = new boolean[13][4];
+    private static final String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
+    private boolean[][] usedCards = new boolean[names.length][suits.length];
 
     /**
      * generate randomly card and check was it already used or not.
@@ -20,25 +18,25 @@ public class Deck {
      * @return Card that was generated.
      */
     public Card give_card() {
-        int id = generateKey(12);
-        int suit = generateKey(3);
+        int id = generateKey(names.length - 1);
+        int suit = generateKey(suits.length - 1);
 
         while (usedCards[id][suit]) {
-            id = generateKey(12);
-            suit = generateKey(3);
+            id = generateKey(names.length - 1);
+            suit = generateKey(suits.length - 1);
         }
 
         usedCards[id][suit] = true;
 
-        return new Card(names[id], id, suits[suit]);
+        return new Card(names[id], suits[suit]);
     }
 
     /**
      * clear array of used cards.
      */
     public void newGame() {
-        for (int i = 0; i < NAMES_PER_DECK; i++) {
-            for (int j = 0; j < SUITS_PER_DECK; j++) {
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < suits.length; j++) {
                 usedCards[i][j] = false;
             }
         }

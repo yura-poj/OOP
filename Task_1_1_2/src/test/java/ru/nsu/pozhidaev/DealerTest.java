@@ -27,7 +27,7 @@ class DealerTest {
 
     @Test
     void getNumberOpenedCards() {
-        assertEquals(0, dealer.getNumberOpenedCards());
+        assertEquals(1, dealer.getNumberOpenedCards());
     }
 
     @Test
@@ -62,7 +62,7 @@ class DealerTest {
         dealer.newGame();
         assertNull(dealer.getCurrentCard());
         assertEquals(0, dealer.getPoints());
-        assertEquals(0, dealer.getNumberOpenedCards());
+        assertEquals(1, dealer.getNumberOpenedCards());
         assertFalse(dealer.isStop());
     }
 }

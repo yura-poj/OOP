@@ -5,14 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
-
-
 
 
 class DesktopTest {
@@ -32,7 +27,6 @@ class DesktopTest {
 
     @Test
     void userWin() {
-        int userScore = user.getScore();
         int points = 0;
         while (points <= 21) {
             dealer.getCard();
@@ -43,13 +37,13 @@ class DesktopTest {
         ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
 
+        int userScore = user.getScore();
         desktop.startGame();
         assertTrue(user.getScore() > userScore);
     }
 
     @Test
     void dealerWin() {
-        int dealerScore = dealer.getScore();
         int points = 0;
         while (points <= 21) {
             user.getCard();
@@ -58,19 +52,18 @@ class DesktopTest {
         String simulatedInput = "-1";
         ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
+        int dealerScore = dealer.getScore();
         desktop.startGame();
         assertTrue(dealer.getScore() > dealerScore);
     }
 
     @Test
     void draw() {
-        int dealerScore = dealer.getScore();
         int dealerPoints = 0;
         while (dealerPoints <= 21) {
             dealer.getCard();
             dealerPoints = dealer.getPoints();
         }
-        int userScore = user.getScore();
         int userPoints = 0;
         while (userPoints <= 21) {
             user.getCard();
@@ -81,9 +74,11 @@ class DesktopTest {
         ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
 
+        int userScore = user.getScore();
+        int dealerScore = dealer.getScore();
         desktop.startGame();
-        assertEquals(userScore,user.getScore());
-        assertEquals(dealerScore,dealer.getScore());
+        assertEquals(userScore, user.getScore());
+        assertEquals(dealerScore, dealer.getScore());
     }
 
     @AfterEach

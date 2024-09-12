@@ -10,10 +10,23 @@ import java.util.Scanner;
  * collect and print statistic and check who is the winner.
  */
 public class Desktop {
+    private static final int MAX_POINTS_NUMBER = 21;
+
     private enum GameResults {
-        WIN,
-        LOSE,
-        DRAW
+        WIN("You win! :D"),
+        LOSE("You lose ;("),
+        DRAW("Nobody win 0_0");
+
+        private final String message;
+
+        GameResults(String message) {
+            this.message = message;
+        }
+
+        @Override
+        public String toString() {
+            return this.message;
+        }
     }
 
     private final User user;
@@ -116,18 +129,18 @@ public class Desktop {
     }
 
     /**
-     * check if players get more than 21 points and if they both stop adding cards.
+     * check if players get more than MAX_POINTS_NUMBER points and if they both stop adding cards.
      * print result.
      * call finish.
      */
     private void checkStepResult() {
         GameResults gameResult = null;
-        if (user.getPoints() > 21 && dealer.getPoints() > 21) {
+        if (user.getPoints() > MAX_POINTS_NUMBER && dealer.getPoints() > MAX_POINTS_NUMBER) {
             gameResult = GameResults.DRAW;
-        } else if (user.getPoints() > 21) {
+        } else if (user.getPoints() > MAX_POINTS_NUMBER) {
             gameResult = GameResults.LOSE;
             dealer.setScore(dealer.getScore() + 1);
-        } else if (dealer.getPoints() > 21) {
+        } else if (dealer.getPoints() > MAX_POINTS_NUMBER) {
             gameResult = GameResults.WIN;
             user.setScore(user.getScore() + 1);
         } else if (dealer.isStop() && user.isStop()) {
@@ -141,7 +154,8 @@ public class Desktop {
                 user.setScore(user.getScore() + 1);
             }
         }
-        if (dealer.isStop() && user.isStop() || dealer.getPoints() > 21 || user.getPoints() > 21) {
+        if (dealer.isStop() && user.isStop()
+                || dealer.getPoints() > MAX_POINTS_NUMBER || user.getPoints() > MAX_POINTS_NUMBER) {
             finish(gameResult);
         }
     }
@@ -156,19 +170,7 @@ public class Desktop {
         if (!dealer.isStop() && dealer.getNumberOpenedCards() != Integer.MAX_VALUE) {
             dealer.showHiddenCards();
         }
-        switch (gameResult) {
-            case DRAW:
-                System.out.println("Draw");
-                break;
-            case WIN:
-                System.out.println("You win");
-                break;
-            case LOSE:
-                System.out.println("You lose");
-                break;
-            default:
-                System.out.println("Unknown result");
-        }
+        System.out.println(gameResult);
         System.out.println("Score You: " + user.getScore() + " | Dealer: " + dealer.getScore());
         newRound = true;
         round++;
