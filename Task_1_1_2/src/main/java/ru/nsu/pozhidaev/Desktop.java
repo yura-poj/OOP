@@ -166,6 +166,8 @@ public class Desktop {
             case LOSE:
                 System.out.println("You lose");
                 break;
+            default:
+                System.out.println("Unknown result");
         }
         System.out.println("Score You: " + user.getScore() + " | Dealer: " + dealer.getScore());
         newRound = true;

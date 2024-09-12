@@ -1,19 +1,20 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-
 import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
+
+import java.util.HashSet;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class DeckTest {
 
     Deck deck;
     Card card;
+
     @BeforeEach
     void setUp() {
         deck = new Deck();

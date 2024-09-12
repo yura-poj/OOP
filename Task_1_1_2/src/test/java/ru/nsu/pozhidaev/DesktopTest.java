@@ -1,14 +1,15 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 class DesktopTest {
 
@@ -44,7 +45,7 @@ class DesktopTest {
     }
 
     @Test
-    void dealerWin(){
+    void dealerWin() {
         int dealerScore = dealer.getScore();
         int points = 0;
         while (points <= 21) {
