@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class Player {
 
+    protected final Deck deck;
+    protected int score = 0;
+    protected int points = 0;
+    protected Card currentCard;
+    protected List<Card> cards = new ArrayList<Card>();
+    protected boolean stop = false;
+
     /**
      * getter.
      *
@@ -57,20 +64,13 @@ public class Player {
     }
 
     /**
-     * setter
+     * setter.
      *
      * @param stop getting more cards.
      */
     public void setStop(boolean stop) {
         this.stop = stop;
     }
-
-    protected final Deck deck;
-    protected int score = 0;
-    protected int points = 0;
-    protected Card currentCard;
-    protected List<Card> cards = new ArrayList<Card>();
-    protected boolean stop = false;
 
     /**
      * init.
@@ -98,6 +98,7 @@ public class Player {
         points = 0;
         stop = false;
         cards.clear();
+        currentCard = null;
     }
 
     /**
@@ -106,7 +107,7 @@ public class Player {
     public void showCards() {
         System.out.print("Your cards: [");
         for (int i = 0; i < cards.size(); i++) {
-            System.out.print(cards.get(i).toString());
+            System.out.print(cards.get(i));
 
             if (i != cards.size() - 1) {
                 System.out.print(", ");

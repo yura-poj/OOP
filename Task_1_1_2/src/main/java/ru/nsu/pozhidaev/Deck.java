@@ -6,11 +6,12 @@ package ru.nsu.pozhidaev;
  */
 public class Deck {
 
+    public static final int NAMES_PER_DECK = 13;
+    public static final int SUITS_PER_DECK = 4;
     private final String[] names = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
-            "Jack", "Queen", "King", "Ace"};
-    private final int[] points = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
-    private boolean[][] usedCards = new boolean[13][4];
+        "Jack", "Queen", "King", "Ace"};
     private final String[] suits = {"Diamonds", "Hearts", "Clubs", "Spades"};
+    private boolean[][] usedCards = new boolean[13][4];
 
     /**
      * generate randomly card and check was it already used or not.
@@ -29,16 +30,15 @@ public class Deck {
 
         usedCards[id][suit] = true;
 
-        int score = points[id];
-        return new Card(names[id], score, suits[suit]);
+        return new Card(names[id], id, suits[suit]);
     }
 
     /**
      * clear array of used cards.
      */
     public void newGame() {
-        for (int i = 0; i < 13; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < NAMES_PER_DECK; i++) {
+            for (int j = 0; j < SUITS_PER_DECK; j++) {
                 usedCards[i][j] = false;
             }
         }

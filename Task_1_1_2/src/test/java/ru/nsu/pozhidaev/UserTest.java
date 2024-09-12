@@ -1,6 +1,8 @@
 package ru.nsu.pozhidaev;
 
+import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +12,7 @@ class UserTest extends Player {
 
     User user;
     Deck deck;
+
     /**
      * init.
      *
@@ -62,13 +65,24 @@ class UserTest extends Player {
 
     @Test
     void testGetCard() {
+        int pointsBefore = user.getPoints();
+        Card beforeCard = user.getCurrentCard();
+        user.getCard();
+
+        assertFalse(pointsBefore <= user.getPoints());
+        assertNotEquals(beforeCard, user.getCurrentCard());
     }
 
     @Test
     void testNewGame() {
+        user.newGame();
+        assertNotNull(user.getCurrentCard());
+        assertEquals(0, user.getPoints());
+        assertTrue(user.isStop());
     }
 
     @Test
     void testShowCards() {
+        assertTimeout(ofMillis(10), () -> user.showCards());
     }
 }

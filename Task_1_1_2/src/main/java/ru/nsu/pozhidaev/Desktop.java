@@ -1,6 +1,7 @@
 package ru.nsu.pozhidaev;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * virtual table that rule the game.
@@ -9,6 +10,12 @@ import java.util.*;
  * collect and print statistic and check who is the winner.
  */
 public class Desktop {
+    private enum GameResults {
+        WIN,
+        LOSE,
+        DRAW
+    }
+
     private final User user;
     private final Dealer dealer;
     private final Deck deck;
@@ -17,6 +24,8 @@ public class Desktop {
     private boolean stop = false;
 
     /**
+     * init.
+     *
      * @param user   class user.
      * @param dealer class dealer.
      * @param deck   class deck.
@@ -59,7 +68,7 @@ public class Desktop {
         if (!user.stop) {
             userAction();
             if (!dealer.stop) {
-                System.out.println("Dealer open card: " + dealer.getCurrentCard().toString());
+                System.out.println("Dealer open card: " + dealer.getCurrentCard());
             }
         }
         if (!dealer.stop) {
@@ -88,7 +97,7 @@ public class Desktop {
                         break;
                     case 1:
                         user.getCard();
-                        System.out.println("You open card: " + user.getCurrentCard().toString());
+                        System.out.println("You open card: " + user.getCurrentCard());
                         continues = false;
                         break;
                     case -1:
@@ -112,23 +121,23 @@ public class Desktop {
      * call finish.
      */
     private void checkStepResult() {
-        int gameResult = 0;
+        GameResults gameResult = null;
         if (user.getPoints() > 21 && dealer.getPoints() > 21) {
-            gameResult = 0;
+            gameResult = GameResults.DRAW;
         } else if (user.getPoints() > 21) {
-            gameResult = -1;
+            gameResult = GameResults.LOSE;
             dealer.setScore(dealer.getScore() + 1);
         } else if (dealer.getPoints() > 21) {
-            gameResult = 1;
+            gameResult = GameResults.WIN;
             user.setScore(user.getScore() + 1);
         } else if (dealer.isStop() && user.isStop()) {
             if (user.getPoints() == dealer.getPoints()) {
-                gameResult = 0;
+                gameResult = GameResults.DRAW;
             } else if (user.getPoints() > dealer.getPoints()) {
-                gameResult = -1;
+                gameResult = GameResults.LOSE;
                 dealer.setScore(dealer.getScore() + 1);
             } else {
-                gameResult = 1;
+                gameResult = GameResults.WIN;
                 user.setScore(user.getScore() + 1);
             }
         }
@@ -143,18 +152,18 @@ public class Desktop {
      * increase round, set flag of new round.
      * prepare classes for the new game by class.newGame.
      */
-    private void finish(int gameResult) {
+    private void finish(GameResults gameResult) {
         if (!dealer.isStop() && dealer.getNumberOpenedCards() != Integer.MAX_VALUE) {
             dealer.showHiddenCards();
         }
         switch (gameResult) {
-            case (0):
+            case DRAW:
                 System.out.println("Draw");
                 break;
-            case (1):
+            case WIN:
                 System.out.println("You win");
                 break;
-            case (-1):
+            case LOSE:
                 System.out.println("You lose");
                 break;
         }

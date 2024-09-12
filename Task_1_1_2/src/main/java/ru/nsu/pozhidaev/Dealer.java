@@ -5,6 +5,9 @@ package ru.nsu.pozhidaev;
  */
 public class Dealer extends Player {
 
+    private static final int maxPointsNumber = 17;
+    private int numberOpenedCards = 0;
+
     /**
      * getter.
      *
@@ -14,12 +17,9 @@ public class Dealer extends Player {
         return numberOpenedCards;
     }
 
-    private int numberOpenedCards = 0;
-
-    static final int maxPointsNumber = 17;
 
     /**
-     * for generating
+     * for generating.
      *
      * @param deck class of deck of cards.
      */
@@ -48,7 +48,7 @@ public class Dealer extends Player {
         System.out.print("Dealer's cards: [");
         for (int i = 0; i < cards.size(); i++) {
             if (numberOpenedCards - 1 >= i) {
-                System.out.print(cards.get(i).toString());
+                System.out.print(cards.get(i));
             } else {
                 System.out.print("<hidden card>");
             }
@@ -70,7 +70,7 @@ public class Dealer extends Player {
         stop = true;
         for (int i = 1; i < cards.size(); i++) {
             numberOpenedCards++;
-            System.out.println("Dealer open card: " + cards.get(i).toString());
+            System.out.println("Dealer open card: " + cards.get(i));
             showCards();
         }
         numberOpenedCards = Integer.MAX_VALUE;

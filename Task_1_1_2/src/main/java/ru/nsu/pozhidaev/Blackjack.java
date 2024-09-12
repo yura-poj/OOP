@@ -4,6 +4,11 @@ package ru.nsu.pozhidaev;
  * The main class.
  */
 public class Blackjack {
+    static Deck deck;
+    static User user;
+    static Dealer dealer;
+    static Desktop desktop;
+
     /**
      * function initialize all classes for the game and start it.
      *
@@ -13,10 +18,10 @@ public class Blackjack {
 
         System.out.println("Welcome to the Blackjack!");
 
-        Deck deck = new Deck();
-        User user = new User(deck);
-        Dealer dealer = new Dealer(deck);
-        Desktop desktop = new Desktop(user, dealer, deck);
+        deck = new Deck();
+        user = new User(deck);
+        dealer = new Dealer(deck);
+        desktop = new Desktop(user, dealer, deck);
         desktop.startGame();
     }
 }
