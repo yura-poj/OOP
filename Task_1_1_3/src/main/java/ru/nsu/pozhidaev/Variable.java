@@ -1,31 +1,21 @@
 package ru.nsu.pozhidaev;
 
+import java.util.HashMap;
+
 public class Variable extends Expression {
     private String name;
-    private int value;
 
     public Variable(String name) {
         this.name = name;
     }
 
-    private void setValue(String str) {
-        String[] values = str.replace(" ", "").split(";");
-        for (String value : values) {
-            String[] results = value.split("=");
-            if (results.length == 2) {
-                if (results[0].equals(name)) {
-                    this.value = Integer.parseInt(results[1]);
-                }
-            } else {
-                System.out.println("Invalid variable value");
-            }
-        }
-    }
-
+    /**
+     * @param dict
+     * @return
+     */
     @Override
-    public double evaluate(String str) {
-        setValue(str);
-        return value;
+    public double eval(HashMap<String, Double> dict) {
+        return dict.get(name);
     }
 
     @Override

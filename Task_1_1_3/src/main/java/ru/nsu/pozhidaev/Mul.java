@@ -1,8 +1,10 @@
 package ru.nsu.pozhidaev;
 
+import java.util.HashMap;
+
 public class Mul extends Expression {
-    Expression left;
-    Expression right;
+    private Expression left;
+    private Expression right;
 
     public Mul(Expression left, Expression right) {
         this.left = left;
@@ -13,8 +15,8 @@ public class Mul extends Expression {
      * @return
      */
     @Override
-    public double evaluate(String str) {
-        return left.evaluate(str) * right.evaluate(str);
+    public double eval(HashMap<String, Double> dict) {
+        return left.eval(dict) * right.eval(dict);
     }
 
     /**

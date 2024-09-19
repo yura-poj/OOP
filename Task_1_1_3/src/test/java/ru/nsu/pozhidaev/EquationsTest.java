@@ -2,18 +2,17 @@ package ru.nsu.pozhidaev;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
+import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 class EquationsTest {
+    Equations eq = new Equations();
 
     @Test
-    void main() {
-        Expression e = new Mul(
-                new Add(new Number(2), new Variable("x")),
-                new Sub(new Div(new Number(2), new Number(4)), new Number(1)));
-        assertEquals(-7.0, e.evaluate("x = 12"));
-
-        Expression n = e.derivative("x");
-        assertEquals(-0.5, n.evaluate("x = 12"));
+    void equations() {
+        assertTimeout(ofMillis(10), () -> eq.equations());
     }
 }

@@ -1,5 +1,7 @@
 package ru.nsu.pozhidaev;
 
+import java.util.HashMap;
+
 public class Number extends Expression {
     private int number;
 
@@ -8,7 +10,7 @@ public class Number extends Expression {
     }
 
     @Override
-    public double evaluate(String str) {
+    public double eval(HashMap<String, Double> dict) {
         return number;
     }
 
