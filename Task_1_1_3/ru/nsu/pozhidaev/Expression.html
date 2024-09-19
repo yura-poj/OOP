@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":10,"i3":6};
+var data = {"i0":6,"i1":6,"i2":10,"i3":10,"i4":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -184,15 +184,20 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluate(java.lang.String)">evaluate</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.HashMap)">eval</a></span>&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluate(java.lang.String)">evaluate</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -240,13 +245,13 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="evaluate(java.lang.String)">
+<a id="eval(java.util.HashMap)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>evaluate</h4>
-<pre class="methodSignature">public abstract&nbsp;double&nbsp;evaluate&#8203;(java.lang.String&nbsp;str)</pre>
+<h4>eval</h4>
+<pre class="methodSignature">public abstract&nbsp;double&nbsp;eval&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</pre>
 </li>
 </ul>
 <a id="derivative(java.lang.String)">
@@ -269,6 +274,15 @@ extends java.lang.Object</pre>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
+</li>
+</ul>
+<a id="evaluate(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>evaluate</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;evaluate&#8203;(java.lang.String&nbsp;str)</pre>
 </li>
 </ul>
 <a id="print()">
