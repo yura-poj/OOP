@@ -1,9 +1,9 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MulTest {
 
@@ -24,14 +24,14 @@ class MulTest {
 
         assertEquals(4, mul2.evaluate("x = 2"));
 
-        assertEquals(6, mul3.evaluate("x = 2;y = 3"));
+        assertEquals(6, mul3.evaluate("x = 2; y = 3"));
     }
 
     @Test
     void derivative() {
         assertEquals(0, mul1.derivative("y").evaluate(""));
 
-        assertEquals(2, mul2.derivative("x").evaluate(""));
+        assertEquals(2, mul2.derivative("x").evaluate("x = 2"));
 
         assertEquals(3, mul3.derivative("x").evaluate("x = 2;y = 3"));
 

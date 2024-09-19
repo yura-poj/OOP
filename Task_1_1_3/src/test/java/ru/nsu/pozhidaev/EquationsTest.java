@@ -1,12 +1,11 @@
 package ru.nsu.pozhidaev;
 
+import static java.time.Duration.ofMillis;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
 
-import static java.time.Duration.ofMillis;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
 
 class EquationsTest {
     Equations eq = new Equations();
