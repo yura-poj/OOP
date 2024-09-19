@@ -2,22 +2,38 @@ package ru.nsu.pozhidaev;
 
 import java.util.HashMap;
 
+/**
+ * calculates sum of expressions.
+ */
 public class Variable extends Expression {
     private String name;
 
+    /**
+     * init.
+     *
+     * @param name of variable.
+     */
     public Variable(String name) {
         this.name = name;
     }
 
     /**
-     * @param dict
-     * @return
+     * evaluate value of expression.
+     *
+     * @param dict of variables.
+     * @return value of variable.
      */
     @Override
     public double eval(HashMap<String, Double> dict) {
         return dict.get(name);
     }
 
+    /**
+     * derivative sum of expressions.
+     *
+     * @param str variable of derivation.
+     * @return ready expression with derivative elements.
+     */
     @Override
     public Expression derivative(String str) {
         if (name.equals(str)) {
@@ -27,6 +43,11 @@ public class Variable extends Expression {
         }
     }
 
+    /**
+     * Make a string from variable.
+     *
+     * @return name.
+     */
     @Override
     public String toString() {
         return name;
