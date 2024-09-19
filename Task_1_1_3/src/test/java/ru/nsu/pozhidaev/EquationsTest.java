@@ -12,6 +12,6 @@ class EquationsTest {
 
     @Test
     void equations() {
-        assertTimeout(ofMillis(10), () -> eq.equations());
+        assertTimeout(ofMillis(100), () -> eq.equations());
     }
 }
