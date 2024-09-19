@@ -136,6 +136,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">Expression</span>
 extends java.lang.Object</pre>
+<div class="block">abstract class for expressions.</div>
 </li>
 </ul>
 </div>
@@ -180,27 +181,37 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">derivative expression to another expression.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.HashMap)">eval</a></span>&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">evaluate result of expression to double.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#evaluate(java.lang.String)">evaluate</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">recall method evaluate with hashmap.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">print the expression into standart output.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">transform expression to string includes all dependencies .</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -252,6 +263,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public abstract&nbsp;double&nbsp;eval&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</pre>
+<div class="block">evaluate result of expression to double.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dict</code> - of variables.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>double - result of expression.</dd>
+</dl>
 </li>
 </ul>
 <a id="derivative(java.lang.String)">
@@ -261,6 +279,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;str)</pre>
+<div class="block">derivative expression to another expression.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>str</code> - variable of derivative.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>new derivatived expression.</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
@@ -270,9 +295,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public abstract&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">transform expression to string includes all dependencies .</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>string of expression like.</dd>
 </dl>
 </li>
 </ul>
@@ -283,6 +311,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>evaluate</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;evaluate&#8203;(java.lang.String&nbsp;str)</pre>
+<div class="block">recall method evaluate with hashmap.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>str</code> - variables and its values.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result of evaluation in double.</dd>
+</dl>
 </li>
 </ul>
 <a id="print()">
@@ -292,6 +327,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
+<div class="block">print the expression into standart output.</div>
 </li>
 </ul>
 </li>

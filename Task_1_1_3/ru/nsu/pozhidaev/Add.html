@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Add</span>
 extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></pre>
+<div class="block">calculates sum of expressions.</div>
 </li>
 </ul>
 </div>
@@ -159,7 +160,9 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Expression,ru.nsu.pozhidaev.Expression)">Add</a></span>&#8203;(<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;left,
    <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;right)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">init.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,17 +185,23 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;str)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">derivative sum of expressions.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.HashMap)">eval</a></span>&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">evaluate sum of expressions.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Make a string from sum like (1 + 1).</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -233,6 +242,12 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <h4>Add</h4>
 <pre>public&nbsp;Add&#8203;(<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;left,
            <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;right)</pre>
+<div class="block">init.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>left</code> - expression.</dd>
+<dd><code>right</code> - expression.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -252,9 +267,14 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;eval&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</pre>
+<div class="block">evaluate sum of expressions.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#eval(java.util.HashMap)">eval</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dict</code> - of variables.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result of sum.</dd>
 </dl>
 </li>
 </ul>
@@ -265,9 +285,14 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public&nbsp;<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;str)</pre>
+<div class="block">derivative sum of expressions.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#derivative(java.lang.String)">derivative</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>str</code> - variable of derivation.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ready expression with derivative elements.</dd>
 </dl>
 </li>
 </ul>
@@ -278,9 +303,12 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">Make a string from sum like (1 + 1).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#toString()">toString</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>string of sum.</dd>
 </dl>
 </li>
 </ul>
