@@ -22,8 +22,6 @@ public abstract class Expression {
             String[] results = value.split("=");
             if (results.length == 2) {
                 map.put(results[0], Double.parseDouble(results[1]));
-            } else {
-                System.out.println("Invalid variable value");
             }
         }
         return map;
