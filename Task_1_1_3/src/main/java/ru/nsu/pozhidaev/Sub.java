@@ -14,7 +14,7 @@ public class Sub extends Expression {
      */
     @Override
     public double evaluate(String str) {
-        return right.evaluate(str) - left.evaluate(str);
+        return left.evaluate(str) - right.evaluate(str);
     }
 
     /**

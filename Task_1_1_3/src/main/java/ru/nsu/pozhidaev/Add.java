@@ -3,6 +3,7 @@ package ru.nsu.pozhidaev;
 public class Add extends Expression {
     Expression left;
     Expression right;
+
     public Add(Expression left, Expression right) {
         this.left = left;
         this.right = right;

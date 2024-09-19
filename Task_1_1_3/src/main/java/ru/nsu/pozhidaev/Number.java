@@ -1,13 +1,10 @@
 package ru.nsu.pozhidaev;
 
-public class Number extends Expression{
+public class Number extends Expression {
     private int number;
 
     public Number(int number) {
         this.number = number;
-    }
-    public int getNumber() {
-        return number;
     }
 
     @Override

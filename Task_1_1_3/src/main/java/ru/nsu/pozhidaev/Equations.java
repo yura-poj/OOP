@@ -9,6 +9,6 @@ public class Equations {
         System.out.println( e.evaluate("x = 12"));
         Expression n =  e.derivative("x");
         n.print();
-        System.out.println( n.evaluate("x = 12"));
+        System.out.println(n.evaluate("x = 12"));
     }
 }

@@ -8,8 +8,10 @@ public abstract class Expression {
 
     public abstract String toString();
 
-    public void print(){
+    public void print() {
         System.out.println(toString());
-    };
+    }
+
+    ;
 
 }
