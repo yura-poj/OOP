@@ -1,10 +1,10 @@
-package y.pozhidaev;
+package ru.nsu.pozhidaev;
 
-public class Mul extends Expression {
+public class Sub extends Expression {
     Expression left;
     Expression right;
 
-    public Mul(Expression left, Expression right) {
+    public Sub(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
@@ -14,7 +14,7 @@ public class Mul extends Expression {
      */
     @Override
     public double evaluate(String str) {
-        return left.evaluate(str) * right.evaluate(str);
+        return right.evaluate(str) - left.evaluate(str);
     }
 
     /**
@@ -22,7 +22,7 @@ public class Mul extends Expression {
      */
     @Override
     public Expression derivative(String str) {
-        return new Add(new Mul(left.derivative(str), right), new Mul(left, right.derivative(str)));
+        return new Sub(left.derivative(str), right.derivative(str));
     }
 
     /**
@@ -30,6 +30,6 @@ public class Mul extends Expression {
      */
     @Override
     public String toString() {
-        return "(" + left.toString() + " * " + right.toString() + ")";
+        return "(" + left.toString() + " - " + right.toString() + ")";
     }
 }

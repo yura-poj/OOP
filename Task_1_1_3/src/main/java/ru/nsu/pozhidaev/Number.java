@@ -1,4 +1,4 @@
-package y.pozhidaev;
+package ru.nsu.pozhidaev;
 
 public class Number extends Expression{
     private int number;

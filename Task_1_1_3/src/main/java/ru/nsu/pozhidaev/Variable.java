@@ -1,4 +1,4 @@
-package y.pozhidaev;
+package ru.nsu.pozhidaev;
 
 public class Variable extends Expression {
     private String name;
