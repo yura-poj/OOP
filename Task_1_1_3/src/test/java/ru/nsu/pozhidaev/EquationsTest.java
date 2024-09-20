@@ -1,8 +1,10 @@
 package ru.nsu.pozhidaev;
 
-import static java.time.Duration.ofMillis;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 
@@ -12,6 +14,14 @@ class EquationsTest {
 
     @Test
     void equations() {
-        assertTimeout(ofMillis(100), () -> eq.equations());
+        String simulatedInput = "((1 * (82 - 80)) + (2 + x))\nx=2\nexit";
+        ByteArrayInputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Equations.equations();
+        assertTrue(outContent.toString().contains("6"));
     }
 }

@@ -1,5 +1,6 @@
 package ru.nsu.pozhidaev;
 
+import java.util.Scanner;
 /**
  * The main class.
  */
@@ -9,13 +10,22 @@ public class Equations {
      * The main function.
      */
     public static void equations() {
-        Expression e = new Mul(
-                new Add(new Number(2), new Variable("x")),
-                new Sub(new Div(new Number(2), new Number(4)), new Number(1)));
-        e.print();
-        System.out.println(e.evaluate("x = 12"));
-        Expression n = e.derivative("x");
-        n.print();
-        System.out.println(n.evaluate("x = 12"));
+        Scanner scanner = new Scanner(System.in);
+        Parser parser = new Parser();
+        String input;
+        Expression e;
+        while (true){
+            System.out.println("Print 'exit' to leave or your math equation: ");
+            input = scanner.nextLine();
+
+            if (input.equals("exit")){
+                break;
+            }
+            e = parser.parse(input);
+            System.out.println("Print your variables like 'x=10;y=2': ");
+            input = scanner.nextLine();
+            System.out.println(e.evaluate(input));
+        }
+
     }
 }
