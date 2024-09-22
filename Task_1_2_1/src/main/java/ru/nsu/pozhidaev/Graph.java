@@ -51,7 +51,7 @@ public class Graph {
 
     @Override
     public boolean equals(Object o) {
-        if (this != o) return false;
+        if (this.getClass() != o.getClass()) return false;
         Graph graph = (Graph) o;
         Comparator<Edge> compareByEdge = Comparator.comparing(Edge::toString);
         edges.sort(compareByEdge);

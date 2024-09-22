@@ -1,4 +1,4 @@
+adjacency list
 a > b
 b > c
-c > d
 c > a

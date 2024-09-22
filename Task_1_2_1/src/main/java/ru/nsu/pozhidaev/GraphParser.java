@@ -21,13 +21,13 @@ public class GraphParser {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        line = scanner.nextLine();
+        line = newLine();
         switch (line){
-            case "incidence matrix":
+            case "incidencematrix":
                 return incidenceMatrix();
-            case "adjacency matrix":
+            case "adjacencymatrix":
                 return adjacencyMatrix();
-            case "adjacent list":
+            case "adjacencylist":
                 return adjacencyList();
         }
         return null;
@@ -76,7 +76,6 @@ public class GraphParser {
             tokens = newLine().split(">");
 
             if (tokens.length != 2) {
-                System.err.println("Wrong file format: ");
                 break;
             }
 
@@ -94,6 +93,7 @@ public class GraphParser {
         if(!vertices.containsKey(token)){
             vertex = new Vertex(token);
             vertices.put(token, vertex);
+            graph.addVertex(vertex);
         } else {
             vertex = vertices.get(token);
         }
@@ -106,7 +106,7 @@ public class GraphParser {
         tokens = newLine().split("//|");
         for (String token : tokens) {
             vertices.add(new Vertex(token));
-            graph.addVertex(vertices.get(vertices.size()));
+            graph.addVertex(vertices.get(vertices.size() - 1));
         }
         for(int i = 0; i < vertices.size(); i++){
             tokens = newLine().split("//|");
@@ -120,6 +120,9 @@ public class GraphParser {
     }
 
     private String newLine(){
+        if(!scanner.hasNextLine()){
+            return "";
+        }
         return scanner.nextLine().replace(" ", "");
     }
 }
