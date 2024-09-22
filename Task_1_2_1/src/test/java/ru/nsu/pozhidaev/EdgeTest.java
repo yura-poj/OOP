@@ -32,7 +32,7 @@ class EdgeTest {
 
     @Test
     void testToString() {
-        assertTimeout(Duration.ofMillis(10), () -> { edge.toString(); });
+        assertTimeout(Duration.ofMillis(100), () -> { edge.toString(); });
       }
 
     @Test

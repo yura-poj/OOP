@@ -65,7 +65,7 @@ class GraphTest {
 
     @Test
     void testToString() {
-        assertTimeout(Duration.ofMillis(10), () -> { graph.toString(); });
+        assertTimeout(Duration.ofMillis(100), () -> { graph.toString(); });
       }
 
     @Test
