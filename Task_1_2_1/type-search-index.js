@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.pozhidaev","l":"Edge"},{"p":"ru.nsu.pozhidaev","l":"Graph"},{"p":"ru.nsu.pozhidaev","l":"GraphParser"},{"p":"ru.nsu.pozhidaev","l":"GraphSorter"},{"p":"ru.nsu.pozhidaev","l":"Main"},{"p":"ru.nsu.pozhidaev","l":"Vertex"}]
