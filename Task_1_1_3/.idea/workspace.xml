@@ -57,46 +57,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle./Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev.executor": "Coverage",
-    "Gradle.AddTest.executor": "Run",
-    "Gradle.Build Task_1_1_3.executor": "Run",
-    "Gradle.DivTest.executor": "Debug",
-    "Gradle.EquationsTest.equations.executor": "Coverage",
-    "Gradle.EquationsTest.executor": "Run",
-    "Gradle.ExpressionTest.executor": "Run",
-    "Gradle.MulTest.executor": "Run",
-    "Gradle.NumberTest.derivative.executor": "Debug",
-    "Gradle.NumberTest.executor": "Run",
-    "Gradle.SubTest.executor": "Run",
-    "Gradle.Task_1_1_3 [:ru.nsu.pozhidaev.Equations.main()].executor": "Run",
-    "Gradle.Task_1_1_3 [:y.pozhidaev.Equations.main()].executor": "Run",
-    "Gradle.Task_1_1_3.executor": "Run",
-    "Gradle.VariableTest.executor": "Run",
-    "JUnit.Unnamed.executor": "Run",
-    "JUnit.pozhidaev in Task_1_1_3.test.executor": "Run",
-    "JUnit.pozhidaev.executor": "Run",
-    "OverrideImplement.generate.javadoc": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Task__1__2__1",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/y/pozhidaev/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle./Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.AddTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Task_1_1_3.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DivTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.EquationsTest.equations.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.EquationsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ExpressionTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MulTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.NumberTest.derivative.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.NumberTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SubTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3 [:ru.nsu.pozhidaev.Equations.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3 [:y.pozhidaev.Equations.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VariableTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.pozhidaev in Task_1_1_3.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.pozhidaev.executor&quot;: &quot;Run&quot;,
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Task__1__2__1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/y/pozhidaev/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -213,7 +213,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Equations.java</url>
           <line>10</line>
-          <properties class="ru.nsu.pozhidaev.Equations" method="equations">
+          <properties class="ru.nsu.pozhidaev.Equations">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
