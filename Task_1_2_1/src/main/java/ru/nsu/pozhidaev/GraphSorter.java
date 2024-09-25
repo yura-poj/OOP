@@ -3,25 +3,25 @@ package ru.nsu.pozhidaev;
 import java.util.ArrayList;
 
 public class GraphSorter {
-    ArrayList<Vertex> vertices = new ArrayList<>();
+    ArrayList<Vertex<String>> vertices = new ArrayList<>();
     Graph graph;
     public void topologicalSort(Graph graph) {
         this.graph = graph;
-        for (Vertex vertex : graph.vertices) {
+        for (Vertex<String> vertex : graph.getVertices()) {
             topoSort(vertex);
         }
 
-        graph.vertices = vertices;
+        graph.setVertices(vertices);
 
         setWhiteVertices();
     }
 
-    private void topoSort(Vertex vertex) {
+    private void topoSort(Vertex<String> vertex) {
         if (vertex.getColor() != 0){
             return;
         }
         vertex.setColor(1);
-        for (Vertex next : graph.findVertexNeighbors(vertex)){
+        for (Vertex<String> next : graph.getAdjacentVertices(vertex)){
             topoSort(next);
         }
         vertex.setColor(2);
@@ -29,7 +29,7 @@ public class GraphSorter {
     }
 
     private void setWhiteVertices() {
-        for (Vertex vertex : graph.vertices) {
+        for (Vertex vertex : graph.getVertices()) {
             vertex.setColor(0);
         }
     }

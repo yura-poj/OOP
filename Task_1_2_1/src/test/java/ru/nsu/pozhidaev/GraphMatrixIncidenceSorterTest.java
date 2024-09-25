@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class GraphSorterTest {
-    Graph graph;
+class GraphMatrixIncidenceSorterTest {
+    GraphMatrixIncidence graphMatrixIncidence;
     GraphSorter sorter;
 
     Vertex v1;
@@ -17,17 +17,17 @@ class GraphSorterTest {
     @BeforeEach
     void setUp() {
         sorter = new GraphSorter();
-        graph = new Graph();
+        graphMatrixIncidence = new GraphMatrixIncidence();
         v1 = new Vertex("V1");
         v2 = new Vertex("V2");
         v3 = new Vertex("V3");
         Edge e1 = new Edge(v1, v2);
         Edge e2 = new Edge(v2, v3);
-        graph.addVertex(v1);
-        graph.addVertex(v2);
-        graph.addVertex(v3);
-        graph.addEdge(e1);
-        graph.addEdge(e2);
+        graphMatrixIncidence.addVertex(v1);
+        graphMatrixIncidence.addVertex(v2);
+        graphMatrixIncidence.addVertex(v3);
+        graphMatrixIncidence.addEdge(e1);
+        graphMatrixIncidence.addEdge(e2);
     }
 
     @Test
@@ -36,8 +36,8 @@ class GraphSorterTest {
         result.add(v3);
         result.add(v2);
         result.add(v1);
-        sorter.topologicalSort(graph);
+        sorter.topologicalSort(graphMatrixIncidence);
 
-        assertTrue(result.equals( graph.vertices));
+        assertTrue(result.equals( graphMatrixIncidence.vertices));
     }
 }

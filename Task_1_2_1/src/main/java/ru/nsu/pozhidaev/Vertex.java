@@ -1,19 +1,19 @@
 package ru.nsu.pozhidaev;
 
-public class Vertex {
-    String name;
+public class Vertex<T> {
+    T name;
 
     int color;
 
-    public Vertex(String name) {
+    public Vertex(T name) {
         this.name = name;
     }
 
-    public String getName() {
+    public T getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(T name) {
         this.name = name;
     }
 
