@@ -1,19 +1,15 @@
 package ru.nsu.pozhidaev;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class GraphMatrixIncidence implements Graph{
-    private Scanner scanner;
-    private ArrayList<Vertex<String>> vertices;
-    private ArrayList<Edge> edges;
+public class GraphMatrixIncidence<T> implements Graph<T>{
+    private ArrayList<Vertex<T>> vertices;
+    private ArrayList<Edge<T>> edges;
     private ArrayList<ArrayList<Boolean>> matrixIncidence;
 
     public GraphMatrixIncidence() {
-        scanner = new Scanner(System.in);
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
         matrixIncidence = new ArrayList<>();
@@ -24,7 +20,7 @@ public class GraphMatrixIncidence implements Graph{
  * @param vertex
 */
     @Override
-    public void addVertex(Vertex<String> vertex) {
+    public void addVertex(Vertex<T> vertex) {
         vertices.add(vertex);
 
         for (int i = 0; i < edges.size(); i++) {
@@ -37,7 +33,7 @@ public class GraphMatrixIncidence implements Graph{
  * @param edge
 */
     @Override
-    public void addEdge(Edge edge) {
+    public void addEdge(Edge<T> edge) {
         edges.add(edge);
         ArrayList<Boolean> edgeArr = new ArrayList<>();
         for (int i = 0; i < vertices.size(); i++) {
@@ -56,7 +52,7 @@ public class GraphMatrixIncidence implements Graph{
  * @param vertex
 */
     @Override
-    public void removeVertex(Vertex<String> vertex) {
+    public void removeVertex(Vertex<T> vertex) {
         vertices.remove(vertex);
         int id = -1;
         for (int i = 0; i < vertices.size(); i++) {
@@ -68,6 +64,11 @@ public class GraphMatrixIncidence implements Graph{
         for (int i = 0; i < edges.size(); i++) {
             matrixIncidence.get(i).remove(id);
         }
+        for (Edge<T> edge : edges) {
+            if (edge.getFrom().equals(vertex) || edge.getTo().equals(vertex)) {
+                removeEdge(edge);
+            }
+        }
     }
 
 /**
@@ -75,7 +76,7 @@ public class GraphMatrixIncidence implements Graph{
  * @param edge
 */
     @Override
-    public void removeEdge(Edge edge) {
+    public void removeEdge(Edge<T> edge) {
         edges.remove(edge);
         int id = -1;
         for (int i = 0; i < edges.size(); i++) {
@@ -92,7 +93,7 @@ public class GraphMatrixIncidence implements Graph{
  * @return
 */
     @Override
-    public ArrayList<Vertex<String>> getVertices() {
+    public ArrayList<Vertex<T>> getVertices() {
         return vertices;
     }
 
@@ -102,9 +103,9 @@ public class GraphMatrixIncidence implements Graph{
  * @return
 */
     @Override
-    public ArrayList<Vertex<String>> getAdjacentVertices(Vertex<String> vertex) {
-        ArrayList<Vertex<String>> neighbors = new ArrayList<>();
-        for (Edge edge : edges) {
+    public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex) {
+        ArrayList<Vertex<T>> neighbors = new ArrayList<>();
+        for (Edge<T> edge : edges) {
             if (edge.from.equals(vertex)) {
                 neighbors.add(edge.to);
             } else if (edge.to.equals(vertex)) {
@@ -117,7 +118,7 @@ public class GraphMatrixIncidence implements Graph{
     @Override
     public String toString() {
         String result = "";
-        for (Edge edge : edges) {
+        for (Edge<T> edge : edges) {
             result = result + edge.toString() + "\n";
         }
         return result;
@@ -125,9 +126,9 @@ public class GraphMatrixIncidence implements Graph{
 
     @Override
     public boolean equals(Object o) {
-        if (this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         GraphListAdjacency graph = (GraphListAdjacency) o;
-        Comparator<Edge> compareByEdge = Comparator.comparing(Edge::toString);
+        Comparator<Edge<T>> compareByEdge = Comparator.comparing(Edge::toString);
         graph.edges.sort(compareByEdge);
         edges.sort(compareByEdge);
         Comparator<Vertex<String>> compareByVertex = Comparator.comparing(Vertex::toString);
@@ -144,32 +145,25 @@ public class GraphMatrixIncidence implements Graph{
 */
     @Override
     public void parse(String fileName) {
-        File file;
-        String line;
         String[] tokens;
-        Vertex<String> from = null;
-        Vertex<String> to = null;
-        file = new File(fileName);
+        Vertex<T> from = null;
+        Vertex<T> to = null;
 
-        try{
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Utilities utils = new Utilities(fileName);
 
-        tokens = newLine().split("//|");
+        tokens = utils.newLine().split("//|");
 
         for (String token : tokens) {
-            vertices.add(new Vertex<String>(token));
+            vertices.add(new Vertex<T>(token));
             addVertex(vertices.get(vertices.size()));
         }
         while(true){
-            tokens = newLine().split("//|");
+            tokens = utils.newLine().split("//|");
             if(tokens.length == 0){
                 break;
             }
             for(int i = 0; i < tokens.length; i++){
-                tokens = newLine().split("//|");
+                tokens = utils.newLine().split("//|");
                 for(int j = 0; j < vertices.size(); j++){
                     switch (tokens[j]){
                         case "1":
@@ -184,15 +178,8 @@ public class GraphMatrixIncidence implements Graph{
                             break;
                     }
                 }
-                addEdge(new Edge(from, to));
+                addEdge(new Edge<T>(from, to));
             }
         }
-    }
-
-    private String newLine(){
-        if(!scanner.hasNextLine()){
-            return "";
-        }
-        return scanner.nextLine().replace(" ", "");
     }
 }

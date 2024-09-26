@@ -2,18 +2,18 @@ package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
 
-public interface Graph {
-  public void addVertex(Vertex<String> vertex);
+public interface Graph<T> {
+  public void addVertex(Vertex<T> vertex);
 
-  public void addEdge(Edge edge);
+  public void addEdge(Edge<T> edge);
 
-  public void removeVertex(Vertex<String> vertex);
+  public void removeVertex(Vertex<T> vertex);
 
-  public void removeEdge(Edge edge);
+  public void removeEdge(Edge<T> edge);
 
-  public ArrayList<Vertex<String>> getVertices();
+  public ArrayList<Vertex<T>> getVertices();
 
-  public ArrayList<Vertex<String>> getAdjacentVertices(Vertex<String> vertex);
+  public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex);
 
   public void parse(String fileName);
 

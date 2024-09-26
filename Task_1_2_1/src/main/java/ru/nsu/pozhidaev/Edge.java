@@ -1,19 +1,19 @@
 package ru.nsu.pozhidaev;
 
-public class Edge {
-    Vertex from;
-    Vertex to;
+public class Edge<T> {
+    Vertex<T> from;
+    Vertex<T> to;
 
-    public Edge(Vertex from, Vertex to) {
+    public Edge(Vertex<T> from, Vertex<T> to) {
         this.from = from;
         this.to = to;
     }
 
-    public Vertex getFrom() {
+    public Vertex<T> getFrom() {
         return from;
     }
 
-    public Vertex getTo() {
+    public Vertex<T> getTo() {
         return to;
     }
 
@@ -24,8 +24,8 @@ public class Edge {
 
     @Override
     public boolean equals(Object o) {
-        if (o.getClass() != this.getClass()) return false;
-        Edge edge = (Edge) o;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        Edge<T> edge = (Edge<T>) o;
         return from.equals(edge.from) && to.equals(edge.to);
     }
 }

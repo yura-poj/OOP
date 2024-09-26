@@ -3,8 +3,6 @@ package ru.nsu.pozhidaev;
 public class Vertex<T> {
     T name;
 
-    int color;
-
     public Vertex(T name) {
         this.name = name;
     }
@@ -15,17 +13,6 @@ public class Vertex<T> {
 
     public void setName(T name) {
         this.name = name;
-    }
-
-    public int getColor() {
-      return color;
-    }
-
-    public void setColor(int color) {
-      if(color >= 0 && color <= 2){
-        this.color = color;
-      }
-
     }
 
     @Override
