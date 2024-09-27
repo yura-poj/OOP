@@ -1,45 +1,53 @@
 package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.function.Consumer;
 
-public class HashTable<T, D> {
+public class HashTable<T, D> implements Iterator<Structure<T,D>> {
     private final static int SUB_ARRAY_MAX_SIZE = 4;
 
+    private int indexI;
+    private int indexJ;
     private int keySize;
-    Set<T> keys;
-    ArrayList<ArrayList<Structure<T, D>>> values;
+    private int keyNumber;
+    private ArrayList<ArrayList<Structure<T, D>>> values;
+    private Structure<T, D> current;
 
     public HashTable() {
         values = new ArrayList<>();
         keySize = 8;
-        keys = new HashSet<>();
+        indexI = 0;
+        indexJ = -1;
+        keyNumber = 0;
+        current = null;
         for (int i = 0; i < keySize; i++) {
             values.add(new ArrayList<>());
         }
+    }
+
+    public int getKeyNumber() {
+        return keyNumber;
     }
 
     public int getKeySize() {
         return keySize;
     }
 
-    public Set<T> getKeys() {
-        return keys;
-    }
-
     public void put(T key, D value) {
-        if (keys.contains(key)) {
+        Structure<T, D> structure = getStructure(key);
+        if (structure != null) {
             return;
         }
-        keys.add(key);
-        int id = jenkinsHash(key, keySize);
+
+        keyNumber++;
+        int id = hashFunstion(key, keySize);
         ArrayList<Structure<T, D>> list = values.get(id);
         if (list.size() > SUB_ARRAY_MAX_SIZE) {
             resize();
-            id = jenkinsHash(key, keySize);
+            id = hashFunstion(key, keySize);
         }
-        list.add(new Structure<>(key, value));
+        list.add(new Structure<T,D>(key, value));
     }
 
     public D get(T key) {
@@ -50,11 +58,12 @@ public class HashTable<T, D> {
         return null;
     }
 
-    public void remove(T key) {
+    public void removeByKey(T key) {
         Structure<T, D> structure = getStructure(key);
         if (structure != null) {
-            keys.remove(key);
-            structure = null;
+            keyNumber--;
+            structure.key = null;
+            structure.data = null;
         }
     }
 
@@ -66,12 +75,16 @@ public class HashTable<T, D> {
     }
 
     public boolean contains(T key) {
-        return keys.contains(key);
+        Structure<T, D> structure = getStructure(key);
+        if (structure == null) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder sb = new StringBuilder();
         Structure<T, D> structure = null;
         for (int i = 0; i < keySize; i++) {
             for (int j = 0; j < values.get(i).size(); j++) {
@@ -79,10 +92,13 @@ public class HashTable<T, D> {
                 if (structure == null) {
                     continue;
                 }
-                result += structure.key.toString() + ": " + structure.data.toString() + "\n";
+                sb.append(structure.key.toString());
+                sb.append(": ");
+                sb.append(structure.data.toString());
+                sb.append("\n");
             }
         }
-        return result;
+        return sb.toString();
     }
 
     public void print() {
@@ -94,7 +110,7 @@ public class HashTable<T, D> {
         Structure<T, D> structure = null;
         if (o == null || getClass() != o.getClass()) return false;
         HashTable<T, D> hashTable = (HashTable<T, D>) o;
-        if (!keys.equals(hashTable.getKeys())) {
+        if (keyNumber != hashTable.getKeyNumber()) {
             return false;
         }
         for (int i = 0; i < keySize; i++) {
@@ -112,30 +128,18 @@ public class HashTable<T, D> {
     }
 
     private Structure<T, D> getStructure(T key) {
-        int id = jenkinsHash(key, keySize);
+        int id = hashFunstion(key, keySize);
         ArrayList<Structure<T, D>> list = values.get(id);
         for (Structure<T, D> structure : list) {
-            if (structure.key.equals(key)) {
+            if (structure.key != null && structure.key.equals(key)) {
                 return structure;
             }
         }
         return null;
     }
 
-    private int jenkinsHash(T key, int size) {
-        String keyString = key.toString();
-        int hash = 0;
-        for (char c : keyString.toCharArray()) {
-            hash += (int) c;
-            hash += (hash << 10);
-            hash ^= (hash >> 6);
-        }
-
-        hash += (hash << 3);
-        hash ^= (hash >> 11);
-        hash += (hash << 15);
-
-        return Math.abs(hash) % size;
+    private int hashFunstion(T key, int size) {
+        return Math.abs(key.hashCode()) % size;
     }
 
     private void resize() {
@@ -150,26 +154,69 @@ public class HashTable<T, D> {
 
     private void rehash(ArrayList<ArrayList<Structure<T, D>>> newValues) {
         int id = 0;
-        Structure structure = null;
+        Structure<T,D> structure = null;
         for (int i = 0; i < keySize; i++) {
             for (int j = 0; j < values.get(i).size(); j++) {
                 structure = values.get(i).get(j);
-                if (structure == null) {
+                if (structure.key == null) {
                     continue;
                 }
-                id = jenkinsHash((T) structure.key, keySize);
+                id = hashFunstion((T) structure.key, keySize);
                 newValues.get(id).add(structure);
             }
         }
     }
 
-    private static class Structure<T, D> {
-        T key;
-        D data;
+    private Structure<T,D> findNext(boolean change){
+        int newIndexI = indexI;
+        int newIndexJ = indexJ;
+        Structure<T, D> structure = null;
+        while (newIndexI < keySize) {
+            newIndexJ++;
+            if(newIndexJ > values.get(newIndexI).size() - 1) {
+                newIndexJ = -1;
+                newIndexI++;
+                continue;
+            }
+            structure = values.get(newIndexI).get(newIndexJ);
 
-        Structure(T key, D data) {
-            this.key = key;
-            this.data = data;
+            if(structure.key != null) {
+                break;
+            }
+        }
+        if(change){
+            this.indexI = newIndexI;
+            this.indexJ = newIndexJ;
+        }
+
+        return structure;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return findNext(false) != null;
+    }
+
+    @Override
+    public Structure<T, D> next() {
+        current = findNext(true);
+        return current;
+    }
+
+    @Override
+    public void remove() {
+        if(current != null) {
+            removeByKey(current.key);
+        }
+    }
+
+    @Override
+    public void forEachRemaining(Consumer<? super Structure<T, D>> action) {
+        while (hasNext()) {
+            next();
+            if(current != null && current.key != null) {
+                action.accept(current);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,15 +27,6 @@ class HashTableTest {
     }
 
     @Test
-    void getKeys() {
-        Set<String> keys = new HashSet<>();
-        keys.add("A");
-        keys.add("B");
-        keys.add("C");
-        assertEquals(keys, hashTable.getKeys());
-    }
-
-    @Test
     void put() {
         assertFalse(hashTable.contains("D"));
         hashTable.put("D", 1);
@@ -47,9 +39,9 @@ class HashTableTest {
     }
 
     @Test
-    void remove() {
+    void removeByKey() {
         assertTrue(hashTable.contains("A"));
-        hashTable.remove("A");
+        hashTable.removeByKey("A");
         assertFalse(hashTable.contains("A"));
     }
 
@@ -88,5 +80,40 @@ class HashTableTest {
         newHashTable.put("C", 3);
 
         assertTrue(newHashTable.equals(newHashTable));
+    }
+
+    @Test
+    void hasNext() {
+        assertTrue(hashTable.hasNext());
+        hashTable.next();
+        assertTrue(hashTable.hasNext());
+        hashTable.next();
+        assertTrue(hashTable.hasNext());
+        hashTable.next();
+        assertFalse(hashTable.hasNext());
+    }
+
+    @Test
+    void next() {
+        assertEquals(1, hashTable.get("A"));
+    }
+
+    @Test
+    void remove() {
+        int before = hashTable.getKeyNumber();
+        hashTable.next();
+        hashTable.remove();
+        assertEquals(before, hashTable.getKeyNumber() + 1);
+    }
+
+    @Test
+    void forEachRemaining() {
+        ArrayList<Integer> values = new ArrayList<>();
+        ArrayList<Integer> vals = new ArrayList<>();
+        vals.add(1);
+        vals.add(2);
+        vals.add(3);
+        hashTable.forEachRemaining((value) -> values.add(value.data));
+        assertEquals(values, vals);
     }
 }
