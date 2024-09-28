@@ -1,6 +1,6 @@
 package ru.nsu.pozhidaev;
 
-public class Structure<T,D> {
+public class Structure<T, D> {
     T key;
     D data;
 

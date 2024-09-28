@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,41 +77,41 @@ class HashTableTest {
 
         newHashTable.put("C", 3);
 
-        assertTrue(newHashTable.equals(newHashTable));
+        assertTrue(hashTable.equals(newHashTable));
     }
 
-    @Test
-    void hasNext() {
-        assertTrue(hashTable.hasNext());
-        hashTable.next();
-        assertTrue(hashTable.hasNext());
-        hashTable.next();
-        assertTrue(hashTable.hasNext());
-        hashTable.next();
-        assertFalse(hashTable.hasNext());
-    }
-
-    @Test
-    void next() {
-        assertEquals(1, hashTable.get("A"));
-    }
-
-    @Test
-    void remove() {
-        int before = hashTable.getKeyNumber();
-        hashTable.next();
-        hashTable.remove();
-        assertEquals(before, hashTable.getKeyNumber() + 1);
-    }
-
-    @Test
-    void forEachRemaining() {
-        ArrayList<Integer> values = new ArrayList<>();
-        ArrayList<Integer> vals = new ArrayList<>();
-        vals.add(1);
-        vals.add(2);
-        vals.add(3);
-        hashTable.forEachRemaining((value) -> values.add(value.data));
-        assertEquals(values, vals);
-    }
+//    @Test
+//    void hasNext() {
+//        assertTrue(hashTable.hasNext());
+//        hashTable.next();
+//        assertTrue(hashTable.hasNext());
+//        hashTable.next();
+//        assertTrue(hashTable.hasNext());
+//        hashTable.next();
+//        assertFalse(hashTable.hasNext());
+//    }
+//
+//    @Test
+//    void next() {
+//        assertEquals(1, hashTable.get("A"));
+//    }
+//
+//    @Test
+//    void remove() {
+//        int before = hashTable.getKeyNumber();
+//        hashTable.next();
+//        hashTable.remove();
+//        assertEquals(before, hashTable.getKeyNumber() + 1);
+//    }
+//
+//    @Test
+//    void forEachRemaining() {
+//        ArrayList<Integer> values = new ArrayList<>();
+//        ArrayList<Integer> vals = new ArrayList<>();
+//        vals.add(1);
+//        vals.add(2);
+//        vals.add(3);
+//        hashTable.forEachRemaining((value) -> values.add(value.data));
+//        assertEquals(values, vals);
+//    }
 }

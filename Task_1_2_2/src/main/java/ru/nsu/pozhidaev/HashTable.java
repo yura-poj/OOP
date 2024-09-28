@@ -1,26 +1,22 @@
 package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-public class HashTable<T, D> implements Iterator<Structure<T,D>> {
+public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     private final static int SUB_ARRAY_MAX_SIZE = 4;
 
-    private int indexI;
-    private int indexJ;
+
     private int keySize;
     private int keyNumber;
     private ArrayList<ArrayList<Structure<T, D>>> values;
-    private Structure<T, D> current;
 
     public HashTable() {
         values = new ArrayList<>();
         keySize = 8;
-        indexI = 0;
-        indexJ = -1;
         keyNumber = 0;
-        current = null;
         for (int i = 0; i < keySize; i++) {
             values.add(new ArrayList<>());
         }
@@ -47,7 +43,7 @@ public class HashTable<T, D> implements Iterator<Structure<T,D>> {
             resize();
             id = hashFunstion(key, keySize);
         }
-        list.add(new Structure<T,D>(key, value));
+        list.add(new Structure<T, D>(key, value));
     }
 
     public D get(T key) {
@@ -110,21 +106,8 @@ public class HashTable<T, D> implements Iterator<Structure<T,D>> {
         Structure<T, D> structure = null;
         if (o == null || getClass() != o.getClass()) return false;
         HashTable<T, D> hashTable = (HashTable<T, D>) o;
-        if (keyNumber != hashTable.getKeyNumber()) {
-            return false;
-        }
-        for (int i = 0; i < keySize; i++) {
-            for (int j = 0; j < values.get(i).size(); j++) {
-                structure = values.get(i).get(j);
-                if (structure == null) {
-                    continue;
-                }
-                if (hashTable.get(structure.key) != structure.data) {
-                    return false;
-                }
-            }
-        }
-        return true;
+
+        return (hashCode() == hashTable.hashCode());
     }
 
     private Structure<T, D> getStructure(T key) {
@@ -154,7 +137,7 @@ public class HashTable<T, D> implements Iterator<Structure<T,D>> {
 
     private void rehash(ArrayList<ArrayList<Structure<T, D>>> newValues) {
         int id = 0;
-        Structure<T,D> structure = null;
+        Structure<T, D> structure = null;
         for (int i = 0; i < keySize; i++) {
             for (int j = 0; j < values.get(i).size(); j++) {
                 structure = values.get(i).get(j);
@@ -167,56 +150,101 @@ public class HashTable<T, D> implements Iterator<Structure<T,D>> {
         }
     }
 
-    private Structure<T,D> findNext(boolean change){
-        int newIndexI = indexI;
-        int newIndexJ = indexJ;
+    @Override
+    public Iterator<Structure<T, D>> iterator() {
+        return new HashTableIterator();
+    }
+
+    @Override
+    public int hashCode() {
         Structure<T, D> structure = null;
-        while (newIndexI < keySize) {
-            newIndexJ++;
-            if(newIndexJ > values.get(newIndexI).size() - 1) {
-                newIndexJ = -1;
-                newIndexI++;
-                continue;
-            }
-            structure = values.get(newIndexI).get(newIndexJ);
-
-            if(structure.key != null) {
-                break;
+        int hash = 0;
+        for (int i = 0; i < keySize; i++) {
+            for (int j = 0; j < values.get(i).size(); j++) {
+                structure = values.get(i).get(j);
+                if (structure.key == null) {
+                    continue;
+                }
+                hash += structure.key.hashCode();
+                hash += structure.data.hashCode();
+                hash %= 1000;
             }
         }
-        if(change){
-            this.indexI = newIndexI;
-            this.indexJ = newIndexJ;
+        hash += keyNumber ;
+        return hash;
+    }
+
+    private class HashTableIterator implements Iterator<Structure<T, D>> {
+        private Structure<T, D> current;
+        private int indexI;
+        private int indexJ;
+
+        public HashTableIterator() {
+            indexI = 0;
+            indexJ = -1;
+            current = null;
         }
 
-        return structure;
-    }
+        private Structure<T, D> findNext(boolean change) {
+            int newIndexI = indexI;
+            int newIndexJ = indexJ;
+            Structure<T, D> structure = null;
+            while (newIndexI < keySize) {
+                newIndexJ++;
+                if (newIndexJ > values.get(newIndexI).size() - 1) {
+                    newIndexJ = -1;
+                    newIndexI++;
+                    continue;
+                }
+                structure = values.get(newIndexI).get(newIndexJ);
 
-    @Override
-    public boolean hasNext() {
-        return findNext(false) != null;
-    }
-
-    @Override
-    public Structure<T, D> next() {
-        current = findNext(true);
-        return current;
-    }
-
-    @Override
-    public void remove() {
-        if(current != null) {
-            removeByKey(current.key);
-        }
-    }
-
-    @Override
-    public void forEachRemaining(Consumer<? super Structure<T, D>> action) {
-        while (hasNext()) {
-            next();
-            if(current != null && current.key != null) {
-                action.accept(current);
+                if (structure.key != null) {
+                    break;
+                }
             }
+            if (change) {
+                this.indexI = newIndexI;
+                this.indexJ = newIndexJ;
+            }
+
+            return structure;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return findNext(false) != null;
+        }
+
+        @Override
+        public Structure<T, D> next() {
+            current = findNext(true);
+            return current;
+        }
+
+        @Override
+        public void remove() {
+            if (current != null) {
+                removeByKey(current.key);
+            }
+        }
+
+        public void forEach(Consumer<? super Structure<T, D>> action) {
+            int oldIndexI = indexI;
+            int oldIndexJ = indexJ;
+            indexI = 0;
+            indexJ = -1;
+            try {
+                while (hasNext()) {
+                    next();
+                    if (current != null && current.key != null) {
+                        action.accept(current);
+                    }
+                }
+            } catch (ConcurrentModificationException e) {
+                System.out.println("You can not modify collection during iterating");
+            }
+            indexI = oldIndexI;
+            indexJ = oldIndexJ;
         }
     }
 }
