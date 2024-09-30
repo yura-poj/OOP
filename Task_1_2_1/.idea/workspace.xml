@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b15d7872-3d7f-4175-ae25-e1bf98ab1ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +265,7 @@
       <updated>1726751709734</updated>
       <workItem from="1726751710711" duration="7367000" />
       <workItem from="1727669262738" duration="208000" />
-      <workItem from="1727669472508" duration="15716000" />
+      <workItem from="1727669472508" duration="17070000" />
     </task>
     <servers />
   </component>

@@ -18,21 +18,21 @@ public interface Graph<T> {
 
     /**
      * add edge to graph.
-     * 
+     *
      * @param edge that should be added.
      */
     public void addEdge(Edge<T> edge);
 
     /**
      * remove vertex from graph.
-     * 
+     *
      * @param vertex that should be removed.
      */
     public void removeVertex(Vertex<T> vertex);
 
     /**
      * remove edge from graph.
-     * 
+     *
      * @param edge that should be removed.
      */
     public void removeEdge(Edge<T> edge);
@@ -53,7 +53,7 @@ public interface Graph<T> {
 
     /**
      * get adjacent vertices with on vertex.
-     * 
+     *
      * @param vertex which neighbors should be found.
      *
      * @return neighbors array.
