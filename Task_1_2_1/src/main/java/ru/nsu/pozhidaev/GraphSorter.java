@@ -36,9 +36,9 @@ public class GraphSorter<T> {
         for (Vertex<T> vertex : graph.getVertices()) {
             topoSort(vertex);
         }
-
+        ArrayList<Vertex<T>> copy = new ArrayList<Vertex<T>>(vertices);
         finish();
-        return vertices;
+        return new ArrayList<Vertex<T>>(copy);
     }
 
     /**

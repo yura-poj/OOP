@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b15d7872-3d7f-4175-ae25-e1bf98ab1ed0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixIncidenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixIncidenceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +56,12 @@
     "Gradle.GraphMatrixAdjacencyTest.executor": "Run",
     "Gradle.GraphMatrixIncidenceSorterTest.executor": "Run",
     "Gradle.GraphMatrixIncidenceTest.executor": "Run",
+    "Gradle.GraphSorterTest (1).executor": "Run",
     "Gradle.GraphSorterTest.executor": "Run",
     "Gradle.GraphSorterTest.sortListAdjacency.executor": "Debug",
     "Gradle.VertexTest.executor": "Run",
     "JUnit.Unnamed.executor": "Run",
+    "JUnit.pozhidaev in Task_1_2_1.test.executor": "Run",
     "OverrideImplement.generate.javadoc": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -88,7 +89,7 @@
       <recent name="ru.nsu.pozhidaev" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.VertexTest">
+  <component name="RunManager">
     <configuration name="EdgeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -209,7 +210,16 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Unnamed" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <configuration name="Unnamed (1)" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pozhidaev in Task_1_2_1.test" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Task_1_2_1.test" />
       <option name="PACKAGE_NAME" value="ru.nsu.pozhidaev" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -225,7 +235,8 @@
       <item itemvalue="Gradle.GraphMatrixAdjacencyTest" />
       <item itemvalue="Gradle.GraphSorterTest" />
       <item itemvalue="Gradle.VertexTest" />
-      <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="JUnit.Unnamed (1)" />
+      <item itemvalue="JUnit.pozhidaev in Task_1_2_1.test" />
     </list>
     <recent_temporary>
       <list>
@@ -255,7 +266,7 @@
       <updated>1726751709734</updated>
       <workItem from="1726751710711" duration="7367000" />
       <workItem from="1727669262738" duration="208000" />
-      <workItem from="1727669472508" duration="14639000" />
+      <workItem from="1727669472508" duration="15716000" />
     </task>
     <servers />
   </component>
@@ -275,18 +286,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java</url>
-          <line>81</line>
+          <line>72</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java</url>
-          <line>99</line>
+          <line>90</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java</url>
-          <line>107</line>
+          <line>99</line>
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphSorterTest.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
