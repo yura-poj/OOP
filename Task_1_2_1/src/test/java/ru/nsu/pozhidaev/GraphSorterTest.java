@@ -17,7 +17,7 @@ class GraphSorterTest {
 
     @BeforeEach
     void setUp() {
-        sorter = new GraphSorter<String >();
+        sorter = new GraphSorter<String>();
         v1 = new Vertex<String>("V1");
         v2 = new Vertex<String>("V2");
         v3 = new Vertex<String>("V3");

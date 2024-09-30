@@ -1,14 +1,22 @@
 package ru.nsu.pozhidaev;
 
-import java.io.File;
-import java.util.*;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * graph with matrix adjacency.
+ *
+ * @param <T> type that accept vertex as name.
+ */
 public class GraphMatrixAdjacency<T> implements Graph<T> {
-    private Scanner scanner;
     private ArrayList<Vertex<T>> vertices;
     private ArrayList<Edge<T>> edges;
     private ArrayList<ArrayList<Boolean>> matrixAdjacency;
 
+    /**
+     * constructor.
+     */
     public GraphMatrixAdjacency() {
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
@@ -16,14 +24,15 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
     }
 
     /**
-*
- * @param vertex
-*/
+     * add vertex to graph.
+     *
+     * @param vertex that needed to bee added.
+     */
     @Override
     public void addVertex(Vertex<T> vertex) {
         vertices.add(vertex);
         ArrayList<Boolean> array = new ArrayList<>();
-        for(int i = 0; i < vertices.size() - 1; i++) {
+        for (int i = 0; i < vertices.size() - 1; i++) {
             matrixAdjacency.get(i).add(false);
         }
         for (int i = 0; i < vertices.size(); i++) {
@@ -32,102 +41,117 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
         matrixAdjacency.add(array);
     }
 
-/**
-*
- * @param edge
-*/
+    /**
+     * add edge to graph.
+     *
+     * @param edge that should be added.
+     */
     @Override
     public void addEdge(Edge<T> edge) {
         edges.add(edge);
         int id_from = 0, id_to = 0;
-        for(int i = 0; i < vertices.size() - 1; i++) {
-            if(vertices.get(i).equals(edge.getFrom())) {
+        for (int i = 0; i < vertices.size() - 1; i++) {
+            if (vertices.get(i).equals(edge.getFrom())) {
                 id_from = i;
             }
-            if(vertices.get(i).equals(edge.getTo())) {
+            if (vertices.get(i).equals(edge.getTo())) {
                 id_to = i;
             }
         }
         matrixAdjacency.get(id_from).set(id_to, true);
     }
 
-/**
-*
- * @param vertex
-*/
+    /**
+     * remove vertex from graph.
+     *
+     * @param vertex that should be removed.
+     */
     @Override
     public void removeVertex(Vertex<T> vertex) {
         vertices.remove(vertex);
         int id = 0;
-        for(int i = 0; i < vertices.size() - 1; i++) {
-            if(vertices.get(i).equals(vertex)) {
+        for (int i = 0; i < vertices.size() - 1; i++) {
+            if (vertices.get(i).equals(vertex)) {
                 id = i;
             }
         }
         matrixAdjacency.remove(id);
-        for(int i = 0; i < vertices.size() - 1; i++) {
+        for (int i = 0; i < vertices.size() - 1; i++) {
             matrixAdjacency.get(i).remove(id);
         }
 
         for (int i = 0; i < edges.size() - 1; i++) {
-      if (edges.get(i).getFrom().equals(vertex) || edges.get(i).getTo().equals(vertex)) {
-        matrixAdjacency.get(i).set(vertices.indexOf(edges.get(i).getTo()), false);
-        matrixAdjacency.get(i).set(vertices.indexOf(edges.get(i).getTo()), false);
-                }
+            if (edges.get(i).getFrom().equals(vertex) || edges.get(i).getTo().equals(vertex)) {
+                matrixAdjacency.get(i).set(vertices.indexOf(edges.get(i).getTo()), false);
+                matrixAdjacency.get(i).set(vertices.indexOf(edges.get(i).getTo()), false);
+            }
         }
     }
 
-/**
-*
- * @param edge
-*/
+    /**
+     * remove edge from graph.
+     *
+     * @param edge that should be removed.
+     */
     @Override
     public void removeEdge(Edge<T> edge) {
         edges.remove(edge);
         int id_from = 0, id_to = 0;
-        for(int i = 0; i < vertices.size() - 1; i++) {
-            if(vertices.get(i).equals(edge.getFrom())) {
+        for (int i = 0; i < vertices.size() - 1; i++) {
+            if (vertices.get(i).equals(edge.getFrom())) {
                 id_from = i;
             }
-            if(vertices.get(i).equals(edge.getTo())) {
+            if (vertices.get(i).equals(edge.getTo())) {
                 id_to = i;
             }
         }
         matrixAdjacency.get(id_from).set(id_to, false);
     }
 
-/**
-*
- * @return
-*/
+    /**
+     * get array of vertices of graph.
+     *
+     * @return vertices array.
+     */
     @Override
     public ArrayList<Vertex<T>> getVertices() {
-        return new ArrayList<> (vertices);
+        return new ArrayList<>(vertices);
     }
 
+    /**
+     * get edges array of graph.
+     *
+     * @return edges array.
+     */
     @Override
     public ArrayList<Edge<T>> getEdges() {
         return new ArrayList<>(edges);
     }
 
-/**
-*
- * @param vertex
- * @return
-*/
+    /**
+     * get adjacent vertices with on vertex.
+     * @param vertex which neighbors should be found.
+     *
+     * @return neighbors array.
+     */
     @Override
     public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex) {
         ArrayList<Vertex<T>> neighbors = new ArrayList<>();
         for (Edge<T> edge : edges) {
-            if (edge.from.equals(vertex)) {
-                neighbors.add(edge.to);
-            } else if (edge.to.equals(vertex)) {
-                neighbors.add(edge.from);
+            if (edge.getFrom().equals(vertex)) {
+                neighbors.add(edge.getTo());
+            } else if (edge.getTo().equals(vertex)) {
+                neighbors.add(edge.getFrom());
             }
         }
         return neighbors;
     }
 
+    /**
+     * graph to string like edges: (V1: a, V2: b), \n etc.
+     *
+     * @return string of graph.
+     */
     @Override
     public String toString() {
         String result = "";
@@ -137,6 +161,13 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
         return result;
     }
 
+    /**
+     * compare hashcodes and return equal or not.
+     *
+     * @param o object that should be compared.
+     *
+     * @return bool equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
@@ -144,33 +175,47 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
         return hashCode() == o.hashCode();
     }
 
-/**
-*
- * @param fileName
-*/
-    @Override
-    public void parse(String fileName) {
+  /**
+   * parse graph from file.
+   * Example:
+   * Do not use tabs: cause errors.
+   * Here a,b,c - verticies, devided by '|'.
+   * In that example edges <From, To> -> <a,b> <b,c> <c,a>.
+   * all new vertices and values should be devided by '|'.
+   *
+   *     a | b | c
+   * a | 0 | 1 | 0
+   * b | 0 | 0 | 1
+   * c | 1 | 0 | 0
+   *
+   * @param fileName string that show path to file.
+   */
+  @Override
+  public void parse(String fileName) {
         String[] tokens;
-        Vertex<T> from = null;
-        Vertex<T> to = null;
 
         Utilities utils = new Utilities(fileName);
         tokens = utils.newLine().split("[/|]");
         for (String token : tokens) {
             addVertex(new Vertex<T>((T) token));
         }
-        for(int i = 0; i < vertices.size(); i++){
+        for (int i = 0; i < vertices.size(); i++) {
             tokens = utils.newLine().split("[/|]");
-            for(int j = 1; j <= vertices.size(); j++){
-                if(Objects.equals(tokens[j], "1")){
-                    addEdge(new Edge<T>(vertices.get(i), vertices.get(j-1)));
+            for (int j = 1; j <= vertices.size(); j++) {
+                if (Objects.equals(tokens[j], "1")) {
+                    addEdge(new Edge<T>(vertices.get(i), vertices.get(j - 1)));
                 }
             }
         }
     }
 
+    /**
+     * make hashcode for graph.
+     *
+     * @return int of hashcode.
+     */
     @Override
-    public int hashCode(){
+    public int hashCode() {
         int result = 0;
         for (Edge<T> edge : edges) {
             result += edge.hashCode();

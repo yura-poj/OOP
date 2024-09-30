@@ -2,11 +2,19 @@ package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
 
+/**
+ * graph with matrix incidence.
+ *
+ * @param <T> type that accept vertex as name.
+ */
 public class GraphMatrixIncidence<T> implements Graph<T> {
     private ArrayList<Vertex<T>> vertices;
     private ArrayList<Edge<T>> edges;
     private ArrayList<ArrayList<Boolean>> matrixIncidence;
 
+    /**
+     * constructor
+     */
     public GraphMatrixIncidence() {
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
@@ -14,7 +22,9 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     }
 
     /**
-     * @param vertex
+     * add vertex to graph.
+     *
+     * @param vertex that needed to bee added.
      */
     @Override
     public void addVertex(Vertex<T> vertex) {
@@ -26,7 +36,9 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     }
 
     /**
-     * @param edge
+     * add edge to graph.
+     *
+     * @param edge that should be added.
      */
     @Override
     public void addEdge(Edge<T> edge) {
@@ -36,7 +48,7 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
             edgeArr.add(false);
         }
         for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i).equals(edge.to) || vertices.get(i).equals(edge.from)) {
+            if (vertices.get(i).equals(edge.getTo()) || vertices.get(i).equals(edge.getFrom())) {
                 edgeArr.set(i, true);
             }
         }
@@ -44,7 +56,9 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     }
 
     /**
-     * @param vertex
+     * remove vertex from graph.
+     *
+     * @param vertex that should be removed.
      */
     @Override
     public void removeVertex(Vertex<T> vertex) {
@@ -67,7 +81,9 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     }
 
     /**
-     * @param edge
+     * remove edge from graph.
+     *
+     * @param edge that should be removed.
      */
     @Override
     public void removeEdge(Edge<T> edge) {
@@ -83,35 +99,50 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     }
 
     /**
-     * @return
+     * get array of vertices of graph.
+     *
+     * @return vertices array.
      */
     @Override
     public ArrayList<Vertex<T>> getVertices() {
         return new ArrayList<>(vertices);
     }
 
+    /**
+     * get edges array of graph.
+     *
+     * @return edges array.
+     */
     @Override
     public ArrayList<Edge<T>> getEdges() {
         return new ArrayList<>(edges);
     }
 
     /**
-     * @param vertex
-     * @return
+     * get adjacent vertices with on vertex.
+     *
+     * @param vertex which neighbors should be found.
+     *
+     * @return neighbors array.
      */
     @Override
     public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex) {
         ArrayList<Vertex<T>> neighbors = new ArrayList<>();
         for (Edge<T> edge : edges) {
-            if (edge.from.equals(vertex)) {
-                neighbors.add(edge.to);
-            } else if (edge.to.equals(vertex)) {
-                neighbors.add(edge.from);
+            if (edge.getFrom().equals(vertex)) {
+                neighbors.add(edge.getTo());
+            } else if (edge.getTo().equals(vertex)) {
+                neighbors.add(edge.getFrom());
             }
         }
         return neighbors;
     }
 
+    /**
+     * graph to string like edges: (V1: a, V2: b), \n etc.
+     *
+     * @return string of graph.
+     */
     @Override
     public String toString() {
         String result = "";
@@ -121,17 +152,35 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
         return result;
     }
 
+    /**
+     * compare hashcodes and return equal or not.
+     *
+     * @param o object that should be compared.
+     *
+     * @return bool equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
         return hashCode() == o.hashCode();
     }
 
-    /**
-     * @param fileName
-     */
-    @Override
-    public void parse(String fileName) {
+  /**
+   * parse graph from file.
+   * Example:
+   * Where a,b,c - vertices devided by '|'.
+   * And each next lines is a new edges, where -1 = vertex from, 1 = vertex to.
+   * In that example edges <From, To> -> <a,b> <b,c> <c,a>.
+   *
+   * a | b | c
+   * 1 | -1 | 0
+   * 0 | 1 | -1
+   * -1 | 0 | 1
+   *
+   * @param fileName string that show path to file.
+   */
+  @Override
+  public void parse(String fileName) {
         String[] tokens;
         Vertex<T> from = null;
         Vertex<T> to = null;
@@ -164,6 +213,11 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
         }
     }
 
+    /**
+     * make hashcode for graph.
+     *
+     * @return int of hashcode.
+     */
     @Override
     public int hashCode() {
         int result = 0;

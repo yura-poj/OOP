@@ -1,32 +1,30 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GraphMatrixAdjacencyTest {
     GraphMatrixAdjacency<String> graph;
 
     @BeforeEach
     void setUp() {
+        graph = new GraphMatrixAdjacency<String>();
         Vertex<String> v1 = new Vertex<String>("a");
         Vertex<String> v2 = new Vertex<String>("b");
         Vertex<String> v3 = new Vertex<String>("c");
-        Edge<String> e1 = new Edge<String>(v1, v2);
-        Edge<String> e2 = new Edge<String>(v2, v3);
-        Edge<String> e3 = new Edge<String>(v3,v1);
-        graph = new GraphMatrixAdjacency<String>();
         graph.addVertex(v1);
         graph.addVertex(v2);
         graph.addVertex(v3);
+        Edge<String> e1 = new Edge<String>(v1, v2);
+        Edge<String> e2 = new Edge<String>(v2, v3);
+        Edge<String> e3 = new Edge<String>(v3, v1);
         graph.addEdge(e1);
         graph.addEdge(e2);
         graph.addEdge(e3);
-
     }
 
     @Test
@@ -98,8 +96,9 @@ class GraphMatrixAdjacencyTest {
 
         assertTrue(graph2.equals(graph));
     }
+
     @Test
-    void testParse(){
+    void testParse() {
         GraphMatrixAdjacency<String> graph2 = new GraphMatrixAdjacency<String>();
         graph2.parse("src/test/java/ru/nsu/pozhidaev/files/adjacencyMatrix.txt");
         assertTrue(graph2.equals(graph));
