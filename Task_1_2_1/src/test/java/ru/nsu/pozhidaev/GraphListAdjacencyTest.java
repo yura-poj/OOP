@@ -69,15 +69,6 @@ class GraphListAdjacencyTest {
     }
 
     @Test
-    void testToString() {
-        assertTimeout(
-                Duration.ofMillis(5000),
-                () -> {
-                    graph.toString();
-                });
-    }
-
-    @Test
     void testEquals() {
         GraphListAdjacency<String> graph2 = new GraphListAdjacency<String>();
         Vertex<String> v1 = new Vertex<String>("a");

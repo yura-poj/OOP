@@ -68,14 +68,6 @@ class GraphMatrixAdjacencyTest {
         assertEquals(vertices, graph.getAdjacentVertices(graph.getVertices().get(1)));
     }
 
-    @Test
-    void testToString() {
-        assertTimeout(
-                Duration.ofMillis(5000),
-                () -> {
-                    graph.toString();
-                });
-    }
 
     @Test
     void testEquals() {

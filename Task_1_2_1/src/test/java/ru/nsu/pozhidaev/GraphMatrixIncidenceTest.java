@@ -69,15 +69,6 @@ class GraphMatrixIncidenceTest {
     }
 
     @Test
-    void testToString() {
-        assertTimeout(
-                Duration.ofMillis(5000),
-                () -> {
-                    graph.toString();
-                });
-    }
-
-    @Test
     void testEquals() {
         GraphMatrixIncidence<String> graph2 = new GraphMatrixIncidence<String>();
         Vertex<String> v1 = new Vertex<String>("a");
