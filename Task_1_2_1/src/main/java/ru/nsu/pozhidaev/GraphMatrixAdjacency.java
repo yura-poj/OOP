@@ -24,11 +24,12 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
         vertices.add(vertex);
         ArrayList<Boolean> array = new ArrayList<>();
         for(int i = 0; i < vertices.size() - 1; i++) {
-            array.add(false);
-        }
-        for (int i = 0; i < vertices.size(); i++) {
             matrixAdjacency.get(i).add(false);
         }
+        for (int i = 0; i < vertices.size(); i++) {
+            array.add(false);
+        }
+        matrixAdjacency.add(array);
     }
 
 /**
@@ -101,7 +102,12 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
 */
     @Override
     public ArrayList<Vertex<T>> getVertices() {
-        return vertices.clone();
+        return new ArrayList<> (vertices);
+    }
+
+    @Override
+    public ArrayList<Edge<T>> getEdges() {
+        return new ArrayList<>(edges);
     }
 
 /**
@@ -134,15 +140,8 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
-        GraphListAdjacency graph = (GraphListAdjacency) o;
-        Comparator<Edge<T>> compareByEdge = Comparator.comparing(Edge::toString);
-        graph.edges.sort(compareByEdge);
-        edges.sort(compareByEdge);
-        Comparator<Vertex<String>> compareByVertex = Comparator.comparing(Vertex::toString);
-        vertices.sort(compareByVertex);
-        graph.vertices.sort(compareByVertex);
 
-        return edges.equals(graph.edges) && vertices.equals(graph.vertices);
+        return hashCode() == o.hashCode();
     }
 
 /**
@@ -156,17 +155,29 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
         Vertex<T> to = null;
 
         Utilities utils = new Utilities(fileName);
-        tokens = utils.newLine().split("//|");
+        tokens = utils.newLine().split("[/|]");
         for (String token : tokens) {
-            addVertex(new Vertex<T>(token));
+            addVertex(new Vertex<T>((T) token));
         }
         for(int i = 0; i < vertices.size(); i++){
-            tokens = utils.newLine().split("//|");
-            for(int j = 1; j < vertices.size(); j++){
+            tokens = utils.newLine().split("[/|]");
+            for(int j = 1; j <= vertices.size(); j++){
                 if(Objects.equals(tokens[j], "1")){
-                    addEdge(new Edge<T>(vertices.get(i), vertices.get(j)));
+                    addEdge(new Edge<T>(vertices.get(i), vertices.get(j-1)));
                 }
             }
         }
+    }
+
+    @Override
+    public int hashCode(){
+        int result = 0;
+        for (Edge<T> edge : edges) {
+            result += edge.hashCode();
+        }
+        for (Vertex<T> vertex : vertices) {
+            result += vertex.hashCode();
+        }
+        return result;
     }
 }

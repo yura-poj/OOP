@@ -1,14 +1,14 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-class GraphMatrixIncidenceTest {
-    GraphMatrixIncidence<String> graph;
+class GraphListAdjacencyTest {
+    GraphListAdjacency<String> graph;
 
     @BeforeEach
     void setUp() {
@@ -18,20 +18,18 @@ class GraphMatrixIncidenceTest {
         Edge<String> e1 = new Edge<String>(v1, v2);
         Edge<String> e2 = new Edge<String>(v2, v3);
         Edge<String> e3 = new Edge<String>(v3,v1);
-
-        graph = new GraphMatrixIncidence<String>();
+        graph = new GraphListAdjacency<String>();
         graph.addVertex(v1);
         graph.addVertex(v2);
         graph.addVertex(v3);
         graph.addEdge(e1);
         graph.addEdge(e2);
         graph.addEdge(e3);
-
     }
 
     @Test
     void addVertex() {
-        Vertex v1 = new Vertex("V0");
+        Vertex<String> v1 = new Vertex("V0");
         int beforeSize = graph.getVertices().size();
         graph.addVertex(v1);
         assertTrue(beforeSize == graph.getVertices().size() - 1);
@@ -78,14 +76,13 @@ class GraphMatrixIncidenceTest {
 
     @Test
     void testEquals() {
-        GraphMatrixIncidence<String> graph2 = new GraphMatrixIncidence<String>();
+        GraphListAdjacency<String> graph2 = new GraphListAdjacency<String>();
         Vertex<String> v1 = new Vertex<String>("a");
         Vertex<String> v2 = new Vertex<String>("b");
         Vertex<String> v3 = new Vertex<String>("c");
         Edge<String> e1 = new Edge<String>(v1, v2);
         Edge<String> e2 = new Edge<String>(v2, v3);
-        Edge<String> e3 = new Edge<String>(v3,v1);
-
+        Edge<String> e3 = new Edge<String>(v3, v1);
         graph2.addVertex(v1);
         graph2.addVertex(v2);
         graph2.addVertex(v3);
@@ -98,10 +95,11 @@ class GraphMatrixIncidenceTest {
 
         assertTrue(graph2.equals(graph));
     }
+    
     @Test
     void testParse(){
-        GraphMatrixIncidence<String> graph2 = new GraphMatrixIncidence<String>();
-        graph2.parse("src/test/java/ru/nsu/pozhidaev/files/incidenceMatrix.txt");
+        GraphListAdjacency<String> graph2 = new GraphListAdjacency<String>();
+        graph2.parse("src/test/java/ru/nsu/pozhidaev/files/adjacencyList.txt");
         assertTrue(graph2.equals(graph));
     }
 }

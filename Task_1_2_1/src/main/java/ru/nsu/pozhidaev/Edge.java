@@ -28,4 +28,9 @@ public class Edge<T> {
         Edge<T> edge = (Edge<T>) o;
         return from.equals(edge.from) && to.equals(edge.to);
     }
+
+    @Override
+    public int hashCode() {
+        return from.hashCode() + to.hashCode();
+    }
 }

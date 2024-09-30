@@ -13,6 +13,8 @@ public interface Graph<T> {
 
   public ArrayList<Vertex<T>> getVertices();
 
+  public ArrayList<Edge<T>> getEdges();
+
   public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex);
 
   public void parse(String fileName);

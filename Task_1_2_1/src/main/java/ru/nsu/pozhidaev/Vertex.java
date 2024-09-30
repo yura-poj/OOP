@@ -26,4 +26,9 @@ public class Vertex<T> {
         Vertex vertex = (Vertex) o;
         return name.equals(vertex.getName());
     }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }

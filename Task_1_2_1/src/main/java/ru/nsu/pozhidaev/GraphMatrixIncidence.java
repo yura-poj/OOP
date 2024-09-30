@@ -1,10 +1,8 @@
 package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Scanner;
 
-public class GraphMatrixIncidence<T> implements Graph<T>{
+public class GraphMatrixIncidence<T> implements Graph<T> {
     private ArrayList<Vertex<T>> vertices;
     private ArrayList<Edge<T>> edges;
     private ArrayList<ArrayList<Boolean>> matrixIncidence;
@@ -16,9 +14,8 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
     }
 
     /**
-*
- * @param vertex
-*/
+     * @param vertex
+     */
     @Override
     public void addVertex(Vertex<T> vertex) {
         vertices.add(vertex);
@@ -28,10 +25,9 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
         }
     }
 
-/**
-*
- * @param edge
-*/
+    /**
+     * @param edge
+     */
     @Override
     public void addEdge(Edge<T> edge) {
         edges.add(edge);
@@ -40,23 +36,21 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
             edgeArr.add(false);
         }
         for (int i = 0; i < vertices.size(); i++) {
-            if(vertices.get(i).equals(edge.to) || vertices.get(i).equals(edge.from)) {
+            if (vertices.get(i).equals(edge.to) || vertices.get(i).equals(edge.from)) {
                 edgeArr.set(i, true);
             }
         }
         matrixIncidence.add(edgeArr);
     }
 
-/**
-*
- * @param vertex
-*/
+    /**
+     * @param vertex
+     */
     @Override
     public void removeVertex(Vertex<T> vertex) {
-        vertices.remove(vertex);
         int id = -1;
         for (int i = 0; i < vertices.size(); i++) {
-            if(vertices.get(i).equals(vertex)) {
+            if (vertices.get(i).equals(vertex)) {
                 id = i;
                 break;
             }
@@ -64,44 +58,47 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
         for (int i = 0; i < edges.size(); i++) {
             matrixIncidence.get(i).remove(id);
         }
-        for (Edge<T> edge : edges) {
-            if (edge.getFrom().equals(vertex) || edge.getTo().equals(vertex)) {
-                removeEdge(edge);
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges.get(i).getFrom().equals(vertex) || edges.get(i).getTo().equals(vertex)) {
+                removeEdge(edges.get(i));
             }
         }
+        vertices.remove(vertex);
     }
 
-/**
-*
- * @param edge
-*/
+    /**
+     * @param edge
+     */
     @Override
     public void removeEdge(Edge<T> edge) {
-        edges.remove(edge);
         int id = -1;
         for (int i = 0; i < edges.size(); i++) {
-            if(edges.get(i).equals(edge)) {
+            if (edges.get(i).equals(edge)) {
                 id = i;
                 break;
             }
         }
         matrixIncidence.remove(id);
+        edges.remove(edge);
     }
 
-/**
-*
- * @return
-*/
+    /**
+     * @return
+     */
     @Override
     public ArrayList<Vertex<T>> getVertices() {
-        return vertices;
+        return new ArrayList<>(vertices);
     }
 
-/**
-*
- * @param vertex
- * @return
-*/
+    @Override
+    public ArrayList<Edge<T>> getEdges() {
+        return new ArrayList<>(edges);
+    }
+
+    /**
+     * @param vertex
+     * @return
+     */
     @Override
     public ArrayList<Vertex<T>> getAdjacentVertices(Vertex<T> vertex) {
         ArrayList<Vertex<T>> neighbors = new ArrayList<>();
@@ -127,22 +124,12 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
-        GraphListAdjacency graph = (GraphListAdjacency) o;
-        Comparator<Edge<T>> compareByEdge = Comparator.comparing(Edge::toString);
-        graph.edges.sort(compareByEdge);
-        edges.sort(compareByEdge);
-        Comparator<Vertex<String>> compareByVertex = Comparator.comparing(Vertex::toString);
-        vertices.sort(compareByVertex);
-        graph.vertices.sort(compareByVertex);
-
-        return edges.equals(graph.edges) && vertices.equals(graph.vertices);
+        return hashCode() == o.hashCode();
     }
 
-
     /**
-*
- * @param fileName
-*/
+     * @param fileName
+     */
     @Override
     public void parse(String fileName) {
         String[] tokens;
@@ -151,35 +138,41 @@ public class GraphMatrixIncidence<T> implements Graph<T>{
 
         Utilities utils = new Utilities(fileName);
 
-        tokens = utils.newLine().split("//|");
+        tokens = utils.newLine().split("[/|]");
 
         for (String token : tokens) {
-            vertices.add(new Vertex<T>(token));
-            addVertex(vertices.get(vertices.size()));
+            addVertex(new Vertex<T>((T) token));
         }
-        while(true){
-            tokens = utils.newLine().split("//|");
-            if(tokens.length == 0){
-                break;
-            }
-            for(int i = 0; i < tokens.length; i++){
-                tokens = utils.newLine().split("//|");
-                for(int j = 0; j < vertices.size(); j++){
-                    switch (tokens[j]){
-                        case "1":
-                            from = vertices.get(i);
-                            break;
-                        case "-1":
-                            to = vertices.get(j);
-                            break;
-                        case "2":
-                            from = vertices.get(j);
-                            to = vertices.get(j);
-                            break;
-                    }
+
+        for (int i = 0; i < vertices.size(); i++) {
+            tokens = utils.newLine().split("[/|]");
+            for (int j = 0; j < vertices.size(); j++) {
+                switch (tokens[j]) {
+                    case "1":
+                        from = vertices.get(j);
+                        break;
+                    case "-1":
+                        to = vertices.get(j);
+                        break;
+                    case "2":
+                        from = vertices.get(j);
+                        to = vertices.get(j);
+                        break;
                 }
-                addEdge(new Edge<T>(from, to));
             }
+            addEdge(new Edge<T>(from, to));
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 0;
+        for (Edge<T> edge : edges) {
+            result += edge.hashCode();
+        }
+        for (Vertex<T> vertex : vertices) {
+            result += vertex.hashCode();
+        }
+        return result;
     }
 }

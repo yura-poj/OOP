@@ -1,5 +1,4 @@
-adjacency matrix
-	a | b | c
+    a | b | c
 a | 0 | 1 | 0
 b | 0 | 0 | 1
 c | 1 | 0 | 0

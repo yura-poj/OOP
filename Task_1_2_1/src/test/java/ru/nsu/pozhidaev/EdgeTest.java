@@ -10,14 +10,14 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 
 class EdgeTest {
-    Edge edge;
-    Vertex v1;
-    Vertex v2;
+    Edge<String> edge;
+    Vertex<String> v1;
+    Vertex<String> v2;
     @BeforeEach
     void setUp() {
-        v1 = new Vertex("v1");
-        v2 = new Vertex("v2");
-        edge = new Edge(v1, v2);
+        v1 = new Vertex<String>("v1");
+        v2 = new Vertex<String>("v2");
+        edge = new Edge<String>(v1, v2);
       }
 
     @Test
@@ -37,10 +37,10 @@ class EdgeTest {
 
     @Test
     void testEquals() {
-        Edge edge2 = new Edge(v1, v2);
+        Edge<String> edge2 = new Edge(v1, v2);
         assertTrue(edge.equals(edge2));
-        Vertex v3 = new Vertex("v3");
-        Edge edge3 = new Edge(v1, v3);
+        Vertex<String> v3 = new Vertex("v3");
+        Edge<String> edge3 = new Edge(v1, v3);
         assertFalse(edge.equals(edge3));
       }
 }

@@ -1,11 +1,7 @@
 package ru.nsu.pozhidaev;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class GraphListAdjacency<T> implements Graph<T> {
     private ArrayList<Vertex<T>> vertices;
@@ -40,12 +36,12 @@ public class GraphListAdjacency<T> implements Graph<T> {
 */
     @Override
     public void removeVertex(Vertex<T> vertex) {
-        vertices.remove(vertex);
-        for (Edge<T> edge : edges) {
-            if (edge.getFrom().equals(vertex) || edge.getTo().equals(vertex)) {
-                removeEdge(edge);
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges.get(i).getFrom().equals(vertex) || edges.get(i).getTo().equals(vertex)) {
+                removeEdge(edges.get(i));
             }
         }
+        vertices.remove(vertex);
     }
 
 /**
@@ -66,7 +62,12 @@ public class GraphListAdjacency<T> implements Graph<T> {
         return new ArrayList<>(vertices);
     }
 
-/**
+    @Override
+    public ArrayList<Edge<T>> getEdges() {
+        return new ArrayList<>(edges);
+    }
+
+    /**
 *
  * @param vertex
  * @return
@@ -96,15 +97,7 @@ public class GraphListAdjacency<T> implements Graph<T> {
     @Override
     public boolean equals(Object o) {
         if (o == null || this.getClass() != o.getClass()) return false;
-        GraphListAdjacency graph = (GraphListAdjacency) o;
-        Comparator<Edge<T>> compareByEdge = Comparator.comparing(Edge::toString);
-        graph.edges.sort(compareByEdge);
-        edges.sort(compareByEdge);
-        Comparator<Vertex<T>> compareByVertex = Comparator.comparing(Vertex::toString);
-        vertices.sort(compareByVertex);
-        graph.vertices.sort(compareByVertex);
-
-        return edges.equals(graph.edges) && vertices.equals(graph.vertices);
+        return hashCode() == o.hashCode();
     }
 
 /**
@@ -114,7 +107,7 @@ public class GraphListAdjacency<T> implements Graph<T> {
     @Override
     public void parse(String fileName) {
         String[] tokens;
-        HashMap<String, Vertex<T>> hashVertices = new HashMap<>();
+        HashMap<T, Vertex<T>> hashVertices = new HashMap<>();
         Vertex<T> from = null;
         Vertex<T> to = null;
 
@@ -127,18 +120,18 @@ public class GraphListAdjacency<T> implements Graph<T> {
                 break;
             }
 
-            from = checkVertex(tokens[0], hashVertices);
-            to = checkVertex(tokens[1], hashVertices);
+            from = checkVertex((T) tokens[0], hashVertices);
+            to = checkVertex((T) tokens[1], hashVertices);
 
 
             addEdge(new Edge<T>(from, to));
         }
     }
 
-    private Vertex<T> checkVertex(String token, HashMap<String, Vertex<T>> hashVertices){
+    private Vertex<T> checkVertex(T token, HashMap<T, Vertex<T>> hashVertices){
         Vertex<T> vertex;
         if(!hashVertices.containsKey(token)){
-            vertex = new Vertex<T>(token);
+            vertex = new Vertex<T> (token);
             hashVertices.put(token, vertex);
             addVertex(vertex);
         } else {
@@ -146,6 +139,18 @@ public class GraphListAdjacency<T> implements Graph<T> {
         }
 
         return vertex;
+    }
+
+    @Override
+    public int hashCode(){
+        int result = 0;
+        for (Edge<T> edge : edges) {
+            result += edge.hashCode();
+        }
+        for (Vertex<T> vertex : vertices) {
+            result += vertex.hashCode();
+        }
+        return result;
     }
 
 }

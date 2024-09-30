@@ -28,17 +28,6 @@ class VertexTest {
       }
 
     @Test
-    void getColor() {
-        assertEquals(0, vertex.getColor());
-      }
-
-    @Test
-    void setColor() {
-        vertex.setColor(1);
-        assertEquals(1, vertex.getColor());
-      }
-
-    @Test
     void testToString() {
         assertEquals("V: 1", vertex.toString());
       }
