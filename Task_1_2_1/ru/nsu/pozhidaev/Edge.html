@@ -129,9 +129,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - type of all.</dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Edge&lt;T&gt;</span>
 extends java.lang.Object</pre>
+<div class="block">edge.</div>
 </li>
 </ul>
 </div>
@@ -154,7 +159,9 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Vertex,ru.nsu.pozhidaev.Vertex)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;from,
     <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;to)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,27 +184,37 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">equals graphs or not.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFrom()">getFrom</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get from vertex.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTo()">getTo</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">return to vertex.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">hashcode of edge that equals sum of hashcode vertexes.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">vertex to string.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -231,6 +248,12 @@ extends java.lang.Object</pre>
 <h4>Edge</h4>
 <pre>public&nbsp;Edge&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;from,
             <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;to)</pre>
+<div class="block">constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>from</code> - vertex.</dd>
+<dd><code>to</code> - vertex.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -250,6 +273,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFrom</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getFrom()</pre>
+<div class="block">get from vertex.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>from vertex.</dd>
+</dl>
 </li>
 </ul>
 <a id="getTo()">
@@ -259,6 +287,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTo</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getTo()</pre>
+<div class="block">return to vertex.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>vertex 'to'.</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
@@ -268,9 +301,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">vertex to string.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>string of edge like (V: 1, V: 2).</dd>
 </dl>
 </li>
 </ul>
@@ -281,9 +317,14 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>equals</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">equals graphs or not.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>o</code> - object that we check.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>bool equal or not.</dd>
 </dl>
 </li>
 </ul>
@@ -294,9 +335,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hashCode</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<div class="block">hashcode of edge that equals sum of hashcode vertexes.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>int hashcode.</dd>
 </dl>
 </li>
 </ul>

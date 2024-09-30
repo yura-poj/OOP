@@ -129,9 +129,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - type of name of vertex in graph.</dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">GraphSorter&lt;T&gt;</span>
 extends java.lang.Object</pre>
+<div class="block">graph sorter algoritms.
+ You can use it many times after initializing by calling functions.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +159,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">GraphSorter</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,7 +184,9 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="GraphSorter.html" title="type parameter in GraphSorter">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#topologicalSort(ru.nsu.pozhidaev.Graph)">topologicalSort</a></span>&#8203;(<a href="Graph.html" title="interface in ru.nsu.pozhidaev">Graph</a>&lt;<a href="GraphSorter.html" title="type parameter in GraphSorter">T</a>&gt;&nbsp;graph)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sort vertices of graph using topological sort algorithm.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -209,6 +219,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>GraphSorter</h4>
 <pre>public&nbsp;GraphSorter()</pre>
+<div class="block">constructor.</div>
 </li>
 </ul>
 </li>
@@ -228,6 +239,14 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>topologicalSort</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="GraphSorter.html" title="type parameter in GraphSorter">T</a>&gt;&gt;&nbsp;topologicalSort&#8203;(<a href="Graph.html" title="interface in ru.nsu.pozhidaev">Graph</a>&lt;<a href="GraphSorter.html" title="type parameter in GraphSorter">T</a>&gt;&nbsp;graph)</pre>
+<div class="block">Sort vertices of graph using topological sort algorithm.
+ can use many times without generating new object.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graph</code> - vertices of which should be sorted.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>array of sorted vertices.</dd>
+</dl>
 </li>
 </ul>
 </li>
