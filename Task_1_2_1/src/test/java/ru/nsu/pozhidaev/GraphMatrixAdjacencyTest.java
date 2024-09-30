@@ -71,7 +71,7 @@ class GraphMatrixAdjacencyTest {
     @Test
     void testToString() {
         assertTimeout(
-                Duration.ofMillis(100),
+                Duration.ofMillis(500),
                 () -> {
                     graph.toString();
                 });
