@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -115,14 +115,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.pozhidaev</a></div>
-<h2 title="Class Edge" class="title">Class Edge</h2>
+<h2 title="Class Edge" class="title">Class Edge&lt;T&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>ru.nsu.pozhidaev.Edge</li>
+<li>ru.nsu.pozhidaev.Edge&lt;T&gt;</li>
 </ul>
 </li>
 </ul>
@@ -130,7 +130,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <hr>
-<pre>public class <span class="typeNameLabel">Edge</span>
+<pre>public class <span class="typeNameLabel">Edge&lt;T&gt;</span>
 extends java.lang.Object</pre>
 </li>
 </ul>
@@ -152,8 +152,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Vertex,ru.nsu.pozhidaev.Vertex)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;from,
-    <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;to)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.pozhidaev.Vertex,ru.nsu.pozhidaev.Vertex)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;from,
+    <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;to)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -180,16 +180,21 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a></code></td>
+<td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFrom()">getFrom</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a></code></td>
+<td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTo()">getTo</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -200,7 +205,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -224,8 +229,8 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Edge</h4>
-<pre>public&nbsp;Edge&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;from,
-            <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;to)</pre>
+<pre>public&nbsp;Edge&#8203;(<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;from,
+            <a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;to)</pre>
 </li>
 </ul>
 </li>
@@ -244,7 +249,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getFrom</h4>
-<pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;getFrom()</pre>
+<pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getFrom()</pre>
 </li>
 </ul>
 <a id="getTo()">
@@ -253,7 +258,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTo</h4>
-<pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&nbsp;getTo()</pre>
+<pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.nsu.pozhidaev">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">T</a>&gt;&nbsp;getTo()</pre>
 </li>
 </ul>
 <a id="toString()">
@@ -272,13 +277,26 @@ extends java.lang.Object</pre>
 <a id="equals(java.lang.Object)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a id="hashCode()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
