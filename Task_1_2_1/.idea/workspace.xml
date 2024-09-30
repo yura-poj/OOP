@@ -89,7 +89,7 @@
       <recent name="ru.nsu.pozhidaev" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.pozhidaev in Task_1_2_1.test">
     <configuration name="EdgeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />

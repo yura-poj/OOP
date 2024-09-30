@@ -165,7 +165,7 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
 
     /**
      * parse graph from file. Example: Where a,b,c - vertices devided by '|'. And each next lines is a
-     * new edges, where -1 = vertex from, 1 = vertex to. In that example edges (From, To) -> (a,b)
+     * new edges, where -1 = vertex from, 1 = vertex to. In that example edges (From, To) = (a,b)
      * (b,c) (c,a). a | b | c 1 | -1 | 0 0 | 1 | -1 -1 | 0 | 1
      *
      * @param fileName string that show path to file.

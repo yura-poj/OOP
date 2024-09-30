@@ -133,9 +133,9 @@ public class GraphListAdjacency<T> implements Graph<T> {
     /**
      * parse graph from file.
      * Example:
-     * a > b -> where 'a' vertex from, 'b' vertex to, devided by '>'.
-     * b > c
-     * c > a
+     * a &gt; b -&gt; where 'a' vertex from, 'b' vertex to, devided by '&gt;'.
+     * b &gt; c
+     * c &gt; a
      *
      * @param fileName string that show path to file.
      */

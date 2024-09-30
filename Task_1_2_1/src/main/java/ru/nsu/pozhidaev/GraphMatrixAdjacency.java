@@ -184,7 +184,7 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
      * Example:
      * Do not use tabs: cause errors.
      * Here a,b,c - verticies, devided by '|'.
-     * In that example edges (From, To) -> (a,b) (b,c) (c,a).
+     * In that example edges (From, To) = (a,b) (b,c) (c,a).
      * all new vertices and values should be devided by '|'.
      *     a | b | c
      * a | 0 | 1 | 0
