@@ -6,21 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b15d7872-3d7f-4175-ae25-e1bf98ab1ed0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphListAdjacency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphListAdjacency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphMatrixAdjacency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphMatrixAdjacency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphMatrixIncidence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphMatrixIncidence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/GraphSorter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/EdgeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/EdgeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixIncidenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixIncidenceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphSorterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphSorterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/VertexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/VertexTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/files/adjacencyList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/files/adjacencyList.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +261,7 @@
       <updated>1726751709734</updated>
       <workItem from="1726751710711" duration="7367000" />
       <workItem from="1727669262738" duration="208000" />
-      <workItem from="1727669472508" duration="12682000" />
+      <workItem from="1727669472508" duration="13609000" />
     </task>
     <servers />
   </component>
@@ -288,17 +281,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java</url>
-          <line>78</line>
+          <line>81</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphListAdjacencyTest.java</url>
-          <line>96</line>
+          <line>99</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/GraphMatrixAdjacencyTest.java</url>
-          <line>105</line>
+          <line>107</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>

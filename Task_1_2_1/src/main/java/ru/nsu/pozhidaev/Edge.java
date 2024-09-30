@@ -57,7 +57,9 @@ public class Edge<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Edge<T> edge = (Edge<T>) o;
         return from.equals(edge.from) && to.equals(edge.to);
     }

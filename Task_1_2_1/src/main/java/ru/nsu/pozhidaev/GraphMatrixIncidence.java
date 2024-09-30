@@ -12,9 +12,7 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
     private ArrayList<Edge<T>> edges;
     private ArrayList<ArrayList<Boolean>> matrixIncidence;
 
-    /**
-     * constructor
-     */
+    /** constructor. */
     public GraphMatrixIncidence() {
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
@@ -122,7 +120,6 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
      * get adjacent vertices with on vertex.
      *
      * @param vertex which neighbors should be found.
-     *
      * @return neighbors array.
      */
     @Override
@@ -156,31 +153,25 @@ public class GraphMatrixIncidence<T> implements Graph<T> {
      * compare hashcodes and return equal or not.
      *
      * @param o object that should be compared.
-     *
      * @return bool equal or not.
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
         return hashCode() == o.hashCode();
     }
 
-  /**
-   * parse graph from file.
-   * Example:
-   * Where a,b,c - vertices devided by '|'.
-   * And each next lines is a new edges, where -1 = vertex from, 1 = vertex to.
-   * In that example edges <From, To> -> <a,b> <b,c> <c,a>.
-   *
-   * a | b | c
-   * 1 | -1 | 0
-   * 0 | 1 | -1
-   * -1 | 0 | 1
-   *
-   * @param fileName string that show path to file.
-   */
-  @Override
-  public void parse(String fileName) {
+    /**
+     * parse graph from file. Example: Where a,b,c - vertices devided by '|'. And each next lines is a
+     * new edges, where -1 = vertex from, 1 = vertex to. In that example edges (From, To) -> (a,b)
+     * (b,c) (c,a). a | b | c 1 | -1 | 0 0 | 1 | -1 -1 | 0 | 1
+     *
+     * @param fileName string that show path to file.
+     */
+    @Override
+    public void parse(String fileName) {
         String[] tokens;
         Vertex<T> from = null;
         Vertex<T> to = null;

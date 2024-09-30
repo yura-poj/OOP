@@ -11,7 +11,7 @@ public interface Graph<T> {
 
     /**
      * add vertex to graph.
-     * 
+     *
      * @param vertex that needed to bee added.
      */
     public void addVertex(Vertex<T> vertex);

@@ -54,7 +54,9 @@ public class Vertex<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (o.getClass() != this.getClass()) return false;
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
         Vertex vertex = (Vertex) o;
         return name.equals(vertex.getName());
     }

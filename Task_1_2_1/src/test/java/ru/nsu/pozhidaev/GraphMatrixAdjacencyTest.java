@@ -1,6 +1,9 @@
 package ru.nsu.pozhidaev;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -80,18 +83,17 @@ class GraphMatrixAdjacencyTest {
         Vertex<String> v1 = new Vertex<String>("a");
         Vertex<String> v2 = new Vertex<String>("b");
         Vertex<String> v3 = new Vertex<String>("c");
-        Edge<String> e1 = new Edge<String>(v1, v2);
-        Edge<String> e2 = new Edge<String>(v2, v3);
-        Edge<String> e3 = new Edge<String>(v3, v1);
-
         graph2.addVertex(v1);
         graph2.addVertex(v2);
         graph2.addVertex(v3);
+        Edge<String> e1 = new Edge<String>(v1, v2);
+        Edge<String> e2 = new Edge<String>(v2, v3);
         graph2.addEdge(e1);
         graph2.addEdge(e2);
 
         assertFalse(graph2.equals(graph));
 
+        Edge<String> e3 = new Edge<String>(v3, v1);
         graph2.addEdge(e3);
 
         assertTrue(graph2.equals(graph));

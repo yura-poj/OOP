@@ -61,9 +61,9 @@ public class GraphSorter<T> {
     /**
      * prepare hashmap for using in functions.
      *
-     * @param graph
+     * @param graph which should be sorted.
      */
-    private void prepare(Graph<T> graph){
+    private void prepare(Graph<T> graph) {
         this.graph = graph;
         for (Vertex<T> vertex : graph.getVertices()) {
             colors.put(vertex, 0);
@@ -73,7 +73,7 @@ public class GraphSorter<T> {
     /**
      * clear all arrays and hashmaps inside object.
      */
-    private void finish(){
+    private void finish() {
         vertices.clear();
         colors.clear();
     }

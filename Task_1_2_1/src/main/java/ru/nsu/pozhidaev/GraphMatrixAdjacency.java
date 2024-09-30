@@ -1,6 +1,5 @@
 package ru.nsu.pozhidaev;
 
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -49,16 +48,17 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
     @Override
     public void addEdge(Edge<T> edge) {
         edges.add(edge);
-        int id_from = 0, id_to = 0;
+        int idFrom = 0;
+        int idTo = 0;
         for (int i = 0; i < vertices.size() - 1; i++) {
             if (vertices.get(i).equals(edge.getFrom())) {
-                id_from = i;
+                idFrom = i;
             }
             if (vertices.get(i).equals(edge.getTo())) {
-                id_to = i;
+                idTo = i;
             }
         }
-        matrixAdjacency.get(id_from).set(id_to, true);
+        matrixAdjacency.get(idFrom).set(idTo, true);
     }
 
     /**
@@ -96,16 +96,17 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
     @Override
     public void removeEdge(Edge<T> edge) {
         edges.remove(edge);
-        int id_from = 0, id_to = 0;
+        int idFrom = 0;
+        int idTo = 0;
         for (int i = 0; i < vertices.size() - 1; i++) {
             if (vertices.get(i).equals(edge.getFrom())) {
-                id_from = i;
+                idFrom = i;
             }
             if (vertices.get(i).equals(edge.getTo())) {
-                id_to = i;
+                idTo = i;
             }
         }
-        matrixAdjacency.get(id_from).set(id_to, false);
+        matrixAdjacency.get(idFrom).set(idTo, false);
     }
 
     /**
@@ -130,6 +131,7 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
 
     /**
      * get adjacent vertices with on vertex.
+     *
      * @param vertex which neighbors should be found.
      *
      * @return neighbors array.
@@ -170,28 +172,29 @@ public class GraphMatrixAdjacency<T> implements Graph<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
 
         return hashCode() == o.hashCode();
     }
 
-  /**
-   * parse graph from file.
-   * Example:
-   * Do not use tabs: cause errors.
-   * Here a,b,c - verticies, devided by '|'.
-   * In that example edges <From, To> -> <a,b> <b,c> <c,a>.
-   * all new vertices and values should be devided by '|'.
-   *
-   *     a | b | c
-   * a | 0 | 1 | 0
-   * b | 0 | 0 | 1
-   * c | 1 | 0 | 0
-   *
-   * @param fileName string that show path to file.
-   */
-  @Override
-  public void parse(String fileName) {
+    /**
+     * parse graph from file.
+     * Example:
+     * Do not use tabs: cause errors.
+     * Here a,b,c - verticies, devided by '|'.
+     * In that example edges (From, To) -> (a,b) (b,c) (c,a).
+     * all new vertices and values should be devided by '|'.
+     *     a | b | c
+     * a | 0 | 1 | 0
+     * b | 0 | 0 | 1
+     * c | 1 | 0 | 0
+     *
+     * @param fileName string that show path to file.
+     */
+    @Override
+    public void parse(String fileName) {
         String[] tokens;
 
         Utilities utils = new Utilities(fileName);

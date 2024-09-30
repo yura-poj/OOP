@@ -12,9 +12,7 @@ public class GraphListAdjacency<T> implements Graph<T> {
     private ArrayList<Vertex<T>> vertices;
     private ArrayList<Edge<T>> edges;
 
-    /**
-     * constructor.
-     */
+    /** constructor. */
     public GraphListAdjacency() {
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
@@ -89,7 +87,6 @@ public class GraphListAdjacency<T> implements Graph<T> {
      * get adjacent vertices with on vertex.
      *
      * @param vertex which neighbors should be found.
-     *
      * @return neighbors array.
      */
     @Override
@@ -123,26 +120,27 @@ public class GraphListAdjacency<T> implements Graph<T> {
      * compare hashcodes and return equal or not.
      *
      * @param o object that should be compared.
-     *
      * @return bool equal or not.
      */
     @Override
     public boolean equals(Object o) {
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
         return hashCode() == o.hashCode();
     }
 
-  /**
-   * parse graph from file.
-   * Example:
-   * a > b -> where 'a' vertex from, 'b' vertex to, devided by '>'.
-   * b > c
-   * c > a
-   *
-   * @param fileName string that show path to file.
-   */
-  @Override
-  public void parse(String fileName) {
+    /**
+     * parse graph from file.
+     * Example:
+     * a > b -> where 'a' vertex from, 'b' vertex to, devided by '>'.
+     * b > c
+     * c > a
+     *
+     * @param fileName string that show path to file.
+     */
+    @Override
+    public void parse(String fileName) {
         String[] tokens;
         HashMap<T, Vertex<T>> hashVertices = new HashMap<>();
         Vertex<T> from = null;
@@ -169,7 +167,6 @@ public class GraphListAdjacency<T> implements Graph<T> {
      *
      * @param token name.
      * @param hashVertices hash with names of vertices.
-     *
      * @return new or already existing vertex.
      */
     private Vertex<T> checkVertex(T token, HashMap<T, Vertex<T>> hashVertices) {
