@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SearchSubstring</span>
 extends java.lang.Object</pre>
+<div class="block">search substring from class Reader or string.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">SearchSubstring</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,13 +180,17 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(java.io.Reader,java.lang.String)">search</a></span>&#8203;(java.io.Reader&nbsp;reader,
       java.lang.String&nbsp;text)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">search substring.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(java.lang.String,java.lang.String)">search</a></span>&#8203;(java.lang.String&nbsp;reader,
       java.lang.String&nbsp;text)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">overloaded method that open file reader by string and call another search.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -216,6 +223,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>SearchSubstring</h4>
 <pre>public&nbsp;SearchSubstring()</pre>
+<div class="block">constructor.</div>
 </li>
 </ul>
 </li>
@@ -237,9 +245,16 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;search&#8203;(java.io.Reader&nbsp;reader,
                                                      java.lang.String&nbsp;text)
                                               throws java.io.IOException</pre>
+<div class="block">search substring. create buffer with length of param text, and compare it with substring of
+ size of param text in file. after each iteration remove first element in buffer and add next.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>reader</code> - subclass of Reader which will be called in function to get chars.</dd>
+<dd><code>text</code> - you want to find in file.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>array list with indexes of first letters of substring.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - Signals that an I/O exception to some sort has occurred.</dd>
 </dl>
 </li>
 </ul>
@@ -252,9 +267,15 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;search&#8203;(java.lang.String&nbsp;reader,
                                                      java.lang.String&nbsp;text)
                                               throws java.io.IOException</pre>
+<div class="block">overloaded method that open file reader by string and call another search.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>reader</code> - string of name of file which will be opened.</dd>
+<dd><code>text</code> - substring that should be found.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>array list with indexes of first letters of substring.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - Signals that an I/O exception to some sort has occurred.</dd>
 </dl>
 </li>
 </ul>
