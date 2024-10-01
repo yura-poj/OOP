@@ -1,38 +1,51 @@
 package ru.nsu.pozhidaev;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
 public class SearchSubstring {
-    Utilities utilities;
-    ArrayList<Integer> results = new ArrayList<>();
+    private ArrayList<Integer> results;
 
     public SearchSubstring() {
         results = new ArrayList<>();
     }
 
-    public ArrayList<Integer> search(String filename, String text) throws IOException {
-        utilities = new Utilities(filename);
-        int i = 0;
-        char ch = 0;
+    public ArrayList<Integer> search(Reader reader, String text) throws IOException {
+        int startSubstringIndex = 0;
+        char currentChar = 0;
         ArrayList<Character> buffer = new ArrayList<>();
         for(int j = 0; j < text.length(); j++){
-            ch = (char) utilities.newChar();
-            buffer.add(ch);
+            currentChar = newChar(reader);
+            buffer.add(currentChar);
         }
         buffer.toArray();
-        while(ch != '\uFFFF'){
+        while(currentChar != '\uFFFF'){
             if(compareCharArray(buffer, text)){
-                results.add(i);
+                results.add(startSubstringIndex);
             }
 
             buffer.remove(0);
-            ch = (char) utilities.newChar();
-            buffer.add((char) ch);
-            i++;
+            currentChar = newChar(reader);
+            buffer.add(currentChar);
+            startSubstringIndex++;
         }
 
         return results;
+    }
+
+    public ArrayList<Integer> search(String reader, String text) throws IOException {
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(reader));
+        }
+        catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
+        return search(bufferedReader, text);
     }
 
     private boolean compareCharArray(ArrayList<Character> buffer, String text){
@@ -44,4 +57,14 @@ public class SearchSubstring {
         return true;
     }
 
+    private Character newChar(Reader reader) throws IOException {
+        char result = '0';
+        while(true){
+            result = (char) reader.read();
+            if(result != '\n' && result != '\r'){
+                return result;
+            }
+        }
+
+    }
 }
