@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae6bdc3e-c8be-4814-92f5-8882a495d247" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/HashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Structure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Structure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/HashTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/HashTableTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,7 +240,7 @@
       <workItem from="1727505327896" duration="147000" />
       <workItem from="1727505484251" duration="4076000" />
       <workItem from="1727748497312" duration="71000" />
-      <workItem from="1727771415461" duration="2503000" />
+      <workItem from="1727771415461" duration="5652000" />
     </task>
     <servers />
   </component>
@@ -252,17 +252,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/HashTable.java</url>
-          <line>244</line>
+          <line>390</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/HashTable.java</url>
-          <line>63</line>
+          <line>109</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/HashTable.java</url>
-          <line>38</line>
+          <line>70</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
