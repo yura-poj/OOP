@@ -41,6 +41,16 @@ class SearchSubstringTest {
     }
 
     @Test
+    void searchStrangeText() throws IOException {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(22);
+
+        ArrayList<Integer> list1 = searchSubstring.search(
+                "./src/test/resources/test2.txt", "世界☀★♛");
+        assertEquals(list, list1);
+    }
+
+    @Test
     void generateBigTestString() throws IOException {
         File file = new File("./src/test/resources/test1.txt");
         file.createNewFile();
