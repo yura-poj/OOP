@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     private final static int SUB_ARRAY_MAX_SIZE = 4;
 
-
+    private int iterationNumber;
     private int keySize;
     private int keyNumber;
     private ArrayList<ArrayList<Structure<T, D>>> values;
@@ -17,9 +17,14 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
         values = new ArrayList<>();
         keySize = 8;
         keyNumber = 0;
+        iterationNumber = 0;
         for (int i = 0; i < keySize; i++) {
             values.add(new ArrayList<>());
         }
+    }
+
+    public int getIterationNumber() {
+        return iterationNumber;
     }
 
     public int getKeyNumber() {
@@ -31,17 +36,18 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     }
 
     public void put(T key, D value) {
+        iterationNumber++;
         Structure<T, D> structure = getStructure(key);
         if (structure != null) {
             return;
         }
 
         keyNumber++;
-        int id = hashFunstion(key, keySize);
+        int id = hashFunction(key, keySize);
         ArrayList<Structure<T, D>> list = values.get(id);
         if (list.size() > SUB_ARRAY_MAX_SIZE) {
             resize();
-            id = hashFunstion(key, keySize);
+            id = hashFunction(key, keySize);
         }
         list.add(new Structure<T, D>(key, value));
     }
@@ -55,6 +61,7 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     }
 
     public void removeByKey(T key) {
+        iterationNumber++;
         Structure<T, D> structure = getStructure(key);
         if (structure != null) {
             keyNumber--;
@@ -64,6 +71,7 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     }
 
     public void update(T key, D value) {
+        iterationNumber++;
         Structure<T, D> structure = getStructure(key);
         if (structure != null) {
             structure.data = value;
@@ -111,7 +119,7 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
     }
 
     private Structure<T, D> getStructure(T key) {
-        int id = hashFunstion(key, keySize);
+        int id = hashFunction(key, keySize);
         ArrayList<Structure<T, D>> list = values.get(id);
         for (Structure<T, D> structure : list) {
             if (structure.key != null && structure.key.equals(key)) {
@@ -121,7 +129,7 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
         return null;
     }
 
-    private int hashFunstion(T key, int size) {
+    private int hashFunction(T key, int size) {
         return Math.abs(key.hashCode()) % size;
     }
 
@@ -144,7 +152,7 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
                 if (structure.key == null) {
                     continue;
                 }
-                id = hashFunstion((T) structure.key, keySize);
+                id = hashFunction((T) structure.key, keySize);
                 newValues.get(id).add(structure);
             }
         }
@@ -178,11 +186,13 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
         private Structure<T, D> current;
         private int indexI;
         private int indexJ;
+        private int iterationNumber;
 
         public HashTableIterator() {
             indexI = 0;
             indexJ = -1;
             current = null;
+            iterationNumber = getIterationNumber();
         }
 
         private Structure<T, D> findNext(boolean change) {
@@ -212,39 +222,29 @@ public class HashTable<T, D> implements Iterable<Structure<T, D>> {
 
         @Override
         public boolean hasNext() {
+            checkIteration();
             return findNext(false) != null;
         }
 
         @Override
         public Structure<T, D> next() {
+            checkIteration();
             current = findNext(true);
             return current;
         }
 
         @Override
         public void remove() {
+            checkIteration();
             if (current != null) {
                 removeByKey(current.key);
             }
         }
 
-        public void forEach(Consumer<? super Structure<T, D>> action) {
-            int oldIndexI = indexI;
-            int oldIndexJ = indexJ;
-            indexI = 0;
-            indexJ = -1;
-            try {
-                while (hasNext()) {
-                    next();
-                    if (current != null && current.key != null) {
-                        action.accept(current);
-                    }
-                }
-            } catch (ConcurrentModificationException e) {
-                System.out.println("You can not modify collection during iterating");
+        private void checkIteration() {
+            if(iterationNumber != getIterationNumber()) {
+                throw new ConcurrentModificationException();
             }
-            indexI = oldIndexI;
-            indexJ = oldIndexJ;
         }
     }
 }

@@ -1,15 +1,16 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class HashTableTest {
     HashTable<String, Integer> hashTable;
+    Iterator<Structure<String, Integer>> iterator;
 
     @BeforeEach
     void setUp() {
@@ -17,6 +18,7 @@ class HashTableTest {
         hashTable.put("A", 1);
         hashTable.put("B", 2);
         hashTable.put("C", 3);
+        iterator = hashTable.iterator();
     }
 
     @Test
@@ -62,9 +64,11 @@ class HashTableTest {
 
     @Test
     void print() {
-        assertTimeout(Duration.ofMillis(100), () -> {
-            hashTable.print();
-        });
+        assertTimeout(
+                Duration.ofMillis(100),
+                () -> {
+                    hashTable.print();
+                });
     }
 
     @Test
@@ -80,38 +84,49 @@ class HashTableTest {
         assertTrue(hashTable.equals(newHashTable));
     }
 
-//    @Test
-//    void hasNext() {
-//        assertTrue(hashTable.hasNext());
-//        hashTable.next();
-//        assertTrue(hashTable.hasNext());
-//        hashTable.next();
-//        assertTrue(hashTable.hasNext());
-//        hashTable.next();
-//        assertFalse(hashTable.hasNext());
-//    }
-//
-//    @Test
-//    void next() {
-//        assertEquals(1, hashTable.get("A"));
-//    }
-//
-//    @Test
-//    void remove() {
-//        int before = hashTable.getKeyNumber();
-//        hashTable.next();
-//        hashTable.remove();
-//        assertEquals(before, hashTable.getKeyNumber() + 1);
-//    }
-//
-//    @Test
-//    void forEachRemaining() {
-//        ArrayList<Integer> values = new ArrayList<>();
-//        ArrayList<Integer> vals = new ArrayList<>();
-//        vals.add(1);
-//        vals.add(2);
-//        vals.add(3);
-//        hashTable.forEachRemaining((value) -> values.add(value.data));
-//        assertEquals(values, vals);
-//    }
+    @Test
+    void hasNext() {
+        assertTrue(iterator.hasNext());
+        iterator.next();
+        assertTrue(iterator.hasNext());
+        iterator.next();
+        assertTrue(iterator.hasNext());
+        iterator.next();
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    void next() {
+        assertEquals(1, iterator.next().data);
+    }
+
+    @Test
+    void remove() {
+        int before = hashTable.getKeyNumber();
+        iterator.next();
+        iterator.remove();
+        assertEquals(before, hashTable.getKeyNumber() + 1);
+    }
+
+    @Test
+    void iterator() {
+        int result = 0;
+        for (Structure<String, Integer> structure : hashTable) {
+            result++;
+        }
+        assertEquals(result, hashTable.getKeyNumber());
+    }
+
+    @Test
+    void checkException() {
+        int result = 0;
+        assertThrowsExactly(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (Structure<String, Integer> structure : hashTable) {
+                        hashTable.removeByKey("A");
+                    }
+                }
+        );
+    }
 }
