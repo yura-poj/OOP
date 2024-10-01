@@ -130,6 +130,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - type of key.</dd>
+<dd><code>D</code> - type of data.</dd>
+</dl>
+<dl>
 <dt>All Implemented Interfaces:</dt>
 <dd><code>java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu.pozhidaev">Structure</a>&lt;T,&#8203;D&gt;&gt;</code></dd>
 </dl>
@@ -137,6 +142,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">HashTable&lt;T,&#8203;D&gt;</span>
 extends java.lang.Object
 implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu.pozhidaev">Structure</a>&lt;T,&#8203;D&gt;&gt;</pre>
+<div class="block">hashtable with method of chains (linked arrays),
+ and resizing table with hash function.
+ contain data by their keys, like ("A": 1).</div>
 </li>
 </ul>
 </div>
@@ -158,7 +166,9 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">HashTable</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,69 +191,95 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#contains(T)">contains</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">check exist key in hashtable or not yet.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">check equals object and hashtable or not.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="HashTable.html" title="type parameter in HashTable">D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(T)">get</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get value by key from hashtable.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIterationNumber()">getIterationNumber</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKeyNumber()">getKeyNumber</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKeySize()">getKeySize</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">hashcode of hashtable to compare them.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Structure.html" title="class in ru.nsu.pozhidaev">Structure</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">T</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">D</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Iterator of hashtable.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">print hashtable to system out.</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(T,D)">put</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key,
    <a href="HashTable.html" title="type parameter in HashTable">D</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">put a new value with key.</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeByKey(T)">removeByKey</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">remove structure by key.</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">convert hashtable to string like (key: data \n).</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(T,D)">update</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key,
       <a href="HashTable.html" title="type parameter in HashTable">D</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">update value by existing key.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -283,6 +319,7 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>HashTable</h4>
 <pre>public&nbsp;HashTable()</pre>
+<div class="block">constructor.</div>
 </li>
 </ul>
 </li>
@@ -302,6 +339,11 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>getIterationNumber</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getIterationNumber()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>iteration number, iterations are put, update, remove.</dd>
+</dl>
 </li>
 </ul>
 <a id="getKeyNumber()">
@@ -311,6 +353,11 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>getKeyNumber</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getKeyNumber()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>key number is number of keys in hashtable</dd>
+</dl>
 </li>
 </ul>
 <a id="getKeySize()">
@@ -320,6 +367,11 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>getKeySize</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getKeySize()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of subarrays in array = size of values array.</dd>
+</dl>
 </li>
 </ul>
 <a id="put(java.lang.Object,java.lang.Object)">
@@ -332,6 +384,13 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <h4>put</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;put&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key,
                 <a href="HashTable.html" title="type parameter in HashTable">D</a>&nbsp;value)</pre>
+<div class="block">put a new value with key.
+ if key already exist - code won't put anything.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - of structure.</dd>
+<dd><code>value</code> - of structure.</dd>
+</dl>
 </li>
 </ul>
 <a id="get(java.lang.Object)">
@@ -343,6 +402,14 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;<a href="HashTable.html" title="type parameter in HashTable">D</a>&nbsp;get&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</pre>
+<div class="block">get value by key from hashtable.
+ if key isn't available - code return null.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - by which will be research.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>value stored by key.</dd>
+</dl>
 </li>
 </ul>
 <a id="removeByKey(java.lang.Object)">
@@ -354,6 +421,12 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>removeByKey</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;removeByKey&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</pre>
+<div class="block">remove structure by key.
+ if structure isn't available code won't do anything.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - that will be removed with structure.</dd>
+</dl>
 </li>
 </ul>
 <a id="update(java.lang.Object,java.lang.Object)">
@@ -366,6 +439,12 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <h4>update</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;update&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key,
                    <a href="HashTable.html" title="type parameter in HashTable">D</a>&nbsp;value)</pre>
+<div class="block">update value by existing key.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - that exist already.</dd>
+<dd><code>value</code> - that should be instead of previous value.</dd>
+</dl>
 </li>
 </ul>
 <a id="contains(java.lang.Object)">
@@ -377,6 +456,13 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>contains</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;contains&#8203;(<a href="HashTable.html" title="type parameter in HashTable">T</a>&nbsp;key)</pre>
+<div class="block">check exist key in hashtable or not yet.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - which should be searched.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>bool contains key or not.</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">
@@ -386,9 +472,12 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">convert hashtable to string like (key: data \n).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>string of ready hashtable.</dd>
 </dl>
 </li>
 </ul>
@@ -399,6 +488,7 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
+<div class="block">print hashtable to system out.</div>
 </li>
 </ul>
 <a id="equals(java.lang.Object)">
@@ -408,9 +498,14 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>equals</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">check equals object and hashtable or not.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>o</code> - object which should b compared.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>bool equal or not.</dd>
 </dl>
 </li>
 </ul>
@@ -421,9 +516,15 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>iterator</h4>
 <pre class="methodSignature">public&nbsp;java.util.Iterator&lt;<a href="Structure.html" title="class in ru.nsu.pozhidaev">Structure</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">T</a>,&#8203;<a href="HashTable.html" title="type parameter in HashTable">D</a>&gt;&gt;&nbsp;iterator()</pre>
+<div class="block">Iterator of hashtable.
+ Usage: you can make Iterator it = hashtable.iterator,
+ or just call iterator in function:
+ for(Structure struct: hashtable)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="HashTable.html" title="type parameter in HashTable">T</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>pointer to new class iterator of hashtable.</dd>
 </dl>
 </li>
 </ul>
@@ -434,9 +535,14 @@ implements java.lang.Iterable&lt;<a href="Structure.html" title="class in ru.nsu
 <li class="blockList">
 <h4>hashCode</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<div class="block">hashcode of hashtable to compare them.
+ it collects in one code hashcodes of all values and keys,
+ and after that add this own size.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ready hashcode.</dd>
 </dl>
 </li>
 </ul>
