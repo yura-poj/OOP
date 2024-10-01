@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -175,7 +175,13 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(java.lang.String,java.lang.String)">search</a></span>&#8203;(java.lang.String&nbsp;filename,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(java.io.Reader,java.lang.String)">search</a></span>&#8203;(java.io.Reader&nbsp;reader,
+      java.lang.String&nbsp;text)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#search(java.lang.String,java.lang.String)">search</a></span>&#8203;(java.lang.String&nbsp;reader,
       java.lang.String&nbsp;text)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -222,13 +228,28 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="search(java.io.Reader,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>search</h4>
+<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;search&#8203;(java.io.Reader&nbsp;reader,
+                                                     java.lang.String&nbsp;text)
+                                              throws java.io.IOException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
+</dl>
+</li>
+</ul>
 <a id="search(java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>search</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;search&#8203;(java.lang.String&nbsp;filename,
+<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;search&#8203;(java.lang.String&nbsp;reader,
                                                      java.lang.String&nbsp;text)
                                               throws java.io.IOException</pre>
 <dl>
