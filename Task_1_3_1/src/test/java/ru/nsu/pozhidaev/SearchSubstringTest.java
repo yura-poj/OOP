@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,8 +37,9 @@ class SearchSubstringTest {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(0);
         list.add(10);
-        FileReader fileReader = new FileReader("./src/test/resources/test.txt");
-        ArrayList<Integer> list1 = searchSubstring.search(fileReader, "aboba");
+        InputStream inputStream = getClass().getResourceAsStream("/test.txt");
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        ArrayList<Integer> list1 = searchSubstring.search(inputStreamReader, "aboba");
         assertEquals(list, list1);
     }
 
@@ -44,7 +47,6 @@ class SearchSubstringTest {
     void searchStrangeText() throws IOException {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(22);
-
         ArrayList<Integer> list1 = searchSubstring.search(
                 "./src/test/resources/test2.txt", "世界☀★♛");
         assertEquals(list, list1);
