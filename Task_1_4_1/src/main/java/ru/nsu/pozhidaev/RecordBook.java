@@ -58,7 +58,7 @@ public class RecordBook {
     }
 
     public double gradePointAverage() {
-        List<Grade> grades = gradeStream(0,currentSemester).filter(b-> ! b.getType().equals(GradeType.PASS)).toList();
+        List<Grade> grades = gradeStream(0,currentSemester).filter(b-> ! b.getType().equals(GradeType.PASS)).collect(Collectors.toList());
 
         int sum = grades.stream().map(a -> a.getGrade()).reduce(0, (res, x) -> res + x);
 
@@ -88,7 +88,7 @@ public class RecordBook {
                         s->s.getGrade() == 5).orElse(false);
 
         List<Integer> finalResults = subjects.values().stream().limit(currentSemester).map(
-                Subject::finalResult).toList();
+                Subject::finalResult).collect(Collectors.toList());
 
 
 

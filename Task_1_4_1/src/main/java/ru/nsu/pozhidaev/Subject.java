@@ -30,7 +30,7 @@ public class Subject{
         if(semester > this.semester) {
             throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
         }
-        return grades.get(semester);
+        return grades.get(semester-1);
     }
 
     public ArrayList<ArrayList<Grade>> getAllGrades() {
@@ -54,7 +54,7 @@ public class Subject{
                 s->s.stream().filter(
                         a->a.getType() == GradeType.EXAM || a.getType() == GradeType.DIFFPASS).map(
                         Grade::getGrade)
-        ).toList();
+        ).collect(Collectors.toList());
         return Math.round((float) exams.stream().mapToInt(Integer::intValue).sum() / exams.size());
     }
 
