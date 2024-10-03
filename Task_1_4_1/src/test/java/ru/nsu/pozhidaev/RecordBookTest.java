@@ -1,9 +1,11 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RecordBookTest {
     RecordBook recordBook;
@@ -43,7 +45,8 @@ class RecordBookTest {
     }
 
     @Test
-    void chanceToGetRedDiplomaTrue() throws Subject.NoSuchSemesterYet, RecordBook.NoSuchSubjectYet {
+    void chanceToGetRedDiplomaTrue() throws Subject.NoSuchSemesterYet,
+            RecordBook.NoSuchSubjectYet {
         recordBook = new RecordBook("Lexa");
         recordBook.addSubject("Prolog");
         recordBook.addGrade("Prolog", 5, 1, GradeType.EXAM);
@@ -53,7 +56,8 @@ class RecordBookTest {
     }
 
     @Test
-    void chanceToGetRedDiplomaFalse() throws Subject.NoSuchSemesterYet, RecordBook.NoSuchSubjectYet {
+    void chanceToGetRedDiplomaFalse() throws Subject.NoSuchSemesterYet,
+            RecordBook.NoSuchSubjectYet {
         recordBook.addGrade("Prolog", 5, 1, GradeType.QUALIFICATION);
         assertFalse(recordBook.chanceToGetRedDiploma());
     }

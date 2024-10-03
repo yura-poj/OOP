@@ -1,11 +1,12 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class SubjectTest {
     Subject subject;
@@ -14,13 +15,13 @@ class SubjectTest {
     @BeforeEach
     void setUp() throws Subject.NoSuchSemesterYet {
         grades = new ArrayList<>();
-        grades.add(new Grade(5,GradeType.EXAM));
-        grades.add(new Grade(2,GradeType.PASS));
+        grades.add(new Grade(5, GradeType.EXAM));
+        grades.add(new Grade(2, GradeType.PASS));
         subject = new Subject("Prolog");
         subject.setGrade(5, 1, GradeType.EXAM);
         subject.setGrade(2, 1, GradeType.PASS);
         subject.nextSemester();
-        subject.setGrade(4,2, GradeType.EXAM);
+        subject.setGrade(4, 2, GradeType.EXAM);
     }
 
     @Test
@@ -44,15 +45,15 @@ class SubjectTest {
         ArrayList<ArrayList<Grade>> allGrades = new ArrayList<>();
         allGrades.add(grades);
         ArrayList<Grade> gr = new ArrayList<>();
-        gr.add(new Grade(4,GradeType.EXAM));
+        gr.add(new Grade(4, GradeType.EXAM));
         allGrades.add(gr);
         assertEquals(allGrades, subject.getAllGrades());
     }
 
     @Test
     void setGrade() throws Subject.NoSuchSemesterYet {
-        subject.setGrade(3,1, GradeType.EXAM);
-        grades.add(new Grade(3,GradeType.EXAM));
+        subject.setGrade(3, 1, GradeType.EXAM);
+        grades.add(new Grade(3, GradeType.EXAM));
         assertEquals(grades, subject.getGrades(1));
     }
 
