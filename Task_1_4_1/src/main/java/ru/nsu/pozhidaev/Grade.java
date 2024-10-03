@@ -1,7 +1,8 @@
 package ru.nsu.pozhidaev;
 
 /**
- * grade of student contain int grade and bool success for pass and if student got grade > 2.
+ * grade of student contain int grade and bool success for pass,
+ * and if student got grade more than 2.
  */
 public class Grade {
     private GradeType type;
