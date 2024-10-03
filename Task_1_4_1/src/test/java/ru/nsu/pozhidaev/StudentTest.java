@@ -16,4 +16,9 @@ class StudentTest {
     void getName() {
         assertEquals("Lexa", student.getName());
     }
+
+    @Test
+    void getRecordBook() {
+        assertEquals(RecordBook.class, student.getRecordBook().getClass());
+    }
 }

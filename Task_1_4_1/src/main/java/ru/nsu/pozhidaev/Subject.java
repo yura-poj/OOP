@@ -1,13 +1,21 @@
 package ru.nsu.pozhidaev;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Subject {
+import static java.util.Arrays.stream;
+
+public class Subject{
     private String name;
-    private HashMap<String,int[]> types;
+    private ArrayList<ArrayList<Grade>> grades;
+    private int semester;
 
     public Subject(String name) {
         this.name = name;
+        grades = new ArrayList<>();
+        grades.add(new ArrayList<>());
+        semester = 1;
     }
 
     public String getName() {
@@ -18,17 +26,41 @@ public class Subject {
         this.name = name;
     }
 
-    public int[] getGrades(String type) {
-        if (!types.containsKey(type)) {
-            return null;
+    public ArrayList<Grade> getGrades(int semester) throws NoSuchSemesterYet {
+        if(semester > this.semester) {
+            throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
         }
-        return types.get(type);
+        return grades.get(semester);
     }
 
-    public void setGrade(int grade, int semester, String type) {
-        if (!types.containsKey(type)){
-            types.put(type, new int[8]);
+    public ArrayList<ArrayList<Grade>> getAllGrades() {
+        return new ArrayList<>(grades);
+    }
+
+    public void setGrade(int grade, int semester, GradeType type) throws NoSuchSemesterYet {
+        if(semester > this.semester) {
+            throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
         }
-        types.get(type)[semester] = grade;
+        grades.get(semester-1).add(new Grade(grade, type));
+    }
+
+    public void nextSemester() {
+        grades.add(new ArrayList<>());
+        this.semester++;
+    }
+
+    public int finalResult(){
+        List<Integer> exams =  grades.stream().flatMap(
+                s->s.stream().filter(
+                        a->a.getType() == GradeType.EXAM || a.getType() == GradeType.DIFFPASS).map(
+                        Grade::getGrade)
+        ).toList();
+        return Math.round((float) exams.stream().mapToInt(Integer::intValue).sum() / exams.size());
+    }
+
+    static class NoSuchSemesterYet extends Exception{
+        public NoSuchSemesterYet(String message) {
+            super(message);
+        }
     }
 }
