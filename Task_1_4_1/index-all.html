@@ -97,11 +97,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">A</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#addGrade(java.lang.String,int,int,ru.nsu.pozhidaev.GradeType)">addGrade(String, int, int, GradeType)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">add grade for student to record book.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#addPass(java.lang.String,boolean,int)">addPass(String, boolean, int)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">add grade with type pass.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#addSubject(java.lang.String)">addSubject(String)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">add string of new subject into hashtable.</div>
+</dd>
 </dl>
 <a id="I:C">
 <!--   -->
@@ -109,13 +115,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">C</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#chanceToGetHigherGrants()">chanceToGetHigherGrants()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">chance to increase student grant calculated by collecting all grades,
+ if there is no grades less than 5, student will get higher grant.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#chanceToGetRedDiploma()">chanceToGetRedDiploma()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">chance to get red diploma calculated by collecting all final grade of exams and diffpasses,
+ if there is no three grades, and number of fives is more than 74 percentage,
+ and have excellent qualification work.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#chanceToStudyFree()">chanceToStudyFree()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">chance to study free calculted by collect results on exams by last two semesters,
+ and check if there is no three grades.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#changeName(java.lang.String)">changeName(String)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">setter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/GradeType.html#COLLOQUIUM">COLLOQUIUM</a></span> - ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/GradeType.html#CONTROL">CONTROL</a></span> - ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a></dt>
@@ -135,7 +153,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">E</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#equals(java.lang.Object)">equals(Object)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">return true if object is the same,
+ or if grade and type are equal.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/GradeType.html#EXAM">EXAM</a></span> - ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -145,7 +166,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">F</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#finalResult()">finalResult()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">calculate final grade of this subject.</div>
+</dd>
 </dl>
 <a id="I:G">
 <!--   -->
@@ -153,31 +176,58 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">G</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getAllGrades()">getAllGrades()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">get all grades from all semesters.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#getCurrentSemester()">getCurrentSemester()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#getGrade()">getGrade()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getGrades(int)">getGrades(int)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">get all grades in semester.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Student.html#getName()">getName()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Student.html" title="class in ru.nsu.pozhidaev">Student</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getName()">getName()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Student.html#getRecordBook()">getRecordBook()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Student.html" title="class in ru.nsu.pozhidaev">Student</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#getStudentName()">getStudentName()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#getType()">getType()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev"><span class="typeNameLink">Grade</span></a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">grade of student contain int grade and bool success for pass,
+ and if student got grade more than 2.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#%3Cinit%3E(int,ru.nsu.pozhidaev.GradeType)">Grade(int, GradeType)</a></span> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">constructor, success is true if grade more than 2.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#gradePointAverage()">gradePointAverage()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">get average grade point.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/GradeType.html" title="enum in ru.nsu.pozhidaev"><span class="typeNameLink">GradeType</span></a> - Enum in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">grade type.</div>
+</dd>
 </dl>
 <a id="I:I">
 <!--   -->
@@ -185,7 +235,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">I</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#isSuccess()">isSuccess()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter.</div>
+</dd>
 </dl>
 <a id="I:N">
 <!--   -->
@@ -193,9 +245,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">N</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#nextSemester()">nextSemester()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">increase current semester and increase it for all subjects in hashtable.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#nextSemester()">nextSemester()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">increase current semester.</div>
+</dd>
 </dl>
 <a id="I:P">
 <!--   -->
@@ -221,9 +277,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">R</h2>
 <dl>
 <dt><a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev"><span class="typeNameLink">RecordBook</span></a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">record book that contain subjects and their grades,
+ student should have one unique record book.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#%3Cinit%3E(java.lang.String)">RecordBook(String)</a></span> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">constructor.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a> - package ru.nsu.pozhidaev</dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -233,15 +294,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h2 class="title">S</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#setGrade(int,int,ru.nsu.pozhidaev.GradeType)">setGrade(int, int, GradeType)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">add grade to semester.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/Student.html" title="class in ru.nsu.pozhidaev"><span class="typeNameLink">Student</span></a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">student - owner of record book.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Student.html#%3Cinit%3E(java.lang.String)">Student(String)</a></span> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Student.html" title="class in ru.nsu.pozhidaev">Student</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">contructor.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev"><span class="typeNameLink">Subject</span></a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">subject of studying, with their own grades.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#%3Cinit%3E(java.lang.String)">Subject(String)</a></span> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">constructor.</div>
+</dd>
 </dl>
 <a id="I:T">
 <!--   -->

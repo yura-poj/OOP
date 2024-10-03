@@ -132,6 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Grade</span>
 extends java.lang.Object</pre>
+<div class="block">grade of student contain int grade and bool success for pass,
+ and if student got grade more than 2.</div>
 </li>
 </ul>
 </div>
@@ -154,7 +156,9 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,ru.nsu.pozhidaev.GradeType)">Grade</a></span>&#8203;(int&nbsp;grade,
      <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;type)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor, success is true if grade more than 2.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,22 +181,31 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">return true if object is the same,
+ or if grade and type are equal.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrade()">getGrade</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getType()">getType</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isSuccess()">isSuccess</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -226,6 +239,12 @@ extends java.lang.Object</pre>
 <h4>Grade</h4>
 <pre>public&nbsp;Grade&#8203;(int&nbsp;grade,
              <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;type)</pre>
+<div class="block">constructor, success is true if grade more than 2.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>grade</code> - from 2 to 5.</dd>
+<dd><code>type</code> - enum GradeType.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -245,6 +264,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getGrade</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getGrade()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>grade from 2 to 5.</dd>
+</dl>
 </li>
 </ul>
 <a id="isSuccess()">
@@ -254,6 +278,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isSuccess</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isSuccess()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if pass is success or grade more than 2 or not.</dd>
+</dl>
 </li>
 </ul>
 <a id="getType()">
@@ -263,6 +292,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getType</h4>
 <pre class="methodSignature">public&nbsp;<a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;getType()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>type of grade.</dd>
+</dl>
 </li>
 </ul>
 <a id="equals(java.lang.Object)">
@@ -272,9 +306,15 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>equals</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">return true if object is the same,
+ or if grade and type are equal.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>o</code> - object.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>bool equal or not.</dd>
 </dl>
 </li>
 </ul>

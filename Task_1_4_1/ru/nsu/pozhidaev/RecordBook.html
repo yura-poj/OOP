@@ -132,6 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">RecordBook</span>
 extends java.lang.Object</pre>
+<div class="block">record book that contain subjects and their grades,
+ student should have one unique record book.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +155,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">RecordBook</a></span>&#8203;(java.lang.String&nbsp;studentName)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -179,54 +183,78 @@ extends java.lang.Object</pre>
         int&nbsp;grade,
         int&nbsp;semester,
         <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;gradeType)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">add grade for student to record book.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addPass(java.lang.String,boolean,int)">addPass</a></span>&#8203;(java.lang.String&nbsp;subject,
        boolean&nbsp;pass,
        int&nbsp;semester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">add grade with type pass.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addSubject(java.lang.String)">addSubject</a></span>&#8203;(java.lang.String&nbsp;subject)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">add string of new subject into hashtable.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToGetHigherGrants()">chanceToGetHigherGrants</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">chance to increase student grant calculated by collecting all grades,
+ if there is no grades less than 5, student will get higher grant.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToGetRedDiploma()">chanceToGetRedDiploma</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">chance to get red diploma calculated by collecting all final grade of exams and diffpasses,
+ if there is no three grades, and number of fives is more than 74 percentage,
+ and have excellent qualification work.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToStudyFree()">chanceToStudyFree</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">chance to study free calculted by collect results on exams by last two semesters,
+ and check if there is no three grades.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSemester()">getCurrentSemester</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStudentName()">getStudentName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gradePointAverage()">gradePointAverage</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get average grade point.</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextSemester()">nextSemester</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">increase current semester and increase it for all subjects in hashtable.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -259,6 +287,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>RecordBook</h4>
 <pre>public&nbsp;RecordBook&#8203;(java.lang.String&nbsp;studentName)</pre>
+<div class="block">constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>studentName</code> - name of owner.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -278,6 +311,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getStudentName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getStudentName()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>student name.</dd>
+</dl>
 </li>
 </ul>
 <a id="nextSemester()">
@@ -287,6 +325,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>nextSemester</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;nextSemester()</pre>
+<div class="block">increase current semester and increase it for all subjects in hashtable.</div>
 </li>
 </ul>
 <a id="addGrade(java.lang.String,int,int,ru.nsu.pozhidaev.GradeType)">
@@ -301,10 +340,16 @@ extends java.lang.Object</pre>
                      <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;gradeType)
               throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
                      ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+<div class="block">add grade for student to record book.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subject</code> - string of name of existing subject in hashtable.</dd>
+<dd><code>grade</code> - number that means success of grade.</dd>
+<dd><code>semester</code> - to which need to add grade to subject.</dd>
+<dd><code>gradeType</code> - enum type of grade.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
-<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - if current semester is smaller than called.</dd>
+<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code> - if such subject wasn't found in hashtable.</dd>
 </dl>
 </li>
 </ul>
@@ -319,10 +364,15 @@ extends java.lang.Object</pre>
                     int&nbsp;semester)
              throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
                     ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+<div class="block">add grade with type pass.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subject</code> - string of name of existing subject in hashtable.</dd>
+<dd><code>pass</code> - bool success or not.</dd>
+<dd><code>semester</code> - to which need to add grade to subject.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
-<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - if current semester is smaller than called.</dd>
+<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code> - if such subject wasn't found in hashtable.</dd>
 </dl>
 </li>
 </ul>
@@ -333,6 +383,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCurrentSemester</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getCurrentSemester()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>current semester.</dd>
+</dl>
 </li>
 </ul>
 <a id="addSubject(java.lang.String)">
@@ -342,6 +397,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addSubject</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addSubject&#8203;(java.lang.String&nbsp;subject)</pre>
+<div class="block">add string of new subject into hashtable.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subject</code> - string of name of subject.</dd>
+</dl>
 </li>
 </ul>
 <a id="gradePointAverage()">
@@ -351,6 +411,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>gradePointAverage</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;gradePointAverage()</pre>
+<div class="block">get average grade point.
+ counting by collect all grades without passes and deviding them on their number.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result sum devided on size of grades.</dd>
+</dl>
 </li>
 </ul>
 <a id="chanceToStudyFree()">
@@ -360,6 +426,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>chanceToStudyFree</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;chanceToStudyFree()</pre>
+<div class="block">chance to study free calculted by collect results on exams by last two semesters,
+ and check if there is no three grades.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>can student study free or not.</dd>
+</dl>
 </li>
 </ul>
 <a id="chanceToGetRedDiploma()">
@@ -369,6 +441,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>chanceToGetRedDiploma</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;chanceToGetRedDiploma()</pre>
+<div class="block">chance to get red diploma calculated by collecting all final grade of exams and diffpasses,
+ if there is no three grades, and number of fives is more than 74 percentage,
+ and have excellent qualification work.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>can student get red diploma or not.</dd>
+</dl>
 </li>
 </ul>
 <a id="chanceToGetHigherGrants()">
@@ -378,6 +457,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>chanceToGetHigherGrants</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;chanceToGetHigherGrants()</pre>
+<div class="block">chance to increase student grant calculated by collecting all grades,
+ if there is no grades less than 5, student will get higher grant.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>can student have higher grant or not.</dd>
+</dl>
 </li>
 </ul>
 </li>

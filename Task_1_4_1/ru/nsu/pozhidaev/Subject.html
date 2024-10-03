@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Subject</span>
 extends java.lang.Object</pre>
+<div class="block">subject of studying, with their own grades.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Subject</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,39 +179,53 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeName(java.lang.String)">changeName</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">setter.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#finalResult()">finalResult</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">calculate final grade of this subject.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllGrades()">getAllGrades</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get all grades from all semesters.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrades(int)">getGrades</a></span>&#8203;(int&nbsp;semester)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get all grades in semester.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">getter.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextSemester()">nextSemester</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">increase current semester.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setGrade(int,int,ru.nsu.pozhidaev.GradeType)">setGrade</a></span>&#8203;(int&nbsp;grade,
         int&nbsp;semester,
         <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;type)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">add grade to semester.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -241,6 +258,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Subject</h4>
 <pre>public&nbsp;Subject&#8203;(java.lang.String&nbsp;name)</pre>
+<div class="block">constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - of subject.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -260,6 +282,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getName()</pre>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>name.</dd>
+</dl>
 </li>
 </ul>
 <a id="changeName(java.lang.String)">
@@ -269,6 +296,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>changeName</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;changeName&#8203;(java.lang.String&nbsp;name)</pre>
+<div class="block">setter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - on which will changed.</dd>
+</dl>
 </li>
 </ul>
 <a id="getGrades(int)">
@@ -279,9 +311,14 @@ extends java.lang.Object</pre>
 <h4>getGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&nbsp;getGrades&#8203;(int&nbsp;semester)
                                      throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</pre>
+<div class="block">get all grades in semester.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>semester</code> - of needed grades.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>grades of semester.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - semester is higher than current semester.</dd>
 </dl>
 </li>
 </ul>
@@ -292,6 +329,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAllGrades</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&gt;&nbsp;getAllGrades()</pre>
+<div class="block">get all grades from all semesters.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>grades.</dd>
+</dl>
 </li>
 </ul>
 <a id="setGrade(int,int,ru.nsu.pozhidaev.GradeType)">
@@ -304,9 +346,14 @@ extends java.lang.Object</pre>
                      int&nbsp;semester,
                      <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;type)
               throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</pre>
+<div class="block">add grade to semester.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>grade</code> - int.</dd>
+<dd><code>semester</code> - to which will be added grade.</dd>
+<dd><code>type</code> - of grade.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - semester is higher than current semester.</dd>
 </dl>
 </li>
 </ul>
@@ -317,6 +364,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>nextSemester</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;nextSemester()</pre>
+<div class="block">increase current semester.</div>
 </li>
 </ul>
 <a id="finalResult()">
@@ -326,6 +374,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>finalResult</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;finalResult()</pre>
+<div class="block">calculate final grade of this subject.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>final grade.</dd>
+</dl>
 </li>
 </ul>
 </li>
