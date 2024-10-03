@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -174,23 +174,58 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addGrade(java.lang.String,int,int,ru.nsu.pozhidaev.GradeType)">addGrade</a></span>&#8203;(java.lang.String&nbsp;subject,
+        int&nbsp;grade,
+        int&nbsp;semester,
+        <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;gradeType)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addPass(java.lang.String,boolean,int)">addPass</a></span>&#8203;(java.lang.String&nbsp;subject,
+       boolean&nbsp;pass,
+       int&nbsp;semester)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addSubject(java.lang.String)">addSubject</a></span>&#8203;(java.lang.String&nbsp;subject)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToGetHigherGrants()">chanceToGetHigherGrants</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToGetRedDiploma()">chanceToGetRedDiploma</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#chanceToStudyFree()">chanceToStudyFree</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentSemester()">getCurrentSemester</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStudentName()">getStudentName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gradePointAverage()">gradePointAverage</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextSemester()">nextSemester</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -236,6 +271,79 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getStudentName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStudentName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getStudentName()</pre>
+</li>
+</ul>
+<a id="nextSemester()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nextSemester</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;nextSemester()</pre>
+</li>
+</ul>
+<a id="addGrade(java.lang.String,int,int,ru.nsu.pozhidaev.GradeType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addGrade</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addGrade&#8203;(java.lang.String&nbsp;subject,
+                     int&nbsp;grade,
+                     int&nbsp;semester,
+                     <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;gradeType)
+              throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
+                     ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code></dd>
+</dl>
+</li>
+</ul>
+<a id="addPass(java.lang.String,boolean,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addPass</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addPass&#8203;(java.lang.String&nbsp;subject,
+                    boolean&nbsp;pass,
+                    int&nbsp;semester)
+             throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
+                    ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code></dd>
+<dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code></dd>
+</dl>
+</li>
+</ul>
+<a id="getCurrentSemester()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCurrentSemester</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getCurrentSemester()</pre>
+</li>
+</ul>
+<a id="addSubject(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addSubject</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addSubject&#8203;(java.lang.String&nbsp;subject)</pre>
+</li>
+</ul>
 <a id="gradePointAverage()">
 <!--   -->
 </a>
