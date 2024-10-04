@@ -91,7 +91,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </nav>
 </header>
 <main role="main">
-<div class="contentContainer"><a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes</a>&nbsp;<a href="allpackages-index.html">All&nbsp;Packages</a><a id="I:A">
+<div class="contentContainer"><a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes</a>&nbsp;<a href="allpackages-index.html">All&nbsp;Packages</a><a id="I:A">
 <!--   -->
 </a>
 <h2 class="title">A</h2>
@@ -175,10 +175,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">G</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getAllGrades()">getAllGrades()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
-<dd>
-<div class="block">get all grades from all semesters.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/RecordBook.html#getCurrentSemester()">getCurrentSemester()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/RecordBook.html" title="class in ru.nsu.pozhidaev">RecordBook</a></dt>
 <dd>
 <div class="block">getter.</div>
@@ -187,9 +183,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">getter.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getGrades(int)">getGrades(int)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
+<dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Subject.html#getGradesStream(int,int)">getGradesStream(int, int)</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Subject.html" title="class in ru.nsu.pozhidaev">Subject</a></dt>
 <dd>
-<div class="block">get all grades in semester.</div>
+<div class="block">get stream of grades,
+ where skip is how many semesters should we skip from 1,
+ and limit is how many semesters you need.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Student.html#getName()">getName()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Student.html" title="class in ru.nsu.pozhidaev">Student</a></dt>
 <dd>
@@ -227,6 +225,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="ru/nsu/pozhidaev/GradeType.html" title="enum in ru.nsu.pozhidaev"><span class="typeNameLink">GradeType</span></a> - Enum in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
 <dd>
 <div class="block">grade type.</div>
+</dd>
+</dl>
+<a id="I:H">
+<!--   -->
+</a>
+<h2 class="title">H</h2>
+<dl>
+<dt><span class="memberNameLink"><a href="ru/nsu/pozhidaev/Grade.html#hashCode()">hashCode()</a></span> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Grade.html" title="class in ru.nsu.pozhidaev">Grade</a></dt>
+<dd>
+<div class="block">hashcode by type, grade and success.</div>
 </dd>
 </dl>
 <a id="I:I">
@@ -337,7 +345,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 the order they are declared.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes</a>&nbsp;<a href="allpackages-index.html">All&nbsp;Packages</a></div>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes</a>&nbsp;<a href="allpackages-index.html">All&nbsp;Packages</a></div>
 </main>
 <footer role="contentinfo">
 <nav role="navigation">

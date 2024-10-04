@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -191,34 +191,30 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAllGrades()">getAllGrades</a></span>()</code></th>
+<td class="colFirst"><code>java.util.stream.Stream&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGradesStream(int,int)">getGradesStream</a></span>&#8203;(int&nbsp;skip,
+               int&nbsp;limit)</code></th>
 <td class="colLast">
-<div class="block">get all grades from all semesters.</div>
+<div class="block">get stream of grades,
+ where skip is how many semesters should we skip from 1,
+ and limit is how many semesters you need.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGrades(int)">getGrades</a></span>&#8203;(int&nbsp;semester)</code></th>
-<td class="colLast">
-<div class="block">get all grades in semester.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getter.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#nextSemester()">nextSemester</a></span>()</code></th>
 <td class="colLast">
 <div class="block">increase current semester.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setGrade(int,int,ru.nsu.pozhidaev.GradeType)">setGrade</a></span>&#8203;(int&nbsp;grade,
         int&nbsp;semester,
@@ -303,39 +299,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="getGrades(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getGrades</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&nbsp;getGrades&#8203;(int&nbsp;semester)
-                                     throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</pre>
-<div class="block">get all grades in semester.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>semester</code> - of needed grades.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>grades of semester.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - semester is higher than current semester.</dd>
-</dl>
-</li>
-</ul>
-<a id="getAllGrades()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getAllGrades</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.util.ArrayList&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&gt;&nbsp;getAllGrades()</pre>
-<div class="block">get all grades from all semesters.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>grades.</dd>
-</dl>
-</li>
-</ul>
 <a id="setGrade(int,int,ru.nsu.pozhidaev.GradeType)">
 <!--   -->
 </a>
@@ -345,7 +308,8 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;setGrade&#8203;(int&nbsp;grade,
                      int&nbsp;semester,
                      <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;type)
-              throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</pre>
+              throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
+                     ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</pre>
 <div class="block">add grade to semester.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -354,6 +318,7 @@ extends java.lang.Object</pre>
 <dd><code>type</code> - of grade.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - semester is higher than current semester.</dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</code></dd>
 </dl>
 </li>
 </ul>
@@ -370,7 +335,7 @@ extends java.lang.Object</pre>
 <a id="finalResult()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>finalResult</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;finalResult()</pre>
@@ -378,6 +343,30 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>final grade.</dd>
+</dl>
+</li>
+</ul>
+<a id="getGradesStream(int,int)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getGradesStream</h4>
+<pre class="methodSignature">public&nbsp;java.util.stream.Stream&lt;<a href="Grade.html" title="class in ru.nsu.pozhidaev">Grade</a>&gt;&nbsp;getGradesStream&#8203;(int&nbsp;skip,
+                                                      int&nbsp;limit)
+                                               throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</pre>
+<div class="block">get stream of grades,
+ where skip is how many semesters should we skip from 1,
+ and limit is how many semesters you need.
+ like skip = 1, limit = 2 - we get grades for semesters 2 to 4.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>skip</code> - how many skip semesters.</dd>
+<dd><code>limit</code> - how many need semesters.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>stream of grades.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - semester is higher than current semester.</dd>
 </dl>
 </li>
 </ul>

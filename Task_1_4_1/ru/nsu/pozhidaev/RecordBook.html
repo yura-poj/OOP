@@ -339,7 +339,8 @@ extends java.lang.Object</pre>
                      int&nbsp;semester,
                      <a href="GradeType.html" title="enum in ru.nsu.pozhidaev">GradeType</a>&nbsp;gradeType)
               throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
-                     ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+                     ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet,
+                     ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</pre>
 <div class="block">add grade for student to record book.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -350,6 +351,7 @@ extends java.lang.Object</pre>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - if current semester is smaller than called.</dd>
 <dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code> - if such subject wasn't found in hashtable.</dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</code></dd>
 </dl>
 </li>
 </ul>
@@ -363,7 +365,8 @@ extends java.lang.Object</pre>
                     boolean&nbsp;pass,
                     int&nbsp;semester)
              throws ru.nsu.pozhidaev.Subject.NoSuchSemesterYet,
-                    ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</pre>
+                    ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet,
+                    ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</pre>
 <div class="block">add grade with type pass.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -373,6 +376,7 @@ extends java.lang.Object</pre>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>ru.nsu.pozhidaev.Subject.NoSuchSemesterYet</code> - if current semester is smaller than called.</dd>
 <dd><code>ru.nsu.pozhidaev.RecordBook.NoSuchSubjectYet</code> - if such subject wasn't found in hashtable.</dd>
+<dd><code>ru.nsu.pozhidaev.Subject.NotValidGradeNumberException</code></dd>
 </dl>
 </li>
 </ul>
