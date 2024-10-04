@@ -31,6 +31,28 @@ public abstract class Expression {
     public abstract String toString();
 
     /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    public abstract Expression simlify();
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    public abstract boolean equals(Expression other);
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    public abstract int hashCode();
+
+    /**
      * recall method evaluate with hashmap.
      *
      * @param str variables and its values.

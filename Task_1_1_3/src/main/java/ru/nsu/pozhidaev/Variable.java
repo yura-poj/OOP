@@ -52,4 +52,39 @@ public class Variable extends Expression {
     public String toString() {
         return name;
     }
+
+    /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    @Override
+    public Expression simlify() {
+        return this;
+    }
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    @Override
+    public boolean equals(Expression other) {
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }

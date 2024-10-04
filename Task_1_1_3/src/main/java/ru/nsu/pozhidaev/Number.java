@@ -6,14 +6,14 @@ import java.util.HashMap;
  * object of number.
  */
 public class Number extends Expression {
-    private int number;
+    private double number;
 
     /**
      * init.
      *
      * @param number double.
      */
-    public Number(int number) {
+    public Number(double number) {
         this.number = number;
     }
 
@@ -46,6 +46,41 @@ public class Number extends Expression {
      */
     @Override
     public String toString() {
-        return Integer.toString(number);
+        return Double.toString(number);
+    }
+
+    /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    @Override
+    public Expression simlify() {
+        return this;
+    }
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    @Override
+    public boolean equals(Expression other) {
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return Double.hashCode(number);
     }
 }

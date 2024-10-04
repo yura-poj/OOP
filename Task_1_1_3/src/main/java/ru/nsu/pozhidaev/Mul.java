@@ -51,4 +51,54 @@ public class Mul extends Expression {
     public String toString() {
         return "(" + left.toString() + " * " + right.toString() + ")";
     }
+
+    /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    @Override
+    public Expression simlify() {
+        if (left.equals(new Number(1))) {
+            return right.simlify();
+        }
+        if (right.equals(new Number(1))) {
+            return left.simlify();
+        }
+        if (left.equals(new Number(0)) || right.equals(new Number(0))) {
+            return new Number(0);
+        }
+        Expression leftSimple = left.simlify();
+        Expression rightSimple = right.simlify();
+
+        if (leftSimple.getClass() == Number.class && rightSimple.getClass() == Number.class) {
+            return new Number(leftSimple.eval(new HashMap<>()) * rightSimple.eval(new HashMap<>()));
+        }
+        return new Mul(left.simlify(), right.simlify());
+    }
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    @Override
+    public boolean equals(Expression other) {
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return "mul".hashCode() + left.hashCode() + right.hashCode();
+    }
 }

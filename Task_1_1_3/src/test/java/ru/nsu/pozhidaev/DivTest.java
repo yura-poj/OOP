@@ -1,11 +1,11 @@
 package ru.nsu.pozhidaev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 
 class DivTest {
 
@@ -42,10 +42,24 @@ class DivTest {
 
     @Test
     void testToString() {
-        assertEquals("(1 / 2)", div1.toString());
+        assertEquals("(1.0 / 2.0)", div1.toString());
 
-        assertEquals("(2 / x)", div2.toString());
+        assertEquals("(2.0 / x)", div2.toString());
 
         assertEquals("(x / y)", div3.toString());
+    }
+
+    @Test
+    void testEquals() {
+        assertTrue(new Div(new Number(1), new Number(2)).equals(div1));
+
+        assertFalse(div1.equals(div2));
+    }
+
+    @Test
+    void testSimplify() {
+        assertTrue(new Number(0.5).equals(div1.simlify()));
+
+        assertTrue(new Number(1).equals(new Div(div1, div1).simlify()));
     }
 }

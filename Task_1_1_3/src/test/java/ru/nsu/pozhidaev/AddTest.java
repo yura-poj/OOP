@@ -1,11 +1,11 @@
 package ru.nsu.pozhidaev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 
 class AddTest {
     Add add1;
@@ -41,10 +41,25 @@ class AddTest {
 
     @Test
     void testToString() {
-        assertEquals("(1 + 2)", add1.toString());
+        assertEquals("(1.0 + 2.0)", add1.toString());
 
-        assertEquals("(1 + x)", add2.toString());
+        assertEquals("(1.0 + x)", add2.toString());
 
         assertEquals("(x + y)", add3.toString());
+    }
+
+    @Test
+    void testEquals() {
+        assertTrue(new Add(new Number(1), new Number(2)).equals(add1));
+        assertFalse(add1.equals(add2));
+
+    }
+
+    @Test
+    void testSimplify() {
+        assertTrue(new Number(3).equals(add1.simlify()));
+
+        assertTrue(new Variable("x").equals(
+                new Add(new Variable("x"), new Number(0)).simlify()));
     }
 }

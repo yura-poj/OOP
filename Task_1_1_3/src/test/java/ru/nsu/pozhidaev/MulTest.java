@@ -1,11 +1,11 @@
 package ru.nsu.pozhidaev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 
 class MulTest {
 
@@ -42,10 +42,27 @@ class MulTest {
 
     @Test
     void testToString() {
-        assertEquals("(1 * 2)", mul1.toString());
+        assertEquals("(1.0 * 2.0)", mul1.toString());
 
-        assertEquals("(2 * x)", mul2.toString());
+        assertEquals("(2.0 * x)", mul2.toString());
 
         assertEquals("(x * y)", mul3.toString());
+    }
+
+    @Test
+    void testEquals() {
+        assertTrue(new Mul(new Number(2), new Variable("x")).equals(mul2));
+
+        assertFalse(mul1.equals(mul3));
+    }
+
+    @Test
+    void testSimplify() {
+        assertTrue(new Number(2).equals(mul1.simlify()));
+
+        assertTrue(new Variable("x").equals(
+                new Mul(new Variable("x"), new Number(1)).simlify()));
+
+        assertTrue(new Number(0).equals(new Mul(new Variable("x"), new Number(0)).simlify()));
     }
 }
