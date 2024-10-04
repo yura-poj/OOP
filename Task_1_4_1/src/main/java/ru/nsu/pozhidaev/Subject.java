@@ -52,9 +52,10 @@ public class Subject {
      * @param type     of grade.
      * @throws NoSuchSemesterYet semester is higher than current semester.
      */
-    public void setGrade(int grade, int semester, GradeType type) throws NoSuchSemesterYet {
+    public void setGrade(int grade, int semester, GradeType type)
+            throws NoSuchSemesterYet, NotValidGradeNumberException {
         if (grade > 5 || grade < 2) {
-            return;
+            throw new NotValidGradeNumberException("Not valid grade should be from 2 to 5");
         }
         if (semester > this.semester) {
             throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
@@ -91,12 +92,15 @@ public class Subject {
      * and limit is how many semesters you need.
      * like skip = 1, limit = 2 - we get grades for semesters 2 to 4.
      *
-     * @param skip how many skip semesters.
+     * @param skip  how many skip semesters.
      * @param limit how many need semesters.
-     *
      * @return stream of grades.
+     * @throws NoSuchSemesterYet semester is higher than current semester.
      */
-    public Stream<Grade> getGradesStream(int skip, int limit) {
+    public Stream<Grade> getGradesStream(int skip, int limit) throws NoSuchSemesterYet {
+        if (skip + limit > semester) {
+            throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
+        }
         return grades.stream().skip(skip).limit(limit).flatMap(
                 a -> a.stream().filter(Objects::nonNull)
         );
@@ -112,6 +116,12 @@ public class Subject {
          * @param message which will be printed.
          */
         public NoSuchSemesterYet(String message) {
+            super(message);
+        }
+    }
+
+    static class NotValidGradeNumberException extends Exception {
+        public NotValidGradeNumberException(String message) {
             super(message);
         }
     }

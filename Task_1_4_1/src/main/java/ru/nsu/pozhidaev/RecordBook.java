@@ -11,6 +11,8 @@ import java.util.stream.Stream;
  * student should have one unique record book.
  */
 public class RecordBook {
+    private static final double MINIMAL_FIVE_PERCENT_FOR_RED_DIPLOMA = 0.75;
+    private static final int SEMESTERS_NUMBER_FOR_CALCULATION_FREE_STUDY = 2;
     private final String studentName;
     private final HashMap<String, Subject> subjects;
     private int currentSemester;
@@ -57,7 +59,7 @@ public class RecordBook {
      */
     public void addGrade(
             String subject, int grade, int semester, GradeType gradeType
-    ) throws Subject.NoSuchSemesterYet, NoSuchSubjectYet {
+    ) throws Subject.NoSuchSemesterYet, NoSuchSubjectYet, Subject.NotValidGradeNumberException {
 
         if (!subjects.containsKey(subject)) {
             throw new NoSuchSubjectYet("No such subject yet, try addSubject()");
@@ -76,7 +78,7 @@ public class RecordBook {
      */
     public void addPass(
             String subject, boolean pass, int semester
-    ) throws Subject.NoSuchSemesterYet, NoSuchSubjectYet {
+    ) throws Subject.NoSuchSemesterYet, NoSuchSubjectYet, Subject.NotValidGradeNumberException {
         if (!subjects.containsKey(subject)) {
             throw new NoSuchSubjectYet("No such subject yet, try addSubject()");
         }
@@ -128,13 +130,15 @@ public class RecordBook {
      */
     public boolean chanceToStudyFree() {
         int skipNum = 0;
-        if (currentSemester > 2) {
-            skipNum = currentSemester - 2;
+        if (currentSemester > SEMESTERS_NUMBER_FOR_CALCULATION_FREE_STUDY) {
+            skipNum = currentSemester - SEMESTERS_NUMBER_FOR_CALCULATION_FREE_STUDY;
         }
-        boolean haveThreeOnExam = gradeStream(skipNum, 2).filter(
-                b -> b.getType().equals(GradeType.EXAM)).anyMatch(s -> s.getGrade() == 3);
+        boolean haveThreeOnExam = gradeStream(skipNum,
+                SEMESTERS_NUMBER_FOR_CALCULATION_FREE_STUDY).filter(
+                    b -> b.getType().equals(GradeType.EXAM)).anyMatch(s -> s.getGrade() == 3);
 
-        boolean allSuccess = gradeStream(skipNum, 2).filter(
+        boolean allSuccess = gradeStream(skipNum,
+                SEMESTERS_NUMBER_FOR_CALCULATION_FREE_STUDY).filter(
                 Objects::nonNull).allMatch(Grade::isSuccess);
 
         return (!haveThreeOnExam && allSuccess);
@@ -150,22 +154,22 @@ public class RecordBook {
     public boolean chanceToGetRedDiploma() {
         boolean haveThreeOnExam = gradeStream(0, currentSemester).filter(
                 b -> b.getType().equals(GradeType.EXAM)
-                || b.getType().equals(GradeType.DIFFPASS)).anyMatch(s -> s.getGrade() == 3);
+                        || b.getType().equals(GradeType.DIFFPASS)).anyMatch(s -> s.getGrade() == 3);
 
         boolean allSuccess = gradeStream(0, currentSemester).filter(
                 Objects::nonNull).allMatch(Grade::isSuccess);
 
         boolean qualifyExcellentWork = gradeStream(0, currentSemester).filter(
-                    b -> b.getType().equals(GradeType.QUALIFICATION)).findAny().map(
-                        s -> s.getGrade() == 5).orElse(false);
+                b -> b.getType().equals(GradeType.QUALIFICATION)).findAny().map(
+                    s -> s.getGrade() == 5).orElse(false);
 
         List<Integer> finalResults = subjects.values().stream().limit(currentSemester).map(
                 Subject::finalResult).collect(Collectors.toList());
 
 
         return (!haveThreeOnExam && allSuccess && qualifyExcellentWork && (
-                finalResults.stream().mapToInt(Integer::intValue).sum() / finalResults
-                        .size() > 0.75));
+                (double) finalResults.stream().filter(s -> s == 5).count() / finalResults
+                        .size() > MINIMAL_FIVE_PERCENT_FOR_RED_DIPLOMA));
     }
 
     /**
@@ -186,8 +190,15 @@ public class RecordBook {
      * @return stream of grades.
      */
     private Stream<Grade> gradeStream(int skip, int limit) {
-        return subjects.values().stream().flatMap(s->s.getGradesStream(skip, limit));
+        return subjects.values().stream().flatMap(s -> {
+            try {
+                return s.getGradesStream(skip, limit);
+            } catch (Subject.NoSuchSemesterYet e) {
+                return Stream.empty();
+            }
+        });
     }
+
 
     /**
      * exception.
