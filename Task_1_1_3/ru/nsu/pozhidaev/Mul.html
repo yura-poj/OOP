@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -190,13 +190,34 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(ru.nsu.pozhidaev.Expression)">equals</a></span>&#8203;(<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;other)</code></th>
+<td class="colLast">
+<div class="block">equals or not.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.util.HashMap)">eval</a></span>&#8203;(java.util.HashMap&lt;java.lang.String,&#8203;java.lang.Double&gt;&nbsp;dict)</code></th>
 <td class="colLast">
 <div class="block">evaluate multiplication of expressions.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
+<td class="colLast">
+<div class="block">hashcode.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#simlify()">simlify</a></span>()</code></th>
+<td class="colLast">
+<div class="block">simplify the expression.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -216,7 +237,7 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -299,7 +320,7 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <a id="toString()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
@@ -309,6 +330,56 @@ extends <a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</
 <dd><code><a href="Expression.html#toString()">toString</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>string of multiplication.</dd>
+</dl>
+</li>
+</ul>
+<a id="simlify()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>simlify</h4>
+<pre class="methodSignature">public&nbsp;<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;simlify()</pre>
+<div class="block">simplify the expression.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Expression.html#simlify()">simlify</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>simplified expression.</dd>
+</dl>
+</li>
+</ul>
+<a id="equals(ru.nsu.pozhidaev.Expression)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(<a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a>&nbsp;other)</pre>
+<div class="block">equals or not.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Expression.html#equals(ru.nsu.pozhidaev.Expression)">equals</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - object.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true or false, equals or not.</dd>
+</dl>
+</li>
+</ul>
+<a id="hashCode()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<div class="block">hashcode.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Expression.html#hashCode()">hashCode</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.pozhidaev">Expression</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>hashcode.</dd>
 </dl>
 </li>
 </ul>
