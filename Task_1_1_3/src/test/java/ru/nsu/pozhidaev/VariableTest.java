@@ -33,6 +33,7 @@ class VariableTest {
     void testToString() {
         assertEquals("x", variable.toString());
     }
+    
     @Test
     void testEquals() {
         assertTrue(variable.equals(new Variable("x")));
