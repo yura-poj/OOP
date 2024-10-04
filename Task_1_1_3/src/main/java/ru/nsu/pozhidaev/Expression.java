@@ -53,6 +53,7 @@ public abstract class Expression {
     public abstract int hashCode();
 
     /**
+
      * recall method evaluate with hashmap.
      *
      * @param str variables and its values.

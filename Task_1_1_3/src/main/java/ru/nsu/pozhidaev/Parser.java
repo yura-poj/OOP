@@ -6,22 +6,24 @@ import java.util.Stack;
  * Parse string into Expression.
  */
 public class Parser {
-
     private static final String actions = "+-*/";
 
     /**
      * Remove extra chars and return parsed string.
+
      *
      * @param input string to parse.
      * @return parsed expression.
      */
     public Expression parse(String input) {
         input = input.replace(" ", "");
+
         return parseExpression(input);
     }
 
     /**
      * Parse ready string to expression.
+
      *
      * @param input string to parse.
      * @return parsed expression.
@@ -57,6 +59,7 @@ public class Parser {
             } else if (actions.indexOf(current) != -1) {
                 while (!ops.isEmpty() && ops.peek() != '('
                         && precedence(current) <= precedence(ops.peek())) {
+
                     values.push(createAction(ops.pop(), values.pop(), values.pop()));
                 }
                 ops.push(current);
@@ -111,6 +114,7 @@ public class Parser {
 
     /**
      * Detect precedence of actions.
+
      *
      * @param op operation to detect.
      * @return number of precedence.

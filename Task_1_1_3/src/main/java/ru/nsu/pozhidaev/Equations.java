@@ -20,6 +20,7 @@ public class Equations {
             input = scanner.nextLine();
 
             if (input.equals("exit")) {
+
                 break;
             }
             e = parser.parse(input);
