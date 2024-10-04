@@ -5,8 +5,8 @@ package ru.nsu.pozhidaev;
  * and if student got grade more than 2.
  */
 public class Grade {
-    private GradeType type;
-    private int grade;
+    private final GradeType type;
+    private final int grade;
     private boolean success;
 
     /**
@@ -60,13 +60,19 @@ public class Grade {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Grade grade1 = (Grade) o;
-        return grade == grade1.grade && success == grade1.success && type == grade1.type;
+        return this.hashCode() == o.hashCode();
+    }
+
+    /**
+     * hashcode by type, grade and success.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return type.hashCode() + Integer.hashCode(grade) + Boolean.hashCode(success);
     }
 }

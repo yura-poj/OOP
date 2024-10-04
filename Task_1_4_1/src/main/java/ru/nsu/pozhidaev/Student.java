@@ -4,8 +4,8 @@ package ru.nsu.pozhidaev;
  * student - owner of record book.
  */
 public class Student {
-    private String name;
-    private RecordBook recordBook;
+    private final String name;
+    private final RecordBook recordBook;
 
     /**
      * contructor.

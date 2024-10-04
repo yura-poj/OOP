@@ -2,14 +2,16 @@ package ru.nsu.pozhidaev;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * subject of studying, with their own grades.
  */
 public class Subject {
     private String name;
-    private ArrayList<ArrayList<Grade>> grades;
+    private final ArrayList<ArrayList<Grade>> grades;
     private int semester;
 
     /**
@@ -40,29 +42,6 @@ public class Subject {
      */
     public void changeName(String name) {
         this.name = name;
-    }
-
-    /**
-     * get all grades in semester.
-     *
-     * @param semester of needed grades.
-     * @return grades of semester.
-     * @throws NoSuchSemesterYet semester is higher than current semester.
-     */
-    public ArrayList<Grade> getGrades(int semester) throws NoSuchSemesterYet {
-        if (semester > this.semester) {
-            throw new NoSuchSemesterYet("No such semester yet, try .nextSemester()");
-        }
-        return grades.get(semester - 1);
-    }
-
-    /**
-     * get all grades from all semesters.
-     *
-     * @return grades.
-     */
-    public ArrayList<ArrayList<Grade>> getAllGrades() {
-        return new ArrayList<>(grades);
     }
 
     /**
@@ -104,6 +83,23 @@ public class Subject {
                         Grade::getGrade)
         ).collect(Collectors.toList());
         return Math.round((float) exams.stream().mapToInt(Integer::intValue).sum() / exams.size());
+    }
+
+    /**
+     * get stream of grades,
+     * where skip is how many semesters should we skip from 1,
+     * and limit is how many semesters you need.
+     * like skip = 1, limit = 2 - we get grades for semesters 2 to 4.
+     *
+     * @param skip how many skip semesters.
+     * @param limit how many need semesters.
+     *
+     * @return stream of grades.
+     */
+    public Stream<Grade> getGradesStream(int skip, int limit) {
+        return grades.stream().skip(skip).limit(limit).flatMap(
+                a -> a.stream().filter(Objects::nonNull)
+        );
     }
 
     /**

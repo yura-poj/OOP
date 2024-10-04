@@ -36,21 +36,6 @@ class SubjectTest {
     }
 
     @Test
-    void testGetGrades() throws Subject.NoSuchSemesterYet {
-        assertEquals(grades, subject.getGrades(1));
-    }
-
-    @Test
-    void getAllGrades() {
-        ArrayList<ArrayList<Grade>> allGrades = new ArrayList<>();
-        allGrades.add(grades);
-        ArrayList<Grade> gr = new ArrayList<>();
-        gr.add(new Grade(4, GradeType.EXAM));
-        allGrades.add(gr);
-        assertEquals(allGrades, subject.getAllGrades());
-    }
-
-    @Test
     void setGrade() throws Subject.NoSuchSemesterYet {
         subject.setGrade(3, 1, GradeType.EXAM);
         grades.add(new Grade(3, GradeType.EXAM));

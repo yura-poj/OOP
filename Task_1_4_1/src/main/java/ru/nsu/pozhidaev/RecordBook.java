@@ -186,11 +186,7 @@ public class RecordBook {
      * @return stream of grades.
      */
     private Stream<Grade> gradeStream(int skip, int limit) {
-        return subjects.values().stream().flatMap(
-                s -> s.getAllGrades().stream().skip(skip).limit(limit).flatMap(
-                        a -> a.stream().filter(Objects::nonNull)
-                )
-        );
+        return subjects.values().stream().flatMap(s->s.getGradesStream(skip, limit));
     }
 
     /**
