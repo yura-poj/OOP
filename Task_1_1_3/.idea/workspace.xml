@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6ae851ad-2a57-40c7-b893-49036ca530c3" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="2" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2mEeeXuePuwk9T2iqBij3eGDpBO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle./Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.AddTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Task_1_1_3.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DivTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.EquationsTest.equations.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.EquationsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ExpressionTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MulTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.NumberTest.derivative.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.NumberTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SubTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3 [:ru.nsu.pozhidaev.Equations.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3 [:y.pozhidaev.Equations.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_1_3.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VariableTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.pozhidaev in Task_1_1_3.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.pozhidaev.executor&quot;: &quot;Run&quot;,
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Task__1__2__1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/y/pozhidaev/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.infernus.idea.checkstyle.CheckStyleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.nsu.pozhidaev" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle./Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev">
+    <configuration name="EquationsTest.equations" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.pozhidaev&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="/Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="pozhidaev in Task_1_1_3.test" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Task_1_1_3.test" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle./Users/Yurap/IntelliJIDEAProjects/OOP/Task_1_1_3/src/main/java/ru/nsu/pozhidaev" />
+      <item itemvalue="Gradle.EquationsTest.equations" />
+      <item itemvalue="JUnit.pozhidaev in Task_1_1_3.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.EquationsTest.equations" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ae851ad-2a57-40c7-b893-49036ca530c3" name="Changes" comment="" />
+      <created>1726646258614</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726646258614</updated>
+      <workItem from="1726646259586" duration="8970000" />
+      <workItem from="1726725628112" duration="6941000" />
+      <workItem from="1726736948709" duration="1575000" />
+      <workItem from="1726739307309" duration="283000" />
+      <workItem from="1726739611217" duration="67000" />
+      <workItem from="1726739684076" duration="783000" />
+      <workItem from="1726740472444" duration="1253000" />
+      <workItem from="1726741737605" duration="4774000" />
+      <workItem from="1726750021369" duration="943000" />
+      <workItem from="1726988513073" duration="12000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/NumberTest.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Equations.java</url>
+          <line>10</line>
+          <properties class="ru.nsu.pozhidaev.Equations">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Task_1_1_3$_Users_Yurap_IntelliJIDEAProjects_OOP_Task_1_1_3_src_main_java_ru_nsu_pozhidaev.ic" NAME="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev Coverage Results" MODIFIED="1726740760051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Task_1_1_3$pozhidaev_in_Task_1_1_3_test.ic" NAME="pozhidaev in Task_1_1_3.test Coverage Results" MODIFIED="1726740775673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Task_1_1_3$EquationsTest_equations.ic" NAME="EquationsTest.equations Coverage Results" MODIFIED="1726740493645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>
