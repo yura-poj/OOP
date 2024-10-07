@@ -6,22 +6,24 @@ import java.util.Stack;
  * Parse string into Expression.
  */
 public class Parser {
-    
     private static final String actions = "+-*/";
 
     /**
-     * remove extra chars and return parsed string.
+     * Remove extra chars and return parsed string.
+
      *
      * @param input string to parse.
      * @return parsed expression.
      */
     public Expression parse(String input) {
-        input = input.replace(" ", ""); // Удаляем пробелы
+        input = input.replace(" ", "");
+
         return parseExpression(input);
     }
 
     /**
-     * parse ready string to expression.
+     * Parse ready string to expression.
+
      *
      * @param input string to parse.
      * @return parsed expression.
@@ -51,9 +53,13 @@ public class Parser {
                 while (!ops.isEmpty() && ops.peek() != '(') {
                     values.push(createAction(ops.pop(), values.pop(), values.pop()));
                 }
-                ops.pop();
+                if (!ops.isEmpty() && ops.peek() == '(') {
+                    ops.pop();
+                }
             } else if (actions.indexOf(current) != -1) {
-                while (!ops.isEmpty() && precedence(current) <= precedence(ops.peek())) {
+                while (!ops.isEmpty() && ops.peek() != '('
+                        && precedence(current) <= precedence(ops.peek())) {
+
                     values.push(createAction(ops.pop(), values.pop(), values.pop()));
                 }
                 ops.push(current);
@@ -69,7 +75,7 @@ public class Parser {
     }
 
     /**
-     * detect variable or number.
+     * Detect variable or number.
      *
      * @param input string of number or variable.
      * @return expression.
@@ -84,7 +90,7 @@ public class Parser {
     }
 
     /**
-     * create action based on char operation.
+     * Create action based on char operation.
      *
      * @param action char of operation.
      * @param right  expression.
@@ -102,12 +108,13 @@ public class Parser {
             case '/':
                 return new Div(left, right);
             default:
-                return null;
+                throw new IllegalArgumentException("Unknown operation: " + action);
         }
     }
 
     /**
-     * detect precedence of actions.
+     * Detect precedence of actions.
+
      *
      * @param op operation to detect.
      * @return number of precedence.

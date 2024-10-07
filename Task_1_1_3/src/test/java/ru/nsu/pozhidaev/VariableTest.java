@@ -1,6 +1,8 @@
 package ru.nsu.pozhidaev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,5 +32,16 @@ class VariableTest {
     @Test
     void testToString() {
         assertEquals("x", variable.toString());
+    }
+    
+    @Test
+    void testEquals() {
+        assertTrue(variable.equals(new Variable("x")));
+        assertFalse(variable.equals(new Variable("y")));
+    }
+
+    @Test
+    void testSimplify() {
+        assertTrue(variable.equals(variable.simlify()));
     }
 }

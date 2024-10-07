@@ -7,8 +7,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
-
-
 class EquationsTest {
     Equations eq = new Equations();
 

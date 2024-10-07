@@ -56,4 +56,51 @@ public class Div extends Expression {
     public String toString() {
         return "(" + left.toString() + " / " + right.toString() + ")";
     }
+
+    /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    @Override
+    public Expression simlify() {
+        if (left.equals(right)) {
+            return new Number(1);
+        }
+        if (right.equals(new Number(1))) {
+            return left.simlify();
+        }
+        Expression leftSimple = left.simlify();
+        Expression rightSimple = right.simlify();
+
+        if (leftSimple.getClass() == Number.class && rightSimple.getClass() == Number.class) {
+            return new Number(leftSimple.eval(new HashMap<>()) / rightSimple.eval(new HashMap<>()));
+        }
+        return new Div(left.simlify(), right.simlify());
+    }
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    @Override
+    public boolean equals(Expression other) {
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return "div".hashCode() + left.hashCode() + right.hashCode();
+    }
 }

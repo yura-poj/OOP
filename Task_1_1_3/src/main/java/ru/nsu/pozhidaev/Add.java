@@ -51,4 +51,51 @@ public class Add extends Expression {
     public String toString() {
         return "(" + left.toString() + " + " + right.toString() + ")";
     }
+
+    /**
+     * simplify the expression.
+     *
+     * @return simplified expression.
+     */
+    @Override
+    public Expression simlify() {
+        if (left.equals(new Number(0))) {
+            return right.simlify();
+        }
+        if (right.equals(new Number(0))) {
+            return left.simlify();
+        }
+        Expression leftSimple = left.simlify();
+        Expression rightSimple = right.simlify();
+
+        if (leftSimple.getClass() == Number.class && rightSimple.getClass() == Number.class) {
+            return new Number(leftSimple.eval(new HashMap<>()) + rightSimple.eval(new HashMap<>()));
+        }
+        return new Add(left.simlify(), right.simlify());
+    }
+
+    /**
+     * equals or not.
+     *
+     * @param other object.
+     * @return true or false, equals or not.
+     */
+    @Override
+    public boolean equals(Expression other) {
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    /**
+     * hashcode.
+     *
+     * @return hashcode.
+     */
+    @Override
+    public int hashCode() {
+        return "add".hashCode() + left.hashCode() + right.hashCode();
+    }
 }

@@ -1,6 +1,7 @@
 package ru.nsu.pozhidaev;
 
 import java.util.Scanner;
+
 /**
  * The main class.
  */
@@ -14,11 +15,12 @@ public class Equations {
         Parser parser = new Parser();
         String input;
         Expression e;
-        while (true){
+        while (true) {
             System.out.println("Print 'exit' to leave or your math equation: ");
             input = scanner.nextLine();
 
-            if (input.equals("exit")){
+            if (input.equals("exit")) {
+
                 break;
             }
             e = parser.parse(input);
