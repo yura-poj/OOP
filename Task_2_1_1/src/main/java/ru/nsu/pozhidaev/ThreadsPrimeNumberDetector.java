@@ -2,19 +2,37 @@ package ru.nsu.pozhidaev;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
+
+/**
+ * class realizes detector of prime number.
+ */
 
 public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
 
     private final int numberThreads;
     private final Thread[] threads;
-    private boolean results[];
+    private boolean[] results;
 
+    /**
+     * constructor.
+     *
+     * @param numberThreads number of threads that will be created.
+     */
     public ThreadsPrimeNumberDetector(int numberThreads) {
         this.numberThreads = numberThreads;
         threads = new Thread[numberThreads];
         results = new boolean[numberThreads];
     }
+
+    /**
+     * function try to find prime number in array.
+     *
+     * @param nums numbers.
+     *
+     * @return boolean exist or not.
+     *
+     * @throws InterruptedException if thread was interrupted outside.
+     */
 
     @Override
     public boolean isPrimeNumberExist(int[] nums) throws InterruptedException {
@@ -34,12 +52,11 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
 
         Set finishedThreads = new HashSet();
         while (finishedThreads.size() < numberThreads) {
-            for(int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
-                if(! threads[threadNumber].isAlive())  {
-                    if(results[threadNumber]) {
+            for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
+                if (!threads[threadNumber].isAlive()) {
+                    if (results[threadNumber]) {
                         return true;
-                    }
-                    else {
+                    } else {
                         finishedThreads.add(threadNumber);
                     }
                 }

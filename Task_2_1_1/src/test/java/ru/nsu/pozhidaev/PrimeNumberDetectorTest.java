@@ -1,19 +1,19 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class PrimeNumberDetectorTest {
 
     void checkTime(int[] nums, PrimeNumberDetector detector) throws InterruptedException {
         long start = System.nanoTime();
         assertTrue(detector.isPrimeNumberExist(nums));
-        System.out.println(detector.getClass().getSimpleName() + " compute in " + (System.nanoTime() - start));
+        System.out.println(detector.getClass().getSimpleName()
+                + " compute in " + (System.nanoTime() - start));
     }
 
     @ParameterizedTest
@@ -27,11 +27,12 @@ class PrimeNumberDetectorTest {
     @MethodSource("provideDetectors")
     void testHavePrime(PrimeNumberDetector detector) throws InterruptedException {
         int[] nums = new int[1001];
-        int x = 2,y = 2;
-        for( int i = 0; i < 1000; i++){
+        int x = 2;
+        int y = 2;
+        for (int i = 0; i < 1000; i++) {
             x++;
             y++;
-            nums[i] = x*y;
+            nums[i] = x * y;
         }
         nums[1000] = 149;
         checkTime(nums, detector);
@@ -41,11 +42,12 @@ class PrimeNumberDetectorTest {
     @MethodSource("provideDetectors")
     void bigTestHavePrime(PrimeNumberDetector detector) throws InterruptedException {
         int[] nums = new int[10001];
-        int x = 2,y = 2;
-        for( int i = 0; i < 10000; i++){
+        int x = 2;
+        int y = 2;
+        for (int i = 0; i < 10000; i++) {
             x++;
             y++;
-            nums[i] = x*y;
+            nums[i] = x * y;
         }
         nums[10000] = 149;
         checkTime(nums, detector);

@@ -1,9 +1,21 @@
 package ru.nsu.pozhidaev;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
+/**
+ * class realizes detector of prime number.
+ */
 public class ParallelsPrimeNumberDetector implements PrimeNumberDetector {
+
+    /**
+     * function try to find prime number in array.
+     *
+     * @param nums numbers.
+     *
+     * @return boolean exist or not.
+     *
+     * @throws InterruptedException if thread was interrupted outside.
+     */
     public boolean isPrimeNumberExist(int[] nums) {
 
         return Arrays.stream(nums)
