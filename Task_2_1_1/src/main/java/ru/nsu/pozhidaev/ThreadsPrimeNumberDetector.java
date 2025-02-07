@@ -11,7 +11,7 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
 
     private final int numberThreads;
     private final Thread[] threads;
-    private boolean[] results;
+    private boolean result;
 
     /**
      * constructor.
@@ -21,7 +21,6 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
     public ThreadsPrimeNumberDetector(int numberThreads) {
         this.numberThreads = numberThreads;
         threads = new Thread[numberThreads];
-        results = new boolean[numberThreads];
     }
 
     /**
@@ -36,6 +35,7 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
 
     @Override
     public boolean isPrimeNumberExist(int[] nums) throws InterruptedException {
+        result = false;
         int numsLength = nums.length;
         int start = 0;
         int end = 0;
@@ -46,43 +46,36 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
             start += change;
         }
         for (int i = 0; i < numberThreads; i++) {
-            results[i] = false;
             threads[i].start();
         }
 
-        Set finishedThreads = new HashSet();
-        while (finishedThreads.size() < numberThreads) {
-            for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
-                if (!threads[threadNumber].isAlive()) {
-                    if (results[threadNumber]) {
-                        for (Thread thread : threads) {
-                            thread.interrupt();
-                        }
-                        return true;
-                    } else {
-                        finishedThreads.add(threadNumber);
-                    }
-                }
+        for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
+            threads[threadNumber].join();
+        }
+        for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
+            if (result) {
+                return true;
             }
         }
         return false;
     }
 
-    private void searchInSubArray(int[] nums, int start, int end, int result) {
+    private void searchInSubArray(int[] nums, int start, int end) {
         for (int index = start; index < end; index++) {
             if (Thread.interrupted()) {
                 return;
             }
             if (PrimeNumberDetectorUtils.isPrime(nums[index])) {
-                results[result] = true;
+                for (Thread thread : threads) {
+                    thread.interrupt();
+                }
+                result = true;
                 return;
             }
         }
-
-        results[result] = false;
     }
 
     private Thread createThread(int[] nums, int result, int start, int end) {
-        return new Thread(() -> searchInSubArray(nums, start, end, result));
+        return new Thread(() -> searchInSubArray(nums, start, end));
     }
 }
