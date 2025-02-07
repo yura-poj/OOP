@@ -23,11 +23,12 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
         int end = 0;
         int change = numsLength / numberThreads;
         for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
-            end = (threadNumber == numberThreads - 1) ? numsLength - 1 : start + change;
+            end = (threadNumber == numberThreads - 1) ? numsLength : start + change;
             threads[threadNumber] = createThread(nums, threadNumber, start, end);
             start += change;
         }
         for (int i = 0; i < numberThreads; i++) {
+            results[i] = false;
             threads[i].start();
         }
 
@@ -51,10 +52,11 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
         for (int index = start; index < end; index++) {
             if (PrimeNumberDetectorUtils.isPrime(nums[index])) {
                 results[result] = true;
+                return;
             }
         }
 
-        results[result] = true;
+        results[result] = false;
     }
 
     private Thread createThread(int[] nums, int result, int start, int end) {
