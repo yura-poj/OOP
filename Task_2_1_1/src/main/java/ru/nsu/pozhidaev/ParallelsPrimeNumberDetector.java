@@ -14,7 +14,6 @@ public class ParallelsPrimeNumberDetector implements PrimeNumberDetector {
      *
      * @return boolean exist or not.
      *
-     * @throws InterruptedException if thread was interrupted outside.
      */
     public boolean isPrimeNumberExist(int[] nums) {
 
