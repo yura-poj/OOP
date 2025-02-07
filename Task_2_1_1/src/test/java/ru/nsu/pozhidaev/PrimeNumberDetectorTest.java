@@ -11,12 +11,14 @@ class PrimeNumberDetectorTest {
     static final int NUMBER_OF_ARRAY_TEST1 = 1000;
     static final int NUMBER_OF_ARRAY_TEST2 = 10000;
 
-    void isPrimeNumberExistWithTime(int[] nums,
+    boolean isPrimeNumberExistWithTime(int[] nums,
                                     PrimeNumberDetector detector) throws InterruptedException {
         long start = System.nanoTime();
-        detector.isPrimeNumberExist(nums);
+        boolean result = detector.isPrimeNumberExist(nums);
         System.out.println(detector.getClass().getSimpleName()
                 + " compute in " + (System.nanoTime() - start));
+
+        return result;
     }
 
     @ParameterizedTest
@@ -38,8 +40,8 @@ class PrimeNumberDetectorTest {
             nums[i] = x * y;
         }
         nums[NUMBER_OF_ARRAY_TEST1] = 149;
-        isPrimeNumberExistWithTime(nums, detector);
-        assertTrue(detector.isPrimeNumberExist(nums));
+        boolean result = isPrimeNumberExistWithTime(nums, detector);
+        assertTrue(result);
     }
 
     @ParameterizedTest
@@ -54,8 +56,8 @@ class PrimeNumberDetectorTest {
             nums[i] = x * y;
         }
         nums[NUMBER_OF_ARRAY_TEST2] = 149;
-        isPrimeNumberExistWithTime(nums, detector);
-        assertTrue(detector.isPrimeNumberExist(nums));
+        boolean result = isPrimeNumberExistWithTime(nums, detector);
+        assertTrue(result);
     }
 
     static Stream<PrimeNumberDetector> provideDetectors() {
