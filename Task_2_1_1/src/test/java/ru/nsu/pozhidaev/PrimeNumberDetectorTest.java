@@ -8,10 +8,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class PrimeNumberDetectorTest {
+    static final int NUMBER_OF_ARRAY_TEST1 = 1000;
+    static final int NUMBER_OF_ARRAY_TEST2 = 10000;
 
-    void checkTime(int[] nums, PrimeNumberDetector detector) throws InterruptedException {
+    void isPrimeNumberExistWithTime(int[] nums,
+                                    PrimeNumberDetector detector) throws InterruptedException {
         long start = System.nanoTime();
-        assertTrue(detector.isPrimeNumberExist(nums));
+        detector.isPrimeNumberExist(nums);
         System.out.println(detector.getClass().getSimpleName()
                 + " compute in " + (System.nanoTime() - start));
     }
@@ -26,31 +29,33 @@ class PrimeNumberDetectorTest {
     @ParameterizedTest
     @MethodSource("provideDetectors")
     void testHavePrime(PrimeNumberDetector detector) throws InterruptedException {
-        int[] nums = new int[1001];
+        int[] nums = new int[NUMBER_OF_ARRAY_TEST1 + 1];
         int x = 2;
         int y = 2;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < NUMBER_OF_ARRAY_TEST1; i++) {
             x++;
             y++;
             nums[i] = x * y;
         }
-        nums[1000] = 149;
-        checkTime(nums, detector);
+        nums[NUMBER_OF_ARRAY_TEST1] = 149;
+        isPrimeNumberExistWithTime(nums, detector);
+        assertTrue(detector.isPrimeNumberExist(nums));
     }
 
     @ParameterizedTest
     @MethodSource("provideDetectors")
     void bigTestHavePrime(PrimeNumberDetector detector) throws InterruptedException {
-        int[] nums = new int[10001];
+        int[] nums = new int[NUMBER_OF_ARRAY_TEST2 + 1];
         int x = 2;
         int y = 2;
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < NUMBER_OF_ARRAY_TEST2; i++) {
             x++;
             y++;
             nums[i] = x * y;
         }
-        nums[10000] = 149;
-        checkTime(nums, detector);
+        nums[NUMBER_OF_ARRAY_TEST2] = 149;
+        isPrimeNumberExistWithTime(nums, detector);
+        assertTrue(detector.isPrimeNumberExist(nums));
     }
 
     static Stream<PrimeNumberDetector> provideDetectors() {

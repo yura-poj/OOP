@@ -55,6 +55,9 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
             for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
                 if (!threads[threadNumber].isAlive()) {
                     if (results[threadNumber]) {
+                        for (Thread thread : threads) {
+                            thread.interrupt();
+                        }
                         return true;
                     } else {
                         finishedThreads.add(threadNumber);
@@ -67,6 +70,9 @@ public class ThreadsPrimeNumberDetector implements PrimeNumberDetector {
 
     private void searchInSubArray(int[] nums, int start, int end, int result) {
         for (int index = start; index < end; index++) {
+            if (Thread.interrupted()) {
+                return;
+            }
             if (PrimeNumberDetectorUtils.isPrime(nums[index])) {
                 results[result] = true;
                 return;
