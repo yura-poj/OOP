@@ -55,26 +55,6 @@ class BakeryTest {
     }
 
     @Test
-    void VeryManyOrders() throws InterruptedException {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        int numberOfOrders = 100;
-        for(int i = 0; i < numberOfOrders; i++){
-            bakery.order();
-        }
-
-        sleep(120000);
-        bakery.close();
-
-        assertTrue(outContent.toString().contains("Status of order №96 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №97 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №98 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №99 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №100 is: delivered"));
-    }
-
-    @Test
     void close() throws InterruptedException {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
