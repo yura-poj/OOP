@@ -5,9 +5,9 @@ import static java.lang.Thread.sleep;
 public class Courier implements Runnable, Comparable<Courier> {
     private static final int speed = 10;
     private final int volume;
-    private Storage storage;
+    private Queue storage;
 
-    public Courier(int volume, Storage storage) {
+    public Courier(int volume, Queue storage) {
         this.volume = volume;
         this.storage = storage;
     }

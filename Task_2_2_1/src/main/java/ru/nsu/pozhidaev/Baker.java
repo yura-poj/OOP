@@ -6,14 +6,13 @@ import static java.lang.Thread.sleep;
 
 public class Baker implements Runnable,Comparable<Baker> {
     private final int speed;
-    private Thread thread;
-    AtomicInteger index;
-    Storage storage;
+    Queue storage;
+    Queue orderQueue;
 
-    public Baker(int speed, AtomicInteger index, Storage storage) {
+    public Baker(int speed, Queue storage, Queue orderQueue) {
         this.speed = speed;
-        this.index = index;
         this.storage = storage;
+        this.orderQueue = orderQueue;
     }
 
 
@@ -39,6 +38,6 @@ public class Baker implements Runnable,Comparable<Baker> {
             throw new RuntimeException(e);
         }
         Status.COOKED.printStatus(pizza);
-        storage.bringPizza(pizza);
+        storage.push(pizza);
     }
 }

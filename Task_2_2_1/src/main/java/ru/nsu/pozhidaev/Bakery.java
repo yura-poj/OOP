@@ -1,27 +1,58 @@
 package ru.nsu.pozhidaev;
 
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import static java.lang.Thread.sleep;
 
 public class Bakery {
-    private final CourierManager courierManager;
-    private final BakerManager bakerManager;
-    private final Storage storage;
+    private static final int STACK_SIZE = 100000;
 
-    public Bakery(Baker[] bakers, Courier[] couriers, Storage storage) {
-        courierManager = new CourierManager(couriers, storage);
-        bakerManager = new BakerManager(bakers, storage);
-        this.storage = storage;
+    private final Queue storage;
+    private final Queue orderQueue;
+    private AtomicInteger index;
+    private Baker[] bakers;
+    private Courier[] couriers;
 
-        courierManager.run();
-        bakerManager.run();
+
+    public Bakery(int[] bakers, int[] couriers, int storage) {
+        index = new AtomicInteger(1);
+        this.storage = new Queue(storage);
+        this.orderQueue = new Queue(100000);
+
+        this.bakers = new Baker[bakers.length];
+        this.couriers = new Courier[couriers.length];
+
+        for( int i = 0; i < bakers.length; i++ ) {
+            this.bakers[i] = new Baker(bakers[i], index, this.storage, orderQueue);
+        }
+
+        for( int i = 0; i < couriers.length; i++ ) {
+            this.couriers[i] = new Courier(bakers[i], this.storage);
+        }
+
+        start();
     }
 
     public void order() {
-        System.out.println();
-        bakerManager.notify();
+        Status.PROCESSING.printStatus(index.get());
+        orderQueue.push(index.getAndIncrement());
     }
 
     public void close() {
         //
+    }
+
+    private void start() {
+        Arrays.sort(bakers);
+        Arrays.sort(couriers);
+
+        for(Baker baker : bakers) {
+            baker.run();
+        }
+
+        for(Courier courier : couriers) {
+            courier.run();
+        }
     }
 }
