@@ -1,37 +1,45 @@
 package ru.nsu.pozhidaev;
 
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static java.lang.Thread.sleep;
-import static jdk.internal.util.ArraysSupport.reverse;
+import java.util.Collections;
 
 public class Bakery {
     private static final int STACK_SIZE = 100000;
-
     private final Queue storage;
+
     private final Queue orderQueue;
     private AtomicInteger index;
     private Baker[] bakers;
     private Courier[] couriers;
+    private Thread[] bakerThreads;
+    private Thread[] courierThreads;
+
+    private AtomicBoolean isClosed;
 
 
     public Bakery(int[] bakers, int[] couriers, int storage) {
         index = new AtomicInteger(1);
-        this.storage = new Queue(storage);
-        this.orderQueue = new Queue(100000);
+        isClosed = new AtomicBoolean(false);
+
+        this.storage = new Queue(storage, isClosed);
+        this.orderQueue = new Queue(100000, isClosed);
 
         this.bakers = new Baker[bakers.length];
+        bakerThreads = new Thread[bakers.length];
+
         this.couriers = new Courier[couriers.length];
+        courierThreads = new Thread[couriers.length];
+
 
         for( int i = 0; i < bakers.length; i++ ) {
-            this.bakers[i] = new Baker(bakers[i], this.storage, orderQueue);
+            this.bakers[i] = new Baker(bakers[i], this.storage, orderQueue, isClosed);
         }
 
         for( int i = 0; i < couriers.length; i++ ) {
-            this.couriers[i] = new Courier(bakers[i], this.storage);
+            this.couriers[i] = new Courier(bakers[i], this.storage, isClosed);
         }
-
         start();
     }
 
@@ -45,20 +53,35 @@ public class Bakery {
     }
 
     public void close() {
-        //
+        isClosed.set(true);
+        storage.close();
+        orderQueue.close();
+        try {
+
+            for (Thread courierThread : courierThreads) {
+                courierThread.join();
+            }
+            for (Thread bakerThread : bakerThreads) {
+                bakerThread.join();
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Bakery is on fire");
+        }
     }
 
-    private void start() {
+    public void start() {
         Arrays.sort(bakers);
         Arrays.sort(couriers);
-        reverse(couriers);
+        Collections.reverse(Arrays.asList(couriers));
 
-        for(Baker baker : bakers) {
-            baker.run();
+        for (int i = 0; i < bakers.length; i++) {
+            bakerThreads[i] = new Thread(bakers[i]);
+            bakerThreads[i].start();
         }
 
-        for(Courier courier : couriers) {
-            courier.run();
+        for (int i = 0; i < couriers.length; i++) {
+            courierThreads[i] = new Thread(couriers[i]);
+            courierThreads[i].start();
         }
     }
 }

@@ -1,19 +1,19 @@
 package ru.nsu.pozhidaev;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static java.lang.Thread.sleep;
 
 public class Courier implements Runnable, Comparable<Courier> {
-    private static final int speed = 10;
+    private static final int speed = 2000;
     private final int volume;
     private Queue storage;
+    AtomicBoolean isClosed;
 
-    public Courier(int volume, Queue storage) {
+    public Courier(int volume, Queue storage, AtomicBoolean isClosed) {
         this.volume = volume;
         this.storage = storage;
-    }
-
-    public void deliver(int[] indexes) {
-
+        this.isClosed = isClosed;
     }
 
     /**
@@ -22,12 +22,18 @@ public class Courier implements Runnable, Comparable<Courier> {
     @Override
     public void run() {
         int[] indexes = new int[0];
-        while (true) {
+        while (!isClosed.get()) {
+
             try {
                 indexes = storage.pop(volume).clone();
             } catch (InterruptedException e) {
-                close();
+                System.out.println("Courier is fired");
             }
+
+            if (indexes.length == 0) {
+                break;
+            }
+
             for (int i = 0; i < indexes.length && i < volume; i++) {
                 Status.DELIVERING.printStatus(indexes[i]);
             }
@@ -39,7 +45,7 @@ public class Courier implements Runnable, Comparable<Courier> {
             }
 
             for (int i = 0; i < indexes.length && i < volume; i++) {
-                Status.DELIVERING.printStatus(indexes[i]);
+                Status.DELIVERED.printStatus(indexes[i]);
             }
         }
     }
@@ -51,10 +57,6 @@ public class Courier implements Runnable, Comparable<Courier> {
     @Override
     public int compareTo(Courier o) {
         return this.volume - o.volume;
-    }
-
-    private void close() {
-        //
     }
 }
 

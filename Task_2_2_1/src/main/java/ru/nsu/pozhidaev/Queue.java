@@ -1,55 +1,66 @@
 package ru.nsu.pozhidaev;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class Queue {
     private final int volume;
-    private int[] pizzas;
+    private final int[] pizzas;
     private int size;
+    private AtomicBoolean isClosed;
+
     private int removeQueue;
     private int currentPosition;
+    private final Object lock = new Object(); // Объект для синхронизации
 
-    public Queue(int volume) {
+    public Queue(int volume, AtomicBoolean isClosed) {
         this.volume = volume;
-        pizzas = new int[volume];
-        size = 0;
-        removeQueue = 0;
-        currentPosition = 0;
+        this.pizzas = new int[volume];
+        this.size = 0;
+        this.removeQueue = 0;
+        this.currentPosition = 0;
+        this.isClosed = isClosed;
     }
 
-    public synchronized void push(int index) throws InterruptedException {
-        while(true){
-            if(volume > size) {
-                pizzas[size] = index;
-                size++;
-                currentPosition++;
-                currentPosition %= volume;
-
-                notify();
-                break;
-            } else {
-                wait();
+    public void push(int index) throws InterruptedException {
+        synchronized (lock) {
+            while (size >= volume) {
+                lock.wait();
+                if (isClosed.get()) {
+                    return;
+                }
             }
+            pizzas[currentPosition] = index;
+            size++;
+            currentPosition = (currentPosition + 1) % volume;
+            lock.notify();
         }
     }
 
     public int[] pop(int amount) throws InterruptedException {
-        int nums;
-        while(true) {
-            nums = Math.min(size, amount);
-            if(nums == 0){
-                wait();
-                continue;
+        synchronized (lock) {
+            while (size == 0) {
+                lock.wait();
+                if (isClosed.get()) {
+                    return new int[0];
+                }
             }
+            int nums = Math.min(size, amount);
             int[] baggage = new int[nums];
-            for(int i = 0; i < nums; i++) {
+            for (int i = 0; i < nums; i++) {
                 baggage[i] = pizzas[removeQueue];
-                removeQueue++;
-                removeQueue %= volume;
+                removeQueue = (removeQueue + 1) % volume;
                 size--;
 
-                notify();
+                lock.notify();
             }
             return baggage;
         }
-
     }
+
+    public void close() {
+        synchronized (lock) {
+            lock.notifyAll();
+        }
+    }
+
 }
