@@ -30,14 +30,29 @@ public class Baker implements Runnable,Comparable<Baker> {
      */
     @Override
     public void run() {
-        int pizza = index.getAndIncrement();
-        Status.COOKING.printStatus(pizza);
-        try {
-            sleep(speed);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        int pizza = 0;
+        while (true) {
+            try {
+                pizza = orderQueue.pop(1)[0];
+            } catch (InterruptedException e) {
+                close();
+            }
+            Status.COOKING.printStatus(pizza);
+            try {
+                sleep(speed);
+            } catch (InterruptedException e) {
+                System.out.println("Baker is fired");
+            }
+            Status.COOKED.printStatus(pizza);
+            try {
+                storage.push(pizza);
+            } catch (InterruptedException e) {
+                close();
+            }
         }
-        Status.COOKED.printStatus(pizza);
-        storage.push(pizza);
+    }
+
+    private void close() {
+        //
     }
 }

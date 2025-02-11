@@ -21,19 +21,26 @@ public class Courier implements Runnable, Comparable<Courier> {
      */
     @Override
     public void run() {
-        int[] indexes = storage.getPizzas(volume);
-        for (int i = 0; i < indexes.length && i < volume; i++) {
-            Status.DELIVERING.printStatus(indexes[i]);
-        }
+        int[] indexes = new int[0];
+        while (true) {
+            try {
+                indexes = storage.pop(volume).clone();
+            } catch (InterruptedException e) {
+                close();
+            }
+            for (int i = 0; i < indexes.length && i < volume; i++) {
+                Status.DELIVERING.printStatus(indexes[i]);
+            }
 
-        try {
-            sleep(speed);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+            try {
+                sleep(speed);
+            } catch (InterruptedException e) {
+                System.out.println("Courier is fired");
+            }
 
-        for (int i = 0; i < indexes.length && i < volume; i++) {
-            Status.DELIVERING.printStatus(indexes[i]);
+            for (int i = 0; i < indexes.length && i < volume; i++) {
+                Status.DELIVERING.printStatus(indexes[i]);
+            }
         }
     }
 
@@ -45,4 +52,9 @@ public class Courier implements Runnable, Comparable<Courier> {
     public int compareTo(Courier o) {
         return this.volume - o.volume;
     }
+
+    private void close() {
+        //
+    }
 }
+

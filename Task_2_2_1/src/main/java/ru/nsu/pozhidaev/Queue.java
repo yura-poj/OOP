@@ -15,36 +15,41 @@ public class Queue {
         currentPosition = 0;
     }
 
-    public synchronized void push(int index) {
-        if(volume > size) {
-            pizzas[size] = index;
-            size++;
-            currentPosition++;
-            currentPosition %= volume;
-        } else {
-            try {
+    public synchronized void push(int index) throws InterruptedException {
+        while(true){
+            if(volume > size) {
+                pizzas[size] = index;
+                size++;
+                currentPosition++;
+                currentPosition %= volume;
+
+                notify();
+                break;
+            } else {
                 wait();
-            } catch (InterruptedException e) {
-                close();
             }
         }
     }
 
-    public int[] pop(int amount) {
-        int nums = Math.min(size, amount);
-        int[] baggage = new int[nums];
-        for(int i = 0; i < nums; i++) {
-            baggage[i] = pizzas[removeQueue];
-            removeQueue++;
-            removeQueue %= volume;
-            size--;
-            notify();
+    public int[] pop(int amount) throws InterruptedException {
+        int nums;
+        while(true) {
+            nums = Math.min(size, amount);
+            if(nums == 0){
+                wait();
+                continue;
+            }
+            int[] baggage = new int[nums];
+            for(int i = 0; i < nums; i++) {
+                baggage[i] = pizzas[removeQueue];
+                removeQueue++;
+                removeQueue %= volume;
+                size--;
+
+                notify();
+            }
+            return baggage;
         }
-        return baggage;
-    }
 
-    private void close() {
-        
     }
-
 }
