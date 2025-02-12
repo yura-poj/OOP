@@ -1,9 +1,7 @@
 package ru.nsu.pozhidaev;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.Collections;
 
 public class Bakery {
     private static final int STACK_SIZE = 100000;
@@ -70,9 +68,6 @@ public class Bakery {
     }
 
     public void start() {
-        Arrays.sort(bakers);
-        Arrays.sort(couriers);
-        Collections.reverse(Arrays.asList(couriers));
 
         for (int i = 0; i < bakers.length; i++) {
             bakerThreads[i] = new Thread(bakers[i]);
