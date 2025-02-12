@@ -76,6 +76,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Queue</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Queue is similar to conveyor.
+ You can push one pizza and pop amount of pizzas.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -89,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,java.util.concurrent.atomic.AtomicBoolean)" class="member-name-link">Queue</a><wbr>(int&nbsp;volume,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicBoolean.html" title="class or interface in java.util.concurrent.atomic" class="external-link">AtomicBoolean</a>&nbsp;isClosed)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -106,13 +110,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#close()" class="member-name-link">close</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">notify all waiters that we already closed and they should not wait anymore.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>[]</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pop(int)" class="member-name-link">pop</a><wbr>(int&nbsp;amount)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">pop amount of pizzas from the queue.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#push(ru.nsu.pozhidaev.Pizza)" class="member-name-link">push</a><wbr>(<a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>&nbsp;index)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#push(ru.nsu.pozhidaev.Pizza)" class="member-name-link">push</a><wbr>(<a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>&nbsp;pizza)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">push pizza to the queue.</div>
+</div>
 </div>
 </div>
 </div>
@@ -135,6 +145,12 @@ loadScripts(document, 'script');</script>
 <h3>Queue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Queue</span><wbr><span class="parameters">(int&nbsp;volume,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicBoolean.html" title="class or interface in java.util.concurrent.atomic" class="external-link">AtomicBoolean</a>&nbsp;isClosed)</span></div>
+<div class="block">constructor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>volume</code> - of queue.</dd>
+<dd><code>isClosed</code> - bool closed bakery or not.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -148,11 +164,17 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="push(ru.nsu.pozhidaev.Pizza)">
 <h3>push</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">push</span><wbr><span class="parameters">(<a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>&nbsp;index)</span>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">push</span><wbr><span class="parameters">(<a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>&nbsp;pizza)</span>
           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">push pizza to the queue.
+ wait if queue is full.
+ if bakery is closed right after wait, receive notify and exit from function.
+ move queue and notify pop() that queue have new pizza.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pizza</code> - that will be added to the queue.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if was interrupted during wait.</dd>
 </dl>
 </section>
 </li>
@@ -161,9 +183,18 @@ loadScripts(document, 'script');</script>
 <h3>pop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a>[]</span>&nbsp;<span class="element-name">pop</span><wbr><span class="parameters">(int&nbsp;amount)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">pop amount of pizzas from the queue.
+ wait if the queue is empty.
+ if bakery is closed right after wait, receive notify and exit from function.
+ move queue and notify push() that queue have space,
+ notify so much times as many pizza we remove.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>amount</code> - of pizza.</dd>
+<dt>Returns:</dt>
+<dd>pizzas from queue.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if was interrupted during wait.</dd>
 </dl>
 </section>
 </li>
@@ -171,6 +202,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="close()">
 <h3>close</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">close</span>()</div>
+<div class="block">notify all waiters that we already closed and they should not wait anymore.</div>
 </section>
 </li>
 </ul>

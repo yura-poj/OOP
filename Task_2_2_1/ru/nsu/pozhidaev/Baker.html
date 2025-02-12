@@ -81,6 +81,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Baker</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></span></div>
+<div class="block">baker that bake pizza.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,7 +97,9 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
  <a href="Queue.html" title="class in ru.nsu.pozhidaev">Queue</a>&nbsp;storage,
  <a href="Queue.html" title="class in ru.nsu.pozhidaev">Queue</a>&nbsp;orderQueue,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicBoolean.html" title="class or interface in java.util.concurrent.atomic" class="external-link">AtomicBoolean</a>&nbsp;isClosed)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -113,7 +116,9 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#run()" class="member-name-link">run</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">function that run in thread.</div>
+</div>
 </div>
 </div>
 </div>
@@ -138,12 +143,13 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
  <a href="Queue.html" title="class in ru.nsu.pozhidaev">Queue</a>&nbsp;storage,
  <a href="Queue.html" title="class in ru.nsu.pozhidaev">Queue</a>&nbsp;orderQueue,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicBoolean.html" title="class or interface in java.util.concurrent.atomic" class="external-link">AtomicBoolean</a>&nbsp;isClosed)</span></div>
+<div class="block">constructor.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>speed</code> - achieve in seconds, after archive in milliseconds</dd>
-<dd><code>storage</code> - </dd>
-<dd><code>orderQueue</code> - </dd>
-<dd><code>isClosed</code> - </dd>
+<dd><code>speed</code> - achieve in seconds, after archive in milliseconds.</dd>
+<dd><code>storage</code> - is a queue with ready to send pizzas.</dd>
+<dd><code>orderQueue</code> - is a queue with orders.</dd>
+<dd><code>isClosed</code> - tells is bakery closed or not.</dd>
 </dl>
 </section>
 </li>
@@ -159,6 +165,10 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <section class="detail" id="run()">
 <h3>run</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span>()</div>
+<div class="block">function that run in thread.
+ baker try to get order, and after getting start cooking (sleeping).
+ send information about orders.
+ and at the end send pizza to storage, wait if storage is full.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html#run()" title="class or interface in java.lang" class="external-link">run</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></code></dd>

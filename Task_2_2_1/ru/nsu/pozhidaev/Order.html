@@ -76,6 +76,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Order</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Order that automatically create bakery.
+ have unique id, pizza that they should bake, and status of order.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -88,7 +90,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">Order</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -105,16 +109,24 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPizza()" class="member-name-link">getPizza</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">getter.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Status.html" title="enum class in ru.nsu.pozhidaev">Status</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStatus()" class="member-name-link">getStatus</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">getter.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#printStatus()" class="member-name-link">printStatus</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">print information about order with status.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStatus(ru.nsu.pozhidaev.Status)" class="member-name-link">setStatus</a><wbr>(<a href="Status.html" title="enum class in ru.nsu.pozhidaev">Status</a>&nbsp;status)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">setter.</div>
+</div>
 </div>
 </div>
 </div>
@@ -136,6 +148,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>Order</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Order</span>()</div>
+<div class="block">constructor.</div>
 </section>
 </li>
 </ul>
@@ -150,24 +163,40 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setStatus(ru.nsu.pozhidaev.Status)">
 <h3>setStatus</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStatus</span><wbr><span class="parameters">(<a href="Status.html" title="enum class in ru.nsu.pozhidaev">Status</a>&nbsp;status)</span></div>
+<div class="block">setter.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>status</code> - of order.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getStatus()">
 <h3>getStatus</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Status.html" title="enum class in ru.nsu.pozhidaev">Status</a></span>&nbsp;<span class="element-name">getStatus</span>()</div>
+<div class="block">getter.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current status of order.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPizza()">
 <h3>getPizza</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Pizza.html" title="class in ru.nsu.pozhidaev">Pizza</a></span>&nbsp;<span class="element-name">getPizza</span>()</div>
+<div class="block">getter.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>pizza that they should bake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="printStatus()">
 <h3>printStatus</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">printStatus</span>()</div>
+<div class="block">print information about order with status.</div>
 </section>
 </li>
 </ul>

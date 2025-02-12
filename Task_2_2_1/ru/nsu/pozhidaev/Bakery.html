@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Bakery</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Bakery that work with bakers and couriers, has storage with some volume.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int%5B%5D,int%5B%5D,int)" class="member-name-link">Bakery</a><wbr>(int[]&nbsp;bakers,
  int[]&nbsp;couriers,
  int&nbsp;storage)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -107,13 +110,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#close()" class="member-name-link">close</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">close bakery.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Order.html" title="class in ru.nsu.pozhidaev">Order</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#order()" class="member-name-link">order</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">create order.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#start()" class="member-name-link">start</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">tells all bakers and couriers to start working.</div>
+</div>
 </div>
 </div>
 </div>
@@ -137,6 +146,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Bakery</span><wbr><span class="parameters">(int[]&nbsp;bakers,
  int[]&nbsp;couriers,
  int&nbsp;storage)</span></div>
+<div class="block">constructor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>bakers</code> - array with speeds of bakers.</dd>
+<dd><code>couriers</code> - array with volumes of baggage of couriers.</dd>
+<dd><code>storage</code> - is the size of storage, how many pizzas it can hold.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -151,18 +167,30 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="order()">
 <h3>order</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Order.html" title="class in ru.nsu.pozhidaev">Order</a></span>&nbsp;<span class="element-name">order</span>()</div>
+<div class="block">create order.
+ if closed - not receive order.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>created order.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="close()">
 <h3>close</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">close</span>()</div>
+<div class="block">close bakery.
+ stop receive new orders.
+ change atomic bool isClosed to true.
+ wait to all workers finish their job.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="start()">
 <h3>start</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">start</span>()</div>
+<div class="block">tells all bakers and couriers to start working.
+ create new threads with workers.</div>
 </section>
 </li>
 </ul>
