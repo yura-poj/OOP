@@ -30,8 +30,8 @@ public class Baker implements Runnable {
      */
     @Override
     public void run() {
-        int[] result;
-        int pizza = 0;
+        Pizza[] result;
+        Pizza pizza = null;
         while (!isClosed.get()) {
             try {
                 result = orderQueue.pop(1);
@@ -40,13 +40,12 @@ public class Baker implements Runnable {
                 }
                 pizza = result[0];
 
-                if (pizza == 0) {
+                if (pizza == null) {
                     break;
                 }
-
-                Status.COOKING.printStatus(pizza);
+                pizza.getOrder().setStatus(Status.COOKING);
                 sleep(speed);
-                Status.COOKED.printStatus(pizza);
+                pizza.getOrder().setStatus(Status.COOKED);
                 storage.push(pizza);
 
                 } catch (InterruptedException e) {

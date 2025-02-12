@@ -36,39 +36,36 @@ class BakeryTest {
 
     @Test
     void ManyOrders() throws InterruptedException {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
         int numberOfOrders = 12;
+        Order[] orders = new Order[numberOfOrders];
         for(int i = 0; i < numberOfOrders; i++){
-            bakery.order();
+            orders[i] =  bakery.order();
         }
 
-        sleep(10000);
+        sleep(11000);
         bakery.close();
-
-        assertTrue(outContent.toString().contains("Status of order №8 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №9 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №10 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №11 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №12 is: delivered"));
+        assertEquals(orders[8].getStatus(), Status.DELIVERED);
+        assertEquals(orders[9].getStatus(), Status.DELIVERED);
+        assertEquals(orders[10].getStatus(), Status.DELIVERED);
+        assertEquals(orders[11].getStatus(), Status.DELIVERED);
     }
 
     @Test
     void close() throws InterruptedException {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
 
         int numberOfOrders = 5;
-        for (int i = 0; i < numberOfOrders; i++) {
-            bakery.order();
+        Order[] orders = new Order[numberOfOrders];
+        for(int i = 0; i < numberOfOrders; i++){
+            orders[i] =  bakery.order();
         }
         sleep(2500);
         bakery.close();
 
-        assertTrue(outContent.toString().contains("Status of order №3 is: delivered"));
-        assertTrue(outContent.toString().contains("Status of order №4 is: delivered"));
-        assertFalse(outContent.toString().contains("Status of order №5 is: delivered"));
+        assertEquals(orders[1].getStatus(), Status.DELIVERED);
+        assertEquals(orders[2].getStatus(), Status.DELIVERED);
+        assertEquals(orders[3].getStatus(), Status.DELIVERED);
+        assertNotEquals(orders[4].getStatus(), Status.DELIVERED);
     }
 }

@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Queue {
     private final int volume;
-    private final int[] pizzas;
+    private final Pizza[] pizzas;
     private int size;
     private AtomicBoolean isClosed;
 
@@ -14,14 +14,14 @@ public class Queue {
 
     public Queue(int volume, AtomicBoolean isClosed) {
         this.volume = volume;
-        this.pizzas = new int[volume];
+        this.pizzas = new Pizza[volume];
         this.size = 0;
         this.removeQueue = 0;
         this.currentPosition = 0;
         this.isClosed = isClosed;
     }
 
-    public void push(int index) throws InterruptedException {
+    public void push(Pizza index) throws InterruptedException {
         synchronized (lock) {
             while (size >= volume) {
                 lock.wait();
@@ -36,16 +36,16 @@ public class Queue {
         }
     }
 
-    public int[] pop(int amount) throws InterruptedException {
+    public Pizza[] pop(int amount) throws InterruptedException {
         synchronized (lock) {
             while (size == 0) {
                 lock.wait();
                 if (isClosed.get()) {
-                    return new int[0];
+                    return new Pizza[0];
                 }
             }
             int nums = Math.min(size, amount);
-            int[] baggage = new int[nums];
+            Pizza[] baggage = new Pizza[nums];
             for (int i = 0; i < nums; i++) {
                 baggage[i] = pizzas[removeQueue];
                 removeQueue = (removeQueue + 1) % volume;

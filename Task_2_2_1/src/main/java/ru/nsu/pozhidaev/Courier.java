@@ -26,30 +26,29 @@ public class Courier implements Runnable {
      */
     @Override
     public void run() {
-        int[] indexes = new int[0];
+        Pizza[] pizzas = new Pizza[0];
         while (!isClosed.get()) {
             try {
 
-                indexes = storage.pop(volume).clone();
+                pizzas = storage.pop(volume);
 
-                if (indexes.length == 0) {
+                if (pizzas.length == 0) {
                     break;
                 }
 
-                for (int i = 0; i < indexes.length && i < volume; i++) {
-                    Status.DELIVERING.printStatus(indexes[i]);
+                for (Pizza pizza : pizzas) {
+                    pizza.getOrder().setStatus(Status.DELIVERING);
                 }
 
                 sleep(speed);
 
-                for (int i = 0; i < indexes.length && i < volume; i++) {
-                    Status.DELIVERED.printStatus(indexes[i]);
+                for (Pizza pizza : pizzas) {
+                    pizza.getOrder().setStatus(Status.DELIVERED);
                 }
             } catch (InterruptedException e) {
                 System.out.println("Courier is fired");
                 return;
             }
-
         }
     }
 }

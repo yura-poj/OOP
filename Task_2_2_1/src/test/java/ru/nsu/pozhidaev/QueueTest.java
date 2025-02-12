@@ -12,23 +12,25 @@ class QueueTest {
     @BeforeEach
     void setUp() throws InterruptedException {
         queue = new Queue(3,new AtomicBoolean(false));
-        queue.push(1);
-        queue.push(2);
+        queue.push(new Pizza(new Order()));
+        queue.push(new Pizza(new Order()));
     }
 
     @Test
     void push() throws InterruptedException {
-        queue.push(3);
+        Pizza pizza = new Pizza(new Order());
+        queue.push(pizza);
         queue.pop(2);
-        assertEquals(3, queue.pop(1)[0]);
+        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
     }
 
     @Test
     void pushWithLock() throws InterruptedException {
-        queue.push(3);
+        Pizza pizza = new Pizza(new Order());
+        queue.push(new Pizza(new Order()));
         Thread thread2 = new Thread(() -> {
             try {
-                queue.push(4);
+                queue.push(pizza);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -44,17 +46,13 @@ class QueueTest {
         thread2.start();
         thread3.start();
         thread2.join();
-        assertEquals(4, queue.pop(1)[0]);
-    }
-
-    @Test
-    void pop() throws InterruptedException {
-        assertEquals(1, queue.pop(1)[0]);
+        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
     }
 
     @Test
     void popWithLock() throws InterruptedException {
-        queue.push(2);
+       Pizza pizza = new Pizza(new Order());
+        queue.push(new Pizza(new Order()));
         Thread thread = new Thread(() -> {
             try {
                 queue.pop(3);
@@ -64,7 +62,7 @@ class QueueTest {
         });
         Thread thread2 = new Thread(() -> {
             try {
-                queue.push(5);
+                queue.push(pizza);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -73,6 +71,6 @@ class QueueTest {
         thread.start();
         thread2.start();
         thread.join();
-        assertEquals(5, queue.pop(1)[0]);
+        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
     }
 }

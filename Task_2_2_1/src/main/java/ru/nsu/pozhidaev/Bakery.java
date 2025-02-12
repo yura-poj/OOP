@@ -41,13 +41,15 @@ public class Bakery {
         start();
     }
 
-    public void order() {
-        Status.PROCESSING.printStatus(index.get());
+    public Order order() {
+        Order order = null;
         try {
-            orderQueue.push(index.getAndIncrement());
+            order = new Order();
+            orderQueue.push(order.getPizza());
         } catch (InterruptedException e) {
             close();
         }
+        return order;
     }
 
     public void close() {
