@@ -1,9 +1,12 @@
 package ru.nsu.pozhidaev;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import static java.lang.Thread.sleep;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
+/**
+ * courier that deliver pizza to customers.
+ */
 public class Courier implements Runnable {
     private static final int speed = 2000;
     private final int volume;
@@ -11,9 +14,11 @@ public class Courier implements Runnable {
     private AtomicBoolean isClosed;
 
     /**
-     * @param volume   is a number of pizza which can compact in bagage
-     * @param storage
-     * @param isClosed
+     * constructor.
+     *
+     * @param volume is a number of pizza which can compact in baggage.
+     * @param storage is a queue with ready to send pizzas.
+     * @param isClosed tells is bakery closed or not.
      */
     public Courier(int volume, Queue storage, AtomicBoolean isClosed) {
         this.volume = volume;
@@ -22,7 +27,9 @@ public class Courier implements Runnable {
     }
 
     /**
-     *
+     * function that run in thread.
+     * courier try to get pizzas from the storage, and after getting start delivering(sleeping).
+     * update info about orders.
      */
     @Override
     public void run() {
@@ -52,4 +59,3 @@ public class Courier implements Runnable {
         }
     }
 }
-

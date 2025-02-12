@@ -1,10 +1,12 @@
 package ru.nsu.pozhidaev;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import static java.lang.Thread.sleep;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
+/**
+ * baker that bake pizza.
+ */
 public class Baker implements Runnable {
     private final int speed;
     private Queue storage;
@@ -12,11 +14,12 @@ public class Baker implements Runnable {
     private AtomicBoolean isClosed;
 
     /**
+     * constructor.
      *
-     * @param speed achieve in seconds, after archive in milliseconds
-     * @param storage
-     * @param orderQueue
-     * @param isClosed
+     * @param speed achieve in seconds, after archive in milliseconds.
+     * @param storage is a queue with ready to send pizzas.
+     * @param orderQueue is a queue with orders.
+     * @param isClosed tells is bakery closed or not.
      */
     public Baker(int speed, Queue storage, Queue orderQueue, AtomicBoolean isClosed) {
         this.speed = speed * 1000;
@@ -26,7 +29,10 @@ public class Baker implements Runnable {
     }
 
     /**
-     *
+     * function that run in thread.
+     * baker try to get order, and after getting start cooking (sleeping).
+     * send information about orders.
+     * and at the end send pizza to storage, wait if storage is full.
      */
     @Override
     public void run() {
@@ -48,7 +54,7 @@ public class Baker implements Runnable {
                 pizza.getOrder().setStatus(Status.COOKED);
                 storage.push(pizza);
 
-                } catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.out.println("Baker is fired");
                 return;
             }

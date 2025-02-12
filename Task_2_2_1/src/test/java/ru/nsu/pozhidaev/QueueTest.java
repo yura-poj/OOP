@@ -1,17 +1,17 @@
 package ru.nsu.pozhidaev;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class QueueTest {
     Queue queue;
+
     @BeforeEach
     void setUp() throws InterruptedException {
-        queue = new Queue(3,new AtomicBoolean(false));
+        queue = new Queue(3, new AtomicBoolean(false));
         queue.push(new Pizza(new Order()));
         queue.push(new Pizza(new Order()));
     }
@@ -51,7 +51,7 @@ class QueueTest {
 
     @Test
     void popWithLock() throws InterruptedException {
-       Pizza pizza = new Pizza(new Order());
+        Pizza pizza = new Pizza(new Order());
         queue.push(new Pizza(new Order()));
         Thread thread = new Thread(() -> {
             try {

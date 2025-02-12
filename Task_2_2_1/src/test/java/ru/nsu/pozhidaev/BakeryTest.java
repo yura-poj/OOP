@@ -1,20 +1,23 @@
 package ru.nsu.pozhidaev;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static java.lang.Thread.sleep;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static java.lang.Thread.sleep;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BakeryTest {
 
     Bakery bakery;
+
     @BeforeEach
     void setUp() {
-        bakery = new Bakery(new int[] {2,2}, new int[] {2,2}, 3);
+        bakery = new Bakery(new int[]{2, 2}, new int[]{2, 2}, 3);
         bakery.start();
     }
 
@@ -35,11 +38,11 @@ class BakeryTest {
     }
 
     @Test
-    void ManyOrders() throws InterruptedException {
+    void manyOrders() throws InterruptedException {
         int numberOfOrders = 12;
         Order[] orders = new Order[numberOfOrders];
-        for(int i = 0; i < numberOfOrders; i++){
-            orders[i] =  bakery.order();
+        for (int i = 0; i < numberOfOrders; i++) {
+            orders[i] = bakery.order();
         }
 
         sleep(11000);
@@ -57,8 +60,8 @@ class BakeryTest {
 
         int numberOfOrders = 5;
         Order[] orders = new Order[numberOfOrders];
-        for(int i = 0; i < numberOfOrders; i++){
-            orders[i] =  bakery.order();
+        for (int i = 0; i < numberOfOrders; i++) {
+            orders[i] = bakery.order();
         }
         sleep(2500);
         bakery.close();
