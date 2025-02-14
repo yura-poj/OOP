@@ -21,7 +21,7 @@ class QueueTest {
         Pizza pizza = new Pizza(new Order());
         queue.push(pizza);
         queue.pop(2);
-        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
+        assertEquals(pizza.getId(), queue.pop(1).get(0).getId());
     }
 
     @Test
@@ -46,7 +46,7 @@ class QueueTest {
         thread2.start();
         thread3.start();
         thread2.join();
-        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
+        assertEquals(pizza.getId(), queue.pop(1).get(0).getId());
     }
 
     @Test
@@ -71,6 +71,6 @@ class QueueTest {
         thread.start();
         thread2.start();
         thread.join();
-        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
+        assertEquals(pizza.getId(), queue.pop(1).get(0).getId());
     }
 }
