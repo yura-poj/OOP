@@ -2,7 +2,6 @@ package ru.nsu.pozhidaev;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -53,7 +52,7 @@ public class BakeryJsonParser {
     /**
      * getter.
      *
-     * @return dough stack size
+     * @return dough stack size.
      */
     public int getStackSize() {
         return stackSize;
@@ -62,7 +61,7 @@ public class BakeryJsonParser {
     /**
      * getter.
      *
-     * @return storage capacity
+     * @return storage capacity.
      */
     public int getStorageVolume() {
         return storageVolume;
@@ -71,7 +70,7 @@ public class BakeryJsonParser {
     /**
      * getter.
      *
-     * @return courier speed
+     * @return courier speed.
      */
     public int getCourierSpeed() {
         return courierSpeed;
@@ -80,7 +79,7 @@ public class BakeryJsonParser {
     /**
      * getter.
      *
-     * @return array of baker speeds
+     * @return array of baker speeds.
      */
     public int[] getBakersSpeeds() {
         return bakersSpeeds;
@@ -88,8 +87,8 @@ public class BakeryJsonParser {
 
     /**
      * getter.
-     * 
-     * @return array of courier volumes
+     *
+     * @return array of courier volumes.
      */
     public int[] getCouriersVolumes() {
         return couriersVolumes;

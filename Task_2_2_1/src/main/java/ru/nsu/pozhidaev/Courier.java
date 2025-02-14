@@ -9,10 +9,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * courier that deliver pizza to customers.
  */
 public class Courier implements Runnable {
-    private static final int speed = 2000;
     private final int volume;
     private Queue<Pizza> storage;
     private AtomicBoolean isClosed;
+    private final int speed;
 
     /**
      * constructor.
@@ -21,10 +21,11 @@ public class Courier implements Runnable {
      * @param storage is a queue with ready to send pizzas.
      * @param isClosed tells is bakery closed or not.
      */
-    public Courier(int volume, Queue<Pizza> storage, AtomicBoolean isClosed) {
+    public Courier(int volume, int speed, Queue<Pizza> storage, AtomicBoolean isClosed) {
         this.volume = volume;
         this.storage = storage;
         this.isClosed = isClosed;
+        this.speed = speed * 1000;
     }
 
     /**

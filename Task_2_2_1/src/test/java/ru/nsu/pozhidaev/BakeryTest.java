@@ -17,7 +17,7 @@ class BakeryTest {
 
     @BeforeEach
     void setUp() {
-        bakery = new Bakery(new int[]{2, 2}, new int[]{2, 2}, 3);
+        bakery = new Bakery("src/test/resources/bakeryConfig.json");
         bakery.start();
     }
 

@@ -21,31 +21,31 @@ public class Bakery {
 
     /**
      * constructor.
-     *
-     * @param bakers   array with speeds of bakers.
-     * @param couriers array with volumes of baggage of couriers.
-     * @param storage  is the size of storage, how many pizzas it can hold.
      */
-    public Bakery(int[] bakers, int[] couriers, int storage) {
+    public Bakery(String pathToJson) {
+        BakeryJsonParser bakeryJsonParser = new BakeryJsonParser(pathToJson);
+
         index = new AtomicInteger(1);
         isClosed = new AtomicBoolean(false);
 
-        this.storage = new Queue<Pizza>(storage, isClosed);
-        this.orderQueue = new Queue<Order>(100000, isClosed);
+        this.storage = new Queue<Pizza>(bakeryJsonParser.getStorageVolume(), isClosed);
+        this.orderQueue = new Queue<Order>(bakeryJsonParser.getStackSize(), isClosed);
 
-        this.bakers = new Baker[bakers.length];
-        bakerThreads = new Thread[bakers.length];
+        int[] bakersSpeeds =  bakeryJsonParser.getBakersSpeeds();
+        this.bakers = new Baker[bakersSpeeds.length];
+        bakerThreads = new Thread[bakersSpeeds.length];
 
-        this.couriers = new Courier[couriers.length];
-        courierThreads = new Thread[couriers.length];
+        int[] courierVolumes = bakeryJsonParser.getCouriersVolumes();
+        this.couriers = new Courier[courierVolumes.length];
+        courierThreads = new Thread[courierVolumes.length];
 
-
-        for (int i = 0; i < bakers.length; i++) {
-            this.bakers[i] = new Baker(bakers[i], this.storage, orderQueue, isClosed);
+        for (int i = 0; i < bakersSpeeds.length; i++) {
+            this.bakers[i] = new Baker(bakersSpeeds[i], this.storage, orderQueue, isClosed);
         }
 
-        for (int i = 0; i < couriers.length; i++) {
-            this.couriers[i] = new Courier(bakers[i], this.storage, isClosed);
+        for (int i = 0; i < courierVolumes.length; i++) {
+            this.couriers[i] = new Courier(courierVolumes[i], bakeryJsonParser.getCourierSpeed(),
+                    this.storage, isClosed);
         }
         start();
     }
