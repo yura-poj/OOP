@@ -55,7 +55,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">baker that bake pizza.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/Baker.html#%3Cinit%3E(int,ru.nsu.pozhidaev.Queue,ru.nsu.pozhidaev.Queue,java.util.concurrent.atomic.AtomicBoolean)" class="member-name-link">Baker(int, Queue, Queue, AtomicBoolean)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Baker.html" title="class in ru.nsu.pozhidaev">Baker</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Baker.html#%3Cinit%3E(int,ru.nsu.pozhidaev.Queue,ru.nsu.pozhidaev.Queue,java.util.concurrent.atomic.AtomicBoolean)" class="member-name-link">Baker(int, Queue&lt;Pizza&gt;, Queue&lt;Order&gt;, AtomicBoolean)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Baker.html" title="class in ru.nsu.pozhidaev">Baker</a></dt>
 <dd>
 <div class="block">constructor.</div>
 </dd>
@@ -63,9 +63,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Bakery that work with bakers and couriers, has storage with some volume.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/Bakery.html#%3Cinit%3E(int%5B%5D,int%5B%5D,int)" class="member-name-link">Bakery(int[], int[], int)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Bakery.html" title="class in ru.nsu.pozhidaev">Bakery</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Bakery.html#%3Cinit%3E(java.lang.String)" class="member-name-link">Bakery(String)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Bakery.html" title="class in ru.nsu.pozhidaev">Bakery</a></dt>
 <dd>
 <div class="block">constructor.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html" class="type-name-link" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
+<dd>
+<div class="block">Parses bakery configuration from a JSON file.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#%3Cinit%3E(java.lang.String)" class="member-name-link">BakeryJsonParser(String)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
+<dd>
+<div class="block">Loads configuration from the given JSON file.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
@@ -86,7 +94,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">courier that deliver pizza to customers.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/Courier.html#%3Cinit%3E(int,ru.nsu.pozhidaev.Queue,java.util.concurrent.atomic.AtomicBoolean)" class="member-name-link">Courier(int, Queue, AtomicBoolean)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Courier.html" title="class in ru.nsu.pozhidaev">Courier</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Courier.html#%3Cinit%3E(int,int,ru.nsu.pozhidaev.Queue,java.util.concurrent.atomic.AtomicBoolean)" class="member-name-link">Courier(int, int, Queue&lt;Pizza&gt;, AtomicBoolean)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Courier.html" title="class in ru.nsu.pozhidaev">Courier</a></dt>
 <dd>
 <div class="block">constructor.</div>
 </dd>
@@ -100,6 +108,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#getBakersSpeeds()" class="member-name-link">getBakersSpeeds()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
+<dd>
+<div class="block">getter.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#getCourierSpeed()" class="member-name-link">getCourierSpeed()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
+<dd>
+<div class="block">getter.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#getCouriersVolumes()" class="member-name-link">getCouriersVolumes()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/Status.html#getDescription()" class="member-name-link">getDescription()</a> - Method in enum class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Status.html" title="enum class in ru.nsu.pozhidaev">Status</a></dt>
 <dd>
 <div class="block">getter.</div>
@@ -116,7 +136,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">getter.</div>
 </dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#getStackSize()" class="member-name-link">getStackSize()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
+<dd>
+<div class="block">getter.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/Order.html#getStatus()" class="member-name-link">getStatus()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Order.html" title="class in ru.nsu.pozhidaev">Order</a></dt>
+<dd>
+<div class="block">getter.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/BakeryJsonParser.html#getStorageVolume()" class="member-name-link">getStorageVolume()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/BakeryJsonParser.html" title="class in ru.nsu.pozhidaev">BakeryJsonParser</a></dt>
 <dd>
 <div class="block">getter.</div>
 </dd>
@@ -156,14 +184,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/Status.html#PROCESSING" class="member-name-link">PROCESSING</a> - Enum constant in enum class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Status.html" title="enum class in ru.nsu.pozhidaev">Status</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ru/nsu/pozhidaev/Queue.html#push(ru.nsu.pozhidaev.Pizza)" class="member-name-link">push(Pizza)</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Queue.html" title="class in ru.nsu.pozhidaev">Queue</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Queue.html#push(T)" class="member-name-link">push(T)</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Queue.html" title="class in ru.nsu.pozhidaev">Queue</a></dt>
 <dd>
-<div class="block">push pizza to the queue.</div>
+<div class="block">push item to the queue.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:Q">Q</h2>
 <dl class="index">
-<dt><a href="ru/nsu/pozhidaev/Queue.html" class="type-name-link" title="class in ru.nsu.pozhidaev">Queue</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Queue.html" class="type-name-link" title="class in ru.nsu.pozhidaev">Queue</a>&lt;<a href="ru/nsu/pozhidaev/Queue.html" title="type parameter in Queue">T</a>&gt; - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
 <dd>
 <div class="block">Queue is similar to conveyor.</div>
 </dd>
