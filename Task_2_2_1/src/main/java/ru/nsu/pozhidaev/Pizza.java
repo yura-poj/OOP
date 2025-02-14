@@ -1,11 +1,13 @@
 package ru.nsu.pozhidaev;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Pizza that should be baked.
  */
 public class Pizza {
     private Order order;
-    private static int idCounter = 0;
+    private static AtomicInteger idCounter = new AtomicInteger(0);
     private final int id;
 
     /**
@@ -14,7 +16,7 @@ public class Pizza {
      * @param order to which pizza rely on.
      */
     public Pizza(Order order) {
-        this.id = ++idCounter;
+        this.id = idCounter.getAndIncrement();
         this.order = order;
     }
 

@@ -7,11 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class QueueTest {
-    Queue queue;
+    Queue<Pizza> queue;
 
     @BeforeEach
     void setUp() throws InterruptedException {
-        queue = new Queue(3, new AtomicBoolean(false));
+        queue = new Queue<Pizza>(3, new AtomicBoolean(false));
         queue.push(new Pizza(new Order()));
         queue.push(new Pizza(new Order()));
     }
@@ -21,7 +21,7 @@ class QueueTest {
         Pizza pizza = new Pizza(new Order());
         queue.push(pizza);
         queue.pop(2);
-        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
+        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
     }
 
     @Test
@@ -46,7 +46,7 @@ class QueueTest {
         thread2.start();
         thread3.start();
         thread2.join();
-        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
+        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
     }
 
     @Test
@@ -71,6 +71,6 @@ class QueueTest {
         thread.start();
         thread2.start();
         thread.join();
-        assertEquals(pizza.getId(), queue.pop(1)[0].getId());
+        assertEquals(pizza.getId(), queue.pop(1).getFirst().getId());
     }
 }

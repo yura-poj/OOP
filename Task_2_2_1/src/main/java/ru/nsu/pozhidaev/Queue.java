@@ -1,14 +1,16 @@
 package ru.nsu.pozhidaev;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Queue is similar to conveyor.
- * You can push one pizza and pop amount of pizzas.
+ * You can push one item and pop amount of pizzas.
  */
-public class Queue {
+public class Queue<T> {
     private final int volume;
-    private final Pizza[] pizzas;
+    private ArrayList<T> items;
     private int size;
     private AtomicBoolean isClosed;
 
@@ -24,7 +26,8 @@ public class Queue {
      */
     public Queue(int volume, AtomicBoolean isClosed) {
         this.volume = volume;
-        this.pizzas = new Pizza[volume];
+        this.items = new ArrayList<T>(Collections.nCopies(volume, null));
+        this.items.add(null);
         this.size = 0;
         this.removeQueue = 0;
         this.currentPosition = 0;
@@ -32,16 +35,16 @@ public class Queue {
     }
 
     /**
-     * push pizza to the queue.
+     * push item to the queue.
      * wait if queue is full.
      * if bakery is closed right after wait, receive notify and exit from function.
-     * move queue and notify pop() that queue have new pizza.
+     * move queue and notify pop() that queue have new item.
      *
-     * @param pizza that will be added to the queue.
+     * @param item that will be added to the queue.
      *
      * @throws InterruptedException if was interrupted during wait.
      */
-    public void push(Pizza pizza) throws InterruptedException {
+    public void push(T item) throws InterruptedException {
         synchronized (lock) {
             while (size >= volume) {
                 lock.wait();
@@ -49,7 +52,7 @@ public class Queue {
                     return;
                 }
             }
-            pizzas[currentPosition] = pizza;
+            items.set(currentPosition, item);
             size++;
             currentPosition = (currentPosition + 1) % volume;
             lock.notify();
@@ -61,25 +64,25 @@ public class Queue {
      * wait if the queue is empty.
      * if bakery is closed right after wait, receive notify and exit from function.
      * move queue and notify push() that queue have space,
-     * notify so much times as many pizza we remove.
+     * notify so much times as many item we remove.
      *
-     * @param amount of pizza.
+     * @param amount of item.
      * @return pizzas from queue.
      *
      * @throws InterruptedException if was interrupted during wait.
      */
-    public Pizza[] pop(int amount) throws InterruptedException {
+    public ArrayList<T> pop(int amount) throws InterruptedException {
         synchronized (lock) {
             while (size == 0) {
                 lock.wait();
                 if (isClosed.get()) {
-                    return new Pizza[0];
+                    return null;
                 }
             }
             int nums = Math.min(size, amount);
-            Pizza[] baggage = new Pizza[nums];
+            ArrayList<T> baggage = new ArrayList<T>(Collections.nCopies(nums, null));
             for (int i = 0; i < nums; i++) {
-                baggage[i] = pizzas[removeQueue];
+                baggage.set(i, items.get(removeQueue));
                 removeQueue = (removeQueue + 1) % volume;
                 size--;
 

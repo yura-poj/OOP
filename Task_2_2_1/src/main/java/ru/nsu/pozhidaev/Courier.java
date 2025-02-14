@@ -2,6 +2,7 @@ package ru.nsu.pozhidaev;
 
 import static java.lang.Thread.sleep;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Courier implements Runnable {
     private static final int speed = 2000;
     private final int volume;
-    private Queue storage;
+    private Queue<Pizza> storage;
     private AtomicBoolean isClosed;
 
     /**
@@ -20,7 +21,7 @@ public class Courier implements Runnable {
      * @param storage is a queue with ready to send pizzas.
      * @param isClosed tells is bakery closed or not.
      */
-    public Courier(int volume, Queue storage, AtomicBoolean isClosed) {
+    public Courier(int volume, Queue<Pizza> storage, AtomicBoolean isClosed) {
         this.volume = volume;
         this.storage = storage;
         this.isClosed = isClosed;
@@ -33,13 +34,13 @@ public class Courier implements Runnable {
      */
     @Override
     public void run() {
-        Pizza[] pizzas = new Pizza[0];
+        ArrayList<Pizza> pizzas = null;
         while (!isClosed.get()) {
             try {
 
                 pizzas = storage.pop(volume);
 
-                if (pizzas.length == 0) {
+                if (pizzas == null || pizzas.isEmpty()) {
                     break;
                 }
 

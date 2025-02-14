@@ -8,9 +8,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Bakery {
     private static final int STACK_SIZE = 100000;
-    private final Queue storage;
+    private final Queue<Pizza> storage;
 
-    private final Queue orderQueue;
+    private final Queue<Order> orderQueue;
     private AtomicInteger index;
     private Baker[] bakers;
     private Courier[] couriers;
@@ -30,8 +30,8 @@ public class Bakery {
         index = new AtomicInteger(1);
         isClosed = new AtomicBoolean(false);
 
-        this.storage = new Queue(storage, isClosed);
-        this.orderQueue = new Queue(100000, isClosed);
+        this.storage = new Queue<Pizza>(storage, isClosed);
+        this.orderQueue = new Queue<Order>(100000, isClosed);
 
         this.bakers = new Baker[bakers.length];
         bakerThreads = new Thread[bakers.length];
@@ -63,7 +63,7 @@ public class Bakery {
         Order order = null;
         try {
             order = new Order();
-            orderQueue.push(order.getPizza());
+            orderQueue.push(order);
         } catch (InterruptedException e) {
             close();
         }

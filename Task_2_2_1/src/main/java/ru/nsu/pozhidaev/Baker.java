@@ -2,6 +2,7 @@ package ru.nsu.pozhidaev;
 
 import static java.lang.Thread.sleep;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -9,8 +10,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Baker implements Runnable {
     private final int speed;
-    private Queue storage;
-    private Queue orderQueue;
+    private Queue<Pizza> storage;
+    private Queue<Order> orderQueue;
     private AtomicBoolean isClosed;
 
     /**
@@ -21,7 +22,7 @@ public class Baker implements Runnable {
      * @param orderQueue is a queue with orders.
      * @param isClosed tells is bakery closed or not.
      */
-    public Baker(int speed, Queue storage, Queue orderQueue, AtomicBoolean isClosed) {
+    public Baker(int speed, Queue<Pizza> storage, Queue<Order> orderQueue, AtomicBoolean isClosed) {
         this.speed = speed * 1000;
         this.storage = storage;
         this.orderQueue = orderQueue;
@@ -36,23 +37,23 @@ public class Baker implements Runnable {
      */
     @Override
     public void run() {
-        Pizza[] result;
-        Pizza pizza = null;
+        ArrayList<Order> orders = null;
+        Order order = null;
         while (!isClosed.get()) {
             try {
-                result = orderQueue.pop(1);
-                if (result.length == 0) {
+                orders = orderQueue.pop(1);
+                if (orders == null || orders.isEmpty()) {
                     break;
                 }
-                pizza = result[0];
+                order = orders.getFirst();
 
-                if (pizza == null) {
+                if (order == null) {
                     break;
                 }
-                pizza.getOrder().setStatus(Status.COOKING);
+                order.setStatus(Status.COOKING);
                 sleep(speed);
-                pizza.getOrder().setStatus(Status.COOKED);
-                storage.push(pizza);
+                order.setStatus(Status.COOKED);
+                storage.push(order.getPizza());
 
             } catch (InterruptedException e) {
                 System.out.println("Baker is fired");
