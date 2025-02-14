@@ -33,7 +33,8 @@ public class BakeryJsonParser {
     private void parseJson(String pathToJson) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            Map<String, Object> jsonMap = objectMapper.readValue(new File(pathToJson), Map.class);
+            Map<String, Object> jsonMap = objectMapper.readValue(new File(pathToJson),
+                    new TypeReference<Map<String, Object>>() {});
 
             this.stackSize = (int) jsonMap.get("stackSize");
             this.storageVolume = (int) jsonMap.get("storageVolume");

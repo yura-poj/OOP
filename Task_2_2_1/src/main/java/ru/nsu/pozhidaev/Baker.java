@@ -45,7 +45,7 @@ public class Baker implements Runnable {
                 if (orders == null || orders.isEmpty()) {
                     break;
                 }
-                order = orders.getFirst();
+                order = orders.get(0);
 
                 if (order == null) {
                     break;
