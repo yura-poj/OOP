@@ -54,6 +54,28 @@ class BakeryTest {
     }
 
     @Test
+    void ordersWaitOrders() throws InterruptedException {
+        int numberOfOrders = 6;
+        Order[] orders = new Order[numberOfOrders * 2];
+        for (int i = 0; i < numberOfOrders; i++) {
+            orders[i] = bakery.order();
+        }
+        sleep(6000);
+
+        for (int i = 0; i < numberOfOrders; i++) {
+            orders[numberOfOrders + i] = bakery.order();
+        }
+        sleep(6000);
+
+        bakery.close();
+        assertEquals(orders[4].getStatus(), Status.DELIVERED);
+        assertEquals(orders[5].getStatus(), Status.DELIVERED);
+        assertEquals(orders[10].getStatus(), Status.DELIVERED);
+        assertEquals(orders[11].getStatus(), Status.DELIVERED);
+    }
+
+
+    @Test
     void close() throws InterruptedException {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ru.nsu.pozhidaev.Bakery</OriginalElement>
+  <nodes>
+    <node x="171.0" y="179.0">ru.nsu.pozhidaev.Order</node>
+    <node x="87.5" y="299.0">ru.nsu.pozhidaev.Bakery</node>
+    <node x="51.0" y="179.0">ru.nsu.pozhidaev.Baker</node>
+    <node x="109.0" y="-21.0">ru.nsu.pozhidaev.Status</node>
+    <node x="291.0" y="179.0">ru.nsu.pozhidaev.BakeryJsonParser</node>
+    <node x="-74.0" y="179.0">ru.nsu.pozhidaev.Courier</node>
+    <node x="14.5" y="39.0">ru.nsu.pozhidaev.Queue</node>
+    <node x="212.5" y="39.0">ru.nsu.pozhidaev.Pizza</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.nsu.pozhidaev.Courier" target="ru.nsu.pozhidaev.Queue" relationship="TO_ONE">
+      <point x="0.0" y="-12.0" />
+      <point x="-31.0" y="91.0" />
+      <point x="41.75" y="91.0" />
+      <point x="-27.25" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Baker" relationship="TO_MANY">
+      <point x="-20.75" y="-12.0" />
+      <point x="108.25" y="271.0" />
+      <point x="-91.0" y="271.0" />
+      <point x="-91.0" y="251.0" />
+      <point x="29.0" y="251.0" />
+      <point x="29.0" y="151.0" />
+      <point x="89.0" y="151.0" />
+      <point x="0.0" y="-12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Courier" relationship="CREATE">
+      <point x="20.75" y="-12.0" />
+      <point x="149.75" y="271.0" />
+      <point x="149.0" y="271.0" />
+      <point x="149.0" y="231.0" />
+      <point x="-31.0" y="231.0" />
+      <point x="0.0" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Order" target="ru.nsu.pozhidaev.Status" relationship="TO_ONE">
+      <point x="-19.0" y="-12.0" />
+      <point x="190.0" y="151.0" />
+      <point x="189.0" y="151.0" />
+      <point x="189.0" y="91.0" />
+      <point x="149.0" y="91.0" />
+      <point x="0.0" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Baker" relationship="CREATE">
+      <point x="20.75" y="-12.0" />
+      <point x="149.75" y="271.0" />
+      <point x="149.0" y="271.0" />
+      <point x="149.0" y="231.0" />
+      <point x="89.0" y="231.0" />
+      <point x="0.0" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Queue" relationship="TO_ONE">
+      <point x="-20.75" y="-12.0" />
+      <point x="108.25" y="271.0" />
+      <point x="-91.0" y="271.0" />
+      <point x="-91.0" y="251.0" />
+      <point x="-131.0" y="251.0" />
+      <point x="-131.0" y="131.0" />
+      <point x="-31.0" y="131.0" />
+      <point x="-31.0" y="91.0" />
+      <point x="41.75" y="91.0" />
+      <point x="-27.25" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Pizza" target="ru.nsu.pozhidaev.Order" relationship="TO_ONE">
+      <point x="-18.25" y="12.0" />
+      <point x="230.75" y="111.0" />
+      <point x="190.0" y="111.0" />
+      <point x="-19.0" y="-12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Order" target="ru.nsu.pozhidaev.Pizza" relationship="TO_ONE">
+      <point x="-19.0" y="-12.0" />
+      <point x="190.0" y="151.0" />
+      <point x="189.0" y="151.0" />
+      <point x="189.0" y="91.0" />
+      <point x="230.75" y="91.0" />
+      <point x="-18.25" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Courier" relationship="TO_MANY">
+      <point x="-20.75" y="-12.0" />
+      <point x="108.25" y="271.0" />
+      <point x="-91.0" y="271.0" />
+      <point x="-91.0" y="151.0" />
+      <point x="-31.0" y="151.0" />
+      <point x="0.0" y="-12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.BakeryJsonParser" relationship="CREATE">
+      <point x="20.75" y="-12.0" />
+      <point x="149.75" y="271.0" />
+      <point x="149.0" y="271.0" />
+      <point x="149.0" y="231.0" />
+      <point x="369.0" y="231.0" />
+      <point x="0.0" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Order" target="ru.nsu.pozhidaev.Pizza" relationship="CREATE">
+      <point x="19.0" y="-12.0" />
+      <point x="228.0" y="131.0" />
+      <point x="267.25" y="131.0" />
+      <point x="18.25" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Queue" relationship="CREATE">
+      <point x="20.75" y="-12.0" />
+      <point x="149.75" y="271.0" />
+      <point x="149.0" y="271.0" />
+      <point x="149.0" y="111.0" />
+      <point x="96.25" y="111.0" />
+      <point x="27.25" y="12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Bakery" target="ru.nsu.pozhidaev.Order" relationship="CREATE">
+      <point x="20.75" y="-12.0" />
+      <point x="149.75" y="271.0" />
+      <point x="149.0" y="271.0" />
+      <point x="149.0" y="231.0" />
+      <point x="269.0" y="231.0" />
+      <point x="269.0" y="151.0" />
+      <point x="228.0" y="151.0" />
+      <point x="19.0" y="-12.0" />
+    </edge>
+    <edge source="ru.nsu.pozhidaev.Baker" target="ru.nsu.pozhidaev.Queue" relationship="TO_ONE">
+      <point x="0.0" y="-12.0" />
+      <point x="89.0" y="131.0" />
+      <point x="-31.0" y="131.0" />
+      <point x="-31.0" y="91.0" />
+      <point x="41.75" y="91.0" />
+      <point x="-27.25" y="12.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.0192307692307692" showDependencies="true" x="168.0" y="161.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

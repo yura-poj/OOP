@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79b464ed-02de-4e35-bfda-46d6d780c71a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bakery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bakery.uml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Bakery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Bakery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/BakeryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/BakeryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,39 +60,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.BakeryTest.ManyOrders.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BakeryTest.VeryManyOrders.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BakeryTest.close.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BakeryTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BakeryTest.order.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Task_2_2_1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QueueTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_2_2_1 [:ru.nsu.pozhidaev.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_2_2_1 [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Task__2__2__1&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.BakeryTest.ManyOrders.executor": "Run",
+    "Gradle.BakeryTest.VeryManyOrders.executor": "Run",
+    "Gradle.BakeryTest.close.executor": "Run",
+    "Gradle.BakeryTest.executor": "Run",
+    "Gradle.BakeryTest.manyOrders.executor": "Run",
+    "Gradle.BakeryTest.order.executor": "Run",
+    "Gradle.BakeryTest.ordersWaitOrders.executor": "Run",
+    "Gradle.Build Task_2_2_1.executor": "Run",
+    "Gradle.QueueTest.executor": "Run",
+    "Gradle.Task_2_2_1 [:ru.nsu.pozhidaev.Main.main()].executor": "Run",
+    "Gradle.Task_2_2_1 [dependencies].executor": "Run",
+    "OverrideImplement.generate.javadoc": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "Task__2__2__1",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="ru.nsu.pozhidaev" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Task_2_2_1 [dependencies]">
+  <component name="RunManager" selected="Gradle.BakeryTest.ordersWaitOrders">
     <configuration name="BakeryTest.ManyOrders" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -107,30 +113,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;ru.nsu.pozhidaev.BakeryTest.ManyOrders&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="BakeryTest.VeryManyOrders" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ru.nsu.pozhidaev.BakeryTest.VeryManyOrders&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -165,7 +147,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="BakeryTest.order" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="BakeryTest.manyOrders" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -178,7 +160,31 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.nsu.pozhidaev.BakeryTest.order&quot;" />
+            <option value="&quot;ru.nsu.pozhidaev.BakeryTest.manyOrders&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="BakeryTest.ordersWaitOrders" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.pozhidaev.BakeryTest.ordersWaitOrders&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -213,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.BakeryTest.ordersWaitOrders" />
+        <item itemvalue="Gradle.BakeryTest.manyOrders" />
         <item itemvalue="Gradle.Task_2_2_1 [dependencies]" />
         <item itemvalue="Gradle.BakeryTest.close" />
         <item itemvalue="Gradle.BakeryTest.ManyOrders" />
-        <item itemvalue="Gradle.BakeryTest.order" />
-        <item itemvalue="Gradle.BakeryTest.VeryManyOrders" />
       </list>
     </recent_temporary>
   </component>
@@ -241,10 +247,48 @@
       <workItem from="1739505301831" duration="3632000" />
       <workItem from="1739513073921" duration="297000" />
       <workItem from="1739513378881" duration="24000" />
+      <workItem from="1739513405992" duration="9202000" />
+      <workItem from="1739706373127" duration="754000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Baker.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/pozhidaev/QueueTest.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Queue.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Queue.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/Queue.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/pozhidaev/BakeryJsonParser.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
