@@ -1,0 +1,7 @@
+{
+  "stackSize": 100000,
+  "storageVolume": 50,
+  "courierSpeed": 2,
+  "bakerSpeeds": [2, 2],
+  "courierVolumes": [2, 2]
+}
