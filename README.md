@@ -1,2 +1,5 @@
-Ну вы это, если будете подсматривать хоть звездочек накиньте (っ˘ڡ˘ς)
-![Cute Cat Java Programming](https://github.com/user-attachments/assets/b07f1dcd-5634-4800-9657-692abc56d12d)
+Увы но звезд было мало и котик погрустнел...
+
+очень погрустнел...
+
+<img src="https://github.com/user-attachments/assets/34bf2cba-1943-4279-ab24-c1f16f6feddd" width="300">
