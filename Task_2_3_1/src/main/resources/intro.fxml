@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.nsu.pozhidaev.IntroController"
+      spacing="10" alignment="CENTER">
+
+    <ImageView fitWidth="200" preserveRatio="true">
+        <image>
+            <Image url="@/images/suspicious_snake.jpeg"/>
+        </image>
+    </ImageView>
+
+    <Label fx:id="label" text="Hello, JavaFX!" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <Button fx:id="startButton" text="Start" onAction="#handleStart" style="-fx-font-size: 14px;"/>
+    <Button fx:id="exitButton" text="Exit" onAction="#handleExit" style="-fx-font-size: 14px;"/>
+
+    <VBox.margin>
+        <Insets top="20" left="20" right="20" bottom="20"/>
+    </VBox.margin>
+
+</VBox>
