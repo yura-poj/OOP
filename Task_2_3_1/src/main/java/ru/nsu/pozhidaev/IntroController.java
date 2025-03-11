@@ -27,7 +27,7 @@ public class IntroController {
 
         // Получаем контроллер, если нужно передать данные
         GameController controller = loader.getController();
-        controller.initData(stage); // Метод для инициализации данных
+        controller.initData(stage, new SnakeGame()); // Метод для инициализации данных
 
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene newScene = new Scene(newView, 400, 400);
