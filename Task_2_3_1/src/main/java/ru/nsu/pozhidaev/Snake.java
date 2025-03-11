@@ -50,8 +50,8 @@ public class Snake {
     }
 
     public void move() {
-        previous.setX(body.getLast().getX());
-        previous.setY(body.getLast().getY());
+        previous.setX(body.get(body.size()-1).getX());
+        previous.setY(body.get(body.size()-1).getY());
 
 
         for(int i = body.size()-1; i > 0; i--){
