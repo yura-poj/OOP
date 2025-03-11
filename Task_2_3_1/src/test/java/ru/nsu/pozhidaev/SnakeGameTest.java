@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 class SnakeGameTest {
+    SnakeGame snakeGame;
 
     @BeforeEach
     void setUp() {
+        snakeGame = new SnakeGame();
       }
 
     @Test
@@ -40,5 +42,13 @@ class SnakeGameTest {
 
     @Test
     void receiveAction() {
+      }
+
+      @Test
+    void blockExist() {
+        assertTrue(snakeGame.blockExist(9,9));
+        assertTrue(snakeGame.blockExist(9,10));
+        assertTrue(snakeGame.blockExist(10,10));
+        assertFalse(snakeGame.blockExist(0,1));
       }
 }

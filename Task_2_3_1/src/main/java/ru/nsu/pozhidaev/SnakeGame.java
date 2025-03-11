@@ -21,7 +21,7 @@ public class SnakeGame {
 
 
     public SnakeGame() {
-        snake = new Snake(10,10);
+        snake = new Snake(12,12);
         score = 0;
         bestScore = 0;
         Treat treat;
@@ -32,7 +32,8 @@ public class SnakeGame {
             treats.add(treat);
             appearTreat(treat);
         }
-
+        setUpWalls();
+        gameOver = false;
     }
 
     public int getScore() {
@@ -56,6 +57,11 @@ public class SnakeGame {
     }
 
     public void move() {
+
+        if(gameOver){
+            return;
+        }
+
         snake.move();
         checkCollision();
         checkLunch();
@@ -67,11 +73,10 @@ public class SnakeGame {
             gameOver = true;
             return;
         }
-        gameOver = Stream.of(
-                        walls.stream(),
-                        snake.getBody().stream()
-                ).flatMap(s -> s)
-                .anyMatch(s -> s.getX() == head.getX() && s.getY() == head.getY());
+        gameOver = Stream.concat(
+                walls.stream(),
+                snake.getBody().stream().skip(1)
+        ).anyMatch(s -> s.getX() == head.getX() && s.getY() == head.getY());
     }
 
     private void checkLunch() {
@@ -99,7 +104,7 @@ public class SnakeGame {
         do {
             x = (int) (Math.random() * width);
             y = (int) (Math.random() * height);
-        } while (! blockExist(x,y));
+        } while ( blockExist(x,y));
 
         treat.setX(x);
         treat.setY(y);
@@ -115,12 +120,18 @@ public class SnakeGame {
         }
     }
 
-    private boolean blockExist(int x, int y) {
+    public boolean blockExist(int x, int y) {
         return Stream.of(
                         walls.stream(),
                         treats.stream(),
                         snake.getBody().stream()
                 ).flatMap(s -> s)
                 .anyMatch(s -> s.getX() == x && s.getY() == y);
+    }
+
+    private void setUpWalls() {
+        for(int i = 0; i < 2; i++) {
+            walls.add(new Wall(9, 9 + i));
+        }
     }
 }

@@ -15,7 +15,7 @@ public class Snake {
         for(int i =0; i < 3; i++){
             body.add(new SnakePart(startX + i, startY));
         }
-        moveOrdinate = 1;
+        moveOrdinate = -1;
         moveAbscissa = 0;
         previous = new SnakePart(0, 0);
     }

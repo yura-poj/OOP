@@ -30,7 +30,7 @@ public class IntroController {
         controller.initData(stage, new SnakeGame()); // Метод для инициализации данных
 
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene newScene = new Scene(newView, 400, 400);
+        Scene newScene = new Scene(newView, 500, 500);
         currentStage.setScene(newScene);
         currentStage.show();
     }

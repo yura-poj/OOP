@@ -63,6 +63,10 @@ public class GameController {
         drawTreats(snakeGame.getTreats());
         snakeGame.move();
         updateScore();
+
+        if (snakeGame.isGameOver()) {
+            scoreLabel.setText(String.valueOf("You loose"));
+        }
     }
 
     private void drawSnake(ArrayList<SnakePart> snake) {

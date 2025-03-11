@@ -4,13 +4,15 @@ package ru.nsu.pozhidaev;
  * block of treat on the board that snake can eat and after that object will be destroyed.
  */
 public class Treat implements Block{
+    int x;
+    int y;
 /**
 *
  * @return
 */
     @Override
     public int getX() {
-        return 0;
+        return x;
     }
 
 /**
@@ -19,7 +21,7 @@ public class Treat implements Block{
 */
     @Override
     public int getY() {
-        return 0;
+        return y;
     }
 
 /**
@@ -28,7 +30,7 @@ public class Treat implements Block{
 */
     @Override
     public void setX(int x) {
-
+        this.x = x;
     }
 
 /**
@@ -37,6 +39,6 @@ public class Treat implements Block{
 */
     @Override
     public void setY(int y) {
-
+        this.y = y;
     }
 }
