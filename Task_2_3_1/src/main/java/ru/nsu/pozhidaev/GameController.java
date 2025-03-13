@@ -2,34 +2,57 @@ package ru.nsu.pozhidaev;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EventListener;
 
 public class GameController {
     @FXML
     private Pane gamePane;
     @FXML
     private Label scoreLabel;
+    @FXML
+    private Label bestScoreLabel;
+    @FXML
+    private VBox buttonBox;
+
+    Timeline timeline;
 
     private SnakeGame snakeGame;
     private Rectangle[][] gridCells;
-    private int score = 0;
     private Stage stage;
+    private final IntegerProperty score = new SimpleIntegerProperty(0);
+    private final IntegerProperty bestScore = new SimpleIntegerProperty(0);
+
 
     public void initData(Stage stage, SnakeGame snakeGame) {
         this.snakeGame = snakeGame;
         this.stage = stage;
         gamePane.requestFocus();
         
+        scoreLabel.textProperty().bind(score.asString("Score: %d"));
+        bestScoreLabel.textProperty().bind(bestScore.asString("Best score: %d"));
+
+
         int rows = 20, cols = 20, size = 20;
         int speed = 200;
         GridPane grid = new GridPane();
@@ -45,7 +68,7 @@ public class GameController {
 
         gamePane.getChildren().add(grid);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(speed), e -> drawGame()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(speed), e -> drawGame()));
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
@@ -62,11 +85,13 @@ public class GameController {
         drawWalls(snakeGame.getWalls());
         drawTreats(snakeGame.getTreats());
         snakeGame.move();
-        updateScore();
 
         if (snakeGame.isGameOver()) {
-            scoreLabel.setText(String.valueOf("You loose"));
+            gameOver();
         }
+
+        score.set(snakeGame.getScore());
+        bestScore.set(snakeGame.getBestScore());
     }
 
     private void drawSnake(ArrayList<SnakePart> snake) {
@@ -106,11 +131,31 @@ public class GameController {
     }
 
     @FXML
-    private void handleExit() {
-        System.exit(0);
+    private void handleAgain() {
+        snakeGame.startOver();
+        buttonBox.setVisible(false);
+        timeline.play();
     }
 
-    public void updateScore() {
-        scoreLabel.setText(String.valueOf(snakeGame.getScore()));
+    private void gameOver() {
+        scoreLabel.textProperty().unbind();
+        scoreLabel.setText("You loose");
+        buttonBox.setVisible(true);
+        timeline.stop();
+    }
+
+    @FXML
+    public void handleExit(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/intro.fxml"));
+        Parent newView = loader.load();
+
+        // Получаем контроллер, если нужно передать данные
+        IntroController controller = loader.getController();
+        controller.initData(stage);
+
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene newScene = new Scene(newView, 500, 500);
+        currentStage.setScene(newScene);
+        currentStage.show();
     }
 }

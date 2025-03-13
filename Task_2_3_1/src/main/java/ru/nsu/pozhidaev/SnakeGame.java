@@ -21,19 +21,13 @@ public class SnakeGame {
 
 
     public SnakeGame() {
-        snake = new Snake(12,12);
-        score = 0;
-        bestScore = 0;
-        Treat treat;
         treats = new ArrayList<Treat>();
         walls = new ArrayList<Wall>();
-        for(int i = 0; i < 5; i ++){
-            treat = new Treat();
-            treats.add(treat);
-            appearTreat(treat);
-        }
         setUpWalls();
-        gameOver = false;
+        for(int i = 0; i < 5; i ++){
+            treats.add(new Treat());
+        }
+        startOver();
     }
 
     public int getScore() {
@@ -65,6 +59,16 @@ public class SnakeGame {
         snake.move();
         checkCollision();
         checkLunch();
+    }
+
+    public void startOver(){
+        snake = new Snake(12,12);
+        score = 0;
+        for( Treat treat : treats){
+            appearTreat(treat);
+        }
+        gameOver = false;
+
     }
 
     private void checkCollision() {

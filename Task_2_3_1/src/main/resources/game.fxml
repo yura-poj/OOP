@@ -7,11 +7,17 @@
 <?import javafx.scene.layout.GridPane?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="ru.nsu.pozhidaev.GameController">
-    <Label fx:id="scoreLabel" text="Score: 0"/>
+    <Label fx:id="scoreLabel"/>
+    <Label fx:id="bestScoreLabel"/>
     <Pane fx:id="gamePane" onKeyPressed="#handleKeyPress" focusTraversable="true">
         <GridPane fx:id="gameGrid">
             <children>
             </children>
         </GridPane>
     </Pane>
+    <VBox fx:id="buttonBox" spacing="10" alignment="CENTER" visible="false">
+        <Button fx:id="againButton" text="Again" onAction="#handleAgain"/>
+        <Button fx:id="exitButton" text="Exit" onAction="#handleExit" />
+    </VBox>
+
 </VBox>
