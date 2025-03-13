@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -20,10 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class GameController {
     @FXML
@@ -44,7 +41,7 @@ public class GameController {
     private final IntegerProperty bestScore = new SimpleIntegerProperty(0);
 
 
-    public void initData(Stage stage, SnakeGame snakeGame) {
+    public void initData(Stage stage) {
         this.snakeGame = snakeGame;
         this.stage = stage;
         gamePane.requestFocus();
