@@ -23,6 +23,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * GameController manages the game logic and user interactions during the game.
+ */
 public class GameController {
     @FXML
     private Pane gamePane;
@@ -37,15 +40,19 @@ public class GameController {
     @FXML
     private Text looseText;
 
-    Timeline timeline;
-
+    private Timeline timeline;
     private SnakeGame snakeGame;
     private Rectangle[][] gridCells;
     private Stage stage;
     private final IntegerProperty score = new SimpleIntegerProperty(0);
     private final IntegerProperty bestScore = new SimpleIntegerProperty(0);
 
-
+    /**
+     * Initializes the game controller with the primary stage and game settings.
+     *
+     * @param stage the primary stage of the application
+     * @param gameSettings the settings for the game
+     */
     public void initData(Stage stage, GameSettings gameSettings) {
         snakeGame = new SnakeGame(gameSettings);
         this.stage = stage;
@@ -53,7 +60,6 @@ public class GameController {
 
         scoreLabel.textProperty().bind(score.asString("Score: %d"));
         bestScoreLabel.textProperty().bind(bestScore.asString("Best score: %d"));
-
 
         int rows = gameSettings.getHeight(), cols = gameSettings.getWidth(), size = gameSettings.getCubeSize();
         int speed = gameSettings.getSpeed();
@@ -76,6 +82,9 @@ public class GameController {
         timeline.play();
     }
 
+    /**
+     * Draws the current state of the game on the game pane.
+     */
     private void drawGame() {
         for (int row = 0; row < gridCells.length; row++) {
             for (int col = 0; col < gridCells[0].length; col++) {
@@ -96,24 +105,44 @@ public class GameController {
         bestScore.set(snakeGame.getBestScore());
     }
 
+    /**
+     * Draws the snake on the game pane.
+     *
+     * @param snake the list of snake parts to draw
+     */
     private void drawSnake(ArrayList<SnakePart> snake) {
-        for(SnakePart snakePart : snake) {
+        for (SnakePart snakePart : snake) {
             gridCells[snakePart.getY()][snakePart.getX()].setFill(Color.GREEN);
         }
     }
 
+    /**
+     * Draws the walls on the game pane.
+     *
+     * @param walls the list of wall coordinates to draw
+     */
     private void drawWalls(ArrayList<Wall> walls) {
-        for(Wall wall : walls) {
+        for (Wall wall : walls) {
             gridCells[wall.getY()][wall.getX()].setFill(Color.RED);
         }
     }
 
+    /**
+     * Draws the treats on the game pane.
+     *
+     * @param treats the list of treat coordinates to draw
+     */
     private void drawTreats(ArrayList<Treat> treats) {
         for (Treat treat : treats) {
             gridCells[treat.getY()][treat.getX()].setFill(Color.BLUE);
         }
     }
 
+    /**
+     * Handles key press events to control the snake.
+     *
+     * @param event the key event
+     */
     @FXML
     private void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
@@ -132,6 +161,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Handles the action to restart the game.
+     */
     @FXML
     private void handleAgain() {
         snakeGame.startOver();
@@ -141,8 +173,11 @@ public class GameController {
         timeline.play();
     }
 
+    /**
+     * Handles the game over state, displaying the appropriate message.
+     */
     private void gameOver() {
-        if(snakeGame.isGameWon()) {
+        if (snakeGame.isGameWon()) {
             winText.setVisible(true);
         } else {
             looseText.setVisible(true);
@@ -151,12 +186,17 @@ public class GameController {
         timeline.stop();
     }
 
+    /**
+     * Handles the exit action to return to the intro screen.
+     *
+     * @param actionEvent the action event
+     * @throws IOException if the intro view cannot be loaded
+     */
     @FXML
     public void handleExit(javafx.event.ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/intro.fxml"));
         Parent newView = loader.load();
 
-        // Получаем контроллер, если нужно передать данные
         IntroController controller = loader.getController();
         controller.initData(stage);
 

@@ -1,16 +1,36 @@
 package ru.nsu.pozhidaev;
 
 /**
- * cube on the board.
+ * Block represents a cube on the board.
  */
 public interface Block {
 
-    public int getX();
+    /**
+     * Returns the x-coordinate of the block.
+     *
+     * @return the x-coordinate
+     */
+    int getX();
 
-    public int getY();
+    /**
+     * Returns the y-coordinate of the block.
+     *
+     * @return the y-coordinate
+     */
+    int getY();
 
-    public void setX(int x);
+    /**
+     * Sets the x-coordinate of the block.
+     *
+     * @param x the x-coordinate to set
+     */
+    void setX(int x);
 
-    public void setY(int y);
+    /**
+     * Sets the y-coordinate of the block.
+     *
+     * @param y the y-coordinate to set
+     */
+    void setY(int y);
 
 }
