@@ -1,10 +1,9 @@
 package ru.nsu.pozhidaev;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 /**
  * SnakeGame is the main controller of the game, managing the game state and logic.
