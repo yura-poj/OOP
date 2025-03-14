@@ -23,15 +23,6 @@ public class GameSettings {
         loadSettings(input);
     }
 
-    public void loadSettings(String input) {
-        try {
-            jsonMap = objectMapper.readValue(new File(input),
-                    new TypeReference<Map<String, Object>>() {});
-        } catch (IOException e) {
-            throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);
-        }
-    }
-
     public int getSpeed() {
         return (int) jsonMap.get("speed");
     }
@@ -60,5 +51,14 @@ public class GameSettings {
     public List<List<Integer>> getWalls() {
         return objectMapper.convertValue(jsonMap.get("walls"),
                 new TypeReference<List<List<Integer>>>() {});
+    }
+
+    private void loadSettings(String input) {
+        try {
+            jsonMap = objectMapper.readValue(new File(input),
+                    new TypeReference<Map<String, Object>>() {});
+        } catch (IOException e) {
+            throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);
+        }
     }
 }

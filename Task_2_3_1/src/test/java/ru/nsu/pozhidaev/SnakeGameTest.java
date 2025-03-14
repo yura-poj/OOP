@@ -3,52 +3,61 @@ package ru.nsu.pozhidaev;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 class SnakeGameTest {
     SnakeGame snakeGame;
+    GameSettings gameSettings;
 
     @BeforeEach
     void setUp() {
-        snakeGame = new SnakeGame();
+        gameSettings = new GameSettings(getClass().getResource("/levels/level1.json").getPath());
+        snakeGame = new SnakeGame(gameSettings);
       }
 
     @Test
     void getScore() {
+        assertEquals(0, snakeGame.getScore());
       }
 
     @Test
     void getBestScore() {
-      }
-
-    @Test
-    void getSnakeBody() {
+        assertEquals(0, snakeGame.getScore());
       }
 
     @Test
     void getTreats() {
+        assertEquals(gameSettings.getNumberFood(), snakeGame.getTreats().size());
       }
 
     @Test
     void getWalls() {
+        assertEquals(gameSettings.getWalls().size(), snakeGame.getWalls().size());
       }
 
     @Test
     void move() {
+        snakeGame.move();
       }
 
     @Test
     void isGameOver() {
+        assertFalse(snakeGame.isGameOver());
       }
 
     @Test
-    void receiveAction() {
-      }
+    void getAwayFromScreen(){
+        for( int i = 0; i <= gameSettings.getSnakeCoordinates().get(0); i++){
+            snakeGame.move();
+        }
+        assertTrue(snakeGame.isGameOver());
+    }
 
-      @Test
+    @Test
     void blockExist() {
-        assertTrue(snakeGame.blockExist(9,9));
-        assertTrue(snakeGame.blockExist(9,10));
-        assertTrue(snakeGame.blockExist(10,10));
+        assertTrue(snakeGame.blockExist(1,1));
+        assertTrue(snakeGame.blockExist(1,2));
         assertFalse(snakeGame.blockExist(0,1));
       }
 }

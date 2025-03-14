@@ -23,7 +23,7 @@ public class IntroController {
 
     @FXML
     private void handleStart(ActionEvent event) {
-        String levelPath = "levels/level1.json";
+        String levelPath = "/levels/level1.json";
         try{
             GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
             loadLevel(event, gameSettings);
