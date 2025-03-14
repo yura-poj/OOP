@@ -60,7 +60,9 @@ public class GameController {
         scoreLabel.textProperty().bind(score.asString("Score: %d"));
         bestScoreLabel.textProperty().bind(bestScore.asString("Best score: %d"));
 
-        int rows = gameSettings.getHeight(), cols = gameSettings.getWidth(), size = gameSettings.getCubeSize();
+        int rows = gameSettings.getHeight();
+        int cols = gameSettings.getWidth();
+        int size = gameSettings.getCubeSize();
         int speed = gameSettings.getSpeed();
         GridPane grid = new GridPane();
         gridCells = new Rectangle[rows][cols];
@@ -156,6 +158,9 @@ public class GameController {
                 break;
             case RIGHT:
                 snakeGame.receiveAction(Action.RIGHT);
+                break;
+            default:
+                // Handle unexpected key events
                 break;
         }
     }

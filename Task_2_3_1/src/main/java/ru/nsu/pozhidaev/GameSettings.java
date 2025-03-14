@@ -1,12 +1,14 @@
 package ru.nsu.pozhidaev;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * GameSettings is responsible for loading and providing access to game configuration
@@ -34,8 +36,7 @@ public class GameSettings {
     private void loadSettings(String input) {
         try {
             jsonMap = objectMapper.readValue(new File(input),
-                    new TypeReference<Map<String, Object>>() {
-                    });
+                    new TypeReference<Map<String, Object>>() {});
         } catch (IOException e) {
             throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);
         }
@@ -112,7 +113,6 @@ public class GameSettings {
      */
     public List<List<Integer>> getWalls() {
         return objectMapper.convertValue(jsonMap.get("walls"),
-                new TypeReference<List<List<Integer>>>() {
-                });
+                new TypeReference<List<List<Integer>>>() {});
     }
 }

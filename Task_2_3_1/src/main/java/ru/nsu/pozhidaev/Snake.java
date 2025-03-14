@@ -34,28 +34,31 @@ public class Snake {
     public void setDirection(Action action) {
         switch (action) {
             case DOWN:
-                if (moveAbscissa==0) {
+                if (moveAbscissa == 0) {
                     moveAbscissa = 1;
                     moveOrdinate = 0;
                 }
                 break;
             case UP:
-                if (moveAbscissa==0) {
+                if (moveAbscissa == 0) {
                     moveAbscissa = -1;
                     moveOrdinate = 0;
                 }
                 break;
             case LEFT:
-                if (moveOrdinate==0) {
+                if (moveOrdinate == 0) {
                     moveOrdinate = -1;
                     moveAbscissa = 0;
                 }
                 break;
             case RIGHT:
-                if (moveOrdinate==0) {
+                if (moveOrdinate == 0) {
                     moveOrdinate = 1;
                     moveAbscissa = 0;
                 }
+                break;
+            default:
+                // Handle unexpected actions
                 break;
         }
     }
