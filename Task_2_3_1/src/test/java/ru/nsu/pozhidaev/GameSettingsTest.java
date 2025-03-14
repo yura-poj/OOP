@@ -42,7 +42,7 @@ class GameSettingsTest {
 
     @Test
     void getCubeSize() {
-        assertEquals(gameSettings.getCubeSize(), 30);
+        assertEquals(gameSettings.getCubeSize(), 20);
     }
 
     @Test
