@@ -143,7 +143,7 @@ public class SnakeGame {
      */
     private void checkCollision() {
         SnakePart head = snake.getHead();
-        if (head.getCoordinateY() > settings.getHeight() || head.getCoordinateY() < 0 || head.getCoordinateX() > settings.getWidth() || head.getCoordinateX() < 0) {
+        if (head.getCoordinateY() >= settings.getHeight() || head.getCoordinateY() < 0 || head.getCoordinateX() >= settings.getWidth() || head.getCoordinateX() < 0) {
             gameOver = true;
             return;
         }
