@@ -23,22 +23,22 @@ public class IntroController {
 
     @FXML
     private void handleStart(ActionEvent event) {
-        String levelPath = "./levels/level1.json";
-        GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath));
+        String levelPath = "levels/level1.json";
         try{
-            loadLevel(event);
+            GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
+            loadLevel(event, gameSettings);
         } catch (IOException e) {
             System.out.println("No such level, choose another one");
         }
     }
 
-    private void loadLevel(ActionEvent event) throws IOException {
+    private void loadLevel(ActionEvent event, GameSettings settings) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
         Parent newView = loader.load();
 
         // Получаем контроллер, если нужно передать данные
         GameController controller = loader.getController();
-        controller.initData(stage, new SnakeGame()); // Метод для инициализации данных
+        controller.initData(stage, new SnakeGame(settings)); // Метод для инициализации данных
 
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene newScene = new Scene(newView, 500, 500);

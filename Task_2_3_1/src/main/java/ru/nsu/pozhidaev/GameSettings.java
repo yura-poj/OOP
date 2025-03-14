@@ -18,14 +18,14 @@ public class GameSettings {
     private ObjectMapper objectMapper;
     private Map<String, Object> jsonMap;
 
-    public GameSettings(URl input) {
+    public GameSettings(String  input) {
         this.objectMapper = new ObjectMapper();
         loadSettings(input);
     }
 
-    public void loadSettings(InputStream input) {
+    public void loadSettings(String input) {
         try {
-            jsonMap = objectMapper.readValue(new File(String.valueOf(input)),
+            jsonMap = objectMapper.readValue(new File(input),
                     new TypeReference<Map<String, Object>>() {});
         } catch (IOException e) {
             throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);
