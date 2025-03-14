@@ -5,18 +5,18 @@ package ru.nsu.pozhidaev;
  * If the snake bumps into a wall, the game is over.
  */
 public class Wall implements Block {
-    private int x;
-    private int y;
+    private int coordinateX;
+    private int coordinateY;
 
     /**
      * Constructs a Wall with the specified coordinates.
      *
-     * @param x the x-coordinate of the wall
-     * @param y the y-coordinate of the wall
+     * @param coordinateX the x-coordinate of the wall
+     * @param coordinateY the y-coordinate of the wall
      */
-    public Wall(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Wall(int coordinateX, int coordinateY) {
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
     }
 
     /**
@@ -25,8 +25,8 @@ public class Wall implements Block {
      * @return the x-coordinate
      */
     @Override
-    public int getX() {
-        return x;
+    public int getCoordinateX() {
+        return coordinateX;
     }
 
     /**
@@ -35,27 +35,27 @@ public class Wall implements Block {
      * @return the y-coordinate
      */
     @Override
-    public int getY() {
-        return y;
+    public int getCoordinateY() {
+        return coordinateY;
     }
 
     /**
      * Sets the x-coordinate of the wall.
      *
-     * @param x the x-coordinate to set
+     * @param coordinateX the x-coordinate to set
      */
     @Override
-    public void setX(int x) {
-        this.x = x;
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
     }
 
     /**
      * Sets the y-coordinate of the wall.
      *
-     * @param y the y-coordinate to set
+     * @param coordinateY the y-coordinate to set
      */
     @Override
-    public void setY(int y) {
-        this.y = y;
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
     }
 }

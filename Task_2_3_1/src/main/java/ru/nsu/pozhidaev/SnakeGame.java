@@ -17,6 +17,13 @@ public class SnakeGame {
     private int score;
     @Getter
     private int bestScore;
+    /**
+     * -- GETTER --
+     * Checks if the game is over.
+     *
+     * @return true if the game is over, false otherwise
+     */
+    @Getter
     private boolean gameOver;
     @Getter
     private boolean gameWon;
@@ -80,21 +87,12 @@ public class SnakeGame {
     }
 
     /**
-     * Checks if the game is over.
-     *
-     * @return true if the game is over, false otherwise
-     */
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    /**
      * Receives an action to change the direction of the snake.
      *
      * @param action the action to change the direction
      */
     public void receiveAction(Action action) {
-        if (action == Action.UP || action == Action.DOWN || action == Action.LEFT || action == Action.RIGHT) {
+        if (action==Action.UP || action==Action.DOWN || action==Action.LEFT || action==Action.RIGHT) {
             snake.setDirection(action);
         }
     }
@@ -118,6 +116,7 @@ public class SnakeGame {
      *
      * @param x the x-coordinate
      * @param y the y-coordinate
+     *
      * @return true if a block exists, false otherwise
      */
     public boolean blockExist(int x, int y) {
@@ -126,7 +125,7 @@ public class SnakeGame {
                         treats.stream(),
                         snake.getBody().stream()
                 ).flatMap(s -> s)
-                .anyMatch(s -> s.getX() == x && s.getY() == y);
+                .anyMatch(s -> s.getCoordinateX()==x && s.getCoordinateY()==y);
     }
 
     /**
@@ -144,14 +143,14 @@ public class SnakeGame {
      */
     private void checkCollision() {
         SnakePart head = snake.getHead();
-        if (head.getY() > settings.getHeight() || head.getY() < 0 || head.getX() > settings.getWidth() || head.getX() < 0) {
+        if (head.getCoordinateY() > settings.getHeight() || head.getCoordinateY() < 0 || head.getCoordinateX() > settings.getWidth() || head.getCoordinateX() < 0) {
             gameOver = true;
             return;
         }
         gameOver = Stream.concat(
                 walls.stream(),
                 snake.getBody().stream().skip(1)
-        ).anyMatch(s -> s.getX() == head.getX() && s.getY() == head.getY());
+        ).anyMatch(s -> s.getCoordinateX()==head.getCoordinateX() && s.getCoordinateY()==head.getCoordinateY());
     }
 
     /**
@@ -160,7 +159,7 @@ public class SnakeGame {
     private void checkLunch() {
         SnakePart head = snake.getHead();
         for (Treat treat : treats) {
-            if (head.getX() == treat.getX() && head.getY() == treat.getY()) {
+            if (head.getCoordinateX()==treat.getCoordinateX() && head.getCoordinateY()==treat.getCoordinateY()) {
                 snake.lunch();
                 updateScore();
                 appearTreat(treat);
@@ -192,8 +191,8 @@ public class SnakeGame {
             y = (int) (Math.random() * settings.getHeight());
         } while (blockExist(x, y));
 
-        treat.setX(x);
-        treat.setY(y);
+        treat.setCoordinateX(x);
+        treat.setCoordinateY(y);
     }
 
     /**

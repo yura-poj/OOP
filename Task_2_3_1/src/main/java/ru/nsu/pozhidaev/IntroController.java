@@ -65,8 +65,9 @@ public class IntroController {
     /**
      * Loads the specified game level and initializes the game controller.
      *
-     * @param event the action event
+     * @param event    the action event
      * @param settings the game settings loaded from the JSON file
+     *
      * @throws IOException if the game view cannot be loaded
      */
     private void loadLevel(ActionEvent event, GameSettings settings) throws IOException {

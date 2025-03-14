@@ -5,38 +5,18 @@ package ru.nsu.pozhidaev;
  * It acts as a block that can be an obstacle for the snake.
  */
 public class SnakePart implements Block {
-    private int x;
-    private int y;
+    private int coordinateX;
+    private int coordinateY;
 
     /**
      * Constructs a SnakePart with the specified coordinates.
      *
-     * @param x the x-coordinate of the snake part
-     * @param y the y-coordinate of the snake part
+     * @param coordinateX the x-coordinate of the snake part
+     * @param coordinateY the y-coordinate of the snake part
      */
-    public SnakePart(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    /**
-     * Sets the x-coordinate of the snake part.
-     *
-     * @param x the x-coordinate to set
-     */
-    @Override
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
-     * Sets the y-coordinate of the snake part.
-     *
-     * @param y the y-coordinate to set
-     */
-    @Override
-    public void setY(int y) {
-        this.y = y;
+    public SnakePart(int coordinateX, int coordinateY) {
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
     }
 
     /**
@@ -45,8 +25,18 @@ public class SnakePart implements Block {
      * @return the x-coordinate
      */
     @Override
-    public int getX() {
-        return x;
+    public int getCoordinateX() {
+        return coordinateX;
+    }
+
+    /**
+     * Sets the x-coordinate of the snake part.
+     *
+     * @param coordinateX the x-coordinate to set
+     */
+    @Override
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
     }
 
     /**
@@ -55,7 +45,17 @@ public class SnakePart implements Block {
      * @return the y-coordinate
      */
     @Override
-    public int getY() {
-        return y;
+    public int getCoordinateY() {
+        return coordinateY;
+    }
+
+    /**
+     * Sets the y-coordinate of the snake part.
+     *
+     * @param coordinateY the y-coordinate to set
+     */
+    @Override
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
     }
 }

@@ -34,25 +34,25 @@ public class Snake {
     public void setDirection(Action action) {
         switch (action) {
             case DOWN:
-                if (moveAbscissa == 0) {
+                if (moveAbscissa==0) {
                     moveAbscissa = 1;
                     moveOrdinate = 0;
                 }
                 break;
             case UP:
-                if (moveAbscissa == 0) {
+                if (moveAbscissa==0) {
                     moveAbscissa = -1;
                     moveOrdinate = 0;
                 }
                 break;
             case LEFT:
-                if (moveOrdinate == 0) {
+                if (moveOrdinate==0) {
                     moveOrdinate = -1;
                     moveAbscissa = 0;
                 }
                 break;
             case RIGHT:
-                if (moveOrdinate == 0) {
+                if (moveOrdinate==0) {
                     moveOrdinate = 1;
                     moveAbscissa = 0;
                 }
@@ -64,16 +64,16 @@ public class Snake {
      * Moves the snake in the current direction.
      */
     public void move() {
-        previous.setX(body.get(body.size() - 1).getX());
-        previous.setY(body.get(body.size() - 1).getY());
+        previous.setCoordinateX(body.get(body.size() - 1).getCoordinateX());
+        previous.setCoordinateY(body.get(body.size() - 1).getCoordinateY());
 
         for (int i = body.size() - 1; i > 0; i--) {
-            body.get(i).setX(body.get(i - 1).getX());
-            body.get(i).setY(body.get(i - 1).getY());
+            body.get(i).setCoordinateX(body.get(i - 1).getCoordinateX());
+            body.get(i).setCoordinateY(body.get(i - 1).getCoordinateY());
         }
 
-        body.get(0).setX(body.get(0).getX() + moveOrdinate);
-        body.get(0).setY(body.get(0).getY() + moveAbscissa);
+        body.get(0).setCoordinateX(body.get(0).getCoordinateX() + moveOrdinate);
+        body.get(0).setCoordinateY(body.get(0).getCoordinateY() + moveAbscissa);
     }
 
     /**
@@ -98,6 +98,6 @@ public class Snake {
      * Increases the size of the snake by adding a new part.
      */
     public void lunch() {
-        body.add(new SnakePart(previous.getX(), previous.getY()));
+        body.add(new SnakePart(previous.getCoordinateX(), previous.getCoordinateY()));
     }
 }

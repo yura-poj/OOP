@@ -4,9 +4,9 @@ package ru.nsu.pozhidaev;
  * Treat represents a block on the board that the snake can eat.
  * Once eaten, the treat is destroyed.
  */
-public class Treat implements Block{
-    int x;
-    int y;
+public class Treat implements Block {
+    int coordinateX;
+    int coordinateY;
 
     /**
      * Returns the x-coordinate of the treat.
@@ -14,8 +14,8 @@ public class Treat implements Block{
      * @return the x-coordinate
      */
     @Override
-    public int getX() {
-        return x;
+    public int getCoordinateX() {
+        return coordinateX;
     }
 
     /**
@@ -24,27 +24,27 @@ public class Treat implements Block{
      * @return the y-coordinate
      */
     @Override
-    public int getY() {
-        return y;
+    public int getCoordinateY() {
+        return coordinateY;
     }
 
     /**
      * Sets the x-coordinate of the treat.
      *
-     * @param x the x-coordinate to set
+     * @param coordinateX the x-coordinate to set
      */
     @Override
-    public void setX(int x) {
-        this.x = x;
+    public void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
     }
 
     /**
      * Sets the y-coordinate of the treat.
      *
-     * @param y the y-coordinate to set
+     * @param coordinateY the y-coordinate to set
      */
     @Override
-    public void setY(int y) {
-        this.y = y;
+    public void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
     }
 }

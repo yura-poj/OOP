@@ -2,8 +2,8 @@ package ru.nsu.pozhidaev;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -50,7 +50,7 @@ public class GameController {
     /**
      * Initializes the game controller with the primary stage and game settings.
      *
-     * @param stage the primary stage of the application
+     * @param stage        the primary stage of the application
      * @param gameSettings the settings for the game
      */
     public void initData(Stage stage, GameSettings gameSettings) {
@@ -112,7 +112,7 @@ public class GameController {
      */
     private void drawSnake(ArrayList<SnakePart> snake) {
         for (SnakePart snakePart : snake) {
-            gridCells[snakePart.getY()][snakePart.getX()].setFill(Color.GREEN);
+            gridCells[snakePart.getCoordinateY()][snakePart.getCoordinateX()].setFill(Color.GREEN);
         }
     }
 
@@ -123,7 +123,7 @@ public class GameController {
      */
     private void drawWalls(ArrayList<Wall> walls) {
         for (Wall wall : walls) {
-            gridCells[wall.getY()][wall.getX()].setFill(Color.RED);
+            gridCells[wall.getCoordinateY()][wall.getCoordinateX()].setFill(Color.RED);
         }
     }
 
@@ -134,7 +134,7 @@ public class GameController {
      */
     private void drawTreats(ArrayList<Treat> treats) {
         for (Treat treat : treats) {
-            gridCells[treat.getY()][treat.getX()].setFill(Color.BLUE);
+            gridCells[treat.getCoordinateY()][treat.getCoordinateX()].setFill(Color.BLUE);
         }
     }
 
@@ -190,6 +190,7 @@ public class GameController {
      * Handles the exit action to return to the intro screen.
      *
      * @param actionEvent the action event
+     *
      * @throws IOException if the intro view cannot be loaded
      */
     @FXML

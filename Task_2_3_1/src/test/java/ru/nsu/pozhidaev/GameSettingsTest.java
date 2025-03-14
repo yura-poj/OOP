@@ -6,41 +6,43 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class GameSettingsTest {
     GameSettings gameSettings;
+
     @BeforeEach
     void setUp() {
         gameSettings = new GameSettings(getClass().getResource("/levels/level1.json").getPath());
-      }
+    }
 
     @Test
     void getSpeed() {
         assertEquals(gameSettings.getSpeed(), 200);
-      }
+    }
 
     @Test
     void getWidth() {
         assertEquals(gameSettings.getWidth(), 20);
-      }
+    }
 
     @Test
     void getHeight() {
         assertEquals(gameSettings.getHeight(), 30);
-      }
+    }
 
     @Test
     void getNumberFood() {
         assertEquals(gameSettings.getNumberFood(), 5);
-      }
+    }
 
     @Test
     void getNumberFoodToWin() {
         assertEquals(gameSettings.getNumberFoodToWin(), 30);
-      }
+    }
 
     @Test
-    void getCubeSize(){
+    void getCubeSize() {
         assertEquals(gameSettings.getCubeSize(), 30);
     }
 
@@ -50,7 +52,7 @@ class GameSettingsTest {
         list.add(10);
         list.add(10);
         assertEquals(list, gameSettings.getSnakeCoordinates());
-      }
+    }
 
     @Test
     void getWalls() {
@@ -58,5 +60,5 @@ class GameSettingsTest {
         list.add(List.of(1, 1));
         list.add(List.of(1, 2));
         assertEquals(list, gameSettings.getWalls());
-      }
+    }
 }

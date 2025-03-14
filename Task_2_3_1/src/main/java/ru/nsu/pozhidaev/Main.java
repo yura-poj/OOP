@@ -2,8 +2,8 @@ package ru.nsu.pozhidaev;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -15,6 +15,7 @@ public class Main extends Application {
      * Starts the JavaFX application by setting up the primary stage.
      *
      * @param primaryStage the primary stage for this application
+     *
      * @throws Exception if the FXML file cannot be loaded
      */
     @Override
