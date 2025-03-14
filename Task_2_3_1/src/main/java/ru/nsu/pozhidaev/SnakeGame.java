@@ -85,7 +85,8 @@ public class SnakeGame {
      * @param action the action to change the direction
      */
     public void receiveAction(Action action) {
-        if (action == Action.UP || action == Action.DOWN || action == Action.LEFT || action == Action.RIGHT) {
+        if (action == Action.UP || action == Action.DOWN
+                || action == Action.LEFT || action == Action.RIGHT) {
             snake.setDirection(action);
         }
     }
@@ -135,14 +136,16 @@ public class SnakeGame {
      */
     private void checkCollision() {
         SnakePart head = snake.getHead();
-        if (head.getCoordinateY() > settings.getHeight() || head.getCoordinateY() < 0 || head.getCoordinateX() > settings.getWidth() || head.getCoordinateX() < 0) {
+        if (head.getCoordinateY() > settings.getHeight() || head.getCoordinateY() < 0
+                || head.getCoordinateX() > settings.getWidth() || head.getCoordinateX() < 0) {
             gameOver = true;
             return;
         }
         gameOver = Stream.concat(
                 walls.stream(),
                 snake.getBody().stream().skip(1)
-        ).anyMatch(s -> s.getCoordinateX() == head.getCoordinateX() && s.getCoordinateY() == head.getCoordinateY());
+        ).anyMatch(s -> s.getCoordinateX() == head.getCoordinateX()
+                && s.getCoordinateY() == head.getCoordinateY());
     }
 
     /**
@@ -151,7 +154,8 @@ public class SnakeGame {
     private void checkLunch() {
         SnakePart head = snake.getHead();
         for (Treat treat : treats) {
-            if (head.getCoordinateX() == treat.getCoordinateX() && head.getCoordinateY() == treat.getCoordinateY()) {
+            if (head.getCoordinateX() == treat.getCoordinateX()
+                    && head.getCoordinateY() == treat.getCoordinateY()) {
                 snake.lunch();
                 updateScore();
                 appearTreat(treat);

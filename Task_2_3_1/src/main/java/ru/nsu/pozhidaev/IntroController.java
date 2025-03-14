@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
 /**
  * IntroController manages the initial screen and handles user interactions
  * to start the game or exit the application.
@@ -37,7 +38,8 @@ public class IntroController {
     private void handleLevel1(ActionEvent event) {
         String levelPath = "/levels/level1.json";
         try {
-            GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
+            GameSettings gameSettings =
+                    new GameSettings(getClass().getResource(levelPath).getPath());
             loadLevel(event, gameSettings);
         } catch (IOException e) {
             System.out.println("No such level, choose another one");
@@ -53,7 +55,8 @@ public class IntroController {
     private void handleLevel2(ActionEvent event) {
         String levelPath = "/levels/level2.json";
         try {
-            GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
+            GameSettings gameSettings =
+                    new GameSettings(getClass().getResource(levelPath).getPath());
             loadLevel(event, gameSettings);
         } catch (IOException e) {
             System.out.println("No such level, choose another one");

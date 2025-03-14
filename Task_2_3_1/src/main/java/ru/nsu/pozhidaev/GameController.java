@@ -63,7 +63,6 @@ public class GameController {
         int rows = gameSettings.getHeight();
         int cols = gameSettings.getWidth();
         int size = gameSettings.getCubeSize();
-        int speed = gameSettings.getSpeed();
         GridPane grid = new GridPane();
         gridCells = new Rectangle[rows][cols];
 
@@ -77,6 +76,7 @@ public class GameController {
 
         gamePane.getChildren().add(grid);
 
+        int speed = gameSettings.getSpeed();
         timeline = new Timeline(new KeyFrame(Duration.millis(speed), e -> drawGame()));
 
         timeline.setCycleCount(Timeline.INDEFINITE);

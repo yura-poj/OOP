@@ -1,6 +1,5 @@
 package ru.nsu.pozhidaev;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -102,7 +101,8 @@ public class GameSettings {
      * @return a list containing the x and y coordinates of the snake
      */
     public List<Integer> getSnakeCoordinates() {
-        Map<String, Object> snakeCoordinates = (Map<String, Object>) jsonMap.get("snakeCoordinates");
+        Map<String, Object> snakeCoordinates =
+                (Map<String, Object>) jsonMap.get("snakeCoordinates");
         return Arrays.asList((int) snakeCoordinates.get("x"), (int) snakeCoordinates.get("y"));
     }
 
