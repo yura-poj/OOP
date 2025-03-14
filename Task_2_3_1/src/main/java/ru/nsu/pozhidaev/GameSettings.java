@@ -3,8 +3,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +18,14 @@ public class GameSettings {
     private ObjectMapper objectMapper;
     private Map<String, Object> jsonMap;
 
-    public GameSettings() {
+    public GameSettings(URl input) {
         this.objectMapper = new ObjectMapper();
+        loadSettings(input);
     }
 
-    public void loadSettings(String path) {
+    public void loadSettings(InputStream input) {
         try {
-            jsonMap = objectMapper.readValue(new File(path),
+            jsonMap = objectMapper.readValue(new File(String.valueOf(input)),
                     new TypeReference<Map<String, Object>>() {});
         } catch (IOException e) {
             throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);

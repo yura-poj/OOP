@@ -1,5 +1,7 @@
 package ru.nsu.pozhidaev;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -11,31 +13,29 @@ public class SnakeGame {
     private Snake snake;
     private ArrayList<Wall> walls;
     private ArrayList<Treat> treats;
+    @Getter
     private int score;
+    @Getter
     private int bestScore;
     private int width = 20;
     private int height = 20;
     private boolean gameOver;
+    @Getter
+    private boolean gameWon;
+    GameSettings settings;
 
 
 
 
-    public SnakeGame() {
+    public SnakeGame(GameSettings settings) {
+        this.settings = settings;
         treats = new ArrayList<Treat>();
         walls = new ArrayList<Wall>();
         setUpWalls();
-        for(int i = 0; i < 5; i ++){
+        for(int i = 0; i < settings.getNumberFood(); i ++){
             treats.add(new Treat());
         }
         startOver();
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getBestScore() {
-        return bestScore;
     }
 
     public ArrayList<SnakePart> getSnakeBody() {
@@ -59,10 +59,18 @@ public class SnakeGame {
         snake.move();
         checkCollision();
         checkLunch();
+        checkWin();
+    }
+
+    private void checkWin() {
+        if(score >= settings.getNumberFoodToWin()){
+            gameOver = true;
+        }
     }
 
     public void startOver(){
-        snake = new Snake(12,12);
+        List<Integer> snakeCoordinates = settings.getSnakeCoordinates();
+        snake = new Snake(snakeCoordinates.get(0),snakeCoordinates.get(1));
         score = 0;
         for( Treat treat : treats){
             appearTreat(treat);
@@ -134,8 +142,9 @@ public class SnakeGame {
     }
 
     private void setUpWalls() {
-        for(int i = 0; i < 2; i++) {
-            walls.add(new Wall(9, 9 + i));
+        List<List<Integer>> wallsCoordinates = settings.getWalls();
+        for(List<Integer> wallCoordinates : wallsCoordinates) {
+            walls.add(new Wall(wallCoordinates.get(0), wallCoordinates.get(1)));
         }
     }
 }

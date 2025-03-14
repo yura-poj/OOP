@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class IntroController {
@@ -21,7 +22,17 @@ public class IntroController {
     }
 
     @FXML
-    private void handleStart(ActionEvent event) throws IOException {
+    private void handleStart(ActionEvent event) {
+        String levelPath = "./levels/level1.json";
+        GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath));
+        try{
+            loadLevel(event);
+        } catch (IOException e) {
+            System.out.println("No such level, choose another one");
+        }
+    }
+
+    private void loadLevel(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
         Parent newView = loader.load();
 
