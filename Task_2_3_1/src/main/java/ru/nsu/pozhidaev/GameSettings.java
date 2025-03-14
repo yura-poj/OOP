@@ -43,6 +43,10 @@ public class GameSettings {
         return (int) jsonMap.get("numberFoodToWin");
     }
 
+    public int getCubeSize() {
+        return (int) jsonMap.get("cubeSize");
+    }
+
     public List<Integer> getSnakeCoordinates() {
         Map<String, Object> snakeCoordinates = (Map<String, Object>) jsonMap.get("snakeCoordinates");
         return Arrays.asList((int) snakeCoordinates.get("x"), (int) snakeCoordinates.get("y"));

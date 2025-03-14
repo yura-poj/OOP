@@ -40,6 +40,11 @@ class GameSettingsTest {
       }
 
     @Test
+    void getCubeSize(){
+        assertEquals(gameSettings.getCubeSize(), 30);
+    }
+
+    @Test
     void getSnakeCoordinates() {
         List<Integer> list = new ArrayList<>();
         list.add(10);

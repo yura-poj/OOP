@@ -1,10 +1,10 @@
 {
   "speed": 200,
-  "width": 20,
-  "hight": 30,
+  "width": 25,
+  "hight": 25,
   "cubeSize": 20,
   "numberFood": 5,
-  "numberFoodToWin": 5,
+  "numberFoodToWin": 30,
   "snakeCoordinates": {
     "x": 10,
     "y": 10

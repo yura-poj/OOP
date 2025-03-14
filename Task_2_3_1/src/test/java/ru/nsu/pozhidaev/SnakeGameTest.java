@@ -56,8 +56,18 @@ class SnakeGameTest {
 
     @Test
     void blockExist() {
+        for( int i = 0; i <= gameSettings.getSnakeCoordinates().get(0); i++){
+            snakeGame.move();
+        }
         assertTrue(snakeGame.blockExist(1,1));
         assertTrue(snakeGame.blockExist(1,2));
         assertFalse(snakeGame.blockExist(0,1));
       }
+
+    @Test
+    void startOver(){
+        snakeGame.startOver();
+        assertFalse(snakeGame.isGameOver());
+        assertFalse(snakeGame.isGameWon());
+    }
 }

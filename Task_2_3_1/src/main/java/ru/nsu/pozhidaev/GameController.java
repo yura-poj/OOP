@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -17,13 +16,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class GameController {
     @FXML
@@ -34,6 +32,10 @@ public class GameController {
     private Label bestScoreLabel;
     @FXML
     private VBox buttonBox;
+    @FXML
+    private Text winText;
+    @FXML
+    private Text looseText;
 
     Timeline timeline;
 
@@ -44,8 +46,8 @@ public class GameController {
     private final IntegerProperty bestScore = new SimpleIntegerProperty(0);
 
 
-    public void initData(Stage stage, SnakeGame snakeGame) {
-        this.snakeGame = snakeGame;
+    public void initData(Stage stage, GameSettings gameSettings) {
+        snakeGame = new SnakeGame(gameSettings);
         this.stage = stage;
         gamePane.requestFocus();
 
@@ -53,14 +55,14 @@ public class GameController {
         bestScoreLabel.textProperty().bind(bestScore.asString("Best score: %d"));
 
 
-        int rows = 20, cols = 20, size = 20;
-        int speed = 200;
+        int rows = gameSettings.getHeight(), cols = gameSettings.getWidth(), size = gameSettings.getCubeSize();
+        int speed = gameSettings.getSpeed();
         GridPane grid = new GridPane();
         gridCells = new Rectangle[rows][cols];
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Rectangle rect = new Rectangle(size, size, Color.LIGHTGRAY);
+                Rectangle rect = new Rectangle(size, size, Color.PINK);
                 grid.add(rect, col, row);
                 gridCells[row][col] = rect;
             }
@@ -134,12 +136,17 @@ public class GameController {
     private void handleAgain() {
         snakeGame.startOver();
         buttonBox.setVisible(false);
+        winText.setVisible(false);
+        looseText.setVisible(false);
         timeline.play();
     }
 
     private void gameOver() {
-        scoreLabel.textProperty().unbind();
-        scoreLabel.setText("You loose");
+        if(snakeGame.isGameWon()) {
+            winText.setVisible(true);
+        } else {
+            looseText.setVisible(true);
+        }
         buttonBox.setVisible(true);
         timeline.stop();
     }

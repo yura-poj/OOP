@@ -17,8 +17,6 @@ public class SnakeGame {
     private int score;
     @Getter
     private int bestScore;
-    private int width = 20;
-    private int height = 20;
     private boolean gameOver;
     @Getter
     private boolean gameWon;
@@ -65,6 +63,7 @@ public class SnakeGame {
     private void checkWin() {
         if(score >= settings.getNumberFoodToWin()){
             gameOver = true;
+            gameWon = true;
         }
     }
 
@@ -76,12 +75,13 @@ public class SnakeGame {
             appearTreat(treat);
         }
         gameOver = false;
+        gameWon = false;
 
     }
 
     private void checkCollision() {
         SnakePart head = snake.getHead();
-        if(head.getY() > height || head.getY() < 0 || head.getX() > width || head.getX() < 0) {
+        if(head.getY() > settings.getHeight() || head.getY() < 0 || head.getX() > settings.getWidth() || head.getX() < 0) {
             gameOver = true;
             return;
         }
@@ -114,8 +114,8 @@ public class SnakeGame {
         int x = 0;
         int y = 0;
         do {
-            x = (int) (Math.random() * width);
-            y = (int) (Math.random() * height);
+            x = (int) (Math.random() * settings.getWidth());
+            y = (int) (Math.random() * settings.getHeight());
         } while ( blockExist(x,y));
 
         treat.setX(x);

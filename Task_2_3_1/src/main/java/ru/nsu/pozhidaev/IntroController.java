@@ -22,8 +22,19 @@ public class IntroController {
     }
 
     @FXML
-    private void handleStart(ActionEvent event) {
+    private void handleLevel1(ActionEvent event) {
         String levelPath = "/levels/level1.json";
+        try{
+            GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
+            loadLevel(event, gameSettings);
+        } catch (IOException e) {
+            System.out.println("No such level, choose another one");
+        }
+    }
+
+    @FXML
+    private void handleLevel2(ActionEvent event) {
+        String levelPath = "/levels/level2.json";
         try{
             GameSettings gameSettings = new GameSettings(getClass().getResource(levelPath).getPath());
             loadLevel(event, gameSettings);
@@ -36,12 +47,12 @@ public class IntroController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
         Parent newView = loader.load();
 
-        // Получаем контроллер, если нужно передать данные
         GameController controller = loader.getController();
-        controller.initData(stage, new SnakeGame(settings)); // Метод для инициализации данных
+        controller.initData(stage,settings);
 
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene newScene = new Scene(newView, 500, 500);
+        Scene newScene = new Scene(newView, settings.getWidth() * settings.getCubeSize(),
+                settings.getHeight() * settings.getCubeSize() + 4 * settings.getCubeSize());
         currentStage.setScene(newScene);
         currentStage.show();
     }

@@ -1,0 +1,13 @@
+{
+  "speed": 100,
+  "width": 10,
+  "hight": 10,
+  "cubeSize": 40,
+  "numberFood": 3,
+  "numberFoodToWin": 10,
+  "snakeCoordinates": {
+    "x": 5,
+    "y": 5
+  },
+  "walls": [[1,1], [1,2], [1,3], [2,3], [2,4], [2,5]]
+}
