@@ -58,13 +58,14 @@ class SnakeTest {
     void lunch() {
         List<SnakePart> body = snake.getBody();
         SnakePart lastPart = body.get(body.size() - 1);
-        int x = lastPart.getCoordinateX();
-        int y = lastPart.getCoordinateY();
+        SnakePart copiedPart = new SnakePart(0, 0);
+        copiedPart.setCoordinateX(lastPart.getCoordinateX());
+        copiedPart.setCoordinateY(lastPart.getCoordinateY());
         snake.lunch();
         snake.move();
         body = snake.getBody();
         SnakePart newLastPart = body.get(body.size() - 1);
-        assertEquals(x, newLastPart.getCoordinateX());
-        assertEquals(y, newLastPart.getCoordinateY());
+        assertEquals(copiedPart.getCoordinateX(), newLastPart.getCoordinateX());
+        assertEquals(copiedPart.getCoordinateY(), newLastPart.getCoordinateY());
     }
 }
