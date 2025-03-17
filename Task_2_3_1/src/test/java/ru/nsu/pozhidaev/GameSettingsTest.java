@@ -60,4 +60,14 @@ class GameSettingsTest {
         list.add(List.of(1, 2));
         assertEquals(list, gameSettings.getWalls());
     }
+
+    @Test
+    void getBotsNumber() {
+        assertEquals(gameSettings.getBotsNumber(), 0);
+    }
+
+    @Test
+    void getBotTreatRadiusView() {
+        assertEquals(gameSettings.getBotTreatRadiusView(), 3);
+    }
 }

@@ -6,24 +6,28 @@ import java.util.ArrayList;
  * Snake that can move, change direction, eat, bump into blocks, and grow.
  */
 public class Snake {
-    ArrayList<SnakePart> body = new ArrayList<>();
+    ArrayList<SnakePart> body;
     private int moveOrdinate;
     private int moveAbscissa;
     private SnakePart previous;
+    private Action lastDirection;
+    private Action currentDirection;
 
     /**
      * Constructs a Snake with a starting position.
-     *
-     * @param startX the starting x-coordinate
-     * @param startY the starting y-coordinate
      */
-    public Snake(int startX, int startY) {
+    public Snake() {
+        previous = new SnakePart(0, 0);
+        body = new ArrayList<>();
+    }
+
+    public void startOver(int startX, int startY) {
+        body.clear();
         for (int i = 0; i < 3; i++) {
             body.add(new SnakePart(startX + i, startY));
         }
-        moveOrdinate = -1;
-        moveAbscissa = 0;
-        previous = new SnakePart(0, 0);
+        currentDirection = Action.LEFT;
+        lastDirection = Action.LEFT;
     }
 
     /**
@@ -33,32 +37,46 @@ public class Snake {
      */
     public void setDirection(Action action) {
         switch (action) {
-            case DOWN:
-                if (moveAbscissa == 0) {
-                    moveAbscissa = 1;
-                    moveOrdinate = 0;
+            case UP:
+                if (lastDirection!=Action.DOWN) {
+                    currentDirection = Action.UP;
                 }
                 break;
-            case UP:
-                if (moveAbscissa == 0) {
-                    moveAbscissa = -1;
-                    moveOrdinate = 0;
+            case DOWN:
+                if (lastDirection!=Action.UP) {
+                    currentDirection = Action.DOWN;
                 }
                 break;
             case LEFT:
-                if (moveOrdinate == 0) {
-                    moveOrdinate = -1;
-                    moveAbscissa = 0;
+                if (lastDirection!=Action.RIGHT) {
+                    currentDirection = Action.LEFT;
                 }
                 break;
             case RIGHT:
-                if (moveOrdinate == 0) {
-                    moveOrdinate = 1;
-                    moveAbscissa = 0;
+                if (lastDirection!=Action.LEFT) {
+                    currentDirection = Action.RIGHT;
                 }
                 break;
-            default:
-                // Handle unexpected actions
+        }
+    }
+
+    private void releaseDirection() {
+        switch (currentDirection) {
+            case DOWN:
+                moveAbscissa = 1;
+                moveOrdinate = 0;
+                break;
+            case UP:
+                moveAbscissa = -1;
+                moveOrdinate = 0;
+                break;
+            case LEFT:
+                moveOrdinate = -1;
+                moveAbscissa = 0;
+                break;
+            case RIGHT:
+                moveOrdinate = 1;
+                moveAbscissa = 0;
                 break;
         }
     }
@@ -67,6 +85,8 @@ public class Snake {
      * Moves the snake in the current direction.
      */
     public void move() {
+        releaseDirection();
+        lastDirection = currentDirection;
         previous.setCoordinateX(body.get(body.size() - 1).getCoordinateX());
         previous.setCoordinateY(body.get(body.size() - 1).getCoordinateY());
 

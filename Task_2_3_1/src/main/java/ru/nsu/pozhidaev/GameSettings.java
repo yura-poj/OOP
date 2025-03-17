@@ -115,4 +115,12 @@ public class GameSettings {
         return objectMapper.convertValue(jsonMap.get("walls"),
                 new TypeReference<List<List<Integer>>>() {});
     }
+
+    public int getBotsNumber() {
+        return (int) jsonMap.get("botsNumber");
+    }
+
+    public int getBotTreatRadiusView() {
+        return (int) jsonMap.get("botTreatRadiusView");
+    }
 }

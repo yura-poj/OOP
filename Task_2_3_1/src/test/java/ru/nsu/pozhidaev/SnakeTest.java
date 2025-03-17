@@ -11,7 +11,8 @@ class SnakeTest {
 
     @BeforeEach
     void setUp() {
-        snake = new Snake(5, 5);
+        snake = new Snake();
+        snake.startOver(5,5);
     }
 
     @Test

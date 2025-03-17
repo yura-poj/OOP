@@ -1,15 +1,15 @@
 {
   "speed": 200,
-  "width": 20,
-  "hight": 30,
+  "width": 25,
+  "hight": 25,
   "cubeSize": 20,
   "numberFood": 5,
   "numberFoodToWin": 30,
-  "botsNumber": 0,
+  "botsNumber": 2,
   "botTreatRadiusView": 3,
   "snakeCoordinates": {
     "x": 10,
     "y": 10
   },
-  "walls": [[1,1], [1,2]]
+  "walls": [[1,1], [1,2], [1,3], [1,4], [5,4], [5,3]]
 }
