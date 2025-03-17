@@ -1,36 +1,22 @@
 package ru.nsu.pozhidaev;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Block represents a cube on the board.
  */
-public interface Block {
+public class Block {
+    @Getter
+    @Setter
+    int coordinateX;
 
-    /**
-     * Returns the x-coordinate of the block.
-     *
-     * @return the x-coordinate
-     */
-    int getCoordinateX();
+    @Getter
+    @Setter
+    int coordinateY;
 
-    /**
-     * Returns the y-coordinate of the block.
-     *
-     * @return the y-coordinate
-     */
-    int getCoordinateY();
-
-    /**
-     * Sets the x-coordinate of the block.
-     *
-     * @param coordinateX the x-coordinate to set
-     */
-    void setCoordinateX(int coordinateX);
-
-    /**
-     * Sets the y-coordinate of the block.
-     *
-     * @param coordinateY the y-coordinate to set
-     */
-    void setCoordinateY(int coordinateY);
-
+    public Block(int coordinateX, int coordinateY) {
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+    }
 }

@@ -26,7 +26,11 @@ public class SnakeBot extends Snake {
     }
 
     private void checkForCollision() {
-
+        for (Action action : sortedDirections) {
+            if (resolvedDirections.contains(action)) {
+                setDirection(action);
+            }
+        }
     }
 
     private void think() {

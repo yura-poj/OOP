@@ -63,6 +63,18 @@ public class IntroController {
         }
     }
 
+    @FXML
+    private void handleLevel3(ActionEvent event) {
+        String levelPath = "/levels/level3.json";
+        try {
+            GameSettings gameSettings =
+                    new GameSettings(getClass().getResource(levelPath).getPath());
+            loadLevel(event, gameSettings);
+        } catch (IOException e) {
+            System.out.println("No such level, choose another one");
+        }
+    }
+
     /**
      * Loads the specified game level and initializes the game controller.
      *

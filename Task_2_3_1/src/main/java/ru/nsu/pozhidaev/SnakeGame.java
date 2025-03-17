@@ -3,6 +3,7 @@ package ru.nsu.pozhidaev;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -35,9 +36,10 @@ public class SnakeGame {
         treats = new ArrayList<>();
         walls = new ArrayList<>();
         snakes = new ArrayList<>();
+        snakeBots = new ArrayList<>();
         setUpWalls();
         for (int i = 0; i < settings.getNumberFood(); i++) {
-            treats.add(new Treat());
+            treats.add(new Treat(0,0));
         }
         userSnake = new Snake();
         snakes.add(userSnake);
@@ -92,8 +94,25 @@ public class SnakeGame {
     }
 
     private void SetUpResolvedDirections() {
+        ArrayList<Action> resolvedDirections = new ArrayList<>();
         for (SnakeBot snakeBot : snakeBots) {
-            blockExist(snakeBot.getHead().getCoordinateX(), snakeBot.getHead().getCoordinateY(), );
+            if(blockExist(snakeBot.getHead().getCoordinateX() + 1, snakeBot.getHead().getCoordinateY(),
+                    new ArrayList<Block>(Arrays.asList( treats)))){
+                resolvedDirections.add(Action.RIGHT);
+            }
+            if(blockExist(snakeBot.getHead().getCoordinateX() - 1, snakeBot.getHead().getCoordinateY(),
+                    new ArrayList<>(Arrays.asList((Block) treats)))){
+                resolvedDirections.add(Action.LEFT);
+            }
+            if(blockExist(snakeBot.getHead().getCoordinateX(), snakeBot.getHead().getCoordinateY() + 1,
+                    new ArrayList<>(Arrays.asList((Block) treats)))){
+                resolvedDirections.add(Action.DOWN);
+            }
+            if(blockExist(snakeBot.getHead().getCoordinateX(), snakeBot.getHead().getCoordinateY() - 1,
+                    new ArrayList<>(Arrays.asList((Block) treats)))){
+                resolvedDirections.add(Action.UP);
+            }
+            snakeBot.setResolvedDirections(resolvedDirections);
         }
     }
 
@@ -195,23 +214,13 @@ public class SnakeGame {
 
     private boolean isColision(Snake currentSnake) {
         SnakePart head = currentSnake.getHead();
-        ArrayList<SnakePart> tail = currentSnake.getBody();
-        tail.remove(0);
-        ArrayList<Snake> otherSnakes = new ArrayList<>(snakes);
-        otherSnakes.remove(currentSnake);
 
         if (head.getCoordinateY() >= settings.getHeight() || head.getCoordinateY() < 0
                 || head.getCoordinateX() >= settings.getWidth() || head.getCoordinateX() < 0) {
             return true;
         }
-        return Stream.of(
-                        walls.stream(),
-                        tail.stream(),
-                        otherSnakes.stream().map(Snake::getBody).flatMap(List::stream)
-                )
-                .flatMap(s -> s)
-                .anyMatch(s -> s.getCoordinateX()==head.getCoordinateX()
-                        && s.getCoordinateY()==head.getCoordinateY());
+        return blockExist(head.getCoordinateX(), head.getCoordinateY(),
+                new ArrayList<>(Arrays.asList((Block) head, (Block) treats)));
     }
 
     /**

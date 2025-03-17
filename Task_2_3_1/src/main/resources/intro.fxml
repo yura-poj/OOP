@@ -21,6 +21,7 @@
 
     <Button fx:id="level1" text="Level 1" onAction="#handleLevel1" style="-fx-font-size: 14px;"/>
     <Button fx:id="level2" text="Level 2" onAction="#handleLevel2" style="-fx-font-size: 14px;"/>
+    <Button fx:id="level3" text="Level 3" onAction="#handleLevel3" style="-fx-font-size: 14px;"/>
     <Button fx:id="exitButton" text="Exit" onAction="#handleExit" style="-fx-font-size: 14px;"/>
 
     <VBox.margin>
