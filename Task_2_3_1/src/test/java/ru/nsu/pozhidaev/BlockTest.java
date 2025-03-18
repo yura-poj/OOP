@@ -20,7 +20,7 @@ class BlockTest {
     static Stream<Block> provideBlocks() {
         return Stream.of(
                 new SnakePart(2, 2),
-                new Treat(),
+                new Treat(0,0),
                 new Wall(2, 2)
         );
     }
