@@ -16,6 +16,10 @@ public class SnakeBot extends Snake {
     public SnakeBot() {
         super();
         sortedDirections = new Action[numberDirections];
+        sortedDirections[0] = Action.UP;
+        sortedDirections[1] = Action.UP;
+        sortedDirections[2] = Action.UP;
+        sortedDirections[3] = Action.UP;
     }
 
     @Override
@@ -34,13 +38,22 @@ public class SnakeBot extends Snake {
     }
 
     private void think() {
+        if(closestTreat == null) {
+            return;
+        }
         if( closestTreat.getCoordinateX() > getHead().getCoordinateX()) {
             sortedDirections[0] = Action.LEFT;
-            sortedDirections[4] = Action.RIGHT;
+            sortedDirections[3] = Action.RIGHT;
+        } else {
+            sortedDirections[0] = Action.RIGHT;
+            sortedDirections[3] = Action.LEFT;
         }
         if(closestTreat.getCoordinateY() > getHead().getCoordinateY()) {
             sortedDirections[1] = Action.UP;
-            sortedDirections[3] = Action.DOWN;
+            sortedDirections[2] = Action.DOWN;
+        } else {
+            sortedDirections[1] = Action.DOWN;
+            sortedDirections[2] = Action.UP;
         }
     }
 }

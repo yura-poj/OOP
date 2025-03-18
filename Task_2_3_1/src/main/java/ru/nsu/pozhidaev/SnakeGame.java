@@ -3,7 +3,6 @@ package ru.nsu.pozhidaev;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,6 +14,7 @@ public class SnakeGame {
     private ArrayList<Treat> treats;
     private ArrayList<Snake> snakes;
     private ArrayList<SnakeBot> snakeBots;
+    private ArrayList<Snake> deadSnakes;
     private Snake userSnake;
     @Getter
     private int score;
@@ -37,9 +37,10 @@ public class SnakeGame {
         walls = new ArrayList<>();
         snakes = new ArrayList<>();
         snakeBots = new ArrayList<>();
+        deadSnakes = new ArrayList<>();
         setUpWalls();
         for (int i = 0; i < settings.getNumberFood(); i++) {
-            treats.add(new Treat(0,0));
+            treats.add(new Treat(0, 0));
         }
         userSnake = new Snake();
         snakes.add(userSnake);
@@ -56,8 +57,12 @@ public class SnakeGame {
      *
      * @return the list of snake parts
      */
-    public ArrayList<SnakePart> getSnakeBody() {
-        return userSnake.getBody();
+    public ArrayList<ArrayList<SnakePart>> getSnakesBodies() {
+        ArrayList<ArrayList<SnakePart>> snakesBodies = new ArrayList<>();
+        for(Snake snake : snakes) {
+            snakesBodies.add(snake.getBody());
+        }
+        return snakesBodies;
     }
 
     /**
@@ -86,30 +91,36 @@ public class SnakeGame {
             return;
         }
         setUpClosestTreats();
-        SetUpResolvedDirections();
+        setUpResolvedDirections();
         moveSnakes();
         checkCollision();
         checkLunch();
         checkWin();
     }
 
-    private void SetUpResolvedDirections() {
+    private void setUpResolvedDirections() {
         ArrayList<Action> resolvedDirections = new ArrayList<>();
+        SnakePart testHead = new SnakePart(0,0);
         for (SnakeBot snakeBot : snakeBots) {
-            if(blockExist(snakeBot.getHead().getCoordinateX() + 1, snakeBot.getHead().getCoordinateY(),
-                    new ArrayList<Block>(Arrays.asList( treats)))){
+            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX() + 1);
+            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY());
+            if(! isCollision(testHead)) {
                 resolvedDirections.add(Action.RIGHT);
             }
-            if(blockExist(snakeBot.getHead().getCoordinateX() - 1, snakeBot.getHead().getCoordinateY(),
-                    new ArrayList<>(Arrays.asList((Block) treats)))){
+            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX() - 1);
+            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY());
+            if(! isCollision(testHead)) {
                 resolvedDirections.add(Action.LEFT);
             }
-            if(blockExist(snakeBot.getHead().getCoordinateX(), snakeBot.getHead().getCoordinateY() + 1,
-                    new ArrayList<>(Arrays.asList((Block) treats)))){
+
+            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX());
+            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY()+1);
+            if(! isCollision(testHead)) {
                 resolvedDirections.add(Action.DOWN);
             }
-            if(blockExist(snakeBot.getHead().getCoordinateX(), snakeBot.getHead().getCoordinateY() - 1,
-                    new ArrayList<>(Arrays.asList((Block) treats)))){
+            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX());
+            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY()- 1);
+            if(! isCollision(testHead)) {
                 resolvedDirections.add(Action.UP);
             }
             snakeBot.setResolvedDirections(resolvedDirections);
@@ -122,13 +133,20 @@ public class SnakeGame {
         for (SnakeBot snakeBot : snakeBots) {
             closestSum = Integer.MAX_VALUE;
             for (Treat treat : treats) {
-                int sum = (int) Math.sqrt(treat.getCoordinateX() ^ 2 + treat.getCoordinateY() ^ 2);
+                if (treat.isBooked()) {
+                    continue;
+                }
+                int sum = (int) Math.sqrt(Math.pow(treat.getCoordinateX(), 2) + Math.pow(treat.getCoordinateY(), 2));
                 if (sum < closestSum) {
                     closestTreat = treat;
                     closestSum = sum;
                 }
             }
+
             snakeBot.setClosestTreat(closestTreat);
+            if(closestTreat != null) {
+                closestTreat.setBooked(true);
+            }
         }
     }
 
@@ -144,8 +162,8 @@ public class SnakeGame {
      * @param action the action to change the direction
      */
     public void receiveAction(Action action) {
-        if (action==Action.UP || action==Action.DOWN
-                || action==Action.LEFT || action==Action.RIGHT) {
+        if (action == Action.UP || action == Action.DOWN
+                || action == Action.LEFT || action == Action.RIGHT) {
             userSnake.setDirection(action);
         }
     }
@@ -155,10 +173,13 @@ public class SnakeGame {
      */
     public void startOver() {
         List<Integer> snakeCoordinates = settings.getSnakeCoordinates();
-
+        for(Snake snake : deadSnakes){
+            snakeBots.add((SnakeBot) snake);
+            snakes.add(snake);
+        }
         for (int i = 0; i < snakes.size(); i++) {
             snakes.get(i).startOver(settings.getSnakeCoordinates().get(0),
-                    settings.getSnakeCoordinates().get(1) + i);
+                    settings.getSnakeCoordinates().get(1) + i*2);
         }
         score = 0;
         for (Treat treat : treats) {
@@ -168,7 +189,6 @@ public class SnakeGame {
         gameWon = false;
     }
 
-
     /**
      * Checks if a block exists at the specified coordinates.
      *
@@ -177,14 +197,14 @@ public class SnakeGame {
      *
      * @return true if a block exists, false otherwise
      */
-    public boolean blockExist(int x, int y, ArrayList<Block> exceptBlocks) {
+    public boolean blockExist(int x, int y, List<Block> exceptBlocks) {
         return Stream.of(
                         walls.stream(),
                         treats.stream(),
                         snakes.stream().map(Snake::getBody).flatMap(List::stream)
                 ).flatMap(s -> s)
                 .filter(s -> exceptBlocks == null || !exceptBlocks.contains(s))
-                .anyMatch(s -> s.getCoordinateX()==x && s.getCoordinateY()==y);
+                .anyMatch(s -> s.getCoordinateX() == x && s.getCoordinateY() == y);
     }
 
     /**
@@ -202,25 +222,28 @@ public class SnakeGame {
      */
     private void checkCollision() {
         for (Snake currentSnake : snakes) {
-            if (isColision(currentSnake)) {
-                if (currentSnake==userSnake) {
+            if (isCollision(currentSnake.getHead())) {
+                if (currentSnake == userSnake) {
                     gameOver = true;
                 } else {
                     snakes.remove(currentSnake);
+                    snakeBots.remove(currentSnake);
+                    deadSnakes.add((SnakeBot) currentSnake);
                 }
             }
         }
     }
 
-    private boolean isColision(Snake currentSnake) {
-        SnakePart head = currentSnake.getHead();
+    private boolean isCollision(SnakePart head) {
 
         if (head.getCoordinateY() >= settings.getHeight() || head.getCoordinateY() < 0
                 || head.getCoordinateX() >= settings.getWidth() || head.getCoordinateX() < 0) {
             return true;
         }
-        return blockExist(head.getCoordinateX(), head.getCoordinateY(),
-                new ArrayList<>(Arrays.asList((Block) head, (Block) treats)));
+        List<Block> blocks = new ArrayList<>();
+        blocks.addAll(treats);
+        blocks.add(head);
+        return blockExist(head.getCoordinateX(), head.getCoordinateY(), blocks);
     }
 
     /**
@@ -231,11 +254,12 @@ public class SnakeGame {
 
             SnakePart head = currentSnake.getHead();
             for (Treat treat : treats) {
-                if (head.getCoordinateX()==treat.getCoordinateX()
-                        && head.getCoordinateY()==treat.getCoordinateY()) {
+                if (head.getCoordinateX() == treat.getCoordinateX()
+                        && head.getCoordinateY() == treat.getCoordinateY()) {
                     currentSnake.lunch();
                     updateScore();
                     appearTreat(treat);
+                    treat.setBooked(false);
                     return;
                 }
             }

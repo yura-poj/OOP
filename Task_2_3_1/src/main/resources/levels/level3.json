@@ -6,7 +6,7 @@
   "numberFood": 5,
   "numberFoodToWin": 30,
   "botsNumber": 2,
-  "botTreatRadiusView": 3,
+  "botTreatRadiusView": 5,
   "snakeCoordinates": {
     "x": 10,
     "y": 10

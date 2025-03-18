@@ -93,7 +93,7 @@ public class GameController {
             }
         }
 
-        drawSnake(snakeGame.getSnakeBody());
+        drawSnake(snakeGame.getSnakesBodies());
         drawWalls(snakeGame.getWalls());
         drawTreats(snakeGame.getTreats());
         snakeGame.move();
@@ -109,11 +109,13 @@ public class GameController {
     /**
      * Draws the snake on the game pane.
      *
-     * @param snake the list of snake parts to draw
+     * @param snakesBodies the list of snake parts to draw
      */
-    private void drawSnake(ArrayList<SnakePart> snake) {
-        for (SnakePart snakePart : snake) {
-            gridCells[snakePart.getCoordinateY()][snakePart.getCoordinateX()].setFill(Color.GREEN);
+    private void drawSnake(ArrayList<ArrayList<SnakePart>> snakesBodies) {
+        for (ArrayList<SnakePart> snakeParts: snakesBodies) {
+            for( SnakePart snakePart : snakeParts) {
+                gridCells[snakePart.getCoordinateY()][snakePart.getCoordinateX()].setFill(Color.GREEN);
+            }
         }
     }
 
