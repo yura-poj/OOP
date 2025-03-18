@@ -107,13 +107,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#blockExist(int,int)" class="member-name-link">blockExist</a><wbr>(int&nbsp;x,
- int&nbsp;y)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#blockExist(int,int,java.util.List)" class="member-name-link">blockExist</a><wbr>(int&nbsp;x,
+ int&nbsp;y,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Block.html" title="class in ru.nsu.pozhidaev">Block</a>&gt;&nbsp;exceptBlocks)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Checks if a block exists at the specified coordinates.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakeBody()" class="member-name-link">getSnakeBody</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&gt;&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakesBodies()" class="member-name-link">getSnakesBodies</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the body of the snake.</div>
 </div>
@@ -179,9 +180,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="getSnakeBody()">
-<h3>getSnakeBody</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&gt;</span>&nbsp;<span class="element-name">getSnakeBody</span>()</div>
+<section class="detail" id="getSnakesBodies()">
+<h3>getSnakesBodies</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&gt;&gt;</span>&nbsp;<span class="element-name">getSnakesBodies</span>()</div>
 <div class="block">Returns the body of the snake.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -237,10 +238,11 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="blockExist(int,int)">
+<section class="detail" id="blockExist(int,int,java.util.List)">
 <h3>blockExist</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">blockExist</span><wbr><span class="parameters">(int&nbsp;x,
- int&nbsp;y)</span></div>
+ int&nbsp;y,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Block.html" title="class in ru.nsu.pozhidaev">Block</a>&gt;&nbsp;exceptBlocks)</span></div>
 <div class="block">Checks if a block exists at the specified coordinates.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
