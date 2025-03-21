@@ -118,29 +118,24 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the body of the snake.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Treat.html" title="class in ru.nsu.pozhidaev">Treat</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTreats()" class="member-name-link">getTreats</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isCollision(ru.nsu.pozhidaev.SnakePart)" class="member-name-link">isCollision</a><wbr>(<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&nbsp;head)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the list of treats.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Wall.html" title="class in ru.nsu.pozhidaev">Wall</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWalls()" class="member-name-link">getWalls</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the list of walls.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#move()" class="member-name-link">move</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Moves the snake according to the current direction.</div>
+<div class="block">check for collision in block with coordinates of head.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#receiveAction(ru.nsu.pozhidaev.Action)" class="member-name-link">receiveAction</a><wbr>(<a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a>&nbsp;action)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#move()" class="member-name-link">move</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Receives an action to change the direction of the snake.</div>
+<div class="block">Moves the snake according to the current direction.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startOver()" class="member-name-link">startOver</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#receiveAction(ru.nsu.pozhidaev.Action)" class="member-name-link">receiveAction</a><wbr>(<a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a>&nbsp;action)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Receives an action to change the direction of the snake.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startOver()" class="member-name-link">startOver</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Starts or restarts the game.</div>
 </div>
 </div>
@@ -191,28 +186,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getTreats()">
-<h3>getTreats</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Treat.html" title="class in ru.nsu.pozhidaev">Treat</a>&gt;</span>&nbsp;<span class="element-name">getTreats</span>()</div>
-<div class="block">Returns the list of treats.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>the list of treats</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getWalls()">
-<h3>getWalls</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Wall.html" title="class in ru.nsu.pozhidaev">Wall</a>&gt;</span>&nbsp;<span class="element-name">getWalls</span>()</div>
-<div class="block">Returns the list of walls.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>the list of walls</dd>
-</dl>
-</section>
-</li>
-<li>
 <section class="detail" id="move()">
 <h3>move</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">move</span>()</div>
@@ -250,6 +223,19 @@ loadScripts(document, 'script');</script>
 <dd><code>y</code> - the y-coordinate</dd>
 <dt>Returns:</dt>
 <dd>true if a block exists, false otherwise</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isCollision(ru.nsu.pozhidaev.SnakePart)">
+<h3>isCollision</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isCollision</span><wbr><span class="parameters">(<a href="SnakePart.html" title="class in ru.nsu.pozhidaev">SnakePart</a>&nbsp;head)</span></div>
+<div class="block">check for collision in block with coordinates of head.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>head</code> - with coordinates.</dd>
+<dt>Returns:</dt>
+<dd>is collision or not.</dd>
 </dl>
 </section>
 </li>

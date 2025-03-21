@@ -60,10 +60,12 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/pozhidaev/Block.html" class="type-name-link" title="class in ru.nsu.pozhidaev">Block</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
 <dd>
-<div class="block">Block represents a cube on the board.</div>
+<div class="block">Block represents a basic unit in the game grid.</div>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/Block.html#%3Cinit%3E(int,int)" class="member-name-link">Block(int, int)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Block.html" title="class in ru.nsu.pozhidaev">Block</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Constructs a new Block with specified coordinates.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/SnakeGame.html#blockExist(int,int,java.util.List)" class="member-name-link">blockExist(int, int, List&lt;Block&gt;)</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeGame.html" title="class in ru.nsu.pozhidaev">SnakeGame</a></dt>
 <dd>
 <div class="block">Checks if a block exists at the specified coordinates.</div>
@@ -98,9 +100,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns the body of the snake.</div>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/GameSettings.html#getBotsNumber()" class="member-name-link">getBotsNumber()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GameSettings.html" title="class in ru.nsu.pozhidaev">GameSettings</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="ru/nsu/pozhidaev/GameSettings.html#getBotTreatRadiusView()" class="member-name-link">getBotTreatRadiusView()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GameSettings.html" title="class in ru.nsu.pozhidaev">GameSettings</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns number of bots.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/GameSettings.html#getCubeSize()" class="member-name-link">getCubeSize()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GameSettings.html" title="class in ru.nsu.pozhidaev">GameSettings</a></dt>
 <dd>
 <div class="block">Returns the size of each cube in the game grid.</div>
@@ -133,17 +135,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the speed setting from the JSON configuration.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/SnakeGame.html#getTreats()" class="member-name-link">getTreats()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeGame.html" title="class in ru.nsu.pozhidaev">SnakeGame</a></dt>
-<dd>
-<div class="block">Returns the list of treats.</div>
-</dd>
 <dt><a href="ru/nsu/pozhidaev/GameSettings.html#getWalls()" class="member-name-link">getWalls()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GameSettings.html" title="class in ru.nsu.pozhidaev">GameSettings</a></dt>
 <dd>
 <div class="block">Returns the list of wall coordinates from the JSON configuration.</div>
-</dd>
-<dt><a href="ru/nsu/pozhidaev/SnakeGame.html#getWalls()" class="member-name-link">getWalls()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeGame.html" title="class in ru.nsu.pozhidaev">SnakeGame</a></dt>
-<dd>
-<div class="block">Returns the list of walls.</div>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/GameSettings.html#getWidth()" class="member-name-link">getWidth()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/GameSettings.html" title="class in ru.nsu.pozhidaev">GameSettings</a></dt>
 <dd>
@@ -174,6 +168,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/IntroController.html#%3Cinit%3E()" class="member-name-link">IntroController()</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/IntroController.html" title="class in ru.nsu.pozhidaev">IntroController</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeGame.html#isCollision(ru.nsu.pozhidaev.SnakePart)" class="member-name-link">isCollision(SnakePart)</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeGame.html" title="class in ru.nsu.pozhidaev">SnakeGame</a></dt>
+<dd>
+<div class="block">check for collision in block with coordinates of head.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
@@ -202,8 +200,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Moves the snake in the current direction.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/SnakeBot.html#move()" class="member-name-link">move()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeBot.html" title="class in ru.nsu.pozhidaev">SnakeBot</a></dt>
-<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeBotStupid.html#move()" class="member-name-link">move()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeBotStupid.html" title="class in ru.nsu.pozhidaev">SnakeBotStupid</a></dt>
+<dd>
+<div class="block">Overrides the basic move behavior to include AI decision making.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/SnakeGame.html#move()" class="member-name-link">move()</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeGame.html" title="class in ru.nsu.pozhidaev">SnakeGame</a></dt>
 <dd>
 <div class="block">Moves the snake according to the current direction.</div>
@@ -232,14 +232,26 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Snake that can move, change direction, eat, bump into blocks, and grow.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/Snake.html#%3Cinit%3E()" class="member-name-link">Snake()</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Snake.html" title="class in ru.nsu.pozhidaev">Snake</a></dt>
+<dt><a href="ru/nsu/pozhidaev/Snake.html#%3Cinit%3E(ru.nsu.pozhidaev.SnakeGame)" class="member-name-link">Snake(SnakeGame)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Snake.html" title="class in ru.nsu.pozhidaev">Snake</a></dt>
 <dd>
 <div class="block">Constructs a Snake with a starting position.</div>
 </dd>
-<dt><a href="ru/nsu/pozhidaev/SnakeBot.html" class="type-name-link" title="class in ru.nsu.pozhidaev">SnakeBot</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="ru/nsu/pozhidaev/SnakeBot.html#%3Cinit%3E()" class="member-name-link">SnakeBot()</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeBot.html" title="class in ru.nsu.pozhidaev">SnakeBot</a></dt>
-<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeBotSmart.html" class="type-name-link" title="class in ru.nsu.pozhidaev">SnakeBotSmart</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
+<dd>
+<div class="block">A smart implementation of the SnakeBot that uses pathfinding to locate and collect treats.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeBotSmart.html#%3Cinit%3E(ru.nsu.pozhidaev.SnakeGame)" class="member-name-link">SnakeBotSmart(SnakeGame)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeBotSmart.html" title="class in ru.nsu.pozhidaev">SnakeBotSmart</a></dt>
+<dd>
+<div class="block">Constructs a new smart snake bot with a reference to the game instance.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeBotStupid.html" class="type-name-link" title="class in ru.nsu.pozhidaev">SnakeBotStupid</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
+<dd>
+<div class="block">A simple implementation of the SnakeBot that moves randomly.</div>
+</dd>
+<dt><a href="ru/nsu/pozhidaev/SnakeBotStupid.html#%3Cinit%3E(ru.nsu.pozhidaev.SnakeGame)" class="member-name-link">SnakeBotStupid(SnakeGame)</a> - Constructor for class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/SnakeBotStupid.html" title="class in ru.nsu.pozhidaev">SnakeBotStupid</a></dt>
+<dd>
+<div class="block">Constructs a new stupid snake bot with a reference to the game instance.</div>
+</dd>
 <dt><a href="ru/nsu/pozhidaev/SnakeGame.html" class="type-name-link" title="class in ru.nsu.pozhidaev">SnakeGame</a> - Class in <a href="ru/nsu/pozhidaev/package-summary.html">ru.nsu.pozhidaev</a></dt>
 <dd>
 <div class="block">SnakeGame is the main controller of the game, managing the game state and logic.</div>
@@ -263,7 +275,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Starts or restarts the game.</div>
 </dd>
 <dt><a href="ru/nsu/pozhidaev/Snake.html#startOver(int,int)" class="member-name-link">startOver(int, int)</a> - Method in class ru.nsu.pozhidaev.<a href="ru/nsu/pozhidaev/Snake.html" title="class in ru.nsu.pozhidaev">Snake</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Start over the whole game.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">

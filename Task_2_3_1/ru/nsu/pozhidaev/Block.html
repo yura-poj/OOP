@@ -76,7 +76,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Block</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Block represents a cube on the board.</div>
+<div class="block">Block represents a basic unit in the game grid.
+ It serves as the base class for all game objects that occupy space on the board,
+ such as snake parts, walls, and treats.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +92,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int)" class="member-name-link">Block</a><wbr>(int&nbsp;coordinateX,
  int&nbsp;coordinateY)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new Block with specified coordinates.</div>
+</div>
 </div>
 </section>
 </li>
@@ -117,6 +121,12 @@ loadScripts(document, 'script');</script>
 <h3>Block</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Block</span><wbr><span class="parameters">(int&nbsp;coordinateX,
  int&nbsp;coordinateY)</span></div>
+<div class="block">Constructs a new Block with specified coordinates.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>coordinateX</code> - the x-coordinate of the block</dd>
+<dd><code>coordinateY</code> - the y-coordinate of the block</dd>
+</dl>
 </section>
 </li>
 </ul>
