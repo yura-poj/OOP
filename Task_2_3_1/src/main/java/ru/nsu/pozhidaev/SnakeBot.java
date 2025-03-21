@@ -1,8 +1,7 @@
 package ru.nsu.pozhidaev;
 
-import lombok.Setter;
-
 import java.util.ArrayList;
+import lombok.Setter;
 
 /**
  * Abstract class representing a computer-controlled snake in the game.
@@ -10,11 +9,6 @@ import java.util.ArrayList;
  * the abstract think() method that must be implemented by concrete bot classes.
  */
 abstract class SnakeBot extends Snake {
-    /**
-     * The number of possible directions a snake can move.
-     */
-    final static int numberDirections = 4;
-
     /**
      * List of directions sorted by priority for the bot's movement.
      */

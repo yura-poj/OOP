@@ -2,7 +2,6 @@ package ru.nsu.pozhidaev;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -35,8 +34,7 @@ public class GameSettings {
     private void loadSettings(String input) {
         try {
             jsonMap = objectMapper.readValue(new File(input),
-                    new TypeReference<Map<String, Object>>() {
-                    });
+                    new TypeReference<Map<String, Object>>() {});
         } catch (IOException e) {
             throw new RuntimeException("Error loading JSON: " + e.getMessage(), e);
         }
@@ -114,15 +112,15 @@ public class GameSettings {
      */
     public List<List<Integer>> getWalls() {
         return objectMapper.convertValue(jsonMap.get("walls"),
-                new TypeReference<List<List<Integer>>>() {
-                });
+                new TypeReference<List<List<Integer>>>() {});
     }
 
+    /**
+     * Returns number of bots.
+     *
+     * @return number of bots.
+     */
     public int getBotsNumber() {
         return (int) jsonMap.get("botsNumber");
-    }
-
-    public int getBotTreatRadiusView() {
-        return (int) jsonMap.get("botTreatRadiusView");
     }
 }

@@ -1,5 +1,7 @@
 package ru.nsu.pozhidaev;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
@@ -20,8 +22,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * GameController manages the game logic and user interactions during the game.

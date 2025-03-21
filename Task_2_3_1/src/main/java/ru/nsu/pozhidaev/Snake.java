@@ -23,6 +23,12 @@ public class Snake {
         body = new ArrayList<>();
     }
 
+    /**
+     * Start over the whole game.
+     *
+     * @param startX point for player x.
+     * @param startY point for player y.
+     */
     public void startOver(int startX, int startY) {
         body.clear();
         for (int i = 0; i < 3; i++) {
@@ -40,24 +46,27 @@ public class Snake {
     public void setDirection(Action action) {
         switch (action) {
             case UP:
-                if (lastDirection!=Action.DOWN) {
+                if (lastDirection != Action.DOWN) {
                     currentDirection = Action.UP;
                 }
                 break;
             case DOWN:
-                if (lastDirection!=Action.UP) {
+                if (lastDirection != Action.UP) {
                     currentDirection = Action.DOWN;
                 }
                 break;
             case LEFT:
-                if (lastDirection!=Action.RIGHT) {
+                if (lastDirection != Action.RIGHT) {
                     currentDirection = Action.LEFT;
                 }
                 break;
             case RIGHT:
-                if (lastDirection!=Action.LEFT) {
+                if (lastDirection != Action.LEFT) {
                     currentDirection = Action.RIGHT;
                 }
+                break;
+            default:
+                System.out.println("Invalid action");
                 break;
         }
     }
@@ -79,6 +88,9 @@ public class Snake {
             case RIGHT:
                 moveOrdinate = 1;
                 moveAbscissa = 0;
+                break;
+            default:
+                System.out.println("Invalid direction");
                 break;
         }
     }

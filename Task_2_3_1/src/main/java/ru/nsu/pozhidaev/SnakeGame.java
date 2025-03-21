@@ -1,10 +1,9 @@
 package ru.nsu.pozhidaev;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 /**
  * SnakeGame is the main controller of the game, managing the game state and logic.
@@ -52,7 +51,7 @@ public class SnakeGame {
         snakes.add(userSnake);
         SnakeBot snakeBot = null;
         for (int i = 0; i < settings.getBotsNumber(); i++) {
-            if (i % 2==0) {
+            if (i % 2 == 0) {
                 snakeBot = new SnakeBotSmart(this);
             } else {
                 snakeBot = new SnakeBotStupid(this);
@@ -102,8 +101,8 @@ public class SnakeGame {
      * @param action the action to change the direction
      */
     public void receiveAction(Action action) {
-        if (action==Action.UP || action==Action.DOWN
-                || action==Action.LEFT || action==Action.RIGHT) {
+        if (action == Action.UP || action == Action.DOWN
+                || action == Action.LEFT || action == Action.RIGHT) {
             userSnake.setDirection(action);
         }
     }
@@ -144,8 +143,8 @@ public class SnakeGame {
                         treats.stream(),
                         snakes.stream().map(Snake::getBody).flatMap(List::stream)
                 ).flatMap(s -> s)
-                .filter(s -> exceptBlocks==null || !exceptBlocks.contains(s))
-                .anyMatch(s -> s.getCoordinateX()==x && s.getCoordinateY()==y);
+                .filter(s -> exceptBlocks == null || !exceptBlocks.contains(s))
+                .anyMatch(s -> s.getCoordinateX() == x && s.getCoordinateY() == y);
     }
 
     /**
@@ -164,7 +163,7 @@ public class SnakeGame {
     private void checkCollision() {
         for (Snake currentSnake : snakes) {
             if (isCollision(currentSnake.getHead())) {
-                if (currentSnake==userSnake) {
+                if (currentSnake == userSnake) {
                     gameOver = true;
                 } else {
                     snakes.remove(currentSnake);
@@ -175,6 +174,12 @@ public class SnakeGame {
         }
     }
 
+    /**
+     * check for collision in block with coordinates of head.
+     *
+     * @param head with coordinates.
+     * @return is collision or not.
+     */
     public boolean isCollision(SnakePart head) {
 
         if (head.getCoordinateY() >= settings.getHeight() || head.getCoordinateY() < 0
@@ -195,12 +200,12 @@ public class SnakeGame {
 
             SnakePart head = currentSnake.getHead();
             for (Treat treat : treats) {
-                if (head.getCoordinateX()==treat.getCoordinateX()
-                        && head.getCoordinateY()==treat.getCoordinateY()) {
+                if (head.getCoordinateX() == treat.getCoordinateX()
+                        && head.getCoordinateY() == treat.getCoordinateY()) {
                     currentSnake.lunch();
                     appearTreat(treat);
 
-                    if (currentSnake==userSnake) {
+                    if (currentSnake == userSnake) {
                         updateScore();
                     }
                     return;

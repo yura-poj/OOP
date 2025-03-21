@@ -11,8 +11,10 @@ class SnakeTest {
 
     @BeforeEach
     void setUp() {
-        snake = new Snake();
-        snake.startOver(5,5);
+        GameSettings gameSettings = new GameSettings(getClass().getResource(
+                "/levels/level1.json").getPath());
+        snake = new Snake(new SnakeGame(gameSettings));
+        snake.startOver(5, 5);
     }
 
     @Test
