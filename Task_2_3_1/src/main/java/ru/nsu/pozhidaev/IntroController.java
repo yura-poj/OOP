@@ -41,10 +41,8 @@ public class IntroController {
     private void handleLevel1(ActionEvent event) {
         String levelPath = "/levels/level1.json";
         try {
-            GameSettings gameSettings =
-                    new GameSettings(getClass().getResource(levelPath).getPath());
-            loadLevel(event, gameSettings);
-        } catch (IOException e) {
+            loadLevel(event, levelPath);
+        } catch (IOException e){
             System.out.println("No such level, choose another one");
         }
     }
@@ -58,10 +56,8 @@ public class IntroController {
     private void handleLevel2(ActionEvent event) {
         String levelPath = "/levels/level2.json";
         try {
-            GameSettings gameSettings =
-                    new GameSettings(getClass().getResource(levelPath).getPath());
-            loadLevel(event, gameSettings);
-        } catch (IOException e) {
+            loadLevel(event, levelPath);
+        } catch (IOException e){
             System.out.println("No such level, choose another one");
         }
     }
@@ -70,10 +66,8 @@ public class IntroController {
     private void handleLevel3(ActionEvent event) {
         String levelPath = "/levels/level3.json";
         try {
-            GameSettings gameSettings =
-                    new GameSettings(getClass().getResource(levelPath).getPath());
-            loadLevel(event, gameSettings);
-        } catch (IOException e) {
+            loadLevel(event, levelPath);
+        } catch (IOException e){
             System.out.println("No such level, choose another one");
         }
     }
@@ -82,11 +76,14 @@ public class IntroController {
      * Loads the specified game level and initializes the game controller.
      *
      * @param event    the action event
-     * @param settings the game settings loaded from the JSON file
+     * @param levelPath
      *
      * @throws IOException if the game view cannot be loaded
      */
-    private void loadLevel(ActionEvent event, GameSettings settings) throws IOException {
+    private void loadLevel(ActionEvent event, String levelPath) throws IOException {
+
+        GameSettings settings = new GameSettings(getClass().getResource(levelPath).getPath());
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
         Parent newView = loader.load();
 
