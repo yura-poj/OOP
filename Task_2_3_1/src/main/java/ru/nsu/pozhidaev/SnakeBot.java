@@ -3,6 +3,7 @@ package ru.nsu.pozhidaev;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SnakeBot extends Snake {
     final static int numberDirections = 4;
@@ -40,7 +41,7 @@ public class SnakeBot extends Snake {
     }
 
     private void think() {
-        if (!(closestTreat != null && !closestTreat.isBooked())) {
+        if(closestTreat==null || !closestTreat.isBooked()) {
             setUpClosestTreat();
         }
         setUpResolvedDirections();
@@ -52,26 +53,20 @@ public class SnakeBot extends Snake {
 
     private void setUpResolvedDirections() {
         resolvedDirections = new ArrayList<>();
-        SnakePart testHead = new SnakePart(0, 0);
-        testHead.setCoordinateX(getHead().getCoordinateX() + 1);
-        testHead.setCoordinateY(getHead().getCoordinateY());
-        if (!game.isCollision(testHead)) {
+
+        int x = getHead().getCoordinateX();
+        int y = getHead().getCoordinateY();
+
+        if (!game.isCollision(new SnakePart(x + 1, y))) {
             resolvedDirections.add(Action.RIGHT);
         }
-        testHead.setCoordinateX(getHead().getCoordinateX() - 1);
-        testHead.setCoordinateY(getHead().getCoordinateY());
-        if (!game.isCollision(testHead)) {
+        if (!game.isCollision(new SnakePart(x - 1, y))) {
             resolvedDirections.add(Action.LEFT);
         }
-
-        testHead.setCoordinateX(getHead().getCoordinateX());
-        testHead.setCoordinateY(getHead().getCoordinateY() + 1);
-        if (!game.isCollision(testHead)) {
+        if (!game.isCollision(new SnakePart(x, y + 1))) {
             resolvedDirections.add(Action.DOWN);
         }
-        testHead.setCoordinateX(getHead().getCoordinateX());
-        testHead.setCoordinateY(getHead().getCoordinateY() - 1);
-        if (!game.isCollision(testHead)) {
+        if (!game.isCollision(new SnakePart(x, y - 1))) {
             resolvedDirections.add(Action.UP);
         }
     }
@@ -83,7 +78,9 @@ public class SnakeBot extends Snake {
                 if (treat.isBooked()) {
                     continue;
                 }
-                int sum = (int) Math.sqrt(Math.pow(treat.getCoordinateX(), 2) + Math.pow(treat.getCoordinateY(), 2));
+                int x = treat.coordinateX - getHead().getCoordinateX();
+                int y = treat.coordinateY - getHead().getCoordinateY();
+                int sum = (int) Math.round(Math.sqrt(x * x + y * y));
                 if (sum < closestSum) {
                     closestTreat = treat;
                     closestSum = sum;
@@ -116,8 +113,8 @@ public class SnakeBot extends Snake {
                 sortedDirections[0] = Action.LEFT;
                 sortedDirections[3] = Action.RIGHT;
             }
-            sortedDirections[1] = Action.LEFT;
-            sortedDirections[2] = Action.RIGHT;
+            sortedDirections[1] = Action.UP;
+            sortedDirections[2] = Action.DOWN;
             return;
         }
 

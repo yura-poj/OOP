@@ -5,7 +5,7 @@
   "cubeSize": 20,
   "numberFood": 5,
   "numberFoodToWin": 30,
-  "botsNumber": 1,
+  "botsNumber": 3,
   "botTreatRadiusView": 5,
   "snakeCoordinates": {
     "x": 10,
