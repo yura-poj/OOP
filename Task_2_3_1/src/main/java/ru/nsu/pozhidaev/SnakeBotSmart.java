@@ -1,7 +1,5 @@
 package ru.nsu.pozhidaev;
 
-import java.util.ArrayList;
-
 /**
  * A smart implementation of the SnakeBot that uses pathfinding to locate and collect treats.
  * This bot calculates the closest treat and attempts to navigate to it using the most direct
@@ -25,7 +23,7 @@ public class SnakeBotSmart extends SnakeBot {
      */
     @Override
     void think() {
-        if(closestTreat==null || !closestTreat.isBooked()) {
+        if (closestTreat==null || !closestTreat.isBooked()) {
             setUpClosestTreat();
         }
 
@@ -56,7 +54,7 @@ public class SnakeBotSmart extends SnakeBot {
             }
         }
 
-        if(closestTreat != null) {
+        if (closestTreat!=null) {
             closestTreat.setBooked(true);
         }
     }
@@ -67,7 +65,7 @@ public class SnakeBotSmart extends SnakeBot {
      * considering both vertical and horizontal distances.
      */
     private void sortDirections() {
-        if (closestTreat.getCoordinateX() == getHead().getCoordinateX()) {
+        if (closestTreat.getCoordinateX()==getHead().getCoordinateX()) {
             if (closestTreat.getCoordinateY() > getHead().getCoordinateY()) {
                 sortedDirections.set(0, Action.DOWN);
                 sortedDirections.set(3, Action.UP);
@@ -79,7 +77,7 @@ public class SnakeBotSmart extends SnakeBot {
             sortedDirections.set(2, Action.RIGHT);
             return;
         }
-        if (closestTreat.getCoordinateY() == getHead().getCoordinateY()) {
+        if (closestTreat.getCoordinateY()==getHead().getCoordinateY()) {
             if (closestTreat.getCoordinateX() > getHead().getCoordinateX()) {
                 sortedDirections.set(0, Action.RIGHT);
                 sortedDirections.set(3, Action.LEFT);

@@ -1,6 +1,5 @@
 package ru.nsu.pozhidaev;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import java.io.IOException;
+
 
 /**
  * IntroController manages the initial screen and handles user interactions
@@ -49,7 +48,7 @@ public class IntroController {
         String levelPath = "/levels/level1.json";
         try {
             loadLevel(event, levelPath);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("No such level, choose another one");
         }
     }
@@ -64,7 +63,7 @@ public class IntroController {
         String levelPath = "/levels/level2.json";
         try {
             loadLevel(event, levelPath);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("No such level, choose another one");
         }
     }
@@ -79,7 +78,7 @@ public class IntroController {
         String levelPath = "/levels/level3.json";
         try {
             loadLevel(event, levelPath);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("No such level, choose another one");
         }
     }
@@ -89,6 +88,7 @@ public class IntroController {
      *
      * @param event     the action event triggered by the user
      * @param levelPath the path to the level configuration file
+     *
      * @throws IOException if the game view cannot be loaded or if there's an error reading the level file
      */
     private void loadLevel(ActionEvent event, String levelPath) throws IOException {

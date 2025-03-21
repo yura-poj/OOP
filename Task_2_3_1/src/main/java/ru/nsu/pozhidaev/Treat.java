@@ -11,6 +11,7 @@ public class Treat extends Block {
     @Getter
     @Setter
     private boolean booked;
+
     public Treat(int coordinateX, int coordinateY) {
         super(coordinateX, coordinateY);
         booked = false;
