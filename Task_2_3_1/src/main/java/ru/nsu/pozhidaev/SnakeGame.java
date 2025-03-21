@@ -10,12 +10,10 @@ import java.util.stream.Stream;
  * SnakeGame is the main controller of the game, managing the game state and logic.
  */
 public class SnakeGame {
+    @Getter //should not change array after get!
     private ArrayList<Wall> walls;
+    @Getter //should not change array after get!
     private ArrayList<Treat> treats;
-    private ArrayList<Snake> snakes;
-    private ArrayList<SnakeBot> snakeBots;
-    private ArrayList<Snake> deadSnakes;
-    private Snake userSnake;
     @Getter
     private int score;
     @Getter
@@ -24,6 +22,12 @@ public class SnakeGame {
     private boolean gameOver;
     @Getter
     private boolean gameWon;
+
+    private ArrayList<Snake> snakes;
+    private ArrayList<SnakeBot> snakeBots;
+    private ArrayList<Snake> deadSnakes;
+    private Snake userSnake;
+
     private GameSettings settings;
 
     /**
@@ -42,10 +46,10 @@ public class SnakeGame {
         for (int i = 0; i < settings.getNumberFood(); i++) {
             treats.add(new Treat(0, 0));
         }
-        userSnake = new Snake();
+        userSnake = new Snake(this);
         snakes.add(userSnake);
         for (int i = 0; i < settings.getBotsNumber(); i++) {
-            SnakeBot snakeBot = new SnakeBot();
+            SnakeBot snakeBot = new SnakeBot(this);
             snakes.add(snakeBot);
             snakeBots.add(snakeBot);
         }
@@ -66,89 +70,19 @@ public class SnakeGame {
     }
 
     /**
-     * Returns the list of treats.
-     *
-     * @return the list of treats
-     */
-    public ArrayList<Treat> getTreats() {
-        return new ArrayList<>(treats);
-    }
-
-    /**
-     * Returns the list of walls.
-     *
-     * @return the list of walls
-     */
-    public ArrayList<Wall> getWalls() {
-        return new ArrayList<>(walls);
-    }
-
-    /**
      * Moves the snake according to the current direction.
      */
     public void move() {
         if (gameOver) {
             return;
         }
-        setUpClosestTreats();
-        setUpResolvedDirections();
         moveSnakes();
         checkCollision();
         checkLunch();
         checkWin();
     }
 
-    private void setUpResolvedDirections() {
-        ArrayList<Action> resolvedDirections = new ArrayList<>();
-        SnakePart testHead = new SnakePart(0,0);
-        for (SnakeBot snakeBot : snakeBots) {
-            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX() + 1);
-            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY());
-            if(! isCollision(testHead)) {
-                resolvedDirections.add(Action.RIGHT);
-            }
-            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX() - 1);
-            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY());
-            if(! isCollision(testHead)) {
-                resolvedDirections.add(Action.LEFT);
-            }
 
-            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX());
-            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY()+1);
-            if(! isCollision(testHead)) {
-                resolvedDirections.add(Action.DOWN);
-            }
-            testHead.setCoordinateX(snakeBot.getHead().getCoordinateX());
-            testHead.setCoordinateY(snakeBot.getHead().getCoordinateY()- 1);
-            if(! isCollision(testHead)) {
-                resolvedDirections.add(Action.UP);
-            }
-            snakeBot.setResolvedDirections(resolvedDirections);
-        }
-    }
-
-    private void setUpClosestTreats() {
-        Treat closestTreat = null;
-        int closestSum;
-        for (SnakeBot snakeBot : snakeBots) {
-            closestSum = Integer.MAX_VALUE;
-            for (Treat treat : treats) {
-                if (treat.isBooked()) {
-                    continue;
-                }
-                int sum = (int) Math.sqrt(Math.pow(treat.getCoordinateX(), 2) + Math.pow(treat.getCoordinateY(), 2));
-                if (sum < closestSum) {
-                    closestTreat = treat;
-                    closestSum = sum;
-                }
-            }
-
-            snakeBot.setClosestTreat(closestTreat);
-            if(closestTreat != null) {
-                closestTreat.setBooked(true);
-            }
-        }
-    }
 
     private void moveSnakes() {
         for (Snake snake : snakes) {
@@ -177,6 +111,7 @@ public class SnakeGame {
             snakeBots.add((SnakeBot) snake);
             snakes.add(snake);
         }
+        deadSnakes.clear();
         for (int i = 0; i < snakes.size(); i++) {
             snakes.get(i).startOver(settings.getSnakeCoordinates().get(0),
                     settings.getSnakeCoordinates().get(1) + i*2);
@@ -234,7 +169,7 @@ public class SnakeGame {
         }
     }
 
-    private boolean isCollision(SnakePart head) {
+    public boolean isCollision(SnakePart head) {
 
         if (head.getCoordinateY() >= settings.getHeight() || head.getCoordinateY() < 0
                 || head.getCoordinateX() >= settings.getWidth() || head.getCoordinateX() < 0) {
@@ -257,9 +192,11 @@ public class SnakeGame {
                 if (head.getCoordinateX() == treat.getCoordinateX()
                         && head.getCoordinateY() == treat.getCoordinateY()) {
                     currentSnake.lunch();
-                    updateScore();
                     appearTreat(treat);
-                    treat.setBooked(false);
+
+                    if(currentSnake == userSnake) {
+                        updateScore();
+                    }
                     return;
                 }
             }
@@ -291,6 +228,7 @@ public class SnakeGame {
 
         treat.setCoordinateX(x);
         treat.setCoordinateY(y);
+        treat.setBooked(false);
     }
 
     /**

@@ -6,17 +6,19 @@ import java.util.ArrayList;
  * Snake that can move, change direction, eat, bump into blocks, and grow.
  */
 public class Snake {
-    ArrayList<SnakePart> body;
+    private ArrayList<SnakePart> body;
     private int moveOrdinate;
     private int moveAbscissa;
     private SnakePart previous;
     private Action lastDirection;
     private Action currentDirection;
+    private SnakeGame game;
 
     /**
      * Constructs a Snake with a starting position.
      */
-    public Snake() {
+    public Snake(SnakeGame game) {
+        this.game = game;
         previous = new SnakePart(0, 0);
         body = new ArrayList<>();
     }
