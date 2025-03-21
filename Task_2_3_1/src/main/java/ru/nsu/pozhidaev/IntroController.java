@@ -19,8 +19,15 @@ import java.util.stream.Stream;
  */
 public class IntroController {
 
+    /**
+     * Label used to display messages to the user.
+     */
     @FXML
     private Label label;
+
+    /**
+     * The primary stage of the application.
+     */
     private Stage stage;
 
     /**
@@ -62,6 +69,11 @@ public class IntroController {
         }
     }
 
+    /**
+     * Handles the action to load level 3 of the game.
+     *
+     * @param event the action event triggered by the user
+     */
     @FXML
     private void handleLevel3(ActionEvent event) {
         String levelPath = "/levels/level3.json";
@@ -75,10 +87,9 @@ public class IntroController {
     /**
      * Loads the specified game level and initializes the game controller.
      *
-     * @param event    the action event
-     * @param levelPath
-     *
-     * @throws IOException if the game view cannot be loaded
+     * @param event     the action event triggered by the user
+     * @param levelPath the path to the level configuration file
+     * @throws IOException if the game view cannot be loaded or if there's an error reading the level file
      */
     private void loadLevel(ActionEvent event, String levelPath) throws IOException {
 
