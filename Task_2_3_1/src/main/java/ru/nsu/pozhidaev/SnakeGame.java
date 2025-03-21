@@ -22,11 +22,13 @@ public class SnakeGame {
     private boolean gameOver;
     @Getter
     private boolean gameWon;
+    @Getter
+    private Snake userSnake;
+
 
     private ArrayList<Snake> snakes;
     private ArrayList<SnakeBot> snakeBots;
     private ArrayList<Snake> deadSnakes;
-    private Snake userSnake;
 
     private GameSettings settings;
 
@@ -48,8 +50,13 @@ public class SnakeGame {
         }
         userSnake = new Snake(this);
         snakes.add(userSnake);
+        SnakeBot snakeBot = null;
         for (int i = 0; i < settings.getBotsNumber(); i++) {
-            SnakeBot snakeBot = new SnakeBot(this);
+            if(i % 2 == 0){
+                snakeBot = new SnakeBotSmart(this);
+            } else {
+                snakeBot = new SnakeBotStupid(this);
+            }
             snakes.add(snakeBot);
             snakeBots.add(snakeBot);
         }

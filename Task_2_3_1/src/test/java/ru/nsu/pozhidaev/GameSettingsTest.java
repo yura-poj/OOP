@@ -65,9 +65,4 @@ class GameSettingsTest {
     void getBotsNumber() {
         assertEquals(gameSettings.getBotsNumber(), 0);
     }
-
-    @Test
-    void getBotTreatRadiusView() {
-        assertEquals(gameSettings.getBotTreatRadiusView(), 3);
-    }
 }

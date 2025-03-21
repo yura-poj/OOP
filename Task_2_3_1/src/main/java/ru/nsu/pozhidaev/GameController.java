@@ -96,6 +96,7 @@ public class GameController {
         drawSnake(snakeGame.getSnakesBodies());
         drawWalls(snakeGame.getWalls());
         drawTreats(snakeGame.getTreats());
+        drawPlayerHead(snakeGame.getUserSnake().getHead());
         snakeGame.move();
 
         if (snakeGame.isGameOver()) {
@@ -104,6 +105,10 @@ public class GameController {
 
         score.set(snakeGame.getScore());
         bestScore.set(snakeGame.getBestScore());
+    }
+
+    private void drawPlayerHead(SnakePart head) {
+        gridCells[head.getCoordinateY()][head.getCoordinateX()].setFill(Color.LIGHTGREEN);
     }
 
     /**
