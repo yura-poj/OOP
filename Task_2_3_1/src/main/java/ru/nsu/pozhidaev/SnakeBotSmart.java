@@ -65,44 +65,23 @@ public class SnakeBotSmart extends SnakeBot {
      * considering both vertical and horizontal distances.
      */
     private void sortDirections() {
-        if (closestTreat.getCoordinateX() == getHead().getCoordinateX()) {
-            if (closestTreat.getCoordinateY() > getHead().getCoordinateY()) {
-                sortedDirections.set(0, Action.DOWN);
-                sortedDirections.set(3, Action.UP);
-            } else {
-                sortedDirections.set(0, Action.UP);
-                sortedDirections.set(3, Action.DOWN);
-            }
-            sortedDirections.set(1, Action.LEFT);
-            sortedDirections.set(2, Action.RIGHT);
-            return;
-        }
-        if (closestTreat.getCoordinateY() == getHead().getCoordinateY()) {
-            if (closestTreat.getCoordinateX() > getHead().getCoordinateX()) {
-                sortedDirections.set(0, Action.RIGHT);
-                sortedDirections.set(3, Action.LEFT);
-            } else {
-                sortedDirections.set(0, Action.LEFT);
-                sortedDirections.set(3, Action.RIGHT);
-            }
-            sortedDirections.set(1, Action.UP);
-            sortedDirections.set(2, Action.DOWN);
-            return;
-        }
-
-        if (closestTreat.getCoordinateX() > getHead().getCoordinateX()) {
-            sortedDirections.set(1, Action.LEFT);
-            sortedDirections.set(2, Action.RIGHT);
+        int treatX = closestTreat.getCoordinateX();
+        int treatY = closestTreat.getCoordinateY();
+        int headX = getHead().getCoordinateX();
+        int headY = getHead().getCoordinateY();
+        Action predictX = Action.bestDirectionByX(treatX, headX);
+        Action predictY = Action.bestDirectionByY(treatY, headY);
+        if (treatX == headX) {
+            sortedDirections.set(0, predictY);
+            sortedDirections.set(1, predictX);
+            sortedDirections.set(2, predictY.opposite());
+            sortedDirections.set(3, predictX.opposite());
         } else {
-            sortedDirections.set(1, Action.RIGHT);
-            sortedDirections.set(2, Action.LEFT);
+            sortedDirections.set(0, predictX);
+            sortedDirections.set(1, predictY);
+            sortedDirections.set(2, predictX.opposite());
+            sortedDirections.set(3, predictY.opposite());
         }
-        if (closestTreat.getCoordinateY() > getHead().getCoordinateY()) {
-            sortedDirections.set(0, Action.DOWN);
-            sortedDirections.set(3, Action.UP);
-        } else {
-            sortedDirections.set(0, Action.UP);
-            sortedDirections.set(3, Action.DOWN);
-        }
+        System.out.println(sortedDirections);
     }
 }

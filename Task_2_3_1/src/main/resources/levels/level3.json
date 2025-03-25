@@ -4,8 +4,8 @@
   "hight": 25,
   "cubeSize": 20,
   "numberFood": 15,
-  "numberFoodToWin": 30,
-  "botsNumber": 3,
+  "numberFoodToWin": 100,
+  "botsNumber": 5,
   "snakeCoordinates": {
     "x": 10,
     "y": 10
