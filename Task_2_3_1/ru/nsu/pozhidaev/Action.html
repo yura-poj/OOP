@@ -136,17 +136,25 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#bestDirectionByX(int,int)" class="member-name-link">bestDirectionByX</a><wbr>(int&nbsp;treat,
  int&nbsp;head)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">return best direction by treat.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#bestDirectionByY(int,int)" class="member-name-link">bestDirectionByY</a><wbr>(int&nbsp;treat,
  int&nbsp;head)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">return best direction by treat.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#opposite()" class="member-name-link">opposite</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">find opposite direction from yourself.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#opposite(ru.nsu.pozhidaev.Action)" class="member-name-link">opposite</a><wbr>(<a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a>&nbsp;action)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">return opposite direction by selected direction.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#valueOf(java.lang.String)" class="member-name-link">valueOf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -250,6 +258,14 @@ not permitted.)</div>
 <h3>bestDirectionByX</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></span>&nbsp;<span class="element-name">bestDirectionByX</span><wbr><span class="parameters">(int&nbsp;treat,
  int&nbsp;head)</span></div>
+<div class="block">return best direction by treat.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>treat</code> - x coordinate of treat.</dd>
+<dd><code>head</code> - x coordinate of head.</dd>
+<dt>Returns:</dt>
+<dd>best direction.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -257,18 +273,38 @@ not permitted.)</div>
 <h3>bestDirectionByY</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></span>&nbsp;<span class="element-name">bestDirectionByY</span><wbr><span class="parameters">(int&nbsp;treat,
  int&nbsp;head)</span></div>
+<div class="block">return best direction by treat.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>treat</code> - y coordinate of treat.</dd>
+<dd><code>head</code> - y coordinate of head.</dd>
+<dt>Returns:</dt>
+<dd>best direction.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="opposite()">
 <h3>opposite</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></span>&nbsp;<span class="element-name">opposite</span>()</div>
+<div class="block">find opposite direction from yourself.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>opposite direction.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="opposite(ru.nsu.pozhidaev.Action)">
 <h3>opposite</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a></span>&nbsp;<span class="element-name">opposite</span><wbr><span class="parameters">(<a href="Action.html" title="enum class in ru.nsu.pozhidaev">Action</a>&nbsp;action)</span></div>
+<div class="block">return opposite direction by selected direction.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>action</code> - from which opposite needed.</dd>
+<dt>Returns:</dt>
+<dd>opposite direction.</dd>
+</dl>
 </section>
 </li>
 </ul>
