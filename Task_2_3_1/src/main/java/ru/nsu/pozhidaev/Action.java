@@ -21,6 +21,14 @@ public enum Action {
      */
     RIGHT;
 
+    /**
+     * return best direction by treat.
+     *
+     * @param treat x coordinate of treat.
+     * @param head x coordinate of head.
+     *
+     * @return best direction.
+     */
     public static Action bestDirectionByX(int treat, int head) {
         if (treat < head) {
             return LEFT;
@@ -29,6 +37,14 @@ public enum Action {
         return RIGHT;
     }
 
+    /**
+     * return best direction by treat.
+     *
+     * @param treat y coordinate of treat.
+     * @param head y coordinate of head.
+     *
+     * @return best direction.
+     */
     public static Action bestDirectionByY(int treat, int head) {
         if (treat < head) {
             return UP;
@@ -37,10 +53,22 @@ public enum Action {
         return DOWN;
     }
 
-    public Action opposite(){
+    /**
+     * find opposite direction from yourself.
+     *
+     * @return opposite direction.
+     */
+    public Action opposite() {
         return opposite(this);
     }
 
+    /**
+     * return opposite direction by selected direction.
+     *
+     * @param action from which opposite needed.
+     *
+     * @return opposite direction.
+     */
     public static Action opposite(Action action) {
         return switch (action) {
             case DOWN -> UP;
