@@ -23,11 +23,11 @@ public class SnakeBotSmart extends SnakeBot {
      */
     @Override
     void think() {
-        if (closestTreat == null || !closestTreat.isBooked()) {
+        if (closestTreat==null || !closestTreat.isBooked()) {
             setUpClosestTreat();
         }
 
-        if (closestTreat != null) {
+        if (closestTreat!=null) {
             sortDirections();
         }
     }
@@ -54,7 +54,7 @@ public class SnakeBotSmart extends SnakeBot {
             }
         }
 
-        if (closestTreat != null) {
+        if (closestTreat!=null) {
             closestTreat.setBooked(true);
         }
     }
@@ -71,17 +71,12 @@ public class SnakeBotSmart extends SnakeBot {
         int headY = getHead().getCoordinateY();
         Action predictX = Action.bestDirectionByX(treatX, headX);
         Action predictY = Action.bestDirectionByY(treatY, headY);
-        if (treatX == headX) {
-            sortedDirections.set(0, predictY);
-            sortedDirections.set(1, predictX);
-            sortedDirections.set(2, predictY.opposite());
-            sortedDirections.set(3, predictX.opposite());
-        } else {
-            sortedDirections.set(0, predictX);
-            sortedDirections.set(1, predictY);
-            sortedDirections.set(2, predictX.opposite());
-            sortedDirections.set(3, predictY.opposite());
-        }
+
+        sortedDirections.set(0, predictX);
+        sortedDirections.set(1, predictY);
+        sortedDirections.set(2, predictX.opposite());
+        sortedDirections.set(3, predictY.opposite());
+        
         System.out.println(sortedDirections);
     }
 }
