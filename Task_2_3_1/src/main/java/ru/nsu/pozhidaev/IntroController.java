@@ -46,11 +46,8 @@ public class IntroController {
     @FXML
     private void handleLevel1(ActionEvent event) {
         String levelPath = "/levels/level1.json";
-        try {
-            loadLevel(event, levelPath);
-        } catch (IOException e) {
-            System.out.println("No such level, choose another one");
-        }
+        loadLevel(event, levelPath);
+        System.out.println("No such level, choose another one");
     }
 
     /**
@@ -61,11 +58,8 @@ public class IntroController {
     @FXML
     private void handleLevel2(ActionEvent event) {
         String levelPath = "/levels/level2.json";
-        try {
-            loadLevel(event, levelPath);
-        } catch (IOException e) {
-            System.out.println("No such level, choose another one");
-        }
+        loadLevel(event, levelPath);
+        System.out.println("No such level, choose another one");
     }
 
     /**
@@ -76,11 +70,7 @@ public class IntroController {
     @FXML
     private void handleLevel3(ActionEvent event) {
         String levelPath = "/levels/level3.json";
-        try {
-            loadLevel(event, levelPath);
-        } catch (IOException e) {
-            System.out.println("No such level, choose another one");
-        }
+        loadLevel(event, levelPath);
     }
 
     /**
@@ -89,23 +79,31 @@ public class IntroController {
      * @param event     the action event triggered by the user
      * @param levelPath the path to the level configuration file
      *
-     * @throws IOException if the game view cannot be loaded or if there's an error reading the level file
+     * @throws IOException if the game view cannot be loaded
+     *      or if there's an error reading the level file
      */
-    private void loadLevel(ActionEvent event, String levelPath) throws IOException {
+    private void loadLevel(ActionEvent event, String levelPath) {
+        try {
+            GameSettings settings = new GameSettings(getClass().getResource(levelPath).getPath());
 
-        GameSettings settings = new GameSettings(getClass().getResource(levelPath).getPath());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
+            Parent newView = loader.load();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
-        Parent newView = loader.load();
+            GameController controller = loader.getController();
+            controller.initData(stage, settings);
 
-        GameController controller = loader.getController();
-        controller.initData(stage, settings);
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene newScene = new Scene(newView,
+                    settings.getWidth() * settings.getCubeSize(),
+                    settings.getHeight() * settings.getCubeSize()
+                            + 4 * settings.getCubeSize());
 
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene newScene = new Scene(newView, settings.getWidth() * settings.getCubeSize(),
-                settings.getHeight() * settings.getCubeSize() + 4 * settings.getCubeSize());
-        currentStage.setScene(newScene);
-        currentStage.show();
+            currentStage.setScene(newScene);
+            currentStage.show();
+        } catch (IOException | NullPointerException e) {
+            System.err.println("Ошибка при загрузке уровня: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -120,7 +120,8 @@ public class GameController {
     private void drawSnake(ArrayList<ArrayList<SnakePart>> snakesBodies) {
         for (ArrayList<SnakePart> snakeParts : snakesBodies) {
             for (SnakePart snakePart : snakeParts) {
-                gridCells[snakePart.getCoordinateY()][snakePart.getCoordinateX()].setFill(Color.GREEN);
+                gridCells[snakePart.getCoordinateY()][
+                        snakePart.getCoordinateX()].setFill(Color.GREEN);
             }
         }
     }

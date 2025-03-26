@@ -44,30 +44,8 @@ public class Snake {
      * @param action the action to change the direction
      */
     public void setDirection(Action action) {
-        switch (action) {
-            case UP:
-                if (lastDirection != Action.DOWN) {
-                    currentDirection = Action.UP;
-                }
-                break;
-            case DOWN:
-                if (lastDirection != Action.UP) {
-                    currentDirection = Action.DOWN;
-                }
-                break;
-            case LEFT:
-                if (lastDirection != Action.RIGHT) {
-                    currentDirection = Action.LEFT;
-                }
-                break;
-            case RIGHT:
-                if (lastDirection != Action.LEFT) {
-                    currentDirection = Action.RIGHT;
-                }
-                break;
-            default:
-                System.out.println("Invalid action");
-                break;
+        if (lastDirection != action.opposite()) {
+            currentDirection = action;
         }
     }
 

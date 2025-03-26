@@ -76,7 +76,5 @@ public class SnakeBotSmart extends SnakeBot {
         sortedDirections.set(1, predictY);
         sortedDirections.set(2, predictX.opposite());
         sortedDirections.set(3, predictY.opposite());
-
-        System.out.println(sortedDirections);
     }
 }
