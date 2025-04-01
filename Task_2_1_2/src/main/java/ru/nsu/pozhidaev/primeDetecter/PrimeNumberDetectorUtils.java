@@ -1,4 +1,4 @@
-package ru.nsu.pozhidaev;
+package ru.nsu.pozhidaev.primeDetecter;
 
 
 /**
