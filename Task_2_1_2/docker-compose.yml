@@ -9,19 +9,22 @@ networks:
 
 services:
   manager:
-    build: ./src/main/java/ru/nsu/pozhidaev/manager
+    build: .
+    command: ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.manager.Manager"]
     networks:
       broadcast_net:
         ipv4_address: 172.28.0.10
 
   worker1:
-    build: ./src/main/java/ru/nsu/pozhidaev/worker
+    build: .
+    command: ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.worker.Worker"]
     networks:
       broadcast_net:
         ipv4_address: 172.28.0.11
 
   worker2:
-    build: ./src/main/java/ru/nsu/pozhidaev/worker
+    build: .
+    command: ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.worker.Worker"]
     networks:
       broadcast_net:
         ipv4_address: 172.28.0.12

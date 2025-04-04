@@ -1,24 +1,61 @@
 package ru.nsu.pozhidaev.manager;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.io.IOException;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Manager {
+    private static final String SEND_MESSAGE = "WSUP?";
+    private static final String RECEIVE_MESSAGE = "YO_MAN!";
+    private static final int PORT = 5005;
+    private static HashSet<InetAddress> workers;
+    private static InetAddress udpGroup;
+    private static DatagramSocket udpSocket;
     public static void main(String[] args) throws Exception {
-        DatagramSocket socket = new DatagramSocket();
-        socket.setBroadcast(true);
+        activate();
+        sendBroadcast(SEND_MESSAGE);
+        findWorkers();
 
-        String message = "Hello from Java UDP Server!";
+
+    }
+
+    private static void activate() throws UnknownHostException, SocketException {
+        udpGroup = InetAddress.getByName("224.0.0.1");
+        udpSocket = new DatagramSocket();
+        udpSocket.connect(udpGroup, PORT);
+        udpSocket.setSoTimeout(1000);
+    }
+
+    private static void sendBroadcast(String message) throws IOException {
         byte[] buffer = message.getBytes(StandardCharsets.UTF_8);
-        InetAddress broadcastAddress = InetAddress.getByName("172.28.0.255");
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, udpGroup, PORT);
+        udpSocket.send(packet);
+    }
 
-        while (true) {
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, 5005);
-            socket.send(packet);
-            System.out.println("Broadcast sent: " + message);
-            Thread.sleep(2000);
+    private static void findWorkers() {
+        long currentTimeMillis = System.currentTimeMillis();
+        long waitTime = 10000;
+        byte[] buffer = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+        while (currentTimeMillis + waitTime> System.currentTimeMillis()) {
+            try {
+                udpSocket.receive(packet);
+                String received = new String(packet.getData(), 0, packet.getLength());
+                System.out.println(received);
+                if(received.equals(RECEIVE_MESSAGE)) {
+                    workers.add(InetAddress.getByName(packet.getAddress().getHostAddress()));
+                    System.out.println("Find worker: " + packet.getAddress().getHostAddress());
+                }
+            } catch (IOException e) {
+                System.out.println("finish search for workers");
+            }
         }
+    }
+
+    private static void initTcpSocket() throws IOException {
+
     }
 }
