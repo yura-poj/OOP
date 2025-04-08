@@ -3,15 +3,13 @@ package ru.nsu.pozhidaev.manager;
 import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Manager {
     private static final String SEND_MESSAGE = "WSUP?";
     private static final String RECEIVE_MESSAGE = "YO_MAN!";
     private static final int PORT = 5005;
-    private static HashSet<InetAddress> workers;
+    private static HashSet<InetAddress> workers = new HashSet<>();
     private static InetAddress udpGroup;
     private static DatagramSocket udpSocket;
     public static void main(String[] args) throws Exception {
@@ -25,9 +23,8 @@ public class Manager {
     private static void activate() throws UnknownHostException, SocketException {
         udpGroup = InetAddress.getByName("224.0.0.1");
         udpSocket = new DatagramSocket();
-        udpSocket.connect(udpGroup, PORT);
         udpSocket.setSoTimeout(1000);
-    }
+        System.out.println("Listening on: " + udpSocket.getLocalAddress() + ":" + udpSocket.getLocalPort());    }
 
     private static void sendBroadcast(String message) throws IOException {
         byte[] buffer = message.getBytes(StandardCharsets.UTF_8);
@@ -44,7 +41,6 @@ public class Manager {
             try {
                 udpSocket.receive(packet);
                 String received = new String(packet.getData(), 0, packet.getLength());
-                System.out.println(received);
                 if(received.equals(RECEIVE_MESSAGE)) {
                     workers.add(InetAddress.getByName(packet.getAddress().getHostAddress()));
                     System.out.println("Find worker: " + packet.getAddress().getHostAddress());
