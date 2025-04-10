@@ -1,5 +1,8 @@
 package ru.nsu.pozhidaev.manager;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -7,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 public class Manager {
     private static final String SEND_MESSAGE = "WSUP?";
@@ -17,21 +21,27 @@ public class Manager {
     private InetAddress udpGroup;
     private DatagramSocket udpSocket;
     private ArrayList<WorkerServer> workerServers = new ArrayList<>();
-    AtomicBoolean result = new AtomicBoolean(false);
+    @Getter
+    private AtomicBoolean result = new AtomicBoolean(false);
+    @Getter
     private final Object lock = new Object();
-    ServerSocket serverSocket;
+    private ServerSocket serverSocket;
+    @Getter
+    private ArrayList<Integer> unfinished = new ArrayList<>();
 
 
     public boolean work (int[] task) {
 
         try {
             serverSocket = new ServerSocket(PORT);
+            serverSocket.setSoTimeout(1000);
             activate();
             sendBroadcast(SEND_MESSAGE);
             findWorkers();
-            initTcpSocket();
+            startTcpConnections();
             setTasks(task);
             waitWorkers();
+            freeSlaves();
 
 
         } catch (IOException e) {
@@ -76,8 +86,7 @@ public class Manager {
         udpSocket.close();
     }
 
-    private void initTcpSocket() throws IOException {
-        serverSocket.setSoTimeout(1000);
+    private void startTcpConnections() throws IOException {
         long currentTimeMillis = System.currentTimeMillis();
         long waitTime = 3000;
         Socket socket = null;
@@ -86,7 +95,7 @@ public class Manager {
                 socket = serverSocket.accept();
                 System.out.println("I was called");
                 if (workers.contains(socket.getInetAddress())) {
-                    workerServers.add(new WorkerServer(socket, result, lock));
+                    workerServers.add(new WorkerServer(socket, this));
                     System.out.println("Connect with " + socket.getInetAddress());
 
                 } else {
@@ -111,8 +120,10 @@ public class Manager {
                 end++;
                 reminder--;
             }
+            int[] part = Arrays.copyOfRange(task, start, end);
+            workerServers.get(i).setTask(part);
             System.out.println("send task from " + start + " to " + end + "for " + i);
-            workerServers.get(i).send(Arrays.copyOfRange(task, start, end));
+            workerServers.get(i).send(part);
             start = end;
         }
     }
@@ -120,29 +131,46 @@ public class Manager {
     private void waitWorkers() throws InterruptedException {
         synchronized (lock) {
             int numberCalled = 1;
-            while (numberCalled < workerServers.size()) {
+            while (numberCalled < workerServers.size() && !result.get()) {
                 lock.wait();
                 numberCalled++;
             }
+        }
+        if(!result.get() && !unfinished.isEmpty()) {
+            System.out.println("Not finished:"  + unfinished.toString());
+            setTasks(unfinished.stream()
+                    .mapToInt(Integer::intValue)
+                    .toArray());
+        }
+    }
+
+    public synchronized void removeWorker(WorkerServer workerServer) {
+        workerServers.remove(workerServer);
+    }
+
+    private void freeSlaves() {
+        for (WorkerServer workerServer : workerServers) {
+            workerServer.finish();
         }
     }
 
     class WorkerServer extends Thread {
 
-        private final Object lock;
         private Socket socket;
         private BufferedReader in;
         private ObjectOutputStream out;
-        private AtomicBoolean result = new AtomicBoolean(false);
+        private Manager manager;
+        @Setter
+        int[] task;
 
-        public WorkerServer(Socket socket, AtomicBoolean result, Object lock) throws IOException {
+        public WorkerServer(Socket socket, Manager manager) throws IOException {
             this.socket = socket;
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            this.result = result;
-            this.lock = lock;
+            this.manager = manager;
             start();
         }
+
 
         @Override
         public void run() {
@@ -152,18 +180,21 @@ public class Manager {
                     word = in.readLine();
                     switch (word) {
                         case "TRUE":
-                            synchronized (lock) {
-                                result.compareAndSet(false, true);
-                                lock.notify();
+                            manager.getResult().compareAndSet(false, true);
+                            synchronized (manager.getLock()) {
+                                manager.getLock().notify();
                             }
                             return;
                         case "FALSE":
+                            synchronized (manager.getLock()) {
+                                manager.getLock().notify();
+                            }
                             return;
                     }
 
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                lostWorker();
             }
         }
 
@@ -172,7 +203,29 @@ public class Manager {
                 out.writeObject(task);
                 out.flush();
             } catch (IOException e) {
+                lostWorker();
                 e.printStackTrace();
+            }
+        }
+
+        public void finish() {
+            send(new int[] {});
+            try {
+                socket.close();
+            } catch (IOException ignore) {}
+        }
+
+        private void lostWorker() {
+            manager.getUnfinished().addAll(Arrays.stream(task)
+                    .boxed()
+                    .toList());
+            manager.removeWorker(this);
+            System.out.println("Worker was lost: " + socket.getInetAddress());
+            try {
+                socket.close();
+            } catch (IOException ignore) {}
+            synchronized (manager.getLock()) {
+                manager.getLock().notify();
             }
         }
     }

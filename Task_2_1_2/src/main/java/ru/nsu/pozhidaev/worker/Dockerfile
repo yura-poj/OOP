@@ -1,6 +1,5 @@
-FROM openjdk:21
+FROM gradle:8.5-jdk21 AS builder
 WORKDIR /app
-COPY . .
-RUN javac Worker.java
-RUN javac Main.java
-CMD ["java", "Main"]
+COPY ../../ .
+RUN gradle build --no-daemon
+CMD ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.worker.Main"]
