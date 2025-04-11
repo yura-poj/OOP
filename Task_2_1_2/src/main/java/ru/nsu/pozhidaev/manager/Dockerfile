@@ -1,16 +1,13 @@
-# Этап сборки проекта
 FROM gradle:8.5-jdk21 AS builder
 WORKDIR /app
-# Копируем все файлы в контейнер
-COPY . .
-# Сборка проекта (рекомендуется добавить clean для гарантированного билда)
-RUN gradle clean build --no-daemon
+# Копируем файлы конфигурации Gradle (будут доступны в корне проекта)
+COPY build.gradle settings.gradle gradlew gradlew.bat /app/
+COPY gradle /app/gradle
+COPY src /app/src
+COPY gradle-8.13 /opt/
 
-# Финальный этап: запуск приложения
-FROM openjdk:21-slim
-WORKDIR /app
-# Копируем jar-файл, сгенерированный на предыдущем этапе
-COPY --from=builder /app/build/libs/Task_2_1_2-1.0-SNAPSHOT.jar .
-# При необходимости можно указать EXPOSE, если приложение слушает определённый порт (например, 5005)
-EXPOSE 5005
-CMD ["java", "-jar", "Task_2_1_2-1.0-SNAPSHOT.jar"]
+ENV PATH="/opt/gradle/gradle-8.13/bin:$PATH"
+RUN gradle build -x test --no-daemon
+
+COPY --from=builder /app/build/classes/java/main ./build/classes/java/main
+CMD ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.manager.Main"]

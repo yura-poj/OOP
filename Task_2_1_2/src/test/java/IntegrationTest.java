@@ -32,6 +32,7 @@ public class IntegrationTest {
     public void testManagerFindsWorkers() throws Exception {
         Thread.sleep(5000);
         String logs = manager.getLogs();
+
         System.out.println("Manager logs:");
         System.out.println(logs);
 
