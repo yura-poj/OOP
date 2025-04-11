@@ -27,7 +27,7 @@ public class Manager {
     private final Object lock = new Object();
     private ServerSocket serverSocket;
     @Getter
-    private ArrayList<Integer> unfinished = new ArrayList<>();
+    private volatile ArrayList<Integer> unfinished = new ArrayList<>();
 
 
     public boolean work (int[] task) {
@@ -130,7 +130,10 @@ public class Manager {
                 reminder--;
             }
             int[] part = Arrays.copyOfRange(task, start, end);
-            workerServers.get(i).setTask(part);
+            ArrayList<Integer> taskList = Arrays.stream(part)
+                    .boxed()
+                    .collect(Collectors.toCollection(ArrayList::new));
+            workerServers.get(i).setTask(new ArrayList<>(taskList));
             System.out.println("send task from " + start + " to " + end + "for " + i);
             workerServers.get(i).send(part);
             start = end;
@@ -140,7 +143,7 @@ public class Manager {
     private void waitWorkers() throws InterruptedException {
         synchronized (lock) {
             int numberCalled = 1;
-            while (numberCalled < workerServers.size() && !result.get()) {
+            while (numberCalled <= workerServers.size() && !result.get()) {
                 lock.wait();
                 numberCalled++;
             }
@@ -169,8 +172,7 @@ public class Manager {
         private BufferedReader in;
         private ObjectOutputStream out;
         private Manager manager;
-        @Setter
-        int[] task;
+        private volatile ArrayList<Integer> task = new ArrayList<>();
 
         public WorkerServer(Socket socket, Manager manager) throws IOException {
             this.socket = socket;
@@ -180,13 +182,22 @@ public class Manager {
             start();
         }
 
+        public synchronized void setTask(ArrayList<Integer> task) {
+            this.task = task;
+        }
+
+        public synchronized ArrayList<Integer> getTask() {
+            return task;
+        }
 
         @Override
         public void run() {
             String word;
             try {
                 while (true) {
+                    System.out.println(getTask().toString());
                     word = in.readLine();
+                    System.out.println(word);
                     switch (word) {
                         case "TRUE":
                             manager.getResult().compareAndSet(false, true);
@@ -199,6 +210,11 @@ public class Manager {
                                 manager.getLock().notify();
                             }
                             return;
+                        case null:
+                            lostWorker();
+                            return;
+                        default:
+                            System.out.println("Unknown command: " + word);
                     }
 
                 }
@@ -225,9 +241,8 @@ public class Manager {
         }
 
         private void lostWorker() {
-            manager.getUnfinished().addAll(Arrays.stream(task)
-                    .boxed()
-                    .toList());
+            System.out.println(task + " " + manager.getUnfinished());
+            manager.getUnfinished().addAll(getTask());
             manager.removeWorker(this);
             System.out.println("Worker was lost: " + socket.getInetAddress());
             try {
