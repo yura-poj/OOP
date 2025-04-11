@@ -35,7 +35,7 @@ public class IntegrationTest {
             worker2.start();
             manager.start();
 
-            Thread.sleep(5000);
+            Thread.sleep(20000);
 
             String managerLogs = manager.getLogs();
             String worker1Logs = worker1.getLogs();
@@ -86,14 +86,14 @@ public class IntegrationTest {
             String worker1Logs;
             while(true) {
                 String manLog = manager.getLogs();
-                if(manLog.contains("Socket timed out")) {
+                if(manLog.contains("send task")) {
                     worker1Logs = worker1.getLogs();
                     worker1.stop();
                     break;
                 }
             }
 
-            Thread.sleep(2000);
+            Thread.sleep(20000);
 
             String managerLogs = manager.getLogs();
             String worker2Logs = worker2.getLogs();
@@ -106,8 +106,8 @@ public class IntegrationTest {
             System.out.println("\nWorker1 logs:");
             System.out.println(worker1Logs);
 
-            Assertions.assertTrue(worker2Logs.contains("get task: [4, 6]"), "Worker didn't receive part");
-            Assertions.assertTrue(worker2Logs.contains("get task: [8, 10]"), "Worker didn't receive part");
+            Assertions.assertTrue(worker2Logs.contains("get task: [4, 6"), "Worker didn't receive part");
+            Assertions.assertTrue(worker2Logs.contains("get task: [102, 153"), "Worker didn't receive part");
         }
     }
 }

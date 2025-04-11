@@ -25,6 +25,10 @@ public class Manager {
     private AtomicBoolean result = new AtomicBoolean(false);
     @Getter
     private final Object lock = new Object();
+
+    @Getter
+    private final Object workersLock = new Object();
+
     private ServerSocket serverSocket;
     @Getter
     private volatile ArrayList<Integer> unfinished = new ArrayList<>();
@@ -40,7 +44,6 @@ public class Manager {
             findWorkers();
             startTcpConnections();
             setTasks(task);
-            waitWorkers();
             freeSlaves();
 
 
@@ -107,36 +110,39 @@ public class Manager {
         }
     }
 
-    private void setTasks(int[] task) {
-        System.out.println(Arrays.toString(task));
-        if(workerServers.isEmpty()) {
-            System.out.println("No workers found");
-            try {
-                serverSocket.close();
-            } catch (IOException e) {
-                System.out.println("Error closing server socket");
+    private void setTasks(int[] task) throws InterruptedException {
+        unfinished.clear();
+        synchronized (workersLock) {
+            if (workerServers.isEmpty()) {
+                System.out.println("No workers found");
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing server socket");
+                }
+                work(task);
             }
-            work(task);
-        }
-        int baseSize = task.length / workerServers.size();
-        int reminder = task.length % workerServers.size();
-        int start = 0;
-        int end = 0;
+            int baseSize = task.length / workerServers.size();
+            int reminder = task.length % workerServers.size();
+            int start = 0;
+            int end = 0;
 
-        for(int i = 0; i < workerServers.size(); i++) {
-            end += baseSize;
-            if (reminder > 0) {
-                end++;
-                reminder--;
+            for (int i = 0; i < workerServers.size(); i++) {
+                end += baseSize;
+                if (reminder > 0) {
+                    end++;
+                    reminder--;
+                }
+                int[] part = Arrays.copyOfRange(task, start, end);
+                ArrayList<Integer> taskList = Arrays.stream(part)
+                        .boxed()
+                        .collect(Collectors.toCollection(ArrayList::new));
+                workerServers.get(i).setTask(new ArrayList<>(taskList));
+                System.out.println("send task from " + start + " to " + end + "for " + i);
+                workerServers.get(i).send(part);
+                start = end;
             }
-            int[] part = Arrays.copyOfRange(task, start, end);
-            ArrayList<Integer> taskList = Arrays.stream(part)
-                    .boxed()
-                    .collect(Collectors.toCollection(ArrayList::new));
-            workerServers.get(i).setTask(new ArrayList<>(taskList));
-            System.out.println("send task from " + start + " to " + end + "for " + i);
-            workerServers.get(i).send(part);
-            start = end;
+            waitWorkers();
         }
     }
 
@@ -158,12 +164,14 @@ public class Manager {
 
     public synchronized void removeWorker(WorkerServer workerServer) {
         workerServers.remove(workerServer);
+        System.out.println("remove worker");
     }
 
     private void freeSlaves() {
         for (WorkerServer workerServer : workerServers) {
             workerServer.finish();
         }
+        System.out.println("freeSlaves");
     }
 
     class WorkerServer extends Thread {
@@ -172,6 +180,8 @@ public class Manager {
         private BufferedReader in;
         private ObjectOutputStream out;
         private Manager manager;
+        @Getter
+        @Setter
         private volatile ArrayList<Integer> task = new ArrayList<>();
 
         public WorkerServer(Socket socket, Manager manager) throws IOException {
@@ -182,20 +192,11 @@ public class Manager {
             start();
         }
 
-        public synchronized void setTask(ArrayList<Integer> task) {
-            this.task = task;
-        }
-
-        public synchronized ArrayList<Integer> getTask() {
-            return task;
-        }
-
         @Override
         public void run() {
             String word;
             try {
                 while (true) {
-                    System.out.println(getTask().toString());
                     word = in.readLine();
                     System.out.println(word);
                     switch (word) {
@@ -241,15 +242,17 @@ public class Manager {
         }
 
         private void lostWorker() {
-            System.out.println(task + " " + manager.getUnfinished());
-            manager.getUnfinished().addAll(getTask());
-            manager.removeWorker(this);
-            System.out.println("Worker was lost: " + socket.getInetAddress());
-            try {
-                socket.close();
-            } catch (IOException ignore) {}
             synchronized (manager.getLock()) {
-                manager.getLock().notify();
+                manager.getUnfinished().addAll(getTask());
+                manager.removeWorker(this);
+                System.out.println("Worker was lost: " + socket.getInetAddress());
+                try {
+                    socket.close();
+                } catch (IOException ignore) {
+                }
+                synchronized (manager.getLock()) {
+                    manager.getLock().notify();
+                }
             }
         }
     }

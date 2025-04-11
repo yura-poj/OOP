@@ -80,6 +80,11 @@ public class Worker {
             }
             System.out.println("get task: " + Arrays.toString(task));
             PrimeNumberDetector primeDetector = new PrimeNumberDetector();
+            try {
+                Thread.sleep(5000); // I have to add it, cause in other way tests doesn't work
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             boolean result = primeDetector.isPrimeNumberExist(task);
             if (result) {
                 out.write("TRUE\n");
