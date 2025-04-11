@@ -7,7 +7,6 @@ public class Main {
         ArrayList<Integer> numbers = new ArrayList<>();
         try {
             for (int i = 0; i < args.length; i++) {
-                System.out.println(args[i]);
                 numbers.add(Integer.parseInt(args[i]));
             }
         } catch (NumberFormatException e) {

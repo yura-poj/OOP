@@ -109,6 +109,15 @@ public class Manager {
 
     private void setTasks(int[] task) {
         System.out.println(Arrays.toString(task));
+        if(workerServers.isEmpty()) {
+            System.out.println("No workers found");
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                System.out.println("Error closing server socket");
+            }
+            work(task);
+        }
         int baseSize = task.length / workerServers.size();
         int reminder = task.length % workerServers.size();
         int start = 0;
