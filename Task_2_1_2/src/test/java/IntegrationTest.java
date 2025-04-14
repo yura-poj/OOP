@@ -161,7 +161,7 @@ public class IntegrationTest {
 
             Thread.sleep(20000);
             String manager2Logs = manager2.getLogs();
-            
+
             Assertions.assertTrue(manager2Logs.contains("Find worker"), "Manager didn't find any workers");
             Assertions.assertTrue(manager2Logs.contains("true"), "Manager didn't find the answer");
         }
