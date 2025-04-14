@@ -15,11 +15,8 @@ public class Worker {
     private MulticastSocket udpSocket;
     private InetAddress udpGroup;
     private InetSocketAddress manager;
-    public Worker() {
-        run();
-    }
 
-    public void run() {
+    public void work() {
         while (true) {
             try {
                 activate();
