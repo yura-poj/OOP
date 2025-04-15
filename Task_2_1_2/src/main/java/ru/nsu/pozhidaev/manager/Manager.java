@@ -29,6 +29,9 @@ public class Manager {
     @Getter
     private final Object workersLock = new Object();
 
+    @Getter
+    private final Object unfinishedLock = new Object();
+
     private ServerSocket serverSocket;
     @Getter
     private volatile ArrayList<Integer> unfinished = new ArrayList<>();
@@ -111,7 +114,9 @@ public class Manager {
     }
 
     private void setTasks(int[] task) throws InterruptedException {
-        unfinished.clear();
+        synchronized (unfinishedLock) {
+            unfinished.clear();
+        }
         synchronized (workersLock) {
             if (workerServers.isEmpty()) {
                 System.out.println("No workers found");
@@ -154,11 +159,13 @@ public class Manager {
                 numberCalled++;
             }
         }
-        if(!result.get() && !unfinished.isEmpty()) {
-            System.out.println("Not finished:"  + unfinished.toString());
-            setTasks(unfinished.stream()
-                    .mapToInt(Integer::intValue)
-                    .toArray());
+        synchronized (unfinishedLock) {
+            if(!result.get() && !unfinished.isEmpty()) {
+                System.out.println("Not finished:"  + unfinished.toString());
+                setTasks(unfinished.stream()
+                        .mapToInt(Integer::intValue)
+                        .toArray());
+            }
         }
     }
 
@@ -242,8 +249,10 @@ public class Manager {
         }
 
         private void lostWorker() {
-            synchronized (manager.getWorkersLock()) {
+            synchronized (manager.getLock()) {
                 manager.getUnfinished().addAll(getTask());
+            }
+            synchronized (manager.getWorkersLock()) {
                 manager.removeWorker(this);
             }
             System.out.println("Worker was lost: " + socket.getInetAddress());
