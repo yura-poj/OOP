@@ -242,17 +242,17 @@ public class Manager {
         }
 
         private void lostWorker() {
-            synchronized (manager.getLock()) {
+            synchronized (manager.getWorkersLock()) {
                 manager.getUnfinished().addAll(getTask());
                 manager.removeWorker(this);
-                System.out.println("Worker was lost: " + socket.getInetAddress());
-                try {
-                    socket.close();
-                } catch (IOException ignore) {
-                }
-                synchronized (manager.getLock()) {
-                    manager.getLock().notify();
-                }
+            }
+            System.out.println("Worker was lost: " + socket.getInetAddress());
+            try {
+                socket.close();
+            } catch (IOException ignore) {
+            }
+            synchronized (manager.getLock()) {
+                manager.getLock().notify();
             }
         }
     }
