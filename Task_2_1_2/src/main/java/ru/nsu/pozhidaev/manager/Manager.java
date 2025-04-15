@@ -249,7 +249,7 @@ public class Manager {
         }
 
         private void lostWorker() {
-            synchronized (manager.getLock()) {
+            synchronized (manager.getUnfinishedLock()) {
                 manager.getUnfinished().addAll(getTask());
             }
             synchronized (manager.getWorkersLock()) {
