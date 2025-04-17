@@ -17,7 +17,7 @@ public class Main {
      * Creates a new Worker instance and starts its operation.
      * The Worker will run indefinitely until the application is terminated.
      * 
-     * @param args Command line arguments (not used)
+     * <p>@param args Command line arguments (not used)
      */
     public static void main(String[] args) {
         Worker worker = new Worker();

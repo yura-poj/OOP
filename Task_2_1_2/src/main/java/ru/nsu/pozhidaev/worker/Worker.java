@@ -72,7 +72,8 @@ public class Worker {
      * 3. Joins the multicast group
      * 4. Prints the local address and port for debugging
      *
-     * @throws IOException if there is an error setting up the socket or joining the multicast group
+     * <p>@throws IOException if there is an error setting up
+     * the socket or joining the multicast group
      */
     private void activate() throws IOException {
         udpSocket = new MulticastSocket(PORT);
@@ -91,7 +92,7 @@ public class Worker {
      * 3. Sends a response message back to the Manager
      * 4. Closes the UDP socket after successful discovery
      * 
-     * @throws IOException if there is an error during UDP communication
+     * <p>@throws IOException if there is an error during UDP communication
      */
     private void findManager() throws IOException {
         byte[] buffer = new byte[1024];
@@ -126,8 +127,9 @@ public class Worker {
      *    - Sends the result back to the Manager
      * 4. Closes the connection when receiving an empty array
      * 
-     * @throws IOException if there is an error during TCP communication
-     * @throws ClassNotFoundException if there is an error deserializing the received data
+     * <p>@throws IOException if there is an error during TCP communication
+     * 
+     * <p>@throws ClassNotFoundException if there is an error deserializing the received data
      */
     private void initTcpSocket() throws IOException, ClassNotFoundException {
         System.out.println("Initializing TCP Socket");
