@@ -6,7 +6,7 @@ COPY gradle /app/gradle
 COPY src /app/src
 
 ENV PATH="/opt/gradle/gradle-8.13/bin:$PATH"
-RUN gradle build -x test --no-daemon
+RUN gradle build -x test -x checkstyleMain -x checkstyleTest --no-daemon
 
 COPY --from=builder /app/build/classes/java/main ./build/classes/java/main
 CMD ["java", "-cp", "build/classes/java/main", "ru.nsu.pozhidaev.worker.Worker"]

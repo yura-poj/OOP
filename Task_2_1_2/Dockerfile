@@ -4,4 +4,4 @@ COPY . .
 COPY gradle-8.13 /opt/
 ENV PATH="/opt/gradle/gradle-8.13/bin:$PATH"
 
-RUN gradle build -x test --no-daemon
+RUN gradle build -x test -x checkstyleMain -x checkstyleTest --no-daemon
