@@ -12,6 +12,33 @@ import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
+/**
+ * The Manager class implements the logic for managing workers in a distributed number checking system.
+ * 
+ * <p>The Manager performs the following functions:
+ * <ul>
+ *   <li>Finding available workers via UDP broadcast</li>
+ *   <li>Establishing TCP connections with found workers</li>
+ *   <li>Distributing tasks among workers</li>
+ *   <li>Collecting and processing results from workers</li>
+ * </ul>
+ * </p>
+ * 
+ * <p>Workflow:
+ * <ol>
+ *   <li>Initializing UDP socket for broadcast messages</li>
+ *   <li>Sending broadcast message to find workers</li>
+ *   <li>Waiting for worker responses</li>
+ *   <li>Establishing TCP connections with found workers</li>
+ *   <li>Distributing array of numbers among workers</li>
+ *   <li>Waiting for results from all workers</li>
+ *   <li>Releasing resources and completing work</li>
+ * </ol>
+ * </p>
+ * 
+ * <p>The Manager uses a combination of UDP for discovery and TCP for reliable communication.
+ * It implements a fault-tolerant system that can handle worker failures and redistribute tasks if needed.</p>
+ */
 public class Manager {
     private static final String SEND_MESSAGE = "WSUP?";
     private static final String RECEIVE_MESSAGE = "YO_MAN!";

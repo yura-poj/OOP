@@ -7,6 +7,32 @@ import java.util.Arrays;
 
 import ru.nsu.pozhidaev.primeDetecter.PrimeNumberDetector;
 
+/**
+ * The Worker class implements the worker node functionality in the distributed system.
+ * 
+ * <p>A Worker is responsible for:
+ * <ul>
+ *   <li>Listening for Manager discovery messages via UDP multicast</li>
+ *   <li>Responding to Manager discovery requests</li>
+ *   <li>Establishing TCP connection with the Manager</li>
+ *   <li>Receiving and processing number arrays</li>
+ *   <li>Checking if any number in the array is prime</li>
+ *   <li>Sending results back to the Manager</li>
+ * </ul>
+ * </p>
+ * 
+ * <p>The Worker operates in a continuous loop:
+ * <ol>
+ *   <li>Activates UDP socket for discovery</li>
+ *   <li>Finds the Manager through UDP multicast</li>
+ *   <li>Establishes TCP connection with the Manager</li>
+ *   <li>Processes tasks until receiving an empty array (termination signal)</li>
+ * </ol>
+ * </p>
+ * 
+ * <p>The Worker uses UDP multicast for discovery and TCP for reliable communication with the Manager.
+ * It implements a robust error handling mechanism to ensure continuous operation.</p>
+ */
 public class Worker {
     private static final int PORT = 5005;
     private static final String GROUP_IP = "224.0.0.1";
