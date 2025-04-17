@@ -1,4 +1,4 @@
-package ru.nsu.pozhidaev.prime_detecter;
+package ru.nsu.pozhidaev.primedetecter;
 
 import java.util.ArrayList;
 import java.util.List;

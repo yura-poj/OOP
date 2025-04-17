@@ -3,34 +3,32 @@ package ru.nsu.pozhidaev.manager;
 import java.util.ArrayList;
 
 /**
- * The Main class for the Manager component of the distributed system.
- * 
- * <p>This class serves as the entry point for the Manager application. It:
- * <ul>
- *   <li>Parses command-line arguments as numbers to be processed</li>
- *   <li>Creates a Manager instance</li>
- *   <li>Passes the numbers to the Manager for processing</li>
- *   <li>Outputs the result of the processing</li>
- * </ul>
- * </p>
- * 
- * <p>Usage:
- * <pre>
+ * Main class for the Manager component of the distributed prime number detection system.
+ * This class serves as the entry point for the Manager application.
+ * It processes command line arguments as numbers to check for primality,
+ * creates a Manager instance, and coordinates the distributed processing.
+ * The Manager will:
+ * - Parse numbers from command line arguments
+ * - Create a Manager instance to coordinate workers
+ * - Distribute the numbers among available workers
+ * - Collect and process results from workers
+ * - Output the final result
+ * Usage:
  * java ru.nsu.pozhidaev.manager.Main [number1] [number2] ... [numberN]
- * </pre>
- * </p>
- * 
- * <p>Example:
- * <pre>
+ * Example:
  * java ru.nsu.pozhidaev.manager.Main 2 3 4 5 6 7 8 9 10 11
- * </pre>
- * </p>
  */
 public class Main {
     /**
-     * The main method that serves as the entry point for the Manager application.
+     * The main entry point for the Manager application.
+     * Processes command line arguments as numbers and coordinates their processing.
+     * The method:
+     * 1. Parses numbers from command line arguments
+     * 2. Creates a Manager instance
+     * 3. Passes the numbers for processing
+     * 4. Outputs the result.
      * 
-     * @param args Command-line arguments representing numbers to be processed
+     * @param args Command line arguments representing numbers to be processed
      */
     public static void main(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<>();
@@ -43,7 +41,7 @@ public class Main {
             return;
         }
         Manager manager = new Manager();
-        boolean result =  manager.work(numbers.stream().mapToInt(Integer::intValue).toArray());
+        boolean result = manager.work(numbers.stream().mapToInt(Integer::intValue).toArray());
         System.out.println(result);
     }
 }

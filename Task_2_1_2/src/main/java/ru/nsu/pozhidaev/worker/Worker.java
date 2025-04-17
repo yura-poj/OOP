@@ -1,37 +1,33 @@
 package ru.nsu.pozhidaev.worker;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.MulticastSocket;
+import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import ru.nsu.pozhidaev.primedetecter.PrimeNumberDetector;
 
-import ru.nsu.pozhidaev.primeDetecter.PrimeNumberDetector;
 
 /**
- * The Worker class implements the worker node functionality in the distributed system.
- * 
- * <p>A Worker is responsible for:
- * <ul>
- *   <li>Listening for Manager discovery messages via UDP multicast</li>
- *   <li>Responding to Manager discovery requests</li>
- *   <li>Establishing TCP connection with the Manager</li>
- *   <li>Receiving and processing number arrays</li>
- *   <li>Checking if any number in the array is prime</li>
- *   <li>Sending results back to the Manager</li>
- * </ul>
- * </p>
- * 
- * <p>The Worker operates in a continuous loop:
- * <ol>
- *   <li>Activates UDP socket for discovery</li>
- *   <li>Finds the Manager through UDP multicast</li>
- *   <li>Establishes TCP connection with the Manager</li>
- *   <li>Processes tasks until receiving an empty array (termination signal)</li>
- * </ol>
- * </p>
- * 
- * <p>The Worker uses UDP multicast for discovery and TCP for reliable communication with the Manager.
- * It implements a robust error handling mechanism to ensure continuous operation.</p>
+ * Worker class represents a worker node in the distributed system for checking prime numbers.
+ * The worker operates in the following sequence:
+ * 1. Activates UDP socket for discovery
+ * 2. Finds the Manager through UDP multicast
+ * 3. Establishes TCP connection with the Manager
+ * 4. Processes tasks until receiving an empty array (termination signal)
+ * The worker uses:
+ * - UDP multicast for discovery (port 5005)
+ * - TCP for reliable communication with the Manager
+ * - PrimeNumberDetector for checking if numbers are prime
+ * Communication protocol:
+ * - UDP discovery: "WSUP?" (Manager) -> "YO_MAN!" (Worker)
+ * - TCP task processing: int[] -> "TRUE"/"FALSE" response
  */
 public class Worker {
     private static final int PORT = 5005;
@@ -42,6 +38,17 @@ public class Worker {
     private InetAddress udpGroup;
     private InetSocketAddress manager;
 
+    /**
+     * Main method that runs the worker in a continuous loop.
+     * Handles the entire lifecycle of the worker including discovery,
+     * connection, and task processing.
+     * The method:
+     * 1. Activates UDP socket for discovery
+     * 2. Finds the Manager through UDP multicast
+     * 3. Establishes TCP connection with the Manager
+     * 4. Processes tasks until receiving an empty array
+     * If any step fails, the worker will attempt to restart the process.
+     */
     public void work() {
         while (true) {
             try {
@@ -57,14 +64,35 @@ public class Worker {
         }
     }
 
+    /**
+     * Initializes UDP socket and joins the multicast group for discovery.
+     * This method:
+     * 1. Creates a new MulticastSocket on the specified port
+     * 2. Enables address reuse
+     * 3. Joins the multicast group
+     * 4. Prints the local address and port for debugging
+     *
+     * @throws IOException if there is an error setting up the socket or joining the multicast group
+     */
     private void activate() throws IOException {
         udpSocket = new MulticastSocket(PORT);
         udpSocket.setReuseAddress(true);
         udpGroup = InetAddress.getByName(GROUP_IP);
         udpSocket.joinGroup(udpGroup);
-        System.out.println("Listening on: " + udpSocket.getLocalAddress() + ":" + udpSocket.getLocalPort());
+        System.out.println("Listening on: " + udpSocket.getLocalAddress()
+                + ":" + udpSocket.getLocalPort());
     }
 
+    /**
+     * Listens for Manager discovery messages and responds when found.
+     * This method:
+     * 1. Listens for UDP packets containing the discovery message
+     * 2. When a valid discovery message is received, stores the Manager's address
+     * 3. Sends a response message back to the Manager
+     * 4. Closes the UDP socket after successful discovery
+     * 
+     * @throws IOException if there is an error during UDP communication
+     */
     private void findManager() throws IOException {
         byte[] buffer = new byte[1024];
         DatagramPacket packet;
@@ -72,7 +100,7 @@ public class Worker {
             packet = new DatagramPacket(buffer, buffer.length);
             udpSocket.receive(packet);
             String received = new String(packet.getData(), 0, packet.getLength());
-            if(received.equals(RECEIVE_MESSAGE)) {
+            if (received.equals(RECEIVE_MESSAGE)) {
                 System.out.println("Found Manager: " + packet.getAddress());
                 break;
             }
@@ -87,17 +115,31 @@ public class Worker {
         udpSocket.close();
     }
 
+    /**
+     * Establishes TCP connection with the Manager and processes tasks.
+     * This method:
+     * 1. Creates a TCP socket and connects to the Manager
+     * 2. Sets up input and output streams
+     * 3. Processes tasks in a loop:
+     *    - Receives arrays of numbers
+     *    - Checks if any number is prime
+     *    - Sends the result back to the Manager
+     * 4. Closes the connection when receiving an empty array
+     * 
+     * @throws IOException if there is an error during TCP communication
+     * @throws ClassNotFoundException if there is an error deserializing the received data
+     */
     private void initTcpSocket() throws IOException, ClassNotFoundException {
         System.out.println("Initializing TCP Socket");
         Socket socket = new Socket();
         socket.connect(new InetSocketAddress(manager.getAddress(), PORT), 2000);
-        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());;
+        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         System.out.println("create socket");
         int[] task;
         while (true) {
-             task = (int[]) in.readObject();
-            if( task.length == 0) {
+            task = (int[]) in.readObject();
+            if (task.length == 0) {
                 socket.close();
                 break;
             }
