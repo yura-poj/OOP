@@ -147,8 +147,8 @@ public class Manager {
                 workerServers.get(i).send(part);
                 start = end;
             }
-            waitWorkers();
         }
+        waitWorkers();
     }
 
     private void waitWorkers() throws InterruptedException {
@@ -169,8 +169,10 @@ public class Manager {
         }
     }
 
-    public synchronized void removeWorker(WorkerServer workerServer) {
-        workerServers.remove(workerServer);
+    public void removeWorker(WorkerServer workerServer) {
+            synchronized (workersLock) {
+                workerServers.remove(workerServer);
+            }
         System.out.println("remove worker");
     }
 
